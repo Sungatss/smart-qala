@@ -50,7 +50,7 @@ export default function ProfilePage() {
     <div className="flex flex-col min-h-screen bg-muted text-foreground">
       <Navbar />
 
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-4 md:px-6 py-8 md:py-12 space-y-6">
         
         {/* Page Header */}
         <PageHeader

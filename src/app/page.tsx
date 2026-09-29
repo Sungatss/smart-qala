@@ -69,7 +69,7 @@ export default function HomePage() {
       <main className="flex-1">
         {/* HERO SECTION */}
         <section className="bg-card border-b-2 border-border">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+          <div className="max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-12">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
               
               {/* Left Column: Hero Text & Actions */}
@@ -180,8 +180,8 @@ export default function HomePage() {
         </section>
 
         {/* 3-STEP VALUE PROPOSITION */}
-        <section className="py-14 bg-muted border-b-2 border-border">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="bg-muted border-b-2 border-border">
+          <div className="max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-12">
             <div className="text-center max-w-2xl mx-auto">
               <h2 className="text-xs font-extrabold uppercase tracking-wider text-foreground">
                 {lang === 'kz' ? 'Жұмыс принципі' : lang === 'en' ? 'How it Works' : 'Принцип работы платформы'}
@@ -268,15 +268,15 @@ export default function HomePage() {
         </section>
 
         {/* PUBLIC SHOWCASE: ЧТО ИЗМЕНИЛОСЬ В ГОРОДЕ */}
-        <section id="showcase" className="py-14 bg-card border-b-2 border-border">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section id="showcase" className="bg-card border-b-2 border-border">
+          <div className="max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-12">
             <ShowcaseSection resolvedRequests={resolvedRequests} />
           </div>
         </section>
 
         {/* RECENT REQUESTS FEED PREVIEW */}
-        <section className="py-14 bg-muted">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="bg-muted">
+          <div className="max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-12">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b-2 border-border gap-4">
               <div>
                 <h2 className="text-xs font-extrabold uppercase tracking-wider text-foreground">
