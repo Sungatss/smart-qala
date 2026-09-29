@@ -44,8 +44,8 @@ export default function AuthModal() {
   const [citizenTab, setCitizenTab] = useState<'login' | 'register'>('login');
 
   // Form states
-  const [citizenLoginInput, setCitizenLoginInput] = useState('+7 (705) 412-88-99');
-  const [citizenPassword, setCitizenPassword] = useState('password123');
+  const [citizenLoginInput, setCitizenLoginInput] = useState('');
+  const [citizenPassword, setCitizenPassword] = useState('');
 
   // Citizen registration fields
   const [regName, setRegName] = useState('');
@@ -55,8 +55,8 @@ export default function AuthModal() {
   const [regPassword, setRegPassword] = useState('');
 
   // Staff (ЖКХ / Admin) credentials
-  const [staffLogin, setStaffLogin] = useState('k.serikov@semey-gov.kz');
-  const [staffPassword, setStaffPassword] = useState('jkh2026pass');
+  const [staffLogin, setStaffLogin] = useState('');
+  const [staffPassword, setStaffPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
 
@@ -66,13 +66,6 @@ export default function AuthModal() {
       const initial = modalInitialRole || 'citizen';
       setSelectedRole(initial);
       setCitizenTab(modalInitialTab || 'login');
-      if (initial === 'employee') {
-        setStaffLogin('k.serikov@semey-gov.kz');
-        setStaffPassword('jkh2026pass');
-      } else if (initial === 'admin') {
-        setStaffLogin('d.baizhanov@abai.gov.kz');
-        setStaffPassword('admin2026pass');
-      }
     }
   }, [isAuthModalOpen, modalInitialRole, modalInitialTab]);
 
@@ -365,7 +358,8 @@ export default function AuthModal() {
                     }}
                     className="w-full py-2.5 px-3 text-xs font-bold text-info-soft-foreground bg-info-soft border border-info-soft rounded-lg hover:bg-blue-100 transition-colors cursor-pointer"
                   >
-                    ⚡ Быстрый вход жителя (Азамат Султанов)
+                    <Sparkles className="w-3.5 h-3.5 inline mr-1" />
+                    <span>Быстрый вход жителя (Азамат Султанов)</span>
                   </button>
 
                   {/* OR GUEST LOGIN */}
@@ -555,9 +549,10 @@ export default function AuthModal() {
                   login('employee');
                   router.push('/admin');
                 }}
-                className="w-full py-2.5 px-3 text-xs font-bold text-info-soft-foreground bg-info-soft border border-info-soft rounded-lg hover:bg-indigo-100 transition-colors cursor-pointer"
+                className="w-full py-2.5 px-3 text-xs font-bold text-info-soft-foreground bg-info-soft border border-info-soft rounded-lg hover:bg-indigo-100 transition-colors cursor-pointer flex items-center justify-center gap-1.5"
               >
-                ⚡ Мгновенный демо-вход диспетчера (Канат Сериков • 109)
+                <Sparkles className="w-3.5 h-3.5 inline shrink-0" />
+                <span>Мгновенный демо-вход диспетчера (Канат Сериков • 109)</span>
               </button>
             </form>
           )}
@@ -568,7 +563,7 @@ export default function AuthModal() {
           {selectedRole === 'admin' && (
             <form onSubmit={handleStaffLoginSubmit} className="space-y-4">
               <div className="p-3 bg-success-soft border border-success-soft rounded-lg text-xs text-success-soft-foreground font-semibold leading-relaxed">
-                🏛️ Доступ аппарата Акима г. Семей: цензурный контроль, аудит просрочек ЖКХ и прямая линия с разработчиками (dev@smartqala.kz).
+                Доступ аппарата Акима г. Семей: цензурный контроль, аудит просрочек ЖКХ и прямая линия с разработчиками (dev@smartqala.kz).
               </div>
 
               <div>
@@ -627,9 +622,10 @@ export default function AuthModal() {
                   login('admin');
                   router.push('/admin');
                 }}
-                className="w-full py-2.5 px-3 text-xs font-bold text-success-soft-foreground bg-success-soft border border-success-soft rounded-lg hover:bg-emerald-100 transition-colors cursor-pointer"
+                className="w-full py-2.5 px-3 text-xs font-bold text-success-soft-foreground bg-success-soft border border-success-soft rounded-lg hover:bg-emerald-100 transition-colors cursor-pointer flex items-center justify-center gap-1.5"
               >
-                ⚡ Мгновенный демо-вход Акимата (Даурен Байжанов)
+                <Sparkles className="w-3.5 h-3.5 inline shrink-0" />
+                <span>Мгновенный демо-вход Акимата (Даурен Байжанов)</span>
               </button>
             </form>
           )}

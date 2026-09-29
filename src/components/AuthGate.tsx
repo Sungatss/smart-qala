@@ -45,8 +45,8 @@ export default function AuthGate() {
   const [citizenTab, setCitizenTab] = useState<'guest' | 'login' | 'register'>('guest');
 
   // Citizen login state
-  const [citizenLoginInput, setCitizenLoginInput] = useState('+7 (705) 412-88-99');
-  const [citizenPassword, setCitizenPassword] = useState('password123');
+  const [citizenLoginInput, setCitizenLoginInput] = useState('');
+  const [citizenPassword, setCitizenPassword] = useState('');
 
   // Citizen register state
   const [regName, setRegName] = useState('');
@@ -55,12 +55,12 @@ export default function AuthGate() {
   const [regDistrict, setRegDistrict] = useState<District>('Центральный');
 
   // Staff credentials
-  const [jkhLogin, setJkhLogin] = useState('k.serikov@semey-gov.kz');
-  const [jkhPassword, setJkhPassword] = useState('jkh2026pass');
+  const [jkhLogin, setJkhLogin] = useState('');
+  const [jkhPassword, setJkhPassword] = useState('');
   const [showJkhPassword, setShowJkhPassword] = useState(false);
 
-  const [adminLogin, setAdminLogin] = useState('d.baizhanov@abai.gov.kz');
-  const [adminPassword, setAdminPassword] = useState('admin2026pass');
+  const [adminLogin, setAdminLogin] = useState('');
+  const [adminPassword, setAdminPassword] = useState('');
   const [showAdminPassword, setShowAdminPassword] = useState(false);
 
   const [errorMsg, setErrorMsg] = useState('');
@@ -441,7 +441,8 @@ export default function AuthGate() {
                         : 'text-blue-300 hover:text-white bg-blue-950/40 hover:bg-blue-900/60 border-blue-900/80'
                     }`}
                   >
-                    ⚡ {t.authFastCitizenDemo}
+                    <Sparkles className="w-3.5 h-3.5 inline mr-1" />
+                    <span>{t.authFastCitizenDemo}</span>
                   </button>
                 </div>
               </form>
@@ -570,7 +571,8 @@ export default function AuthGate() {
                 }}
                 className="w-full py-3 px-4 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm flex items-center justify-center gap-2 transition-colors shadow-md cursor-pointer"
               >
-                <span>⚡ {t.authFastJkhDemo}</span>
+                <Sparkles className="w-4 h-4" />
+                <span>{t.authFastJkhDemo}</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
               <p className={`text-[11px] text-center mt-1.5 font-medium ${
@@ -701,7 +703,8 @@ export default function AuthGate() {
                 }}
                 className="w-full py-3 px-4 rounded-lg bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-sm flex items-center justify-center gap-2 transition-colors shadow-md cursor-pointer"
               >
-                <span>⚡ {t.authFastAdminDemo}</span>
+                <Sparkles className="w-4 h-4" />
+                <span>{t.authFastAdminDemo}</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
               <p className={`text-[11px] text-center mt-1.5 font-medium ${
