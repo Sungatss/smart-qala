@@ -1,9 +1,87 @@
 @import "tailwindcss";
 
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-success-soft: var(--success-soft);
+  --color-success-soft-foreground: var(--success-soft-foreground);
+
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-warning-soft: var(--warning-soft);
+  --color-warning-soft-foreground: var(--warning-soft-foreground);
+
+  --color-danger: var(--danger);
+  --color-danger-foreground: var(--danger-foreground);
+  --color-danger-soft: var(--danger-soft);
+  --color-danger-soft-foreground: var(--danger-soft-foreground);
+
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --color-info-soft: var(--info-soft);
+  --color-info-soft-foreground: var(--info-soft-foreground);
+}
+
 :root {
   --background: #f9fafb;
   --foreground: #0f172a;
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  --popover: #ffffff;
+  --popover-foreground: #0f172a;
+  --primary: #0f172a;
+  --primary-foreground: #ffffff;
+  --secondary: #f1f5f9;
+  --secondary-foreground: #0f172a;
+  --muted: #f1f5f9;
+  --muted-foreground: #475569;
+  --accent: #f1f5f9;
+  --accent-foreground: #0f172a;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
   --border: #e2e8f0;
+  --input: #e2e8f0;
+  --ring: #0f172a;
+
+  --success: #059669;
+  --success-foreground: #ffffff;
+  --success-soft: #ecfdf5;
+  --success-soft-foreground: #064e3b;
+
+  --warning: #d97706;
+  --warning-foreground: #ffffff;
+  --warning-soft: #fffbeb;
+  --warning-soft-foreground: #78350f;
+
+  --danger: #dc2626;
+  --danger-foreground: #ffffff;
+  --danger-soft: #fef2f2;
+  --danger-soft-foreground: #7f1d1d;
+
+  --info: #2563eb;
+  --info-foreground: #ffffff;
+  --info-soft: #eff6ff;
+  --info-soft-foreground: #1e3a8a;
 }
 
 body {
@@ -27,10 +105,47 @@ body {
 /* ==========================================================================
    🌙 DARK THEME COMPLETE SYSTEM
    ========================================================================== */
-html.dark {
+.dark, html.dark {
   --background: #080c14;
   --foreground: #f8fafc;
-  --border: #1e293b;
+  --card: #0f172a;
+  --card-foreground: #f8fafc;
+  --popover: #0f172a;
+  --popover-foreground: #f8fafc;
+  --primary: #2563eb;
+  --primary-foreground: #ffffff;
+  --secondary: #162032;
+  --secondary-foreground: #f8fafc;
+  --muted: #162032;
+  --muted-foreground: #94a3b8;
+  --accent: #1e293b;
+  --accent-foreground: #f8fafc;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #263346;
+  --input: #263346;
+  --ring: #3b82f6;
+
+  --success: #10b981;
+  --success-foreground: #ffffff;
+  --success-soft: rgba(16, 185, 129, 0.18);
+  --success-soft-foreground: #6ee7b7;
+
+  --warning: #f59e0b;
+  --warning-foreground: #000000;
+  --warning-soft: rgba(245, 158, 11, 0.18);
+  --warning-soft-foreground: #fcd34d;
+
+  --danger: #ef4444;
+  --danger-foreground: #ffffff;
+  --danger-soft: rgba(239, 68, 68, 0.18);
+  --danger-soft-foreground: #fca5a5;
+
+  --info: #3b82f6;
+  --info-foreground: #ffffff;
+  --info-soft: rgba(59, 130, 246, 0.18);
+  --info-soft-foreground: #93c5fd;
+
   color-scheme: dark;
 }
 
@@ -290,13 +405,53 @@ span.inline-flex,
 }
 
 /* 👴 EASY MODE (ACCESSIBILITY FOR ELDERLY / LOW-VISION RESIDENTS) */
-html.easy-mode {
+.easy-mode, html.easy-mode {
+  --background: #ffffff;
+  --foreground: #000000;
+  --card: #ffffff;
+  --card-foreground: #000000;
+  --popover: #ffffff;
+  --popover-foreground: #000000;
+  --primary: #000000;
+  --primary-foreground: #ffffff;
+  --secondary: #f0f0f0;
+  --secondary-foreground: #000000;
+  --muted: #f4f4f5;
+  --muted-foreground: #000000;
+  --accent: #e4e4e7;
+  --accent-foreground: #000000;
+  --destructive: #b71c1c;
+  --destructive-foreground: #ffffff;
+  --border: #000000;
+  --input: #000000;
+  --ring: #000000;
+
+  --success: #006400;
+  --success-foreground: #ffffff;
+  --success-soft: #e8f5e9;
+  --success-soft-foreground: #004d40;
+
+  --warning: #b78103;
+  --warning-foreground: #ffffff;
+  --warning-soft: #fff8e1;
+  --warning-soft-foreground: #5d4037;
+
+  --danger: #b71c1c;
+  --danger-foreground: #ffffff;
+  --danger-soft: #ffebee;
+  --danger-soft-foreground: #b71c1c;
+
+  --info: #0d47a1;
+  --info-foreground: #ffffff;
+  --info-soft: #e3f2fd;
+  --info-soft-foreground: #0d47a1;
+
   font-size: 19px !important;
 }
 
 html.easy-mode body {
-  background-color: #ffffff !important;
-  color: #000000 !important;
+  background-color: var(--background) !important;
+  color: var(--foreground) !important;
   line-height: 1.6 !important;
 }
 
