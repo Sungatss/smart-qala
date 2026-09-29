@@ -13,13 +13,15 @@ import {
   Filter
 } from 'lucide-react';
 import { DepartmentBadge } from '@/components/Badges';
+import PageHeader from '@/components/PageHeader';
+import { Button } from '@/components/ui/button';
 
 interface IdeasClientProps {
   initialIdeas: CityRequest[];
 }
 
 export default function IdeasClient({ initialIdeas }: IdeasClientProps) {
-  const { upvote, upvotedIds } = useApp();
+  const { upvote, upvotedIds, t } = useApp();
   const [ideas, setIdeas] = useState<CityRequest[]>(initialIdeas);
   const [selectedCategory, setSelectedCategory] = useState<string>('Все');
   const [sortBy, setSortBy] = useState<'votes' | 'recent'>('votes');
@@ -50,34 +52,19 @@ export default function IdeasClient({ initialIdeas }: IdeasClientProps) {
   return (
     <div className="space-y-6">
       
-      {/* Top Banner & Submit CTA */}
-      <div className="bg-card rounded-md border border-gray-200 p-6 shadow-2xs flex flex-col md:flex-row md:items-center justify-between gap-6">
-        <div>
-          <div className="flex items-center gap-2">
-            <span className="p-1 rounded bg-amber-100 text-warning-soft-foreground">
-              <Lightbulb className="w-4 h-4 text-amber-700" />
-            </span>
-            <span className="text-xs font-bold uppercase tracking-wider text-warning-soft-foreground">
-              Банк городских инициатив • Семей
-            </span>
-          </div>
-          <h2 className="text-2xl font-extrabold text-foreground mt-2">
-            Идеи жителей по развитию города
-          </h2>
-          <p className="text-sm text-muted-foreground mt-1 max-w-2xl leading-relaxed">
-            Предлагайте проекты благоустройства, экологические инициативы и транспортные решения. 
-            Идеи, набравшие свыше 50 голосов, передаются на прямое рассмотрение в Общественный совет и Акимат города.
-          </p>
-        </div>
-
-        <Link
-          href="/create?type=idea"
-          className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-md bg-primary text-primary-foreground font-semibold hover:bg-primary/90 transition-colors shadow-xs shrink-0"
-        >
-          <PlusCircle className="w-4 h-4 text-white" />
-          <span>Предложить идею</span>
-        </Link>
-      </div>
+      {/* Page Header */}
+      <PageHeader
+        title={t.ideasHeaderTitle}
+        description={t.ideasHeaderSubtitle}
+        actions={
+          <Button asChild size="sm" className="h-9 gap-1.5 px-3.5 text-xs font-medium">
+            <Link href="/create?type=idea">
+              <PlusCircle className="h-4 w-4" />
+              <span>{t.createTypeIdea}</span>
+            </Link>
+          </Button>
+        }
+      />
 
       {/* Filter and Sort Bar */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-card p-3.5 rounded-md border border-gray-200 text-xs">

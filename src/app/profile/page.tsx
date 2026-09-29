@@ -6,6 +6,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { useApp } from '@/context/AppContext';
 import { CityRequest } from '@/types';
+import PageHeader from '@/components/PageHeader';
 import { StatusBadge, PriorityBadge, DepartmentBadge } from '@/components/Badges';
 import { 
   MapPin, 
@@ -17,7 +18,7 @@ import {
 } from 'lucide-react';
 
 export default function ProfilePage() {
-  const { user, upvotedIds } = useApp();
+  const { user, upvotedIds, t } = useApp();
   const [userRequests, setUserRequests] = useState<CityRequest[]>([]);
   const [loading, setLoading] = useState(true);
   const [filterTab, setFilterTab] = useState<'all' | 'in_progress' | 'resolved' | 'ideas'>('all');
@@ -46,11 +47,17 @@ export default function ProfilePage() {
   });
 
   return (
-    <div className="flex flex-col min-h-screen bg-muted text-gray-900">
+    <div className="flex flex-col min-h-screen bg-muted text-foreground">
       <Navbar />
 
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
         
+        {/* Page Header */}
+        <PageHeader
+          title={t.profileHeaderTitle}
+          description={t.profileHeaderSubtitle}
+        />
+
         {/* Profile Card Header */}
         <div className="bg-card rounded-md border border-gray-200 p-6 shadow-2xs">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">

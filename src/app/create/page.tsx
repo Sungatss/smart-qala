@@ -4,6 +4,7 @@ import React, { useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import PageHeader from '@/components/PageHeader';
 import { RequestType, District } from '@/types';
 import { useApp } from '@/context/AppContext';
 import { 
@@ -240,18 +241,17 @@ function CreateRequestContent() {
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
       
       {/* Page Header */}
-      <div className="text-center mb-8">
-        <div className="inline-flex items-center gap-2 px-3 py-1 text-xs font-extrabold rounded-full bg-primary text-primary-foreground mb-3">
-          <Sparkles className="w-3.5 h-3.5 text-blue-400" />
-          <span>Smart Qala • Семей</span>
-        </div>
-        <h1 className="text-2xl sm:text-3xl font-extrabold text-foreground tracking-tight">
-          {requestType === 'idea' ? t.createTitleIdea : t.createTitleProblem}
-        </h1>
-        <p className="mt-2 text-sm sm:text-base text-muted-foreground font-medium">
-          {t.createSubtitle}
-        </p>
-      </div>
+      <PageHeader
+        className="mb-8"
+        badge={
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 text-xs font-medium rounded-md bg-muted text-muted-foreground border border-border">
+            <Sparkles className="w-3.5 h-3.5 text-info" />
+            <span>Smart Qala • {t.brandCity}</span>
+          </div>
+        }
+        title={requestType === 'idea' ? t.createTitleIdea : t.createTitleProblem}
+        description={t.createSubtitle}
+      />
 
       {/* Main Submission Card */}
       <div className="bg-card rounded-xl border-2 border-border shadow-md p-6 sm:p-8">
