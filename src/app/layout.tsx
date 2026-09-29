@@ -16,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ru">
-      <body className="min-h-screen bg-gray-50 text-gray-900 flex flex-col">
+      <body className="min-h-screen bg-muted text-gray-900 flex flex-col">
         <AppProvider>
           <AuthModal />
           <AppShell>

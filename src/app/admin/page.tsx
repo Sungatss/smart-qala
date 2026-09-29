@@ -380,35 +380,35 @@ export default function AdminPage() {
   // ==========================================
   if (role === 'citizen') {
     return (
-      <div className="flex flex-col min-h-screen bg-gray-50 text-slate-900">
+      <div className="flex flex-col min-h-screen bg-muted text-foreground">
         <Navbar />
 
         <main className="flex-1 max-w-4xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-12 flex flex-col justify-center">
-          <div className="bg-white rounded-lg border-2 border-slate-300 shadow-xl p-8 sm:p-10">
-            <div className="w-14 h-14 rounded-lg bg-amber-100 text-amber-900 border border-amber-300 flex items-center justify-center mb-6">
+          <div className="bg-card rounded-lg border-2 border-border shadow-xl p-8 sm:p-10">
+            <div className="w-14 h-14 rounded-lg bg-amber-100 text-warning-soft-foreground border border-warning-soft flex items-center justify-center mb-6">
               <Lock className="w-7 h-7" />
             </div>
 
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-amber-50 text-amber-950 border border-amber-200 text-xs font-bold uppercase tracking-wider mb-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-warning-soft text-warning-soft-foreground border border-warning-soft text-xs font-bold uppercase tracking-wider mb-3">
               <span>Служебный раздел • Доступ строго ограничен</span>
             </div>
 
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+            <h1 className="text-2xl sm:text-3xl font-extrabold text-foreground tracking-tight">
               Доступ к панели управления ограничен
             </h1>
 
-            <p className="mt-3 text-base text-slate-800 leading-relaxed font-medium">
+            <p className="mt-3 text-base text-foreground leading-relaxed font-medium">
               Данный раздел предназначен исключительно для сотрудников коммунальных служб (ЖКХ / 109) 
               и Администрации города (Акимата). Он содержит персональные и конфиденциальные данные заявителей 
               (номера телефонов, адреса проживания, внутренние наряды диспетчеров).
             </p>
 
             {/* Allowed Citizen Capabilities */}
-            <div className="mt-6 p-5 bg-slate-50 rounded-lg border border-slate-200">
-              <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wide mb-3">
+            <div className="mt-6 p-5 bg-muted rounded-lg border border-border">
+              <h3 className="text-sm font-bold text-foreground uppercase tracking-wide mb-3">
                 Как гражданин г. Семей, вы имеете полный доступ к публичным возможностям:
               </h3>
-              <ul className="space-y-2 text-sm text-slate-800">
+              <ul className="space-y-2 text-sm text-foreground">
                 <li className="flex items-start gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" />
                   <span><strong>Подача обращений и проблем:</strong> Сообщение в свободной форме с фото и геометкой.</span>
@@ -429,8 +429,8 @@ export default function AdminPage() {
             </div>
 
             {/* Action Buttons */}
-            <div className="mt-8 pt-6 border-t border-slate-200 space-y-4">
-              <div className="text-xs font-extrabold uppercase tracking-wider text-slate-900">
+            <div className="mt-8 pt-6 border-t border-border space-y-4">
+              <div className="text-xs font-extrabold uppercase tracking-wider text-foreground">
                 Мгновенный вход в служебную панель (Демо для жюри):
               </div>
               
@@ -456,13 +456,13 @@ export default function AdminPage() {
                 <button
                   type="button"
                   onClick={() => openAuthModal('employee', 'login')}
-                  className="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-white text-slate-900 font-bold text-sm border-2 border-slate-300 hover:bg-slate-50 transition-colors cursor-pointer"
+                  className="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-card text-foreground font-bold text-sm border-2 border-border hover:bg-muted transition-colors cursor-pointer"
                 >
                   <span>Ввести служебный пароль</span>
                 </button>
               </div>
 
-              <div className="flex items-center gap-3 pt-2 text-xs font-bold text-slate-700">
+              <div className="flex items-center gap-3 pt-2 text-xs font-bold text-muted-foreground">
                 <span>Или перейти:</span>
                 <Link href="/" className="hover:text-black hover:underline">На главную</Link>
                 <span>•</span>
@@ -472,7 +472,7 @@ export default function AdminPage() {
               </div>
             </div>
 
-            <div className="mt-4 text-xs text-slate-600 font-mono">
+            <div className="mt-4 text-xs text-muted-foreground font-mono">
               ДЕМОНСТРАЦИОННЫЕ ДАННЫЕ / СЕМЕЙ • СИСТЕМА ЗАЩИТЫ ПЕРСОНАЛЬНЫХ ДАННЫХ
             </div>
           </div>
@@ -489,29 +489,29 @@ export default function AdminPage() {
   const isAdmin = role === 'admin';
 
   return (
-    <div className="flex flex-col min-h-screen bg-gray-50 text-slate-900">
+    <div className="flex flex-col min-h-screen bg-muted text-foreground">
       <Navbar />
 
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
         
         {/* Top Header & Civic Badge */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between pb-6 border-b border-slate-200 gap-4">
+        <div className="flex flex-col md:flex-row md:items-center justify-between pb-6 border-b border-border gap-4">
           <div>
             <div className="flex items-center gap-2">
               <span className={`w-2.5 h-2.5 rounded-full ${isAdmin ? 'bg-emerald-600' : 'bg-blue-600'}`}></span>
-              <span className="text-xs font-bold uppercase tracking-wider text-slate-800">
+              <span className="text-xs font-bold uppercase tracking-wider text-foreground">
                 {isAdmin ? 'Ситуационный центр • Акимат г. Семей' : 'Единый контакт-центр 109 • Отдел ЖКХ г. Семей'}
               </span>
-              <span className="text-xs font-mono font-bold px-2 py-0.5 bg-slate-200 text-slate-900 rounded border border-slate-300">
+              <span className="text-xs font-mono font-bold px-2 py-0.5 bg-slate-200 text-foreground rounded border border-border">
                 {isAdmin ? 'ПРАВА: АДМИНИСТРАЦИЯ' : 'ПРАВА: ОПЕРАТОР ЖКХ'}
               </span>
             </div>
             
-            <h1 className="mt-1 text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+            <h1 className="mt-1 text-2xl sm:text-3xl font-extrabold text-foreground tracking-tight">
               {isAdmin ? 'Панель Администрации города' : 'Панель диспетчера и служб ЖКХ'}
             </h1>
             
-            <p className="mt-1 text-sm font-semibold text-slate-700">
+            <p className="mt-1 text-sm font-semibold text-muted-foreground">
               {isAdmin
                 ? 'Модерация некомпетентных обращений, аудит работы ЖКХ, контроль сроков и связь с разработчиками платформы.'
                 : 'Контроль входящих инцидентов, доступ к контактам заявителей, устранение дефектов и официальные ответы.'}
@@ -521,9 +521,9 @@ export default function AdminPage() {
           <div className="flex items-center gap-2">
             <button
               onClick={refreshRequests}
-              className="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-bold rounded-lg bg-white border-2 border-slate-300 text-slate-900 hover:bg-slate-50 transition-colors cursor-pointer"
+              className="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-bold rounded-lg bg-card border-2 border-border text-foreground hover:bg-muted transition-colors cursor-pointer"
             >
-              <RefreshCw className={`w-4 h-4 text-slate-800 ${loading ? 'animate-spin' : ''}`} />
+              <RefreshCw className={`w-4 h-4 text-foreground ${loading ? 'animate-spin' : ''}`} />
               <span>Обновить</span>
             </button>
           </div>
@@ -531,13 +531,13 @@ export default function AdminPage() {
 
         {/* ADMIN ROLE TABS */}
         {isAdmin && (
-          <div className="flex items-center gap-2 mt-6 border-b border-slate-200 pb-2">
+          <div className="flex items-center gap-2 mt-6 border-b border-border pb-2">
             <button
               onClick={() => setAdminTab('registry')}
               className={`px-4 py-2 text-sm font-bold rounded-lg transition-colors cursor-pointer ${
                 adminTab === 'registry'
-                  ? 'bg-slate-900 text-white'
-                  : 'bg-white text-slate-800 border border-slate-300 hover:bg-slate-100'
+                  ? 'bg-primary text-primary-foreground'
+                  : 'bg-card text-foreground border border-border hover:bg-slate-100'
               }`}
             >
               Реестр обращений и модерация
@@ -546,8 +546,8 @@ export default function AdminPage() {
               onClick={() => setAdminTab('audit')}
               className={`px-4 py-2 text-sm font-bold rounded-lg transition-colors cursor-pointer flex items-center gap-1.5 ${
                 adminTab === 'audit'
-                  ? 'bg-slate-900 text-white'
-                  : 'bg-white text-slate-800 border border-slate-300 hover:bg-slate-100'
+                  ? 'bg-primary text-primary-foreground'
+                  : 'bg-card text-foreground border border-border hover:bg-slate-100'
               }`}
             >
               <ShieldAlert className="w-4 h-4 text-red-600" />
@@ -562,11 +562,11 @@ export default function AdminPage() {
               onClick={() => setAdminTab('developers')}
               className={`px-4 py-2 text-sm font-bold rounded-lg transition-colors cursor-pointer flex items-center gap-1.5 ${
                 adminTab === 'developers'
-                  ? 'bg-slate-900 text-white'
-                  : 'bg-white text-slate-800 border border-slate-300 hover:bg-slate-100'
+                  ? 'bg-primary text-primary-foreground'
+                  : 'bg-card text-foreground border border-border hover:bg-slate-100'
               }`}
             >
-              <Code className="w-4 h-4 text-slate-700" />
+              <Code className="w-4 h-4 text-muted-foreground" />
               <span>Связь с разработчиками</span>
             </button>
           </div>
@@ -574,40 +574,40 @@ export default function AdminPage() {
 
         {/* KPI STAT CARDS */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
-          <div className="bg-white p-5 rounded-lg border-2 border-slate-200 shadow-xs">
-            <div className="flex items-center justify-between text-slate-800 text-xs font-bold uppercase">
+          <div className="bg-card p-5 rounded-lg border-2 border-border shadow-xs">
+            <div className="flex items-center justify-between text-foreground text-xs font-bold uppercase">
               <span>Всего в системе</span>
-              <Layers className="w-4 h-4 text-slate-700" />
+              <Layers className="w-4 h-4 text-muted-foreground" />
             </div>
-            <div className="mt-2 text-3xl font-extrabold text-slate-900">{stats.total}</div>
-            <div className="mt-1 text-xs font-bold text-slate-700">Зарегистрировано инцидентов</div>
+            <div className="mt-2 text-3xl font-extrabold text-foreground">{stats.total}</div>
+            <div className="mt-1 text-xs font-bold text-muted-foreground">Зарегистрировано инцидентов</div>
           </div>
 
-          <div className="bg-white p-5 rounded-lg border-2 border-indigo-200 shadow-xs">
-            <div className="flex items-center justify-between text-indigo-900 text-xs font-bold uppercase">
+          <div className="bg-card p-5 rounded-lg border-2 border-info-soft shadow-xs">
+            <div className="flex items-center justify-between text-info-soft-foreground text-xs font-bold uppercase">
               <span>В работе у служб</span>
               <Clock className="w-4 h-4 text-indigo-700" />
             </div>
-            <div className="mt-2 text-3xl font-extrabold text-indigo-900">{stats.in_progress}</div>
-            <div className="mt-1 text-xs font-bold text-indigo-900">Бригады на участках</div>
+            <div className="mt-2 text-3xl font-extrabold text-info-soft-foreground">{stats.in_progress}</div>
+            <div className="mt-1 text-xs font-bold text-info-soft-foreground">Бригады на участках</div>
           </div>
 
-          <div className="bg-white p-5 rounded-lg border-2 border-red-200 shadow-xs">
-            <div className="flex items-center justify-between text-red-900 text-xs font-bold uppercase">
+          <div className="bg-card p-5 rounded-lg border-2 border-danger-soft shadow-xs">
+            <div className="flex items-center justify-between text-danger-soft-foreground text-xs font-bold uppercase">
               <span>Высокий приоритет</span>
               <ShieldAlert className="w-4 h-4 text-red-700" />
             </div>
-            <div className="mt-2 text-3xl font-extrabold text-red-900">{stats.high_priority}</div>
-            <div className="mt-1 text-xs font-bold text-red-900">Срочные аварии (норматив 24ч)</div>
+            <div className="mt-2 text-3xl font-extrabold text-danger-soft-foreground">{stats.high_priority}</div>
+            <div className="mt-1 text-xs font-bold text-danger-soft-foreground">Срочные аварии (норматив 24ч)</div>
           </div>
 
-          <div className="bg-white p-5 rounded-lg border-2 border-emerald-200 shadow-xs">
-            <div className="flex items-center justify-between text-emerald-900 text-xs font-bold uppercase">
+          <div className="bg-card p-5 rounded-lg border-2 border-success-soft shadow-xs">
+            <div className="flex items-center justify-between text-success-soft-foreground text-xs font-bold uppercase">
               <span>Решено с фото</span>
               <CheckCircle2 className="w-4 h-4 text-emerald-700" />
             </div>
-            <div className="mt-2 text-3xl font-extrabold text-emerald-900">{stats.resolved}</div>
-            <div className="mt-1 text-xs font-bold text-emerald-900">Опубликованы на витрине</div>
+            <div className="mt-2 text-3xl font-extrabold text-success-soft-foreground">{stats.resolved}</div>
+            <div className="mt-1 text-xs font-bold text-success-soft-foreground">Опубликованы на витрине</div>
           </div>
         </div>
 
@@ -615,18 +615,18 @@ export default function AdminPage() {
         {(adminTab === 'registry' || !isAdmin) && (
           <>
             {/* FILTERS & SEARCH BAR */}
-            <div className="bg-white p-4 rounded-lg border-2 border-slate-200 shadow-xs mt-6 space-y-3">
+            <div className="bg-card p-4 rounded-lg border-2 border-border shadow-xs mt-6 space-y-3">
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
                 
                 {/* Search */}
                 <div className="relative">
-                  <Search className="w-4 h-4 text-slate-700 absolute left-3 top-3.5" />
+                  <Search className="w-4 h-4 text-muted-foreground absolute left-3 top-3.5" />
                   <input
                     type="text"
                     placeholder="Поиск по ID, адресу, тексту, ФИО..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full pl-9 pr-3 py-2 text-sm rounded-lg border border-slate-300 font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-900"
+                    className="w-full pl-9 pr-3 py-2 text-sm rounded-lg border border-border font-medium text-foreground focus:outline-none focus:ring-2 focus:ring-slate-900"
                   />
                 </div>
 
@@ -635,7 +635,7 @@ export default function AdminPage() {
                   <select
                     value={selectedType}
                     onChange={(e) => setSelectedType(e.target.value)}
-                    className="w-full px-3 py-2 text-sm rounded-lg border border-slate-300 bg-white font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-900"
+                    className="w-full px-3 py-2 text-sm rounded-lg border border-border bg-card font-bold text-foreground focus:outline-none focus:ring-2 focus:ring-slate-900"
                   >
                     <option value="Все">Все типы (Проблемы и идеи)</option>
                     <option value="problem">🔴 Только проблемы</option>
@@ -648,7 +648,7 @@ export default function AdminPage() {
                   <select
                     value={selectedCategory}
                     onChange={(e) => setSelectedCategory(e.target.value)}
-                    className="w-full px-3 py-2 text-sm rounded-lg border border-slate-300 bg-white font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-900"
+                    className="w-full px-3 py-2 text-sm rounded-lg border border-border bg-card font-bold text-foreground focus:outline-none focus:ring-2 focus:ring-slate-900"
                   >
                     <option value="Все">Все категории</option>
                     <option value="Дороги">Дороги</option>
@@ -668,7 +668,7 @@ export default function AdminPage() {
                   <select
                     value={selectedStatus}
                     onChange={(e) => setSelectedStatus(e.target.value)}
-                    className="w-full px-3 py-2 text-sm rounded-lg border border-slate-300 bg-white font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-900"
+                    className="w-full px-3 py-2 text-sm rounded-lg border border-border bg-card font-bold text-foreground focus:outline-none focus:ring-2 focus:ring-slate-900"
                   >
                     <option value="Все">Все статусы</option>
                     <option value="new">Новое</option>
@@ -685,7 +685,7 @@ export default function AdminPage() {
                     <select
                       value={selectedModeration}
                       onChange={(e) => setSelectedModeration(e.target.value)}
-                      className="w-full px-3 py-2 text-sm rounded-lg border border-amber-300 bg-amber-50 font-bold text-amber-950 focus:outline-none focus:ring-2 focus:ring-slate-900"
+                      className="w-full px-3 py-2 text-sm rounded-lg border border-warning-soft bg-warning-soft font-bold text-warning-soft-foreground focus:outline-none focus:ring-2 focus:ring-slate-900"
                     >
                       <option value="Все">Модерация: Все</option>
                       <option value="flagged">⚠️ Требует модерации</option>
@@ -698,7 +698,7 @@ export default function AdminPage() {
                     <select
                       value={selectedPriority}
                       onChange={(e) => setSelectedPriority(e.target.value)}
-                      className="w-full px-3 py-2 text-sm rounded-lg border border-slate-300 bg-white font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-900"
+                      className="w-full px-3 py-2 text-sm rounded-lg border border-border bg-card font-bold text-foreground focus:outline-none focus:ring-2 focus:ring-slate-900"
                     >
                       <option value="Все">Все приоритеты</option>
                       <option value="high">Высокий</option>
@@ -710,17 +710,17 @@ export default function AdminPage() {
 
               </div>
 
-              <div className="flex flex-wrap items-center justify-between text-xs font-bold text-slate-800 pt-2 border-t border-slate-200 gap-2">
+              <div className="flex flex-wrap items-center justify-between text-xs font-bold text-foreground pt-2 border-t border-border gap-2">
                 <div className="flex flex-wrap items-center gap-3">
                   <span>Отображено записей: {filteredRequests.length} из {requests.length}</span>
                   
                   {/* View Mode Switcher */}
-                  <div className="flex items-center bg-slate-100 p-0.5 rounded-lg border border-slate-300">
+                  <div className="flex items-center bg-slate-100 p-0.5 rounded-lg border border-border">
                     <button
                       type="button"
                       onClick={() => setViewMode('table')}
                       className={`inline-flex items-center gap-1.5 px-3 py-1 rounded text-xs font-bold transition-colors cursor-pointer ${
-                        viewMode === 'table' ? 'bg-slate-900 text-white shadow-xs' : 'text-slate-700 hover:text-slate-900'
+                        viewMode === 'table' ? 'bg-primary text-primary-foreground shadow-xs' : 'text-muted-foreground hover:text-foreground'
                       }`}
                     >
                       <Table className="w-3.5 h-3.5" />
@@ -730,7 +730,7 @@ export default function AdminPage() {
                       type="button"
                       onClick={() => setViewMode('kanban')}
                       className={`inline-flex items-center gap-1.5 px-3 py-1 rounded text-xs font-bold transition-colors cursor-pointer ${
-                        viewMode === 'kanban' ? 'bg-slate-900 text-white shadow-xs' : 'text-slate-700 hover:text-slate-900'
+                        viewMode === 'kanban' ? 'bg-primary text-primary-foreground shadow-xs' : 'text-muted-foreground hover:text-foreground'
                       }`}
                     >
                       <Kanban className="w-3.5 h-3.5" />
@@ -749,7 +749,7 @@ export default function AdminPage() {
                       setSelectedType('Все');
                       setSelectedModeration('Все');
                     }}
-                    className="text-xs text-blue-900 hover:underline font-bold cursor-pointer"
+                    className="text-xs text-info-soft-foreground hover:underline font-bold cursor-pointer"
                   >
                     Сбросить все фильтры
                   </button>
@@ -762,22 +762,22 @@ export default function AdminPage() {
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 mt-4 items-start">
                 
                 {/* COLUMN 1: Новые и на рассмотрении */}
-                <div className="bg-slate-100/90 rounded-xl border-2 border-slate-300 p-4 flex flex-col space-y-3">
-                  <div className="flex items-center justify-between pb-2 border-b-2 border-slate-300">
+                <div className="bg-slate-100/90 rounded-xl border-2 border-border p-4 flex flex-col space-y-3">
+                  <div className="flex items-center justify-between pb-2 border-b-2 border-border">
                     <div className="flex items-center gap-2">
                       <span className="w-3 h-3 rounded-full bg-blue-600"></span>
-                      <h3 className="font-extrabold text-sm text-slate-900 uppercase tracking-wide">
+                      <h3 className="font-extrabold text-sm text-foreground uppercase tracking-wide">
                         Новые и на рассмотрении
                       </h3>
                     </div>
-                    <span className="px-2 py-0.5 text-xs font-mono font-bold bg-white text-slate-900 rounded-full border border-slate-300 shadow-2xs">
+                    <span className="px-2 py-0.5 text-xs font-mono font-bold bg-card text-foreground rounded-full border border-border shadow-2xs">
                       {filteredRequests.filter((r) => r.status === 'new' || r.status === 'under_review').length}
                     </span>
                   </div>
 
                   <div className="space-y-3 max-h-[750px] overflow-y-auto pr-1">
                     {filteredRequests.filter((r) => r.status === 'new' || r.status === 'under_review').length === 0 ? (
-                      <div className="p-6 text-center text-xs text-slate-500 font-bold bg-white/70 rounded-lg border border-dashed border-slate-300">
+                      <div className="p-6 text-center text-xs text-muted-foreground font-bold bg-card/70 rounded-lg border border-dashed border-border">
                         Нет обращений на рассмотрении
                       </div>
                     ) : (
@@ -787,38 +787,38 @@ export default function AdminPage() {
                           <div
                             key={req.id}
                             onClick={() => openDrawer(req)}
-                            className="bg-white p-4 rounded-xl border-2 border-slate-200 hover:border-blue-600 shadow-xs hover:shadow-md transition-all cursor-pointer space-y-2.5"
+                            className="bg-card p-4 rounded-xl border-2 border-border hover:border-blue-600 shadow-xs hover:shadow-md transition-all cursor-pointer space-y-2.5"
                           >
                             <div className="flex items-center justify-between gap-1.5">
-                              <span className="font-mono text-xs font-extrabold text-slate-900 bg-slate-100 px-2 py-0.5 rounded border border-slate-300">
+                              <span className="font-mono text-xs font-extrabold text-foreground bg-slate-100 px-2 py-0.5 rounded border border-border">
                                 {req.id}
                               </span>
                               <PriorityBadge priority={req.priority} />
                             </div>
 
-                            <h4 className="text-sm font-bold text-slate-900 line-clamp-2 leading-snug">
+                            <h4 className="text-sm font-bold text-foreground line-clamp-2 leading-snug">
                               {req.title}
                             </h4>
 
-                            <div className="flex items-center gap-1.5 text-xs text-slate-600 font-medium">
-                              <MapPin className="w-3.5 h-3.5 text-slate-500 shrink-0" />
+                            <div className="flex items-center gap-1.5 text-xs text-muted-foreground font-medium">
+                              <MapPin className="w-3.5 h-3.5 text-muted-foreground shrink-0" />
                               <span className="truncate">{req.location_address}</span>
                             </div>
 
                             {/* Confidential applicant info for ЖКХ */}
-                            <div className="p-2 rounded-lg bg-slate-50 border border-slate-200 text-xs">
-                              <div className="font-bold text-slate-900 truncate">
+                            <div className="p-2 rounded-lg bg-muted border border-border text-xs">
+                              <div className="font-bold text-foreground truncate">
                                 {req.is_anonymous ? 'Анонимный заявитель' : req.author_name}
                               </div>
                               {req.author_phone && (
-                                <div className="text-slate-600 font-mono text-[11px] mt-0.5">
+                                <div className="text-muted-foreground font-mono text-[11px] mt-0.5">
                                   {req.author_phone}
                                 </div>
                               )}
                             </div>
 
                             <div className="pt-2 border-t border-slate-100 flex items-center justify-between gap-2">
-                              <span className="text-[11px] font-bold text-slate-600 truncate">
+                              <span className="text-[11px] font-bold text-muted-foreground truncate">
                                 {req.department}
                               </span>
                               <button
@@ -837,22 +837,22 @@ export default function AdminPage() {
                 </div>
 
                 {/* COLUMN 2: В работе у служб */}
-                <div className="bg-slate-100/90 rounded-xl border-2 border-indigo-200 p-4 flex flex-col space-y-3">
-                  <div className="flex items-center justify-between pb-2 border-b-2 border-indigo-200">
+                <div className="bg-slate-100/90 rounded-xl border-2 border-info-soft p-4 flex flex-col space-y-3">
+                  <div className="flex items-center justify-between pb-2 border-b-2 border-info-soft">
                     <div className="flex items-center gap-2">
                       <span className="w-3 h-3 rounded-full bg-indigo-600"></span>
-                      <h3 className="font-extrabold text-sm text-indigo-950 uppercase tracking-wide">
+                      <h3 className="font-extrabold text-sm text-info-soft-foreground uppercase tracking-wide">
                         В работе у служб
                       </h3>
                     </div>
-                    <span className="px-2 py-0.5 text-xs font-mono font-bold bg-white text-indigo-900 rounded-full border border-indigo-300 shadow-2xs">
+                    <span className="px-2 py-0.5 text-xs font-mono font-bold bg-card text-info-soft-foreground rounded-full border border-info-soft shadow-2xs">
                       {filteredRequests.filter((r) => r.status === 'assigned' || r.status === 'in_progress').length}
                     </span>
                   </div>
 
                   <div className="space-y-3 max-h-[750px] overflow-y-auto pr-1">
                     {filteredRequests.filter((r) => r.status === 'assigned' || r.status === 'in_progress').length === 0 ? (
-                      <div className="p-6 text-center text-xs text-slate-500 font-bold bg-white/70 rounded-lg border border-dashed border-slate-300">
+                      <div className="p-6 text-center text-xs text-muted-foreground font-bold bg-card/70 rounded-lg border border-dashed border-border">
                         Нет обращений в процессе
                       </div>
                     ) : (
@@ -862,35 +862,35 @@ export default function AdminPage() {
                           <div
                             key={req.id}
                             onClick={() => openDrawer(req)}
-                            className="bg-white p-4 rounded-xl border-2 border-indigo-200 hover:border-indigo-600 shadow-xs hover:shadow-md transition-all cursor-pointer space-y-2.5"
+                            className="bg-card p-4 rounded-xl border-2 border-info-soft hover:border-indigo-600 shadow-xs hover:shadow-md transition-all cursor-pointer space-y-2.5"
                           >
                             <div className="flex items-center justify-between gap-1.5">
-                              <span className="font-mono text-xs font-extrabold text-slate-900 bg-slate-100 px-2 py-0.5 rounded border border-slate-300">
+                              <span className="font-mono text-xs font-extrabold text-foreground bg-slate-100 px-2 py-0.5 rounded border border-border">
                                 {req.id}
                               </span>
-                              <span className="px-2 py-0.5 text-xs font-bold bg-indigo-100 text-indigo-900 rounded border border-indigo-300">
+                              <span className="px-2 py-0.5 text-xs font-bold bg-indigo-100 text-info-soft-foreground rounded border border-info-soft">
                                 {req.department}
                               </span>
                             </div>
 
-                            <h4 className="text-sm font-bold text-slate-900 line-clamp-2 leading-snug">
+                            <h4 className="text-sm font-bold text-foreground line-clamp-2 leading-snug">
                               {req.title}
                             </h4>
 
-                            <div className="flex items-center gap-1.5 text-xs text-slate-600 font-medium">
-                              <MapPin className="w-3.5 h-3.5 text-slate-500 shrink-0" />
+                            <div className="flex items-center gap-1.5 text-xs text-muted-foreground font-medium">
+                              <MapPin className="w-3.5 h-3.5 text-muted-foreground shrink-0" />
                               <span className="truncate">{req.location_address}</span>
                             </div>
 
                             {req.photo_before_url && (
                               <div 
-                                className="h-24 w-full rounded-lg bg-cover bg-center border border-slate-200"
+                                className="h-24 w-full rounded-lg bg-cover bg-center border border-border"
                                 style={{ backgroundImage: `url('${req.photo_before_url}')` }}
                               />
                             )}
 
                             <div className="pt-2 border-t border-slate-100 flex items-center justify-between gap-2">
-                              <span className="text-[11px] text-slate-600 font-medium">
+                              <span className="text-[11px] text-muted-foreground font-medium">
                                 Норматив: 24ч
                               </span>
                               <button
@@ -912,22 +912,22 @@ export default function AdminPage() {
                 </div>
 
                 {/* COLUMN 3: Устранено / Решено */}
-                <div className="bg-slate-100/90 rounded-xl border-2 border-emerald-200 p-4 flex flex-col space-y-3">
-                  <div className="flex items-center justify-between pb-2 border-b-2 border-emerald-200">
+                <div className="bg-slate-100/90 rounded-xl border-2 border-success-soft p-4 flex flex-col space-y-3">
+                  <div className="flex items-center justify-between pb-2 border-b-2 border-success-soft">
                     <div className="flex items-center gap-2">
                       <span className="w-3 h-3 rounded-full bg-emerald-600"></span>
-                      <h3 className="font-extrabold text-sm text-emerald-950 uppercase tracking-wide">
+                      <h3 className="font-extrabold text-sm text-success-soft-foreground uppercase tracking-wide">
                         Устранено / Решено
                       </h3>
                     </div>
-                    <span className="px-2 py-0.5 text-xs font-mono font-bold bg-white text-emerald-900 rounded-full border border-emerald-300 shadow-2xs">
+                    <span className="px-2 py-0.5 text-xs font-mono font-bold bg-card text-success-soft-foreground rounded-full border border-success-soft shadow-2xs">
                       {filteredRequests.filter((r) => r.status === 'resolved').length}
                     </span>
                   </div>
 
                   <div className="space-y-3 max-h-[750px] overflow-y-auto pr-1">
                     {filteredRequests.filter((r) => r.status === 'resolved').length === 0 ? (
-                      <div className="p-6 text-center text-xs text-slate-500 font-bold bg-white/70 rounded-lg border border-dashed border-slate-300">
+                      <div className="p-6 text-center text-xs text-muted-foreground font-bold bg-card/70 rounded-lg border border-dashed border-border">
                         Нет завершенных инцидентов
                       </div>
                     ) : (
@@ -937,28 +937,28 @@ export default function AdminPage() {
                           <div
                             key={req.id}
                             onClick={() => openDrawer(req)}
-                            className="bg-white p-4 rounded-xl border-2 border-emerald-200 hover:border-emerald-600 shadow-xs hover:shadow-md transition-all cursor-pointer space-y-2.5"
+                            className="bg-card p-4 rounded-xl border-2 border-success-soft hover:border-emerald-600 shadow-xs hover:shadow-md transition-all cursor-pointer space-y-2.5"
                           >
                             <div className="flex items-center justify-between gap-1.5">
-                              <span className="font-mono text-xs font-extrabold text-slate-900 bg-slate-100 px-2 py-0.5 rounded border border-slate-300">
+                              <span className="font-mono text-xs font-extrabold text-foreground bg-slate-100 px-2 py-0.5 rounded border border-border">
                                 {req.id}
                               </span>
                               <StatusBadge status="resolved" />
                             </div>
 
-                            <h4 className="text-sm font-bold text-slate-900 line-clamp-2 leading-snug">
+                            <h4 className="text-sm font-bold text-foreground line-clamp-2 leading-snug">
                               {req.title}
                             </h4>
 
-                            <div className="flex items-center gap-1.5 text-xs text-slate-600 font-medium">
-                              <MapPin className="w-3.5 h-3.5 text-slate-500 shrink-0" />
+                            <div className="flex items-center gap-1.5 text-xs text-muted-foreground font-medium">
+                              <MapPin className="w-3.5 h-3.5 text-muted-foreground shrink-0" />
                               <span className="truncate">{req.location_address}</span>
                             </div>
 
                             {req.photo_after_url && (
                               <div className="relative">
                                 <div 
-                                  className="h-24 w-full rounded-lg bg-cover bg-center border border-emerald-300"
+                                  className="h-24 w-full rounded-lg bg-cover bg-center border border-success-soft"
                                   style={{ backgroundImage: `url('${req.photo_after_url}')` }}
                                 />
                                 <span className="absolute bottom-1 right-1 px-1.5 py-0.5 bg-emerald-900/90 text-white text-[10px] font-bold rounded">
@@ -968,17 +968,17 @@ export default function AdminPage() {
                             )}
 
                             {req.resolution_report && (
-                              <p className="text-xs text-emerald-950 bg-emerald-50 p-2 rounded border border-emerald-200 line-clamp-2 font-medium">
+                              <p className="text-xs text-success-soft-foreground bg-success-soft p-2 rounded border border-success-soft line-clamp-2 font-medium">
                                 {req.resolution_report}
                               </p>
                             )}
 
-                            <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-emerald-800">
+                            <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-success-soft-foreground">
                               <span className="flex items-center gap-1 text-[11px]">
                                 <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
                                 <span>На витрине города</span>
                               </span>
-                              <span className="text-[11px] text-slate-500 font-mono">
+                              <span className="text-[11px] text-muted-foreground font-mono">
                                 {req.department}
                               </span>
                             </div>
@@ -991,10 +991,10 @@ export default function AdminPage() {
               </div>
             ) : (
               /* DATA TABLE */
-              <div className="bg-white rounded-lg border-2 border-slate-200 shadow-xs mt-4 overflow-hidden">
+              <div className="bg-card rounded-lg border-2 border-border shadow-xs mt-4 overflow-hidden">
                 <div className="overflow-x-auto">
                   <table className="w-full text-left text-sm">
-                    <thead className="bg-slate-100 border-b-2 border-slate-200 text-slate-900 uppercase font-bold text-xs">
+                    <thead className="bg-slate-100 border-b-2 border-border text-foreground uppercase font-bold text-xs">
                       <tr>
                         <th className="px-4 py-3.5">ID</th>
                         <th className="px-4 py-3.5">Заявитель (Конфиденциально)</th>
@@ -1010,26 +1010,26 @@ export default function AdminPage() {
                       {filteredRequests.map((req) => (
                         <tr
                           key={req.id}
-                          className={`hover:bg-slate-50 transition-colors cursor-pointer ${
-                            req.moderation_status === 'flagged_inappropriate' ? 'bg-amber-50/60' : ''
+                          className={`hover:bg-muted transition-colors cursor-pointer ${
+                            req.moderation_status === 'flagged_inappropriate' ? 'bg-warning-soft/60' : ''
                           }`}
                           onClick={() => openDrawer(req)}
                         >
-                          <td className="px-4 py-3.5 font-mono font-bold text-slate-900 whitespace-nowrap">
+                          <td className="px-4 py-3.5 font-mono font-bold text-foreground whitespace-nowrap">
                             {req.id}
                           </td>
 
                           {/* Confidential applicant info */}
                           <td className="px-4 py-3.5 whitespace-nowrap">
                             {req.is_anonymous ? (
-                              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-bold bg-slate-200 text-slate-800">
+                              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-bold bg-slate-200 text-foreground">
                                 Анонимный житель
                               </span>
                             ) : (
                               <div>
-                                <div className="font-bold text-slate-900">{req.author_name || 'Заявитель'}</div>
-                                <div className="text-xs font-mono font-semibold text-slate-700 flex items-center gap-1 mt-0.5">
-                                  <Phone className="w-3 h-3 text-slate-600" />
+                                <div className="font-bold text-foreground">{req.author_name || 'Заявитель'}</div>
+                                <div className="text-xs font-mono font-semibold text-muted-foreground flex items-center gap-1 mt-0.5">
+                                  <Phone className="w-3 h-3 text-muted-foreground" />
                                   <span>{req.author_phone || '+7 (705) ...'}</span>
                                 </div>
                               </div>
@@ -1037,15 +1037,15 @@ export default function AdminPage() {
                           </td>
 
                           <td className="px-4 py-3.5 max-w-xs sm:max-w-sm">
-                            <div className="font-bold text-slate-900 line-clamp-1">{req.title}</div>
-                            <div className="text-slate-700 line-clamp-1 text-xs mt-0.5 font-medium">
+                            <div className="font-bold text-foreground line-clamp-1">{req.title}</div>
+                            <div className="text-muted-foreground line-clamp-1 text-xs mt-0.5 font-medium">
                               {req.cleaned_text}
                             </div>
                           </td>
 
-                          <td className="px-4 py-3.5 whitespace-nowrap text-slate-800 max-w-xs truncate font-medium">
+                          <td className="px-4 py-3.5 whitespace-nowrap text-foreground max-w-xs truncate font-medium">
                             <span className="flex items-center gap-1">
-                              <MapPin className="w-3.5 h-3.5 text-slate-600 shrink-0" />
+                              <MapPin className="w-3.5 h-3.5 text-muted-foreground shrink-0" />
                               <span className="truncate">{req.location_address}</span>
                             </span>
                           </td>
@@ -1070,7 +1070,7 @@ export default function AdminPage() {
                                 e.stopPropagation();
                                 openDrawer(req);
                               }}
-                              className="px-3 py-1.5 text-xs font-bold rounded-lg bg-slate-900 text-white hover:bg-slate-800 transition-colors shadow-2xs"
+                              className="px-3 py-1.5 text-xs font-bold rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors shadow-2xs"
                             >
                               Управление
                             </button>
@@ -1082,7 +1082,7 @@ export default function AdminPage() {
                 </div>
 
                 {filteredRequests.length === 0 && (
-                  <div className="p-8 text-center text-slate-700">
+                  <div className="p-8 text-center text-muted-foreground">
                     <p className="text-sm font-bold">По заданным критериям обращений не найдено.</p>
                   </div>
                 )}
@@ -1095,39 +1095,39 @@ export default function AdminPage() {
         {/* TAB 2: AUDIT & CONTROL OF HOUSING AND UTILITIES (ADMIN ONLY) */}
         {isAdmin && adminTab === 'audit' && (
           <div className="mt-6 space-y-6">
-            <div className="bg-white p-6 rounded-lg border-2 border-slate-200 shadow-xs">
-              <h2 className="text-lg font-extrabold text-slate-900 flex items-center gap-2">
+            <div className="bg-card p-6 rounded-lg border-2 border-border shadow-xs">
+              <h2 className="text-lg font-extrabold text-foreground flex items-center gap-2">
                 <ShieldCheck className="w-5 h-5 text-indigo-700" />
                 <span>Ситуационный аудит исполнительской дисциплины служб г. Семей</span>
               </h2>
-              <p className="text-sm font-medium text-slate-700 mt-1">
+              <p className="text-sm font-medium text-muted-foreground mt-1">
                 Автоматическое выявление сбоев, задержек и спорных моментов между ЖКХ и гражданами.
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
-                <div className="p-4 rounded-lg bg-red-50 border-2 border-red-300">
-                  <div className="text-xs font-bold uppercase text-red-900">Просроченные аварийные заявки (&gt; 24ч)</div>
-                  <div className="text-3xl font-extrabold text-red-900 mt-2">{overdueRequests.length}</div>
-                  <div className="text-xs font-bold text-red-800 mt-1">Требуют служебного запроса в Горсвет/Водоканал</div>
+                <div className="p-4 rounded-lg bg-danger-soft border-2 border-danger-soft">
+                  <div className="text-xs font-bold uppercase text-danger-soft-foreground">Просроченные аварийные заявки (&gt; 24ч)</div>
+                  <div className="text-3xl font-extrabold text-danger-soft-foreground mt-2">{overdueRequests.length}</div>
+                  <div className="text-xs font-bold text-danger-soft-foreground mt-1">Требуют служебного запроса в Горсвет/Водоканал</div>
                 </div>
 
-                <div className="p-4 rounded-lg bg-amber-50 border-2 border-amber-300">
-                  <div className="text-xs font-bold uppercase text-amber-900">Запросы на модерации / Цензура</div>
-                  <div className="text-3xl font-extrabold text-amber-900 mt-2">{flaggedRequests.length}</div>
-                  <div className="text-xs font-bold text-amber-800 mt-1">Содержат ненормативную лексику или спорный текст</div>
+                <div className="p-4 rounded-lg bg-warning-soft border-2 border-warning-soft">
+                  <div className="text-xs font-bold uppercase text-warning-soft-foreground">Запросы на модерации / Цензура</div>
+                  <div className="text-3xl font-extrabold text-warning-soft-foreground mt-2">{flaggedRequests.length}</div>
+                  <div className="text-xs font-bold text-warning-soft-foreground mt-1">Содержат ненормативную лексику или спорный текст</div>
                 </div>
 
-                <div className="p-4 rounded-lg bg-blue-50 border-2 border-blue-300">
-                  <div className="text-xs font-bold uppercase text-blue-900">Инициативы граждан на рассмотрении</div>
-                  <div className="text-3xl font-extrabold text-blue-900 mt-2">{totalIdeas.length}</div>
-                  <div className="text-xs font-bold text-blue-800 mt-1">Кандидаты для включения в план благоустройства</div>
+                <div className="p-4 rounded-lg bg-info-soft border-2 border-info-soft">
+                  <div className="text-xs font-bold uppercase text-info-soft-foreground">Инициативы граждан на рассмотрении</div>
+                  <div className="text-3xl font-extrabold text-info-soft-foreground mt-2">{totalIdeas.length}</div>
+                  <div className="text-xs font-bold text-info-soft-foreground mt-1">Кандидаты для включения в план благоустройства</div>
                 </div>
               </div>
             </div>
 
             {/* Overdue Items List */}
-            <div className="bg-white p-6 rounded-lg border-2 border-slate-200 shadow-xs">
-              <h3 className="text-base font-bold text-slate-900 mb-3 flex items-center gap-2">
+            <div className="bg-card p-6 rounded-lg border-2 border-border shadow-xs">
+              <h3 className="text-base font-bold text-foreground mb-3 flex items-center gap-2">
                 <AlertTriangle className="w-5 h-5 text-red-600" />
                 <span>Инциденты с риском срыва нормативных сроков</span>
               </h3>
@@ -1137,25 +1137,25 @@ export default function AdminPage() {
                   <div
                     key={req.id}
                     onClick={() => openDrawer(req)}
-                    className="p-4 rounded-lg border-2 border-red-200 bg-red-50/40 hover:bg-red-50 flex items-center justify-between cursor-pointer transition-colors"
+                    className="p-4 rounded-lg border-2 border-danger-soft bg-danger-soft/40 hover:bg-danger-soft flex items-center justify-between cursor-pointer transition-colors"
                   >
                     <div>
                       <div className="flex items-center gap-2">
-                        <span className="font-mono font-bold text-sm text-red-950">{req.id}</span>
-                        <span className="text-xs font-bold px-2 py-0.5 rounded bg-red-200 text-red-950">
+                        <span className="font-mono font-bold text-sm text-danger-soft-foreground">{req.id}</span>
+                        <span className="text-xs font-bold px-2 py-0.5 rounded bg-red-200 text-danger-soft-foreground">
                           {req.department}
                         </span>
-                        <span className="text-xs font-bold text-slate-700">
+                        <span className="text-xs font-bold text-muted-foreground">
                           {req.location_address}
                         </span>
                       </div>
-                      <div className="text-sm font-bold text-slate-900 mt-1">{req.title}</div>
-                      <div className="text-xs font-medium text-slate-700 mt-0.5">{req.priority_reason}</div>
+                      <div className="text-sm font-bold text-foreground mt-1">{req.title}</div>
+                      <div className="text-xs font-medium text-muted-foreground mt-0.5">{req.priority_reason}</div>
                     </div>
 
                     <button
                       type="button"
-                      className="px-3 py-1.5 text-xs font-bold bg-slate-900 text-white rounded-lg hover:bg-slate-800"
+                      className="px-3 py-1.5 text-xs font-bold bg-primary text-primary-foreground rounded-lg hover:bg-primary/90"
                     >
                       Инспектировать
                     </button>
@@ -1171,20 +1171,20 @@ export default function AdminPage() {
           <div className="mt-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
             
             {/* Direct Feedback Form */}
-            <div className="lg:col-span-6 bg-white p-6 rounded-lg border-2 border-slate-200 shadow-xs">
+            <div className="lg:col-span-6 bg-card p-6 rounded-lg border-2 border-border shadow-xs">
               <div className="flex items-center gap-2 mb-2">
-                <Code className="w-5 h-5 text-slate-900" />
-                <h2 className="text-lg font-extrabold text-slate-900">
+                <Code className="w-5 h-5 text-foreground" />
+                <h2 className="text-lg font-extrabold text-foreground">
                   Прямой канал связи с разработчиками Smart Qala
                 </h2>
               </div>
-              <p className="text-sm font-medium text-slate-700 mb-4">
+              <p className="text-sm font-medium text-muted-foreground mb-4">
                 Официальный интерфейс Администрации г. Семей для запросов на доработку, 
                 технических отчетов и предложений по обеспечению бесперебойной работы сайта.
               </p>
 
               {devSuccessMsg && (
-                <div className="p-3.5 mb-4 rounded-lg bg-emerald-50 border-2 border-emerald-300 text-emerald-950 text-sm font-bold flex items-center gap-2">
+                <div className="p-3.5 mb-4 rounded-lg bg-success-soft border-2 border-success-soft text-success-soft-foreground text-sm font-bold flex items-center gap-2">
                   <CheckCircle2 className="w-5 h-5 text-emerald-700 shrink-0" />
                   <span>{devSuccessMsg}</span>
                 </div>
@@ -1192,7 +1192,7 @@ export default function AdminPage() {
 
               <form onSubmit={handleSendDeveloperFeedback} className="space-y-4">
                 <div>
-                  <label className="block text-xs font-bold text-slate-900 uppercase tracking-wide mb-1">
+                  <label className="block text-xs font-bold text-foreground uppercase tracking-wide mb-1">
                     Тема сообщения / Технический блок
                   </label>
                   <input
@@ -1201,12 +1201,12 @@ export default function AdminPage() {
                     value={devTopic}
                     onChange={(e) => setDevTopic(e.target.value)}
                     placeholder="Например: Экспорт сводных отчетов в Excel для акима"
-                    className="w-full p-2.5 text-sm rounded-lg border-2 border-slate-300 font-medium text-slate-900 focus:outline-none focus:border-slate-900"
+                    className="w-full p-2.5 text-sm rounded-lg border-2 border-border font-medium text-foreground focus:outline-none focus:border-slate-900"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-slate-900 uppercase tracking-wide mb-1">
+                  <label className="block text-xs font-bold text-foreground uppercase tracking-wide mb-1">
                     Подробное описание или предложение
                   </label>
                   <textarea
@@ -1215,19 +1215,19 @@ export default function AdminPage() {
                     value={devMessage}
                     onChange={(e) => setDevMessage(e.target.value)}
                     placeholder="Опишите требования, выявленные ошибки или пожелания по интерфейсу..."
-                    className="w-full p-2.5 text-sm rounded-lg border-2 border-slate-300 font-medium text-slate-900 focus:outline-none focus:border-slate-900"
+                    className="w-full p-2.5 text-sm rounded-lg border-2 border-border font-medium text-foreground focus:outline-none focus:border-slate-900"
                   />
                 </div>
 
-                <div className="p-3 bg-slate-100 rounded-lg border border-slate-300 text-xs text-slate-800 flex items-center justify-between">
+                <div className="p-3 bg-slate-100 rounded-lg border border-border text-xs text-foreground flex items-center justify-between">
                   <span>Отправитель: <strong>{user.name}</strong> ({user.roleTitle})</span>
-                  <span className="font-mono text-slate-700">{user.email}</span>
+                  <span className="font-mono text-muted-foreground">{user.email}</span>
                 </div>
 
                 <button
                   type="submit"
                   disabled={isDevSending}
-                  className="w-full py-3 px-4 rounded-lg bg-slate-900 text-white font-bold text-sm hover:bg-slate-800 disabled:opacity-50 transition-colors shadow-sm flex items-center justify-center gap-2 cursor-pointer"
+                  className="w-full py-3 px-4 rounded-lg bg-primary text-primary-foreground font-bold text-sm hover:bg-primary/90 disabled:opacity-50 transition-colors shadow-sm flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <Send className="w-4 h-4 text-white" />
                   <span>{isDevSending ? 'Отправка разработчикам...' : 'Отправить запрос разработчикам'}</span>
@@ -1237,7 +1237,7 @@ export default function AdminPage() {
 
             {/* Official Developer Contacts & History */}
             <div className="lg:col-span-6 space-y-6">
-              <div className="bg-slate-900 text-white p-6 rounded-lg shadow-sm border border-slate-800">
+              <div className="bg-primary text-primary-foreground p-6 rounded-lg shadow-sm border border-slate-800">
                 <h3 className="text-base font-extrabold tracking-tight">
                   Официальные контакты команды разработки
                 </h3>
@@ -1262,23 +1262,23 @@ export default function AdminPage() {
               </div>
 
               {/* Sent Messages History */}
-              <div className="bg-white p-6 rounded-lg border-2 border-slate-200 shadow-xs">
-                <h3 className="text-base font-bold text-slate-900 mb-3 flex items-center gap-2">
-                  <Inbox className="w-4 h-4 text-slate-700" />
+              <div className="bg-card p-6 rounded-lg border-2 border-border shadow-xs">
+                <h3 className="text-base font-bold text-foreground mb-3 flex items-center gap-2">
+                  <Inbox className="w-4 h-4 text-muted-foreground" />
                   <span>Журнал обращений к разработчикам</span>
                 </h3>
 
                 <div className="space-y-3 max-h-72 overflow-y-auto">
                   {devFeedbacks.map((df) => (
-                    <div key={df.id} className="p-3.5 rounded-lg border border-slate-200 bg-slate-50 text-xs">
+                    <div key={df.id} className="p-3.5 rounded-lg border border-border bg-muted text-xs">
                       <div className="flex items-center justify-between">
-                        <span className="font-bold text-slate-900 text-sm">{df.topic}</span>
-                        <span className="font-mono text-slate-600 text-[11px]">
+                        <span className="font-bold text-foreground text-sm">{df.topic}</span>
+                        <span className="font-mono text-muted-foreground text-[11px]">
                           {new Date(df.created_at).toLocaleDateString('ru-RU')}
                         </span>
                       </div>
-                      <p className="text-slate-800 mt-1 leading-relaxed font-medium">{df.message}</p>
-                      <div className="mt-2 pt-1 border-t border-slate-200 text-slate-700 font-semibold flex items-center justify-between">
+                      <p className="text-foreground mt-1 leading-relaxed font-medium">{df.message}</p>
+                      <div className="mt-2 pt-1 border-t border-border text-muted-foreground font-semibold flex items-center justify-between">
                         <span>От: {df.sender_name}</span>
                         <span className="text-emerald-700 font-bold">✓ Принято в бэклог</span>
                       </div>
@@ -1298,13 +1298,13 @@ export default function AdminPage() {
           ======================================================== */}
       {isDrawerOpen && activeRequest && (
         <div className="fixed inset-0 z-50 overflow-hidden bg-slate-950/60 backdrop-blur-xs flex justify-end">
-          <div className="w-full max-w-2xl bg-white h-full shadow-2xl flex flex-col justify-between overflow-y-auto">
+          <div className="w-full max-w-2xl bg-card h-full shadow-2xl flex flex-col justify-between overflow-y-auto">
             
             {/* Drawer Header */}
             <div>
-              <div className="p-5 border-b-2 border-slate-200 flex items-center justify-between bg-slate-100">
+              <div className="p-5 border-b-2 border-border flex items-center justify-between bg-slate-100">
                 <div className="flex items-center gap-2.5 flex-wrap">
-                  <span className="font-mono text-sm font-extrabold text-slate-900 bg-white border border-slate-300 px-2.5 py-1 rounded">
+                  <span className="font-mono text-sm font-extrabold text-foreground bg-card border border-border px-2.5 py-1 rounded">
                     {activeRequest.id}
                   </span>
                   <StatusBadge status={activeRequest.status} />
@@ -1314,7 +1314,7 @@ export default function AdminPage() {
                 
                 <button
                   onClick={closeDrawer}
-                  className="p-2 rounded-lg text-slate-700 hover:text-slate-950 hover:bg-slate-200 cursor-pointer"
+                  className="p-2 rounded-lg text-muted-foreground hover:text-slate-950 hover:bg-slate-200 cursor-pointer"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -1324,45 +1324,45 @@ export default function AdminPage() {
               <div className="p-6 space-y-6">
                 
                 {saveSuccessMsg && (
-                  <div className="p-3.5 bg-emerald-50 border-2 border-emerald-300 text-emerald-950 rounded-lg text-sm font-bold flex items-center gap-2">
+                  <div className="p-3.5 bg-success-soft border-2 border-success-soft text-success-soft-foreground rounded-lg text-sm font-bold flex items-center gap-2">
                     <CheckCircle2 className="w-5 h-5 text-emerald-700 shrink-0" />
                     <span>{saveSuccessMsg}</span>
                   </div>
                 )}
 
                 {/* 🔒 CONFIDENTIAL DOSSIER (Visible ONLY to ЖКХ and Admin) */}
-                <div className="p-4 rounded-lg bg-blue-50/70 border-2 border-blue-200">
+                <div className="p-4 rounded-lg bg-info-soft/70 border-2 border-info-soft">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-extrabold uppercase tracking-wider text-blue-950 flex items-center gap-1.5">
+                    <span className="text-xs font-extrabold uppercase tracking-wider text-info-soft-foreground flex items-center gap-1.5">
                       <Lock className="w-4 h-4 text-blue-700" />
                       <span>Конфиденциальное досье заявителя (Служебный доступ)</span>
                     </span>
-                    <span className="text-[11px] font-mono font-bold text-blue-900 bg-blue-100 px-2 py-0.5 rounded">
+                    <span className="text-[11px] font-mono font-bold text-info-soft-foreground bg-blue-100 px-2 py-0.5 rounded">
                       ЖКХ / 109
                     </span>
                   </div>
 
                   {activeRequest.is_anonymous ? (
-                    <div className="p-3 bg-white rounded border border-blue-200 text-xs font-semibold text-slate-800">
+                    <div className="p-3 bg-card rounded border border-info-soft text-xs font-semibold text-foreground">
                       🔒 Заявитель выбрал режим анонимности. В соответствии с Законом РК «О персональных данных», персональные контакты заявителя скрыты.
                     </div>
                   ) : (
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-                      <div className="bg-white p-2.5 rounded border border-blue-200">
-                        <span className="text-slate-700 block font-semibold">ФИО заявителя:</span>
-                        <strong className="text-slate-900 text-sm">{activeRequest.author_name || 'Не указано'}</strong>
+                      <div className="bg-card p-2.5 rounded border border-info-soft">
+                        <span className="text-muted-foreground block font-semibold">ФИО заявителя:</span>
+                        <strong className="text-foreground text-sm">{activeRequest.author_name || 'Не указано'}</strong>
                       </div>
-                      <div className="bg-white p-2.5 rounded border border-blue-200">
-                        <span className="text-slate-700 block font-semibold">Телефон для связи:</span>
-                        <strong className="text-slate-900 text-sm font-mono">{activeRequest.author_phone || '+7 (705) 412-88-99'}</strong>
+                      <div className="bg-card p-2.5 rounded border border-info-soft">
+                        <span className="text-muted-foreground block font-semibold">Телефон для связи:</span>
+                        <strong className="text-foreground text-sm font-mono">{activeRequest.author_phone || '+7 (705) 412-88-99'}</strong>
                       </div>
-                      <div className="bg-white p-2.5 rounded border border-blue-200">
-                        <span className="text-slate-700 block font-semibold">Электронная почта:</span>
-                        <strong className="text-slate-900 text-sm font-mono">{activeRequest.author_email || 'citizen@semey.kz'}</strong>
+                      <div className="bg-card p-2.5 rounded border border-info-soft">
+                        <span className="text-muted-foreground block font-semibold">Электронная почта:</span>
+                        <strong className="text-foreground text-sm font-mono">{activeRequest.author_email || 'citizen@semey.kz'}</strong>
                       </div>
-                      <div className="bg-white p-2.5 rounded border border-blue-200">
-                        <span className="text-slate-700 block font-semibold">Дата и время обращения:</span>
-                        <strong className="text-slate-900 text-xs font-mono">
+                      <div className="bg-card p-2.5 rounded border border-info-soft">
+                        <span className="text-muted-foreground block font-semibold">Дата и время обращения:</span>
+                        <strong className="text-foreground text-xs font-mono">
                           {new Date(activeRequest.created_at).toLocaleString('ru-RU')}
                         </strong>
                       </div>
@@ -1375,24 +1375,24 @@ export default function AdminPage() {
                   <div>
                     <div className="flex items-center gap-2 mb-1">
                       <span className={`text-xs font-bold uppercase px-2 py-0.5 rounded ${
-                        activeRequest.type === 'idea' ? 'bg-amber-100 text-amber-950' : 'bg-slate-200 text-slate-900'
+                        activeRequest.type === 'idea' ? 'bg-amber-100 text-warning-soft-foreground' : 'bg-slate-200 text-foreground'
                       }`}>
                         {activeRequest.type === 'idea' ? '💡 Городская идея' : '🔴 Проблема города'}
                       </span>
-                      <span className="text-xs font-bold text-slate-700">{activeRequest.category}</span>
+                      <span className="text-xs font-bold text-muted-foreground">{activeRequest.category}</span>
                     </div>
 
-                    <h3 className="text-xl font-extrabold text-slate-900">{activeRequest.title}</h3>
+                    <h3 className="text-xl font-extrabold text-foreground">{activeRequest.title}</h3>
                     
-                    <div className="flex items-center gap-1.5 text-sm text-slate-800 font-semibold mt-1">
-                      <MapPin className="w-4 h-4 text-slate-700 shrink-0" />
+                    <div className="flex items-center gap-1.5 text-sm text-foreground font-semibold mt-1">
+                      <MapPin className="w-4 h-4 text-muted-foreground shrink-0" />
                       <span>{activeRequest.location_address}</span>
                     </div>
                   </div>
 
                   {/* Cleaned text protocol */}
-                  <div className="p-4 bg-slate-100 rounded-lg border border-slate-300 text-sm">
-                    <div className="font-bold text-slate-900 mb-1">
+                  <div className="p-4 bg-slate-100 rounded-lg border border-border text-sm">
+                    <div className="font-bold text-foreground mb-1">
                       Протокол инцидента (структурировано ИИ):
                     </div>
                     <p className="text-slate-950 leading-relaxed font-medium">
@@ -1401,30 +1401,30 @@ export default function AdminPage() {
                   </div>
 
                   {/* Original text */}
-                  <div className="p-3.5 bg-white rounded-lg border border-slate-300 text-sm">
-                    <div className="font-bold text-slate-700 mb-1">
+                  <div className="p-3.5 bg-card rounded-lg border border-border text-sm">
+                    <div className="font-bold text-muted-foreground mb-1">
                       Исходный текст жителя:
                     </div>
-                    <p className="text-slate-800 italic">
+                    <p className="text-foreground italic">
                       «{activeRequest.original_text}»
                     </p>
                   </div>
 
                   {/* Priority rationale */}
-                  <div className="p-3 bg-red-50 rounded-lg border border-red-300 text-xs font-medium">
-                    <span className="font-bold text-red-950">Обоснование критичности: </span>
-                    <span className="text-red-950">{activeRequest.priority_reason}</span>
+                  <div className="p-3 bg-danger-soft rounded-lg border border-danger-soft text-xs font-medium">
+                    <span className="font-bold text-danger-soft-foreground">Обоснование критичности: </span>
+                    <span className="text-danger-soft-foreground">{activeRequest.priority_reason}</span>
                   </div>
                 </div>
 
                 {/* 💡 SPECIAL ACTION: FOR CITIZEN IDEAS */}
                 {activeRequest.type === 'idea' && (
-                  <div className="p-4 bg-amber-50 rounded-lg border-2 border-amber-300">
-                    <h4 className="text-sm font-extrabold text-amber-950 flex items-center gap-1.5">
+                  <div className="p-4 bg-warning-soft rounded-lg border-2 border-warning-soft">
+                    <h4 className="text-sm font-extrabold text-warning-soft-foreground flex items-center gap-1.5">
                       <Lightbulb className="w-4 h-4 text-amber-700" />
                       <span>Принятие идеи жителей на реализацию</span>
                     </h4>
-                    <p className="text-xs text-amber-900 mt-1 font-semibold">
+                    <p className="text-xs text-warning-soft-foreground mt-1 font-semibold">
                       Вы можете официально перевести инициативу в статус ведомственного проекта и уведомить заявителя.
                     </p>
                     <button
@@ -1442,17 +1442,17 @@ export default function AdminPage() {
 
                 {/* ⚖️ MODERATION MODULE (ADMIN ONLY) */}
                 {isAdmin && (
-                  <div className="p-4 bg-amber-50/80 rounded-lg border-2 border-amber-300 space-y-3">
+                  <div className="p-4 bg-warning-soft/80 rounded-lg border-2 border-warning-soft space-y-3">
                     <div className="flex items-center justify-between">
-                      <span className="text-xs font-extrabold uppercase tracking-wider text-amber-950 flex items-center gap-1.5">
-                        <ShieldCheck className="w-4 h-4 text-amber-800" />
+                      <span className="text-xs font-extrabold uppercase tracking-wider text-warning-soft-foreground flex items-center gap-1.5">
+                        <ShieldCheck className="w-4 h-4 text-warning-soft-foreground" />
                         <span>Модерация и цензурный контроль (Акимат)</span>
                       </span>
                       <ModerationBadge status={activeRequest.moderation_status} />
                     </div>
 
                     <div>
-                      <label className="block text-xs font-bold text-amber-950 mb-1">
+                      <label className="block text-xs font-bold text-warning-soft-foreground mb-1">
                         Причина / Решение модератора:
                       </label>
                       <input
@@ -1460,7 +1460,7 @@ export default function AdminPage() {
                         value={moderationReason}
                         onChange={(e) => setModerationReason(e.target.value)}
                         placeholder="Например: Некомпетентное обращение / Нецензурная лексика"
-                        className="w-full p-2 text-xs rounded border border-amber-300 bg-white font-medium text-slate-900"
+                        className="w-full p-2 text-xs rounded border border-warning-soft bg-card font-medium text-foreground"
                       />
                     </div>
 
@@ -1493,12 +1493,12 @@ export default function AdminPage() {
                 )}
 
                 {/* 💬 OFFICIAL FEEDBACK DIRECTLY TO CITIZEN */}
-                <div className="p-4 bg-slate-50 rounded-lg border-2 border-slate-300 space-y-3">
-                  <h4 className="text-xs font-extrabold uppercase tracking-wider text-slate-900 flex items-center gap-1.5">
+                <div className="p-4 bg-muted rounded-lg border-2 border-border space-y-3">
+                  <h4 className="text-xs font-extrabold uppercase tracking-wider text-foreground flex items-center gap-1.5">
                     <MessageSquare className="w-4 h-4 text-indigo-700" />
                     <span>Официальный ответ и обратная связь заявителю</span>
                   </h4>
-                  <p className="text-xs text-slate-700 font-medium">
+                  <p className="text-xs text-muted-foreground font-medium">
                     Житель получит уведомление в личном кабинете и на странице обращения.
                   </p>
 
@@ -1508,7 +1508,7 @@ export default function AdminPage() {
                       value={officialFeedbackInput}
                       onChange={(e) => setOfficialFeedbackInput(e.target.value)}
                       placeholder="Например: Бригада Горсвет выехала на участок. Срок завершения 18:00..."
-                      className="flex-1 p-2.5 text-xs rounded-lg border-2 border-slate-300 bg-white font-medium text-slate-900 focus:outline-none focus:border-slate-900"
+                      className="flex-1 p-2.5 text-xs rounded-lg border-2 border-border bg-card font-medium text-foreground focus:outline-none focus:border-slate-900"
                     />
                     <button
                       type="button"
@@ -1523,17 +1523,17 @@ export default function AdminPage() {
 
                   {/* Previous Feedback History */}
                   {activeRequest.official_feedback && activeRequest.official_feedback.length > 0 && (
-                    <div className="space-y-2 pt-2 border-t border-slate-200">
-                      <span className="text-[11px] font-bold uppercase text-slate-700">История ответов:</span>
+                    <div className="space-y-2 pt-2 border-t border-border">
+                      <span className="text-[11px] font-bold uppercase text-muted-foreground">История ответов:</span>
                       {activeRequest.official_feedback.map((fb) => (
-                        <div key={fb.id} className="p-2.5 rounded bg-white border border-slate-300 text-xs">
-                          <div className="flex items-center justify-between font-bold text-slate-900">
+                        <div key={fb.id} className="p-2.5 rounded bg-card border border-border text-xs">
+                          <div className="flex items-center justify-between font-bold text-foreground">
                             <span>{fb.author}</span>
-                            <span className="font-mono text-[10px] text-slate-600">
+                            <span className="font-mono text-[10px] text-muted-foreground">
                               {new Date(fb.created_at).toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' })}
                             </span>
                           </div>
-                          <p className="text-slate-800 mt-1 font-medium">{fb.text}</p>
+                          <p className="text-foreground mt-1 font-medium">{fb.text}</p>
                         </div>
                       ))}
                     </div>
@@ -1541,32 +1541,32 @@ export default function AdminPage() {
                 </div>
 
                 {/* Photos Section */}
-                <div className="space-y-3 pt-3 border-t-2 border-slate-200">
-                  <h4 className="text-xs font-extrabold uppercase tracking-wider text-slate-900">
+                <div className="space-y-3 pt-3 border-t-2 border-border">
+                  <h4 className="text-xs font-extrabold uppercase tracking-wider text-foreground">
                     Фотофиксация дефекта
                   </h4>
                   
                   <div className="grid grid-cols-2 gap-3">
                     {/* Before Photo */}
                     <div>
-                      <div className="text-xs font-bold text-slate-900 mb-1">Фото ДО (от жителя):</div>
-                      <div className="relative rounded-lg overflow-hidden border-2 border-slate-300 aspect-4/3 bg-slate-100">
+                      <div className="text-xs font-bold text-foreground mb-1">Фото ДО (от жителя):</div>
+                      <div className="relative rounded-lg overflow-hidden border-2 border-border aspect-4/3 bg-slate-100">
                         {activeRequest.photo_before_url ? (
                           <img src={activeRequest.photo_before_url} alt="До" className="w-full h-full object-cover" />
                         ) : (
-                          <div className="flex items-center justify-center h-full text-slate-600 text-xs font-bold">Нет фото</div>
+                          <div className="flex items-center justify-center h-full text-muted-foreground text-xs font-bold">Нет фото</div>
                         )}
                       </div>
                     </div>
 
                     {/* After Photo Preview */}
                     <div>
-                      <div className="text-xs font-bold text-emerald-950 mb-1">Фото ПОСЛЕ (акт устранения):</div>
+                      <div className="text-xs font-bold text-success-soft-foreground mb-1">Фото ПОСЛЕ (акт устранения):</div>
                       <div className="relative rounded-lg overflow-hidden border-2 border-emerald-400 aspect-4/3 bg-slate-100">
                         {draftPhotoAfter ? (
                           <img src={draftPhotoAfter} alt="После" className="w-full h-full object-cover" />
                         ) : (
-                          <div className="flex items-center justify-center h-full text-slate-600 text-xs font-medium p-2 text-center">
+                          <div className="flex items-center justify-center h-full text-muted-foreground text-xs font-medium p-2 text-center">
                             Фото устранения еще не прикреплено
                           </div>
                         )}
@@ -1576,21 +1576,21 @@ export default function AdminPage() {
                 </div>
 
                 {/* Operator Management Actions */}
-                <div className="space-y-4 pt-3 border-t-2 border-slate-200">
-                  <h4 className="text-xs font-extrabold uppercase tracking-wider text-slate-900">
+                <div className="space-y-4 pt-3 border-t-2 border-border">
+                  <h4 className="text-xs font-extrabold uppercase tracking-wider text-foreground">
                     Управление статусом и решение вопроса
                   </h4>
 
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                     {/* Change Status */}
                     <div>
-                      <label className="block text-xs font-bold text-slate-900 mb-1">
+                      <label className="block text-xs font-bold text-foreground mb-1">
                         Статус заявки
                       </label>
                       <select
                         value={draftStatus}
                         onChange={(e) => setDraftStatus(e.target.value as RequestStatus)}
-                        className="w-full p-2.5 text-xs rounded-lg border-2 border-slate-300 bg-white font-bold text-slate-900"
+                        className="w-full p-2.5 text-xs rounded-lg border-2 border-border bg-card font-bold text-foreground"
                       >
                         <option value="new">Новое</option>
                         <option value="under_review">На рассмотрении</option>
@@ -1602,13 +1602,13 @@ export default function AdminPage() {
 
                     {/* Change Department */}
                     <div>
-                      <label className="block text-xs font-bold text-slate-900 mb-1">
+                      <label className="block text-xs font-bold text-foreground mb-1">
                         Ведомство
                       </label>
                       <select
                         value={draftDepartment}
                         onChange={(e) => setDraftDepartment(e.target.value as Department)}
-                        className="w-full p-2.5 text-xs rounded-lg border-2 border-slate-300 bg-white font-bold text-slate-900"
+                        className="w-full p-2.5 text-xs rounded-lg border-2 border-border bg-card font-bold text-foreground"
                       >
                         <option value="ЖКХ">ЖКХ</option>
                         <option value="Транспорт">Транспорт</option>
@@ -1620,13 +1620,13 @@ export default function AdminPage() {
 
                     {/* Change Priority */}
                     <div>
-                      <label className="block text-xs font-bold text-slate-900 mb-1">
+                      <label className="block text-xs font-bold text-foreground mb-1">
                         Приоритет
                       </label>
                       <select
                         value={draftPriority}
                         onChange={(e) => setDraftPriority(e.target.value as PriorityLevel)}
-                        className="w-full p-2.5 text-xs rounded-lg border-2 border-slate-300 bg-white font-bold text-slate-900"
+                        className="w-full p-2.5 text-xs rounded-lg border-2 border-border bg-card font-bold text-foreground"
                       >
                         <option value="high">Высокий (24ч)</option>
                         <option value="medium">Средний (3 дня)</option>
@@ -1637,7 +1637,7 @@ export default function AdminPage() {
 
                   {/* Resolution Report */}
                   <div>
-                    <label className="block text-xs font-bold text-slate-900 mb-1">
+                    <label className="block text-xs font-bold text-foreground mb-1">
                       Официальный акт устранения (для открытой витрины города)
                     </label>
                     <textarea
@@ -1645,45 +1645,45 @@ export default function AdminPage() {
                       value={draftReport}
                       onChange={(e) => setDraftReport(e.target.value)}
                       placeholder="Опишите фактически проведенные работы. Например: Бригадой МП «Благоустройство» выполнен ремонт асфальтового полотна..."
-                      className="w-full p-2.5 text-xs rounded-lg border-2 border-slate-300 font-medium text-slate-900 focus:outline-none focus:border-slate-900"
+                      className="w-full p-2.5 text-xs rounded-lg border-2 border-border font-medium text-foreground focus:outline-none focus:border-slate-900"
                     />
                   </div>
 
                   {/* After Photo URL or Quick Presets */}
                   <div>
                     <div className="flex items-center justify-between mb-1">
-                      <label className="text-xs font-bold text-slate-900">
+                      <label className="text-xs font-bold text-foreground">
                         Ссылка на фото «ПОСЛЕ»
                       </label>
-                      <span className="text-xs text-slate-700 font-bold">Быстрые пресеты:</span>
+                      <span className="text-xs text-muted-foreground font-bold">Быстрые пресеты:</span>
                     </div>
 
                     <div className="flex flex-wrap gap-1.5 mb-2">
                       <button
                         type="button"
                         onClick={() => setDraftPhotoAfter(DEMO_PHOTOS.trash_after)}
-                        className="px-2.5 py-1 text-xs font-bold bg-slate-100 hover:bg-slate-200 rounded border border-slate-300 text-slate-900 cursor-pointer"
+                        className="px-2.5 py-1 text-xs font-bold bg-slate-100 hover:bg-slate-200 rounded border border-border text-foreground cursor-pointer"
                       >
                         Мусор убран
                       </button>
                       <button
                         type="button"
                         onClick={() => setDraftPhotoAfter(DEMO_PHOTOS.pothole_after)}
-                        className="px-2.5 py-1 text-xs font-bold bg-slate-100 hover:bg-slate-200 rounded border border-slate-300 text-slate-900 cursor-pointer"
+                        className="px-2.5 py-1 text-xs font-bold bg-slate-100 hover:bg-slate-200 rounded border border-border text-foreground cursor-pointer"
                       >
                         Яма заделана
                       </button>
                       <button
                         type="button"
                         onClick={() => setDraftPhotoAfter(DEMO_PHOTOS.streetlight_after)}
-                        className="px-2.5 py-1 text-xs font-bold bg-slate-100 hover:bg-slate-200 rounded border border-slate-300 text-slate-900 cursor-pointer"
+                        className="px-2.5 py-1 text-xs font-bold bg-slate-100 hover:bg-slate-200 rounded border border-border text-foreground cursor-pointer"
                       >
                         Фонарь горит
                       </button>
                       <button
                         type="button"
                         onClick={() => setDraftPhotoAfter(DEMO_PHOTOS.bench_after)}
-                        className="px-2.5 py-1 text-xs font-bold bg-slate-100 hover:bg-slate-200 rounded border border-slate-300 text-slate-900 cursor-pointer"
+                        className="px-2.5 py-1 text-xs font-bold bg-slate-100 hover:bg-slate-200 rounded border border-border text-foreground cursor-pointer"
                       >
                         Скамья починена
                       </button>
@@ -1694,7 +1694,7 @@ export default function AdminPage() {
                       value={draftPhotoAfter}
                       onChange={(e) => setDraftPhotoAfter(e.target.value)}
                       placeholder="https://... URL фотографии после выполнения работ"
-                      className="w-full p-2 text-xs rounded-lg border-2 border-slate-300 font-mono text-slate-900"
+                      className="w-full p-2 text-xs rounded-lg border-2 border-border font-mono text-foreground"
                     />
                   </div>
 
@@ -1704,8 +1704,8 @@ export default function AdminPage() {
             </div>
 
             {/* Drawer Footer Actions */}
-            <div className="p-4 border-t-2 border-slate-200 bg-slate-100 flex items-center justify-between">
-              <span className="text-xs font-mono font-bold text-slate-700">
+            <div className="p-4 border-t-2 border-border bg-slate-100 flex items-center justify-between">
+              <span className="text-xs font-mono font-bold text-muted-foreground">
                 ДЕМОНСТРАЦИОННЫЕ ДАННЫЕ / СЕМЕЙ
               </span>
 
@@ -1713,7 +1713,7 @@ export default function AdminPage() {
                 <button
                   type="button"
                   onClick={closeDrawer}
-                  className="px-4 py-2.5 text-xs font-bold rounded-lg border-2 border-slate-300 text-slate-800 hover:bg-white cursor-pointer"
+                  className="px-4 py-2.5 text-xs font-bold rounded-lg border-2 border-border text-foreground hover:bg-card cursor-pointer"
                 >
                   Закрыть
                 </button>
@@ -1722,7 +1722,7 @@ export default function AdminPage() {
                   type="button"
                   onClick={handleSaveChanges}
                   disabled={isSaving}
-                  className="inline-flex items-center gap-1.5 px-5 py-2.5 text-xs font-bold rounded-lg bg-slate-900 text-white hover:bg-slate-800 disabled:opacity-50 transition-colors shadow-sm cursor-pointer"
+                  className="inline-flex items-center gap-1.5 px-5 py-2.5 text-xs font-bold rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 disabled:opacity-50 transition-colors shadow-sm cursor-pointer"
                 >
                   <Save className="w-4 h-4 text-white" />
                   <span>{isSaving ? 'Сохранение...' : 'Сохранить изменения'}</span>

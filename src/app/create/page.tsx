@@ -241,24 +241,24 @@ function CreateRequestContent() {
       
       {/* Page Header */}
       <div className="text-center mb-8">
-        <div className="inline-flex items-center gap-2 px-3 py-1 text-xs font-extrabold rounded-full bg-slate-900 text-white mb-3">
+        <div className="inline-flex items-center gap-2 px-3 py-1 text-xs font-extrabold rounded-full bg-primary text-primary-foreground mb-3">
           <Sparkles className="w-3.5 h-3.5 text-blue-400" />
           <span>Smart Qala • Семей</span>
         </div>
-        <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+        <h1 className="text-2xl sm:text-3xl font-extrabold text-foreground tracking-tight">
           {requestType === 'idea' ? t.createTitleIdea : t.createTitleProblem}
         </h1>
-        <p className="mt-2 text-sm sm:text-base text-slate-700 font-medium">
+        <p className="mt-2 text-sm sm:text-base text-muted-foreground font-medium">
           {t.createSubtitle}
         </p>
       </div>
 
       {/* Main Submission Card */}
-      <div className="bg-white rounded-xl border-2 border-slate-200 shadow-md p-6 sm:p-8">
+      <div className="bg-card rounded-xl border-2 border-border shadow-md p-6 sm:p-8">
         
         {/* Error Alert if any */}
         {errorMessage && (
-          <div className="mb-6 p-4 rounded-lg bg-red-50 border-2 border-red-300 text-red-900 text-sm font-semibold flex items-center gap-3">
+          <div className="mb-6 p-4 rounded-lg bg-danger-soft border-2 border-danger-soft text-danger-soft-foreground text-sm font-semibold flex items-center gap-3">
             <AlertCircle className="w-5 h-5 text-red-600 shrink-0" />
             <span>{errorMessage}</span>
           </div>
@@ -268,7 +268,7 @@ function CreateRequestContent() {
           
           {/* 1. Request Type Selector: Problem vs Idea */}
           <div>
-            <label className="block text-xs font-extrabold uppercase tracking-wider text-slate-800 mb-2">
+            <label className="block text-xs font-extrabold uppercase tracking-wider text-foreground mb-2">
               Тип обращения
             </label>
             <div className="grid grid-cols-2 gap-3">
@@ -277,8 +277,8 @@ function CreateRequestContent() {
                 onClick={() => setRequestType('problem')}
                 className={`py-3 px-4 rounded-lg border-2 text-sm font-bold flex items-center justify-center gap-2 transition-all cursor-pointer ${
                   requestType === 'problem'
-                    ? 'bg-red-50 border-red-600 text-red-900 shadow-xs'
-                    : 'bg-white border-slate-300 text-slate-700 hover:bg-slate-50'
+                    ? 'bg-danger-soft border-red-600 text-danger-soft-foreground shadow-xs'
+                    : 'bg-card border-border text-muted-foreground hover:bg-muted'
                 }`}
               >
                 <span className="w-3 h-3 rounded-full bg-red-600"></span>
@@ -290,8 +290,8 @@ function CreateRequestContent() {
                 onClick={() => setRequestType('idea')}
                 className={`py-3 px-4 rounded-lg border-2 text-sm font-bold flex items-center justify-center gap-2 transition-all cursor-pointer ${
                   requestType === 'idea'
-                    ? 'bg-amber-50 border-amber-500 text-amber-950 shadow-xs'
-                    : 'bg-white border-slate-300 text-slate-700 hover:bg-slate-50'
+                    ? 'bg-warning-soft border-amber-500 text-warning-soft-foreground shadow-xs'
+                    : 'bg-card border-border text-muted-foreground hover:bg-muted'
                 }`}
               >
                 <Lightbulb className="w-4 h-4 text-amber-600" />
@@ -303,7 +303,7 @@ function CreateRequestContent() {
           {/* 2. Text Description with Word Counter & Voice Input */}
           <div>
             <div className="flex items-center justify-between mb-2">
-              <label className="text-xs font-extrabold uppercase tracking-wider text-slate-800">
+              <label className="text-xs font-extrabold uppercase tracking-wider text-foreground">
                 {requestType === 'idea' ? t.createTextLabelIdea : t.createTextLabelProblem}
               </label>
 
@@ -314,7 +314,7 @@ function CreateRequestContent() {
                 className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-bold transition-colors cursor-pointer ${
                   isRecording
                     ? 'bg-red-600 text-white animate-pulse'
-                    : 'bg-slate-100 text-slate-800 hover:bg-slate-200 border border-slate-300'
+                    : 'bg-slate-100 text-foreground hover:bg-slate-200 border border-border'
                 }`}
                 title="Голосовой ввод сообщения"
               >
@@ -324,7 +324,7 @@ function CreateRequestContent() {
             </div>
 
             {voiceNotice && (
-              <div className="mb-2 text-xs font-bold text-blue-700 bg-blue-50 px-3 py-1.5 rounded border border-blue-200">
+              <div className="mb-2 text-xs font-bold text-blue-700 bg-info-soft px-3 py-1.5 rounded border border-info-soft">
                 {voiceNotice}
               </div>
             )}
@@ -335,16 +335,16 @@ function CreateRequestContent() {
                 value={originalText}
                 onChange={(e) => setOriginalText(e.target.value)}
                 placeholder={t.createTextPlaceholder}
-                className={`w-full p-4 rounded-lg border-2 text-base text-slate-900 placeholder-slate-400 focus:outline-none transition-colors ${
-                  isWordCountExceeded ? 'border-red-500 bg-red-50/20' : 'border-slate-300 focus:border-slate-900 bg-white'
+                className={`w-full p-4 rounded-lg border-2 text-base text-foreground placeholder-slate-400 focus:outline-none transition-colors ${
+                  isWordCountExceeded ? 'border-red-500 bg-danger-soft/20' : 'border-border focus:border-slate-900 bg-card'
                 }`}
               />
 
               <div className="flex items-center justify-between mt-1 text-xs font-mono">
-                <span className="text-slate-600 font-sans">
+                <span className="text-muted-foreground font-sans">
                   ИИ автоматически сформулирует официальный запрос
                 </span>
-                <span className={`font-bold ${isWordCountExceeded ? 'text-red-600' : 'text-slate-700'}`}>
+                <span className={`font-bold ${isWordCountExceeded ? 'text-red-600' : 'text-muted-foreground'}`}>
                   {wordCount} / 200 слов
                 </span>
               </div>
@@ -354,14 +354,14 @@ function CreateRequestContent() {
           {/* 3. Address & Location with GPS button */}
           <div>
             <div className="flex items-center justify-between mb-2">
-              <label className="text-xs font-extrabold uppercase tracking-wider text-slate-800">
+              <label className="text-xs font-extrabold uppercase tracking-wider text-foreground">
                 {t.createAddressLabel}
               </label>
 
               <button
                 type="button"
                 onClick={handleSimulateGPS}
-                className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-800 hover:text-blue-900 hover:underline cursor-pointer"
+                className="inline-flex items-center gap-1.5 text-xs font-bold text-info-soft-foreground hover:text-info-soft-foreground hover:underline cursor-pointer"
               >
                 <Navigation className="w-3.5 h-3.5 text-blue-700" />
                 <span>{t.createGpsBtn}</span>
@@ -369,32 +369,32 @@ function CreateRequestContent() {
             </div>
 
             <div className="relative">
-              <MapPin className="w-5 h-5 text-slate-500 absolute left-3.5 top-3.5" />
+              <MapPin className="w-5 h-5 text-muted-foreground absolute left-3.5 top-3.5" />
               <input
                 type="text"
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
                 placeholder={t.createAddressPlaceholder}
-                className="w-full pl-11 pr-4 py-3 rounded-lg border-2 border-slate-300 text-base text-slate-900 placeholder-slate-400 focus:outline-none focus:border-slate-900 font-medium"
+                className="w-full pl-11 pr-4 py-3 rounded-lg border-2 border-border text-base text-foreground placeholder-slate-400 focus:outline-none focus:border-slate-900 font-medium"
               />
             </div>
           </div>
 
           {/* 4. Photo Attachment */}
           <div>
-            <label className="block text-xs font-extrabold uppercase tracking-wider text-slate-800 mb-2">
+            <label className="block text-xs font-extrabold uppercase tracking-wider text-foreground mb-2">
               {t.createPhotoLabel}
             </label>
 
             {photoUrl ? (
-              <div className="flex items-center gap-4 p-3 bg-slate-50 border-2 border-slate-200 rounded-lg">
+              <div className="flex items-center gap-4 p-3 bg-muted border-2 border-border rounded-lg">
                 <div 
-                  className="w-20 h-20 rounded-md bg-cover bg-center shrink-0 border border-slate-300"
+                  className="w-20 h-20 rounded-md bg-cover bg-center shrink-0 border border-border"
                   style={{ backgroundImage: `url('${photoUrl}')` }}
                 />
                 <div className="flex-1 min-w-0">
-                  <div className="text-xs font-bold text-slate-900 truncate">Фото инцидента прикреплено</div>
-                  <div className="text-[11px] text-slate-600 mt-0.5">Будет передано инспектору ЖКХ</div>
+                  <div className="text-xs font-bold text-foreground truncate">Фото инцидента прикреплено</div>
+                  <div className="text-[11px] text-muted-foreground mt-0.5">Будет передано инспектору ЖКХ</div>
                   <button
                     type="button"
                     onClick={() => setPhotoUrl('')}
@@ -409,24 +409,24 @@ function CreateRequestContent() {
                 <button
                   type="button"
                   onClick={() => setPhotoUrl('https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?auto=format&fit=crop&w=800&q=80')}
-                  className="p-3 border-2 border-dashed border-slate-300 hover:border-slate-800 rounded-lg text-left flex items-center gap-3 transition-colors cursor-pointer"
+                  className="p-3 border-2 border-dashed border-border hover:border-slate-800 rounded-lg text-left flex items-center gap-3 transition-colors cursor-pointer"
                 >
-                  <Camera className="w-5 h-5 text-slate-700 shrink-0" />
+                  <Camera className="w-5 h-5 text-muted-foreground shrink-0" />
                   <div>
-                    <div className="text-xs font-bold text-slate-900">Выбрать фото с камеры</div>
-                    <div className="text-[11px] text-slate-600">Нажмите для образца</div>
+                    <div className="text-xs font-bold text-foreground">Выбрать фото с камеры</div>
+                    <div className="text-[11px] text-muted-foreground">Нажмите для образца</div>
                   </div>
                 </button>
 
                 <button
                   type="button"
                   onClick={() => setPhotoUrl('https://images.unsplash.com/photo-1509114397022-ed747cca3f65?auto=format&fit=crop&w=800&q=80')}
-                  className="p-3 border-2 border-dashed border-slate-300 hover:border-slate-800 rounded-lg text-left flex items-center gap-3 transition-colors cursor-pointer"
+                  className="p-3 border-2 border-dashed border-border hover:border-slate-800 rounded-lg text-left flex items-center gap-3 transition-colors cursor-pointer"
                 >
-                  <Upload className="w-5 h-5 text-slate-700 shrink-0" />
+                  <Upload className="w-5 h-5 text-muted-foreground shrink-0" />
                   <div>
-                    <div className="text-xs font-bold text-slate-900">Загрузить файл</div>
-                    <div className="text-[11px] text-slate-600">JPG, PNG до 15 МБ</div>
+                    <div className="text-xs font-bold text-foreground">Загрузить файл</div>
+                    <div className="text-[11px] text-muted-foreground">JPG, PNG до 15 МБ</div>
                   </div>
                 </button>
               </div>
@@ -435,20 +435,20 @@ function CreateRequestContent() {
 
           {/* 5. Guest Contact Prompt (if user is guest) */}
           {isGuest && (
-            <div className="p-4 bg-blue-50 border-2 border-blue-200 rounded-lg space-y-3">
+            <div className="p-4 bg-info-soft border-2 border-info-soft rounded-lg space-y-3">
               <div className="flex items-center gap-2">
-                <UserCheck className="w-4 h-4 text-blue-800" />
-                <span className="text-xs font-extrabold uppercase tracking-wider text-blue-900">
+                <UserCheck className="w-4 h-4 text-info-soft-foreground" />
+                <span className="text-xs font-extrabold uppercase tracking-wider text-info-soft-foreground">
                   Контактные данные заявителя
                 </span>
               </div>
-              <p className="text-xs text-blue-950 leading-relaxed font-medium">
+              <p className="text-xs text-info-soft-foreground leading-relaxed font-medium">
                 По регламенту города Семей, для регистрации официального обращения укажите имя и телефон для обратной связи служб.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
                 <div>
-                  <label className="block text-[11px] font-bold text-slate-700 mb-1">
+                  <label className="block text-[11px] font-bold text-muted-foreground mb-1">
                     Ваше имя
                   </label>
                   <input
@@ -456,12 +456,12 @@ function CreateRequestContent() {
                     value={guestName}
                     onChange={(e) => setGuestName(e.target.value)}
                     placeholder="Айгүл Ахметова"
-                    className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-sm text-slate-900 focus:outline-none focus:border-blue-600"
+                    className="w-full px-3 py-2 bg-card border border-border rounded text-sm text-foreground focus:outline-none focus:border-blue-600"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-[11px] font-bold text-slate-700 mb-1">
+                  <label className="block text-[11px] font-bold text-muted-foreground mb-1">
                     Номер телефона
                   </label>
                   <input
@@ -469,7 +469,7 @@ function CreateRequestContent() {
                     value={guestPhone}
                     onChange={(e) => setGuestPhone(e.target.value)}
                     placeholder="+7 (705) 000-00-00"
-                    className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-sm text-slate-900 focus:outline-none focus:border-blue-600"
+                    className="w-full px-3 py-2 bg-card border border-border rounded text-sm text-foreground focus:outline-none focus:border-blue-600"
                   />
                 </div>
               </div>
@@ -483,22 +483,22 @@ function CreateRequestContent() {
               id="anonymous"
               checked={isAnonymous}
               onChange={(e) => setIsAnonymous(e.target.checked)}
-              className="mt-1 w-4 h-4 rounded text-slate-900 border-slate-300 focus:ring-slate-900 cursor-pointer"
+              className="mt-1 w-4 h-4 rounded text-foreground border-border focus:ring-slate-900 cursor-pointer"
             />
-            <label htmlFor="anonymous" className="text-xs text-slate-800 font-medium cursor-pointer">
+            <label htmlFor="anonymous" className="text-xs text-foreground font-medium cursor-pointer">
               <span className="font-bold">{t.createAnonymousLabel}</span> — {t.createAnonymousHint}
             </label>
           </div>
 
           {/* 7. Submit Action Button (1-Click with Silent AI Processing) */}
-          <div className="pt-4 border-t-2 border-slate-200">
+          <div className="pt-4 border-t-2 border-border">
             <button
               type="submit"
               disabled={isSubmitting || isWordCountExceeded}
               className={`w-full py-4 px-6 rounded-lg font-bold text-base text-white flex items-center justify-center gap-3 transition-all shadow-md cursor-pointer ${
                 isSubmitting 
                   ? 'bg-slate-700 cursor-not-allowed' 
-                  : 'bg-slate-900 hover:bg-slate-800'
+                  : 'bg-primary text-primary-foreground hover:bg-primary/90'
               }`}
             >
               {isSubmitting ? (
@@ -513,7 +513,7 @@ function CreateRequestContent() {
                 </>
               )}
             </button>
-            <p className="text-xs text-slate-600 text-center mt-2 font-medium">
+            <p className="text-xs text-muted-foreground text-center mt-2 font-medium">
               ИИ структурирует текст, определит службу и назначит приоритет автоматически
             </p>
           </div>
@@ -527,12 +527,12 @@ function CreateRequestContent() {
 
 export default function CreatePage() {
   return (
-    <div className="flex flex-col min-h-screen bg-gray-50 text-slate-900">
+    <div className="flex flex-col min-h-screen bg-muted text-foreground">
       <Navbar />
       <main className="flex-1">
         <Suspense fallback={
           <div className="min-h-[50vh] flex items-center justify-center">
-            <Loader2 className="w-8 h-8 animate-spin text-slate-900" />
+            <Loader2 className="w-8 h-8 animate-spin text-foreground" />
           </div>
         }>
           <CreateRequestContent />

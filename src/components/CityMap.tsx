@@ -176,24 +176,24 @@ export default function CityMap({ initialRequests }: CityMapProps) {
     <div className="flex flex-col lg:flex-row gap-4 h-[calc(100vh-140px)] min-h-[580px]">
       
       {/* Sidebar Controls & Legend */}
-      <div className="w-full lg:w-80 bg-white rounded-md border border-gray-200 shadow-2xs p-4 flex flex-col justify-between overflow-y-auto shrink-0">
+      <div className="w-full lg:w-80 bg-card rounded-md border border-gray-200 shadow-2xs p-4 flex flex-col justify-between overflow-y-auto shrink-0">
         <div className="space-y-4">
           
           <div className="pb-3 border-b border-gray-100 flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <MapPin className="w-4 h-4 text-slate-700" />
-              <span className="text-xs font-bold text-slate-900 uppercase tracking-wider">
+              <MapPin className="w-4 h-4 text-muted-foreground" />
+              <span className="text-xs font-bold text-foreground uppercase tracking-wider">
                 Карта инцидентов Семея
               </span>
             </div>
-            <span className="text-[10px] font-mono bg-slate-100 text-slate-700 px-1.5 py-0.5 rounded">
+            <span className="text-[10px] font-mono bg-slate-100 text-muted-foreground px-1.5 py-0.5 rounded">
               {filteredRequests.length} точек
             </span>
           </div>
 
           {/* Mode Switcher: Markers vs Heatmap */}
           <div>
-            <label className="block text-[11px] font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
+            <label className="block text-[11px] font-semibold text-muted-foreground uppercase tracking-wider mb-1.5">
               Режим отображения
             </label>
             <div className="grid grid-cols-2 gap-1.5 p-1 bg-gray-100 rounded-md border border-gray-200 text-xs">
@@ -202,8 +202,8 @@ export default function CityMap({ initialRequests }: CityMapProps) {
                 onClick={() => setViewMode('markers')}
                 className={`py-1.5 px-2 rounded-md font-medium transition-colors flex items-center justify-center gap-1.5 ${
                   viewMode === 'markers'
-                    ? 'bg-white text-slate-900 shadow-2xs font-semibold'
-                    : 'text-slate-600 hover:text-slate-900'
+                    ? 'bg-card text-foreground shadow-2xs font-semibold'
+                    : 'text-muted-foreground hover:text-foreground'
                 }`}
               >
                 <MapPin className="w-3.5 h-3.5" />
@@ -215,8 +215,8 @@ export default function CityMap({ initialRequests }: CityMapProps) {
                 onClick={() => setViewMode('heatmap')}
                 className={`py-1.5 px-2 rounded-md font-medium transition-colors flex items-center justify-center gap-1.5 ${
                   viewMode === 'heatmap'
-                    ? 'bg-white text-slate-900 shadow-2xs font-semibold'
-                    : 'text-slate-600 hover:text-slate-900'
+                    ? 'bg-card text-foreground shadow-2xs font-semibold'
+                    : 'text-muted-foreground hover:text-foreground'
                 }`}
               >
                 <Flame className="w-3.5 h-3.5 text-amber-600" />
@@ -229,13 +229,13 @@ export default function CityMap({ initialRequests }: CityMapProps) {
           <div className="space-y-3 pt-2 border-t border-gray-100">
             {/* Type Filter */}
             <div>
-              <label className="block text-xs font-semibold text-slate-800 mb-1">
+              <label className="block text-xs font-semibold text-foreground mb-1">
                 Тип обращения
               </label>
               <select
                 value={selectedType}
                 onChange={(e) => setSelectedType(e.target.value)}
-                className="w-full p-2 text-xs rounded-md border border-gray-300 bg-white"
+                className="w-full p-2 text-xs rounded-md border border-gray-300 bg-card"
               >
                 <option value="all">Все (Проблемы и идеи)</option>
                 <option value="problem">🔴 Только проблемы</option>
@@ -245,13 +245,13 @@ export default function CityMap({ initialRequests }: CityMapProps) {
 
             {/* Category Filter */}
             <div>
-              <label className="block text-xs font-semibold text-slate-800 mb-1">
+              <label className="block text-xs font-semibold text-foreground mb-1">
                 Категория
               </label>
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className="w-full p-2 text-xs rounded-md border border-gray-300 bg-white"
+                className="w-full p-2 text-xs rounded-md border border-gray-300 bg-card"
               >
                 <option value="Все">Все категории</option>
                 <option value="Дороги">Дороги</option>
@@ -267,13 +267,13 @@ export default function CityMap({ initialRequests }: CityMapProps) {
 
             {/* Status Filter */}
             <div>
-              <label className="block text-xs font-semibold text-slate-800 mb-1">
+              <label className="block text-xs font-semibold text-foreground mb-1">
                 Статус
               </label>
               <select
                 value={selectedStatus}
                 onChange={(e) => setSelectedStatus(e.target.value)}
-                className="w-full p-2 text-xs rounded-md border border-gray-300 bg-white"
+                className="w-full p-2 text-xs rounded-md border border-gray-300 bg-card"
               >
                 <option value="Все">Все статусы</option>
                 <option value="new">Новое</option>
@@ -285,13 +285,13 @@ export default function CityMap({ initialRequests }: CityMapProps) {
 
             {/* Priority Filter */}
             <div>
-              <label className="block text-xs font-semibold text-slate-800 mb-1">
+              <label className="block text-xs font-semibold text-foreground mb-1">
                 Уровень приоритета
               </label>
               <select
                 value={selectedPriority}
                 onChange={(e) => setSelectedPriority(e.target.value)}
-                className="w-full p-2 text-xs rounded-md border border-gray-300 bg-white"
+                className="w-full p-2 text-xs rounded-md border border-gray-300 bg-card"
               >
                 <option value="Все">Все приоритеты</option>
                 <option value="high">Высокий (Срочно)</option>
@@ -303,30 +303,30 @@ export default function CityMap({ initialRequests }: CityMapProps) {
 
           {/* Color Legend */}
           <div className="pt-3 border-t border-gray-100 text-xs space-y-1.5">
-            <span className="font-semibold text-slate-700 block text-[11px] uppercase tracking-wider">
+            <span className="font-semibold text-muted-foreground block text-[11px] uppercase tracking-wider">
               Обозначения на карте:
             </span>
             <div className="flex items-center gap-2">
               <span className="w-3 h-3 rounded-full bg-red-600 shrink-0"></span>
-              <span className="text-slate-600">Высокий приоритет (угроза/авария)</span>
+              <span className="text-muted-foreground">Высокий приоритет (угроза/авария)</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="w-3 h-3 rounded-full bg-amber-500 shrink-0"></span>
-              <span className="text-slate-600">Средний приоритет</span>
+              <span className="text-muted-foreground">Средний приоритет</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="w-3 h-3 rounded-full bg-emerald-600 shrink-0"></span>
-              <span className="text-slate-600">Устранено / Решено</span>
+              <span className="text-muted-foreground">Устранено / Решено</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="w-3 h-3 rounded-full bg-indigo-600 shrink-0"></span>
-              <span className="text-slate-600">Городская инициатива (Идея)</span>
+              <span className="text-muted-foreground">Городская инициатива (Идея)</span>
             </div>
           </div>
 
         </div>
 
-        <div className="pt-3 border-t border-gray-100 text-[11px] font-mono text-slate-500 text-center">
+        <div className="pt-3 border-t border-gray-100 text-[11px] font-mono text-muted-foreground text-center">
           ДЕМОНСТРАЦИОННЫЕ ДАННЫЕ / СЕМЕЙ
         </div>
       </div>
@@ -337,34 +337,34 @@ export default function CityMap({ initialRequests }: CityMapProps) {
 
         {/* Selected Request Bottom Slide Card */}
         {selectedRequest && (
-          <div className="absolute bottom-4 left-4 right-4 sm:left-auto sm:right-4 sm:w-96 bg-white rounded-md border border-gray-300 shadow-xl p-4 z-20 animate-in fade-in slide-in-from-bottom duration-200">
+          <div className="absolute bottom-4 left-4 right-4 sm:left-auto sm:right-4 sm:w-96 bg-card rounded-md border border-gray-300 shadow-xl p-4 z-20 animate-in fade-in slide-in-from-bottom duration-200">
             <div className="flex items-start justify-between pb-2 border-b border-gray-100">
               <div className="flex items-center gap-2">
-                <span className="font-mono text-xs font-bold text-slate-900 bg-slate-100 px-2 py-0.5 rounded">
+                <span className="font-mono text-xs font-bold text-foreground bg-slate-100 px-2 py-0.5 rounded">
                   {selectedRequest.id}
                 </span>
-                <span className="text-[11px] font-medium text-slate-600">
+                <span className="text-[11px] font-medium text-muted-foreground">
                   {selectedRequest.category}
                 </span>
               </div>
               <button
                 type="button"
                 onClick={() => setSelectedRequest(null)}
-                className="text-slate-400 hover:text-slate-700 text-sm font-bold"
+                className="text-muted-foreground hover:text-muted-foreground text-sm font-bold"
               >
                 ✕
               </button>
             </div>
 
             <div className="mt-2.5">
-              <h4 className="text-xs font-bold text-slate-900 line-clamp-2">
+              <h4 className="text-xs font-bold text-foreground line-clamp-2">
                 {selectedRequest.title}
               </h4>
-              <p className="text-[11px] text-slate-600 mt-1 line-clamp-2 leading-relaxed">
+              <p className="text-[11px] text-muted-foreground mt-1 line-clamp-2 leading-relaxed">
                 {selectedRequest.cleaned_text}
               </p>
-              <div className="flex items-center gap-1 text-[11px] text-slate-500 mt-1.5">
-                <MapPin className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+              <div className="flex items-center gap-1 text-[11px] text-muted-foreground mt-1.5">
+                <MapPin className="w-3.5 h-3.5 text-muted-foreground shrink-0" />
                 <span className="truncate">{selectedRequest.location_address}</span>
               </div>
             </div>
@@ -376,8 +376,8 @@ export default function CityMap({ initialRequests }: CityMapProps) {
                 onClick={() => handleUpvoteClick(selectedRequest.id)}
                 className={`inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-md border transition-colors ${
                   upvotedIds.has(selectedRequest.id)
-                    ? 'bg-blue-50 border-blue-300 text-blue-700'
-                    : 'bg-white border-gray-300 text-slate-700 hover:bg-slate-50'
+                    ? 'bg-info-soft border-info-soft text-blue-700'
+                    : 'bg-card border-gray-300 text-muted-foreground hover:bg-muted'
                 }`}
               >
                 <ThumbsUp className={`w-3.5 h-3.5 ${upvotedIds.has(selectedRequest.id) ? 'fill-blue-600 text-blue-600' : ''}`} />
@@ -391,7 +391,7 @@ export default function CityMap({ initialRequests }: CityMapProps) {
 
               <Link
                 href={`/requests/${selectedRequest.id}`}
-                className="inline-flex items-center gap-1 text-xs font-semibold text-slate-900 hover:underline"
+                className="inline-flex items-center gap-1 text-xs font-semibold text-foreground hover:underline"
               >
                 <span>Подробнее</span>
                 <ExternalLink className="w-3 h-3" />

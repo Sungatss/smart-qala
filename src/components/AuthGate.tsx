@@ -128,7 +128,7 @@ export default function AuthGate() {
 
   return (
     <div className={`min-h-screen relative flex flex-col justify-between overflow-x-hidden selection:bg-blue-600 selection:text-white transition-colors duration-200 ${
-      isLight ? 'bg-slate-100 text-slate-900' : 'bg-slate-950 text-slate-100'
+      isLight ? 'bg-slate-100 text-foreground' : 'bg-slate-950 text-slate-100'
     }`}>
       
       {/* Background with Atmospheric Semey City Overlay */}
@@ -150,7 +150,7 @@ export default function AuthGate() {
       {/* TOP HEADER: Branding, Theme Toggle, Language & Accessibility */}
       <header className={`relative z-10 border-b backdrop-blur-md transition-colors ${
         isLight 
-          ? 'border-slate-300 bg-white/90 text-slate-900 shadow-xs'
+          ? 'border-border bg-card/90 text-foreground shadow-xs'
           : 'border-slate-800/80 bg-slate-950/80 text-slate-100'
       }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-wrap items-center justify-between gap-4">
@@ -159,7 +159,7 @@ export default function AuthGate() {
           <div className="flex items-center gap-3">
             <div className={`w-10 h-10 rounded-lg flex items-center justify-center font-black text-xl shadow-md border ${
               isLight 
-                ? 'bg-slate-900 text-white border-slate-700' 
+                ? 'bg-primary text-primary-foreground border-slate-700' 
                 : 'bg-blue-600 text-white border-blue-400'
             }`}>
               SQ
@@ -169,13 +169,13 @@ export default function AuthGate() {
                 <span className="font-extrabold text-lg tracking-tight">Smart Qala</span>
                 <span className={`px-2 py-0.5 text-xs font-bold rounded border ${
                   isLight
-                    ? 'bg-slate-100 text-slate-800 border-slate-300'
+                    ? 'bg-slate-100 text-foreground border-border'
                     : 'bg-blue-900/80 text-blue-200 border-blue-700'
                 }`}>
                   {t.brandCity}
                 </span>
               </div>
-              <p className={`text-xs hidden sm:block font-medium ${isLight ? 'text-slate-600' : 'text-slate-400'}`}>
+              <p className={`text-xs hidden sm:block font-medium ${isLight ? 'text-muted-foreground' : 'text-muted-foreground'}`}>
                 {t.brandTagline}
               </p>
             </div>
@@ -190,8 +190,8 @@ export default function AuthGate() {
               onClick={toggleTheme}
               className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all border cursor-pointer shadow-2xs ${
                 isLight
-                  ? 'bg-amber-50 hover:bg-amber-100 text-amber-950 border-amber-300'
-                  : 'bg-slate-800 hover:bg-slate-700 text-slate-200 border-slate-700'
+                  ? 'bg-warning-soft hover:bg-amber-100 text-warning-soft-foreground border-warning-soft'
+                  : 'bg-primary/90 hover:bg-slate-700 text-slate-200 border-slate-700'
               }`}
               title={isLight ? t.themeDark : t.themeLight}
             >
@@ -201,9 +201,9 @@ export default function AuthGate() {
 
             {/* Language Switcher */}
             <div className={`flex items-center rounded-lg p-0.5 border ${
-              isLight ? 'bg-slate-100 border-slate-300' : 'bg-slate-800/90 border-slate-700'
+              isLight ? 'bg-slate-100 border-border' : 'bg-primary/90/90 border-slate-700'
             }`}>
-              <Globe className={`w-3.5 h-3.5 ml-1.5 mr-1 ${isLight ? 'text-slate-600' : 'text-slate-400'}`} />
+              <Globe className={`w-3.5 h-3.5 ml-1.5 mr-1 ${isLight ? 'text-muted-foreground' : 'text-muted-foreground'}`} />
               {(['kz', 'ru', 'en'] as Language[]).map((l) => (
                 <button
                   key={l}
@@ -211,8 +211,8 @@ export default function AuthGate() {
                   onClick={() => setLang(l)}
                   className={`px-2 py-1 text-xs font-bold rounded transition-colors cursor-pointer ${
                     lang === l
-                      ? isLight ? 'bg-slate-900 text-white shadow-xs' : 'bg-blue-600 text-white shadow-xs'
-                      : isLight ? 'text-slate-700 hover:text-slate-900 hover:bg-slate-200' : 'text-slate-300 hover:text-white hover:bg-slate-700/60'
+                      ? isLight ? 'bg-primary text-primary-foreground shadow-xs' : 'bg-blue-600 text-white shadow-xs'
+                      : isLight ? 'text-muted-foreground hover:text-foreground hover:bg-slate-200' : 'text-slate-300 hover:text-white hover:bg-slate-700/60'
                   }`}
                 >
                   {l === 'kz' ? 'ҚАЗ' : l === 'ru' ? 'РУС' : 'ENG'}
@@ -226,10 +226,10 @@ export default function AuthGate() {
               onClick={toggleEasyMode}
               className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-colors border cursor-pointer ${
                 easyMode
-                  ? 'bg-yellow-400 text-slate-950 border-yellow-300 font-extrabold shadow-md'
+                  ? 'bg-yellow-400 text-slate-950 border-warning-soft font-extrabold shadow-md'
                   : isLight
-                  ? 'bg-white text-slate-800 border-slate-300 hover:bg-slate-100'
-                  : 'bg-slate-800/90 text-slate-200 border-slate-700 hover:text-white hover:bg-slate-700'
+                  ? 'bg-card text-foreground border-border hover:bg-slate-100'
+                  : 'bg-primary/90/90 text-slate-200 border-slate-700 hover:text-white hover:bg-slate-700'
               }`}
               title="Режим для слабовидящих с крупным шрифтом и высоким контрастом"
             >
@@ -247,7 +247,7 @@ export default function AuthGate() {
         <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
           <div className={`inline-flex items-center gap-2 px-3 py-1 text-xs font-bold rounded-full mb-3 border ${
             isLight
-              ? 'bg-blue-50 text-blue-900 border-blue-200'
+              ? 'bg-info-soft text-info-soft-foreground border-info-soft'
               : 'bg-blue-950/80 text-blue-300 border-blue-800'
           }`}>
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
@@ -261,14 +261,14 @@ export default function AuthGate() {
           </h1>
 
           <p className={`mt-2 text-sm sm:text-base font-medium ${
-            isLight ? 'text-slate-700' : 'text-slate-300'
+            isLight ? 'text-muted-foreground' : 'text-slate-300'
           }`}>
             {t.authChooseRole}
           </p>
 
           {/* Global error banner if any */}
           {errorMsg && (
-            <div className="mt-4 p-3 bg-red-100 border-2 border-red-300 text-red-900 text-sm font-bold rounded-lg flex items-center justify-center gap-2 shadow-sm">
+            <div className="mt-4 p-3 bg-red-100 border-2 border-danger-soft text-danger-soft-foreground text-sm font-bold rounded-lg flex items-center justify-center gap-2 shadow-sm">
               <AlertCircle className="w-4 h-4 shrink-0 text-red-600" />
               <span>{errorMsg}</span>
             </div>
@@ -283,20 +283,20 @@ export default function AuthGate() {
           {/* ======================================================== */}
           <div className={`rounded-xl border-2 shadow-xl flex flex-col p-6 transition-all ${
             isLight
-              ? 'bg-white border-slate-300 hover:border-blue-600 text-slate-900'
-              : 'bg-slate-900/90 backdrop-blur-md border-slate-700/80 hover:border-blue-500/80 text-slate-100'
+              ? 'bg-card border-border hover:border-blue-600 text-foreground'
+              : 'bg-primary text-primary-foreground/90 backdrop-blur-md border-slate-700/80 hover:border-blue-500/80 text-slate-100'
           }`}>
             <div className="flex items-center justify-between mb-4">
               <div className={`w-12 h-12 rounded-lg flex items-center justify-center border ${
                 isLight 
-                  ? 'bg-blue-50 border-blue-200 text-blue-700' 
+                  ? 'bg-info-soft border-info-soft text-blue-700' 
                   : 'bg-blue-600/20 border-blue-500/50 text-blue-400'
               }`}>
                 <User className="w-6 h-6" />
               </div>
               <span className={`px-2.5 py-1 text-xs font-extrabold uppercase tracking-wider rounded border ${
                 isLight 
-                  ? 'bg-blue-50 text-blue-900 border-blue-200' 
+                  ? 'bg-info-soft text-info-soft-foreground border-info-soft' 
                   : 'bg-blue-900/60 text-blue-300 border-blue-700'
               }`}>
                 {lang === 'kz' ? 'Ашық қолжетімділік' : lang === 'en' ? 'Public Access' : 'Открытый доступ'}
@@ -307,7 +307,7 @@ export default function AuthGate() {
               {t.authRoleCitizen}
             </h2>
             <p className={`text-xs mb-5 leading-relaxed min-h-[36px] font-medium ${
-              isLight ? 'text-slate-600' : 'text-slate-300'
+              isLight ? 'text-muted-foreground' : 'text-slate-300'
             }`}>
               {t.authRoleCitizenDesc}
             </p>
@@ -323,33 +323,33 @@ export default function AuthGate() {
                 <ArrowRight className="w-4 h-4" />
               </button>
               <p className={`text-[11px] text-center mt-1.5 font-medium ${
-                isLight ? 'text-slate-600' : 'text-slate-400'
+                isLight ? 'text-muted-foreground' : 'text-muted-foreground'
               }`}>
                 {t.authGuestHint}
               </p>
             </div>
 
             <div className="relative flex py-2 items-center mb-4">
-              <div className={`flex-grow border-t ${isLight ? 'border-slate-300' : 'border-slate-700'}`}></div>
+              <div className={`flex-grow border-t ${isLight ? 'border-border' : 'border-slate-700'}`}></div>
               <span className={`flex-shrink mx-3 text-[11px] font-extrabold uppercase tracking-wider ${
-                isLight ? 'text-slate-500' : 'text-slate-400'
+                isLight ? 'text-muted-foreground' : 'text-muted-foreground'
               }`}>
                 {lang === 'kz' ? 'немесе' : lang === 'en' ? 'or' : 'или'}
               </span>
-              <div className={`flex-grow border-t ${isLight ? 'border-slate-300' : 'border-slate-700'}`}></div>
+              <div className={`flex-grow border-t ${isLight ? 'border-border' : 'border-slate-700'}`}></div>
             </div>
 
             {/* Citizen Tabs: Login / Register */}
             <div className={`flex rounded-lg p-1 border mb-4 ${
-              isLight ? 'bg-slate-100 border-slate-300' : 'bg-slate-950 border-slate-800'
+              isLight ? 'bg-slate-100 border-border' : 'bg-slate-950 border-slate-800'
             }`}>
               <button
                 type="button"
                 onClick={() => { setCitizenTab('login'); setErrorMsg(''); }}
                 className={`flex-1 py-1.5 text-xs font-bold rounded transition-colors cursor-pointer ${
                   citizenTab === 'login' || citizenTab === 'guest'
-                    ? isLight ? 'bg-slate-900 text-white shadow-xs' : 'bg-blue-600 text-white shadow-xs'
-                    : isLight ? 'text-slate-700 hover:text-slate-950' : 'text-slate-400 hover:text-white'
+                    ? isLight ? 'bg-primary text-primary-foreground shadow-xs' : 'bg-blue-600 text-white shadow-xs'
+                    : isLight ? 'text-muted-foreground hover:text-slate-950' : 'text-muted-foreground hover:text-white'
                 }`}
               >
                 {t.authLoginTab}
@@ -359,8 +359,8 @@ export default function AuthGate() {
                 onClick={() => { setCitizenTab('register'); setErrorMsg(''); }}
                 className={`flex-1 py-1.5 text-xs font-bold rounded transition-colors cursor-pointer ${
                   citizenTab === 'register'
-                    ? isLight ? 'bg-slate-900 text-white shadow-xs' : 'bg-blue-600 text-white shadow-xs'
-                    : isLight ? 'text-slate-700 hover:text-slate-950' : 'text-slate-400 hover:text-white'
+                    ? isLight ? 'bg-primary text-primary-foreground shadow-xs' : 'bg-blue-600 text-white shadow-xs'
+                    : isLight ? 'text-muted-foreground hover:text-slate-950' : 'text-muted-foreground hover:text-white'
                 }`}
               >
                 {t.authRegisterTab}
@@ -372,11 +372,11 @@ export default function AuthGate() {
               <form onSubmit={handleCitizenLoginSubmit} className="space-y-3 flex-1 flex flex-col justify-between">
                 <div className="space-y-3">
                   <div>
-                    <label className={`block text-xs font-bold mb-1 ${isLight ? 'text-slate-800' : 'text-slate-300'}`}>
+                    <label className={`block text-xs font-bold mb-1 ${isLight ? 'text-foreground' : 'text-slate-300'}`}>
                       {t.authPhoneOrEmail}
                     </label>
                     <div className="relative">
-                      <Phone className={`w-4 h-4 absolute left-3 top-2.5 ${isLight ? 'text-slate-500' : 'text-slate-400'}`} />
+                      <Phone className={`w-4 h-4 absolute left-3 top-2.5 ${isLight ? 'text-muted-foreground' : 'text-muted-foreground'}`} />
                       <input
                         type="text"
                         value={citizenLoginInput}
@@ -384,7 +384,7 @@ export default function AuthGate() {
                         placeholder="+7 (705) 000-00-00"
                         className={`w-full pl-9 pr-3 py-2 border rounded-lg text-sm font-medium focus:outline-none ${
                           isLight 
-                            ? 'bg-white border-slate-300 text-slate-900 placeholder-slate-400 focus:border-slate-900' 
+                            ? 'bg-card border-border text-foreground placeholder-slate-400 focus:border-slate-900' 
                             : 'bg-slate-950 border-slate-700 text-white placeholder-slate-500 focus:border-blue-500'
                         }`}
                       />
@@ -392,11 +392,11 @@ export default function AuthGate() {
                   </div>
 
                   <div>
-                    <label className={`block text-xs font-bold mb-1 ${isLight ? 'text-slate-800' : 'text-slate-300'}`}>
+                    <label className={`block text-xs font-bold mb-1 ${isLight ? 'text-foreground' : 'text-slate-300'}`}>
                       {t.authPassword}
                     </label>
                     <div className="relative">
-                      <Lock className={`w-4 h-4 absolute left-3 top-2.5 ${isLight ? 'text-slate-500' : 'text-slate-400'}`} />
+                      <Lock className={`w-4 h-4 absolute left-3 top-2.5 ${isLight ? 'text-muted-foreground' : 'text-muted-foreground'}`} />
                       <input
                         type="password"
                         value={citizenPassword}
@@ -404,7 +404,7 @@ export default function AuthGate() {
                         placeholder="••••••••"
                         className={`w-full pl-9 pr-3 py-2 border rounded-lg text-sm font-medium focus:outline-none ${
                           isLight 
-                            ? 'bg-white border-slate-300 text-slate-900 placeholder-slate-400 focus:border-slate-900' 
+                            ? 'bg-card border-border text-foreground placeholder-slate-400 focus:border-slate-900' 
                             : 'bg-slate-950 border-slate-700 text-white placeholder-slate-500 focus:border-blue-500'
                         }`}
                       />
@@ -417,7 +417,7 @@ export default function AuthGate() {
                     type="submit"
                     className={`w-full py-2.5 px-4 rounded-lg font-bold text-sm transition-colors cursor-pointer ${
                       isLight 
-                        ? 'bg-slate-900 hover:bg-slate-800 text-white shadow-xs' 
+                        ? 'bg-primary text-primary-foreground hover:bg-primary/90 text-white shadow-xs' 
                         : 'bg-blue-600 hover:bg-blue-500 text-white'
                     }`}
                   >
@@ -437,7 +437,7 @@ export default function AuthGate() {
                     }}
                     className={`w-full py-1.5 px-2 text-[11px] rounded border font-semibold transition-colors cursor-pointer ${
                       isLight 
-                        ? 'bg-blue-50 text-blue-900 hover:bg-blue-100 border-blue-200' 
+                        ? 'bg-info-soft text-info-soft-foreground hover:bg-blue-100 border-info-soft' 
                         : 'text-blue-300 hover:text-white bg-blue-950/40 hover:bg-blue-900/60 border-blue-900/80'
                     }`}
                   >
@@ -452,7 +452,7 @@ export default function AuthGate() {
               <form onSubmit={handleCitizenRegisterSubmit} className="space-y-2.5 flex-1 flex flex-col justify-between">
                 <div className="space-y-2.5">
                   <div>
-                    <label className={`block text-xs font-bold mb-1 ${isLight ? 'text-slate-800' : 'text-slate-300'}`}>
+                    <label className={`block text-xs font-bold mb-1 ${isLight ? 'text-foreground' : 'text-slate-300'}`}>
                       {t.authFullName}
                     </label>
                     <input
@@ -463,14 +463,14 @@ export default function AuthGate() {
                       required
                       className={`w-full px-3 py-2 border rounded-lg text-sm font-medium focus:outline-none ${
                         isLight 
-                          ? 'bg-white border-slate-300 text-slate-900 placeholder-slate-400 focus:border-slate-900' 
+                          ? 'bg-card border-border text-foreground placeholder-slate-400 focus:border-slate-900' 
                           : 'bg-slate-950 border-slate-700 text-white placeholder-slate-500 focus:border-blue-500'
                       }`}
                     />
                   </div>
 
                   <div>
-                    <label className={`block text-xs font-bold mb-1 ${isLight ? 'text-slate-800' : 'text-slate-300'}`}>
+                    <label className={`block text-xs font-bold mb-1 ${isLight ? 'text-foreground' : 'text-slate-300'}`}>
                       {t.authPhone}
                     </label>
                     <input
@@ -481,14 +481,14 @@ export default function AuthGate() {
                       required
                       className={`w-full px-3 py-2 border rounded-lg text-sm font-medium focus:outline-none ${
                         isLight 
-                          ? 'bg-white border-slate-300 text-slate-900 placeholder-slate-400 focus:border-slate-900' 
+                          ? 'bg-card border-border text-foreground placeholder-slate-400 focus:border-slate-900' 
                           : 'bg-slate-950 border-slate-700 text-white placeholder-slate-500 focus:border-blue-500'
                       }`}
                     />
                   </div>
 
                   <div>
-                    <label className={`block text-xs font-bold mb-1 ${isLight ? 'text-slate-800' : 'text-slate-300'}`}>
+                    <label className={`block text-xs font-bold mb-1 ${isLight ? 'text-foreground' : 'text-slate-300'}`}>
                       {t.authDistrict}
                     </label>
                     <select
@@ -496,7 +496,7 @@ export default function AuthGate() {
                       onChange={(e) => setRegDistrict(e.target.value as District)}
                       className={`w-full px-3 py-2 border rounded-lg text-sm font-medium focus:outline-none ${
                         isLight 
-                          ? 'bg-white border-slate-300 text-slate-900 focus:border-slate-900' 
+                          ? 'bg-card border-border text-foreground focus:border-slate-900' 
                           : 'bg-slate-950 border-slate-700 text-white focus:border-blue-500'
                       }`}
                     >
@@ -514,7 +514,7 @@ export default function AuthGate() {
                     type="submit"
                     className={`w-full py-2.5 px-4 rounded-lg font-bold text-sm transition-colors cursor-pointer ${
                       isLight 
-                        ? 'bg-slate-900 hover:bg-slate-800 text-white shadow-xs' 
+                        ? 'bg-primary text-primary-foreground hover:bg-primary/90 text-white shadow-xs' 
                         : 'bg-blue-600 hover:bg-blue-500 text-white'
                     }`}
                   >
@@ -531,20 +531,20 @@ export default function AuthGate() {
           {/* ======================================================== */}
           <div className={`rounded-xl border-2 shadow-xl flex flex-col p-6 transition-all ${
             isLight
-              ? 'bg-white border-slate-300 hover:border-indigo-600 text-slate-900'
-              : 'bg-slate-900/90 backdrop-blur-md border-slate-700/80 hover:border-indigo-500/80 text-slate-100'
+              ? 'bg-card border-border hover:border-indigo-600 text-foreground'
+              : 'bg-primary text-primary-foreground/90 backdrop-blur-md border-slate-700/80 hover:border-indigo-500/80 text-slate-100'
           }`}>
             <div className="flex items-center justify-between mb-4">
               <div className={`w-12 h-12 rounded-lg flex items-center justify-center border ${
                 isLight 
-                  ? 'bg-indigo-50 border-indigo-200 text-indigo-700' 
+                  ? 'bg-info-soft border-info-soft text-indigo-700' 
                   : 'bg-indigo-600/20 border-indigo-500/50 text-indigo-400'
               }`}>
                 <Building className="w-6 h-6" />
               </div>
               <span className={`px-2.5 py-1 text-xs font-extrabold uppercase tracking-wider rounded border ${
                 isLight 
-                  ? 'bg-indigo-50 text-indigo-900 border-indigo-200' 
+                  ? 'bg-info-soft text-info-soft-foreground border-info-soft' 
                   : 'bg-indigo-900/60 text-indigo-300 border-indigo-700'
               }`}>
                 {lang === 'kz' ? 'Қызметтік рұқсат' : lang === 'en' ? 'Official Access' : 'Служебный доступ'}
@@ -555,7 +555,7 @@ export default function AuthGate() {
               {t.authRoleJkh}
             </h2>
             <p className={`text-xs mb-5 leading-relaxed min-h-[36px] font-medium ${
-              isLight ? 'text-slate-600' : 'text-slate-300'
+              isLight ? 'text-muted-foreground' : 'text-slate-300'
             }`}>
               {t.authRoleJkhDesc}
             </p>
@@ -574,38 +574,38 @@ export default function AuthGate() {
                 <ArrowRight className="w-4 h-4" />
               </button>
               <p className={`text-[11px] text-center mt-1.5 font-medium ${
-                isLight ? 'text-slate-600' : 'text-slate-400'
+                isLight ? 'text-muted-foreground' : 'text-muted-foreground'
               }`}>
                 {lang === 'kz' ? '1 басу арқылы кіру (ЖКХ 109 Диспетчері)' : lang === 'en' ? '1-click demo entry (Dispatcher 109)' : 'Вход в 1 клик для демонстрации (Диспетчер 109)'}
               </p>
             </div>
 
             <div className="relative flex py-2 items-center mb-4">
-              <div className={`flex-grow border-t ${isLight ? 'border-slate-300' : 'border-slate-700'}`}></div>
+              <div className={`flex-grow border-t ${isLight ? 'border-border' : 'border-slate-700'}`}></div>
               <span className={`flex-shrink mx-3 text-[11px] font-extrabold uppercase tracking-wider ${
-                isLight ? 'text-slate-500' : 'text-slate-400'
+                isLight ? 'text-muted-foreground' : 'text-muted-foreground'
               }`}>
                 {t.authOfficialLogin}
               </span>
-              <div className={`flex-grow border-t ${isLight ? 'border-slate-300' : 'border-slate-700'}`}></div>
+              <div className={`flex-grow border-t ${isLight ? 'border-border' : 'border-slate-700'}`}></div>
             </div>
 
             {/* ЖКХ Login Form */}
             <form onSubmit={handleJkhSubmit} className="space-y-3 flex-1 flex flex-col justify-between">
               <div className="space-y-3">
                 <div>
-                  <label className={`block text-xs font-bold mb-1 ${isLight ? 'text-slate-800' : 'text-slate-300'}`}>
+                  <label className={`block text-xs font-bold mb-1 ${isLight ? 'text-foreground' : 'text-slate-300'}`}>
                     Служебный email / логин
                   </label>
                   <div className="relative">
-                    <Mail className={`w-4 h-4 absolute left-3 top-2.5 ${isLight ? 'text-slate-500' : 'text-slate-400'}`} />
+                    <Mail className={`w-4 h-4 absolute left-3 top-2.5 ${isLight ? 'text-muted-foreground' : 'text-muted-foreground'}`} />
                     <input
                       type="text"
                       value={jkhLogin}
                       onChange={(e) => setJkhLogin(e.target.value)}
                       className={`w-full pl-9 pr-3 py-2 border rounded-lg text-sm font-mono focus:outline-none ${
                         isLight 
-                          ? 'bg-white border-slate-300 text-slate-900 focus:border-indigo-600' 
+                          ? 'bg-card border-border text-foreground focus:border-indigo-600' 
                           : 'bg-slate-950 border-slate-700 text-white focus:border-indigo-500'
                       }`}
                     />
@@ -613,18 +613,18 @@ export default function AuthGate() {
                 </div>
 
                 <div>
-                  <label className={`block text-xs font-bold mb-1 ${isLight ? 'text-slate-800' : 'text-slate-300'}`}>
+                  <label className={`block text-xs font-bold mb-1 ${isLight ? 'text-foreground' : 'text-slate-300'}`}>
                     {t.authPassword}
                   </label>
                   <div className="relative">
-                    <Lock className={`w-4 h-4 absolute left-3 top-2.5 ${isLight ? 'text-slate-500' : 'text-slate-400'}`} />
+                    <Lock className={`w-4 h-4 absolute left-3 top-2.5 ${isLight ? 'text-muted-foreground' : 'text-muted-foreground'}`} />
                     <input
                       type={showJkhPassword ? 'text' : 'password'}
                       value={jkhPassword}
                       onChange={(e) => setJkhPassword(e.target.value)}
                       className={`w-full pl-9 pr-9 py-2 border rounded-lg text-sm font-mono focus:outline-none ${
                         isLight 
-                          ? 'bg-white border-slate-300 text-slate-900 focus:border-indigo-600' 
+                          ? 'bg-card border-border text-foreground focus:border-indigo-600' 
                           : 'bg-slate-950 border-slate-700 text-white focus:border-indigo-500'
                       }`}
                     />
@@ -632,7 +632,7 @@ export default function AuthGate() {
                       type="button"
                       onClick={() => setShowJkhPassword(!showJkhPassword)}
                       className={`absolute right-3 top-2.5 cursor-pointer ${
-                        isLight ? 'text-slate-500 hover:text-slate-900' : 'text-slate-400 hover:text-white'
+                        isLight ? 'text-muted-foreground hover:text-foreground' : 'text-muted-foreground hover:text-white'
                       }`}
                     >
                       {showJkhPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
@@ -646,8 +646,8 @@ export default function AuthGate() {
                   type="submit"
                   className={`w-full py-2.5 px-4 rounded-lg font-bold text-sm border transition-colors cursor-pointer ${
                     isLight 
-                      ? 'bg-slate-900 hover:bg-slate-800 text-white border-slate-800 shadow-xs' 
-                      : 'bg-slate-800 hover:bg-slate-700 text-white border-slate-600'
+                      ? 'bg-primary text-primary-foreground hover:bg-primary/90 text-white border-slate-800 shadow-xs' 
+                      : 'bg-primary/90 hover:bg-slate-700 text-white border-slate-600'
                   }`}
                 >
                   {t.authLoginBtn}
@@ -662,20 +662,20 @@ export default function AuthGate() {
           {/* ======================================================== */}
           <div className={`rounded-xl border-2 shadow-xl flex flex-col p-6 transition-all ${
             isLight
-              ? 'bg-white border-slate-300 hover:border-emerald-600 text-slate-900'
-              : 'bg-slate-900/90 backdrop-blur-md border-slate-700/80 hover:border-emerald-500/80 text-slate-100'
+              ? 'bg-card border-border hover:border-emerald-600 text-foreground'
+              : 'bg-primary text-primary-foreground/90 backdrop-blur-md border-slate-700/80 hover:border-emerald-500/80 text-slate-100'
           }`}>
             <div className="flex items-center justify-between mb-4">
               <div className={`w-12 h-12 rounded-lg flex items-center justify-center border ${
                 isLight 
-                  ? 'bg-emerald-50 border-emerald-200 text-emerald-700' 
+                  ? 'bg-success-soft border-success-soft text-emerald-700' 
                   : 'bg-emerald-600/20 border-emerald-500/50 text-emerald-400'
               }`}>
                 <ShieldCheck className="w-6 h-6" />
               </div>
               <span className={`px-2.5 py-1 text-xs font-extrabold uppercase tracking-wider rounded border ${
                 isLight 
-                  ? 'bg-emerald-50 text-emerald-900 border-emerald-200' 
+                  ? 'bg-success-soft text-success-soft-foreground border-success-soft' 
                   : 'bg-emerald-900/60 text-emerald-300 border-emerald-700'
               }`}>
                 {lang === 'kz' ? 'Қалалық аудит' : lang === 'en' ? 'City Audit' : 'Городской аудит'}
@@ -686,7 +686,7 @@ export default function AuthGate() {
               {t.authRoleAdmin}
             </h2>
             <p className={`text-xs mb-5 leading-relaxed min-h-[36px] font-medium ${
-              isLight ? 'text-slate-600' : 'text-slate-300'
+              isLight ? 'text-muted-foreground' : 'text-slate-300'
             }`}>
               {t.authRoleAdminDesc}
             </p>
@@ -705,38 +705,38 @@ export default function AuthGate() {
                 <ArrowRight className="w-4 h-4" />
               </button>
               <p className={`text-[11px] text-center mt-1.5 font-medium ${
-                isLight ? 'text-slate-600' : 'text-slate-400'
+                isLight ? 'text-muted-foreground' : 'text-muted-foreground'
               }`}>
                 {lang === 'kz' ? '1 басу арқылы кіру (Әкімдік инспекторы)' : lang === 'en' ? '1-click demo entry (City Inspector)' : 'Вход в 1 клик для демонстрации (Инспектор Акимата)'}
               </p>
             </div>
 
             <div className="relative flex py-2 items-center mb-4">
-              <div className={`flex-grow border-t ${isLight ? 'border-slate-300' : 'border-slate-700'}`}></div>
+              <div className={`flex-grow border-t ${isLight ? 'border-border' : 'border-slate-700'}`}></div>
               <span className={`flex-shrink mx-3 text-[11px] font-extrabold uppercase tracking-wider ${
-                isLight ? 'text-slate-500' : 'text-slate-400'
+                isLight ? 'text-muted-foreground' : 'text-muted-foreground'
               }`}>
                 {t.authOfficialLogin}
               </span>
-              <div className={`flex-grow border-t ${isLight ? 'border-slate-300' : 'border-slate-700'}`}></div>
+              <div className={`flex-grow border-t ${isLight ? 'border-border' : 'border-slate-700'}`}></div>
             </div>
 
             {/* Admin Login Form */}
             <form onSubmit={handleAdminSubmit} className="space-y-3 flex-1 flex flex-col justify-between">
               <div className="space-y-3">
                 <div>
-                  <label className={`block text-xs font-bold mb-1 ${isLight ? 'text-slate-800' : 'text-slate-300'}`}>
+                  <label className={`block text-xs font-bold mb-1 ${isLight ? 'text-foreground' : 'text-slate-300'}`}>
                     Служебный email / логин
                   </label>
                   <div className="relative">
-                    <Mail className={`w-4 h-4 absolute left-3 top-2.5 ${isLight ? 'text-slate-500' : 'text-slate-400'}`} />
+                    <Mail className={`w-4 h-4 absolute left-3 top-2.5 ${isLight ? 'text-muted-foreground' : 'text-muted-foreground'}`} />
                     <input
                       type="text"
                       value={adminLogin}
                       onChange={(e) => setAdminLogin(e.target.value)}
                       className={`w-full pl-9 pr-3 py-2 border rounded-lg text-sm font-mono focus:outline-none ${
                         isLight 
-                          ? 'bg-white border-slate-300 text-slate-900 focus:border-emerald-600' 
+                          ? 'bg-card border-border text-foreground focus:border-emerald-600' 
                           : 'bg-slate-950 border-slate-700 text-white focus:border-emerald-500'
                       }`}
                     />
@@ -744,18 +744,18 @@ export default function AuthGate() {
                 </div>
 
                 <div>
-                  <label className={`block text-xs font-bold mb-1 ${isLight ? 'text-slate-800' : 'text-slate-300'}`}>
+                  <label className={`block text-xs font-bold mb-1 ${isLight ? 'text-foreground' : 'text-slate-300'}`}>
                     {t.authPassword}
                   </label>
                   <div className="relative">
-                    <Lock className={`w-4 h-4 absolute left-3 top-2.5 ${isLight ? 'text-slate-500' : 'text-slate-400'}`} />
+                    <Lock className={`w-4 h-4 absolute left-3 top-2.5 ${isLight ? 'text-muted-foreground' : 'text-muted-foreground'}`} />
                     <input
                       type={showAdminPassword ? 'text' : 'password'}
                       value={adminPassword}
                       onChange={(e) => setAdminPassword(e.target.value)}
                       className={`w-full pl-9 pr-9 py-2 border rounded-lg text-sm font-mono focus:outline-none ${
                         isLight 
-                          ? 'bg-white border-slate-300 text-slate-900 focus:border-emerald-600' 
+                          ? 'bg-card border-border text-foreground focus:border-emerald-600' 
                           : 'bg-slate-950 border-slate-700 text-white focus:border-emerald-500'
                       }`}
                     />
@@ -763,7 +763,7 @@ export default function AuthGate() {
                       type="button"
                       onClick={() => setShowAdminPassword(!showAdminPassword)}
                       className={`absolute right-3 top-2.5 cursor-pointer ${
-                        isLight ? 'text-slate-500 hover:text-slate-900' : 'text-slate-400 hover:text-white'
+                        isLight ? 'text-muted-foreground hover:text-foreground' : 'text-muted-foreground hover:text-white'
                       }`}
                     >
                       {showAdminPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
@@ -777,8 +777,8 @@ export default function AuthGate() {
                   type="submit"
                   className={`w-full py-2.5 px-4 rounded-lg font-bold text-sm border transition-colors cursor-pointer ${
                     isLight 
-                      ? 'bg-slate-900 hover:bg-slate-800 text-white border-slate-800 shadow-xs' 
-                      : 'bg-slate-800 hover:bg-slate-700 text-white border-slate-600'
+                      ? 'bg-primary text-primary-foreground hover:bg-primary/90 text-white border-slate-800 shadow-xs' 
+                      : 'bg-primary/90 hover:bg-slate-700 text-white border-slate-600'
                   }`}
                 >
                   {t.authLoginBtn}
@@ -794,8 +794,8 @@ export default function AuthGate() {
       {/* FOOTER: Official Project Credentials & Feedback */}
       <footer className={`relative z-10 border-t py-4 text-xs transition-colors ${
         isLight 
-          ? 'border-slate-300 bg-white/95 text-slate-600 shadow-xs' 
-          : 'border-slate-800/80 bg-slate-950/80 text-slate-400 backdrop-blur-md'
+          ? 'border-border bg-card/95 text-muted-foreground shadow-xs' 
+          : 'border-slate-800/80 bg-slate-950/80 text-muted-foreground backdrop-blur-md'
       }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-2">
@@ -809,7 +809,7 @@ export default function AuthGate() {
             <span>Техподдержка разработчиков:</span>
             <a 
               href="mailto:dev@smartqala-semey.kz" 
-              className={`font-mono underline ${isLight ? 'text-blue-700 hover:text-blue-900 font-bold' : 'text-blue-400 hover:text-blue-300'}`}
+              className={`font-mono underline ${isLight ? 'text-blue-700 hover:text-info-soft-foreground font-bold' : 'text-blue-400 hover:text-blue-300'}`}
             >
               dev@smartqala-semey.kz
             </a>

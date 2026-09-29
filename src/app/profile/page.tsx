@@ -46,31 +46,31 @@ export default function ProfilePage() {
   });
 
   return (
-    <div className="flex flex-col min-h-screen bg-gray-50 text-gray-900">
+    <div className="flex flex-col min-h-screen bg-muted text-gray-900">
       <Navbar />
 
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
         
         {/* Profile Card Header */}
-        <div className="bg-white rounded-md border border-gray-200 p-6 shadow-2xs">
+        <div className="bg-card rounded-md border border-gray-200 p-6 shadow-2xs">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div className="flex items-start gap-4">
-              <div className="w-16 h-16 rounded-md bg-slate-900 text-white flex items-center justify-center font-bold text-2xl shrink-0">
+              <div className="w-16 h-16 rounded-md bg-primary text-primary-foreground flex items-center justify-center font-bold text-2xl shrink-0">
                 {user.name.charAt(0)}
               </div>
               <div>
                 <div className="flex items-center gap-2 flex-wrap">
-                  <h1 className="text-xl sm:text-2xl font-extrabold text-slate-900">
+                  <h1 className="text-xl sm:text-2xl font-extrabold text-foreground">
                     {user.name}
                   </h1>
-                  <span className="px-2 py-0.5 text-xs font-semibold rounded bg-slate-100 text-slate-800 border border-slate-200">
+                  <span className="px-2 py-0.5 text-xs font-semibold rounded bg-slate-100 text-foreground border border-border">
                     {user.roleTitle}
                   </span>
                 </div>
                 
-                <div className="flex flex-wrap items-center gap-4 text-xs text-slate-500 mt-2">
+                <div className="flex flex-wrap items-center gap-4 text-xs text-muted-foreground mt-2">
                   <span className="flex items-center gap-1">
-                    <MapPin className="w-3.5 h-3.5 text-slate-400" />
+                    <MapPin className="w-3.5 h-3.5 text-muted-foreground" />
                     <span>г. Семей, район {user.district}</span>
                   </span>
                   <span>•</span>
@@ -85,7 +85,7 @@ export default function ProfilePage() {
             <div className="flex flex-wrap items-center gap-2">
               <Link
                 href="/create"
-                className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded-md bg-slate-900 text-white hover:bg-slate-800 transition-colors shadow-xs"
+                className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors shadow-xs"
               >
                 <PlusCircle className="w-4 h-4 text-white" />
                 <span>Новое обращение</span>
@@ -95,37 +95,37 @@ export default function ProfilePage() {
 
           {/* Quick Stats Grid */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6 pt-6 border-t border-gray-100">
-            <div className="p-3 bg-gray-50 rounded-md border border-gray-200">
-              <div className="text-[11px] font-semibold text-slate-500 uppercase">Подано обращений</div>
-              <div className="text-xl font-bold text-slate-900 mt-0.5">{userRequests.length}</div>
+            <div className="p-3 bg-muted rounded-md border border-gray-200">
+              <div className="text-[11px] font-semibold text-muted-foreground uppercase">Подано обращений</div>
+              <div className="text-xl font-bold text-foreground mt-0.5">{userRequests.length}</div>
             </div>
-            <div className="p-3 bg-gray-50 rounded-md border border-gray-200">
+            <div className="p-3 bg-muted rounded-md border border-gray-200">
               <div className="text-[11px] font-semibold text-indigo-700 uppercase">В работе</div>
               <div className="text-xl font-bold text-indigo-700 mt-0.5">
                 {userRequests.filter((r) => r.status === 'in_progress' || r.status === 'assigned').length}
               </div>
             </div>
-            <div className="p-3 bg-gray-50 rounded-md border border-gray-200">
+            <div className="p-3 bg-muted rounded-md border border-gray-200">
               <div className="text-[11px] font-semibold text-emerald-700 uppercase">Успешно решено</div>
               <div className="text-xl font-bold text-emerald-700 mt-0.5">
                 {userRequests.filter((r) => r.status === 'resolved').length}
               </div>
             </div>
-            <div className="p-3 bg-gray-50 rounded-md border border-gray-200">
-              <div className="text-[11px] font-semibold text-slate-500 uppercase">Поддержано чужих тем</div>
-              <div className="text-xl font-bold text-slate-900 mt-0.5">{upvotedIds.size}</div>
+            <div className="p-3 bg-muted rounded-md border border-gray-200">
+              <div className="text-[11px] font-semibold text-muted-foreground uppercase">Поддержано чужих тем</div>
+              <div className="text-xl font-bold text-foreground mt-0.5">{upvotedIds.size}</div>
             </div>
           </div>
         </div>
 
         {/* My Requests Section */}
-        <div className="bg-white rounded-md border border-gray-200 p-6 shadow-2xs space-y-4">
+        <div className="bg-card rounded-md border border-gray-200 p-6 shadow-2xs space-y-4">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-gray-200 gap-3">
             <div>
-              <h2 className="text-lg font-bold text-slate-900">
+              <h2 className="text-lg font-bold text-foreground">
                 Мои зарегистрированные обращения и идеи
               </h2>
-              <p className="text-xs text-slate-500 mt-0.5">
+              <p className="text-xs text-muted-foreground mt-0.5">
                 Отслеживание этапов рассмотрения и фотоотчетов городских служб
               </p>
             </div>
@@ -136,7 +136,7 @@ export default function ProfilePage() {
                 type="button"
                 onClick={() => setFilterTab('all')}
                 className={`px-3 py-1 rounded transition-colors ${
-                  filterTab === 'all' ? 'bg-white text-slate-900 font-semibold shadow-2xs' : 'text-slate-600'
+                  filterTab === 'all' ? 'bg-card text-foreground font-semibold shadow-2xs' : 'text-muted-foreground'
                 }`}
               >
                 Все ({userRequests.length})
@@ -145,7 +145,7 @@ export default function ProfilePage() {
                 type="button"
                 onClick={() => setFilterTab('in_progress')}
                 className={`px-3 py-1 rounded transition-colors ${
-                  filterTab === 'in_progress' ? 'bg-white text-slate-900 font-semibold shadow-2xs' : 'text-slate-600'
+                  filterTab === 'in_progress' ? 'bg-card text-foreground font-semibold shadow-2xs' : 'text-muted-foreground'
                 }`}
               >
                 В работе
@@ -154,7 +154,7 @@ export default function ProfilePage() {
                 type="button"
                 onClick={() => setFilterTab('resolved')}
                 className={`px-3 py-1 rounded transition-colors ${
-                  filterTab === 'resolved' ? 'bg-white text-slate-900 font-semibold shadow-2xs' : 'text-slate-600'
+                  filterTab === 'resolved' ? 'bg-card text-foreground font-semibold shadow-2xs' : 'text-muted-foreground'
                 }`}
               >
                 Решенные
@@ -163,7 +163,7 @@ export default function ProfilePage() {
                 type="button"
                 onClick={() => setFilterTab('ideas')}
                 className={`px-3 py-1 rounded transition-colors ${
-                  filterTab === 'ideas' ? 'bg-white text-slate-900 font-semibold shadow-2xs' : 'text-slate-600'
+                  filterTab === 'ideas' ? 'bg-card text-foreground font-semibold shadow-2xs' : 'text-muted-foreground'
                 }`}
               >
                 Идеи
@@ -173,10 +173,10 @@ export default function ProfilePage() {
 
           {/* List of Requests */}
           {loading ? (
-            <div className="py-12 text-center text-xs text-slate-500">Загрузка обращений...</div>
+            <div className="py-12 text-center text-xs text-muted-foreground">Загрузка обращений...</div>
           ) : filtered.length === 0 ? (
-            <div className="py-12 text-center text-slate-500 bg-gray-50 rounded-md border border-dashed border-gray-300">
-              <CheckCircle2 className="w-8 h-8 text-slate-400 mx-auto mb-2" />
+            <div className="py-12 text-center text-muted-foreground bg-muted rounded-md border border-dashed border-gray-300">
+              <CheckCircle2 className="w-8 h-8 text-muted-foreground mx-auto mb-2" />
               <p className="text-xs font-medium">Нет обращений в данной вкладке.</p>
             </div>
           ) : (
@@ -184,11 +184,11 @@ export default function ProfilePage() {
               {filtered.map((req) => (
                 <div
                   key={req.id}
-                  className="bg-white p-4 sm:p-5 rounded-md border border-gray-200 hover:border-slate-300 transition-colors space-y-4"
+                  className="bg-card p-4 sm:p-5 rounded-md border border-gray-200 hover:border-border transition-colors space-y-4"
                 >
                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-2">
                     <div className="flex items-center gap-2 flex-wrap">
-                      <span className="font-mono text-xs font-bold text-slate-900 bg-slate-100 px-2 py-0.5 rounded">
+                      <span className="font-mono text-xs font-bold text-foreground bg-slate-100 px-2 py-0.5 rounded">
                         {req.id}
                       </span>
                       <StatusBadge status={req.status} />
@@ -196,46 +196,46 @@ export default function ProfilePage() {
                       <DepartmentBadge department={req.department} />
                     </div>
 
-                    <div className="flex items-center gap-2 text-[11px] font-mono text-slate-400">
-                      <Calendar className="w-3.5 h-3.5 text-slate-400" />
+                    <div className="flex items-center gap-2 text-[11px] font-mono text-muted-foreground">
+                      <Calendar className="w-3.5 h-3.5 text-muted-foreground" />
                       <span>{new Date(req.created_at).toLocaleDateString('ru-RU')}</span>
                     </div>
                   </div>
 
                   <div>
-                    <h3 className="text-sm font-bold text-slate-900">
+                    <h3 className="text-sm font-bold text-foreground">
                       {req.title}
                     </h3>
-                    <p className="text-xs text-slate-600 mt-1 line-clamp-2 leading-relaxed">
+                    <p className="text-xs text-muted-foreground mt-1 line-clamp-2 leading-relaxed">
                       {req.cleaned_text}
                     </p>
-                    <div className="flex items-center gap-1.5 text-xs text-slate-500 mt-2">
-                      <MapPin className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                    <div className="flex items-center gap-1.5 text-xs text-muted-foreground mt-2">
+                      <MapPin className="w-3.5 h-3.5 text-muted-foreground shrink-0" />
                       <span>{req.location_address}</span>
                     </div>
                   </div>
 
                   {/* Lifecycle Stepper */}
                   <div className="pt-3 border-t border-gray-100">
-                    <div className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-2">
+                    <div className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wider mb-2">
                       Этап исполнения:
                     </div>
                     <div className="grid grid-cols-4 gap-1 text-[11px]">
-                      <div className="p-2 rounded bg-slate-900 text-white font-medium text-center">
+                      <div className="p-2 rounded bg-primary text-primary-foreground font-medium text-center">
                         1. Зарегистрировано
                       </div>
                       <div className={`p-2 rounded text-center font-medium ${
-                        req.status !== 'new' ? 'bg-slate-900 text-white' : 'bg-gray-100 text-slate-400'
+                        req.status !== 'new' ? 'bg-primary text-primary-foreground' : 'bg-gray-100 text-muted-foreground'
                       }`}>
                         2. Назначено в отдел
                       </div>
                       <div className={`p-2 rounded text-center font-medium ${
-                        req.status === 'in_progress' || req.status === 'resolved' ? 'bg-slate-900 text-white' : 'bg-gray-100 text-slate-400'
+                        req.status === 'in_progress' || req.status === 'resolved' ? 'bg-primary text-primary-foreground' : 'bg-gray-100 text-muted-foreground'
                       }`}>
                         3. Бригада на выезде
                       </div>
                       <div className={`p-2 rounded text-center font-medium ${
-                        req.status === 'resolved' ? 'bg-emerald-700 text-white' : 'bg-gray-100 text-slate-400'
+                        req.status === 'resolved' ? 'bg-emerald-700 text-white' : 'bg-gray-100 text-muted-foreground'
                       }`}>
                         4. Устранено с фото
                       </div>
@@ -244,14 +244,14 @@ export default function ProfilePage() {
 
                   {/* Actions */}
                   <div className="pt-2 flex items-center justify-between text-xs">
-                    <span className="text-slate-500 flex items-center gap-1">
-                      <ThumbsUp className="w-3.5 h-3.5 text-slate-400" />
+                    <span className="text-muted-foreground flex items-center gap-1">
+                      <ThumbsUp className="w-3.5 h-3.5 text-muted-foreground" />
                       <span>Поддержали жители: <b>{req.upvotes || 1}</b></span>
                     </span>
 
                     <Link
                       href={`/requests/${req.id}`}
-                      className="inline-flex items-center gap-1 font-semibold text-slate-900 hover:underline"
+                      className="inline-flex items-center gap-1 font-semibold text-foreground hover:underline"
                     >
                       <span>Открыть карточку с фото</span>
                       <ArrowRight className="w-3.5 h-3.5" />

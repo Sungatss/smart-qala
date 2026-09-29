@@ -147,35 +147,35 @@ export default function AuthModal() {
     >
       <div 
         onClick={(e) => e.stopPropagation()}
-        className="w-full max-w-xl bg-white rounded-lg border-2 border-slate-300 shadow-2xl p-6 sm:p-8 animate-in fade-in zoom-in-95 duration-150 my-auto cursor-default"
+        className="w-full max-w-xl bg-card rounded-lg border-2 border-border shadow-2xl p-6 sm:p-8 animate-in fade-in zoom-in-95 duration-150 my-auto cursor-default"
       >
         
         {/* Header */}
-        <div className="relative pb-5 border-b-2 border-slate-200 text-center">
+        <div className="relative pb-5 border-b-2 border-border text-center">
           <button
             type="button"
             onClick={closeAuthModal}
-            className="absolute right-0 top-0 p-2 text-slate-700 hover:text-black rounded-lg hover:bg-slate-100 cursor-pointer"
+            className="absolute right-0 top-0 p-2 text-muted-foreground hover:text-black rounded-lg hover:bg-slate-100 cursor-pointer"
             title="Закрыть окно (продолжить как гость)"
           >
             <X className="w-5 h-5" />
           </button>
 
-          <div className="w-12 h-12 rounded-lg bg-slate-900 text-white flex items-center justify-center font-bold text-xl border-2 border-slate-800 mx-auto mb-3 shadow-xs">
+          <div className="w-12 h-12 rounded-lg bg-primary text-primary-foreground flex items-center justify-center font-bold text-xl border-2 border-slate-800 mx-auto mb-3 shadow-xs">
             <Building2 className="w-6 h-6 text-white" />
           </div>
           
-          <h1 className="text-2xl font-extrabold text-slate-900 tracking-tight">
+          <h1 className="text-2xl font-extrabold text-foreground tracking-tight">
             Smart Qala • Семей
           </h1>
-          <p className="text-sm font-semibold text-slate-800 mt-1">
+          <p className="text-sm font-semibold text-foreground mt-1">
             Единая система взаимодействия жителей и органов города
           </p>
         </div>
 
         {/* STEP 1: SELECT ROLE (3 кнопки-роли) */}
         <div className="pt-5">
-          <label className="block text-xs font-bold text-slate-900 uppercase tracking-wider mb-2.5">
+          <label className="block text-xs font-bold text-foreground uppercase tracking-wider mb-2.5">
             1. Выберите категорию доступа:
           </label>
 
@@ -190,17 +190,17 @@ export default function AuthModal() {
               }}
               className={`p-3.5 rounded-lg border-2 text-left transition-all cursor-pointer flex flex-col justify-between ${
                 selectedRole === 'citizen'
-                  ? 'border-blue-700 bg-blue-50/70 ring-2 ring-blue-700/20 shadow-xs'
-                  : 'border-slate-200 bg-white hover:border-slate-300'
+                  ? 'border-blue-700 bg-info-soft/70 ring-2 ring-blue-700/20 shadow-xs'
+                  : 'border-border bg-card hover:border-border'
               }`}
             >
               <div className={`w-9 h-9 rounded-lg flex items-center justify-center mb-2 ${
-                selectedRole === 'citizen' ? 'bg-blue-900 text-white' : 'bg-slate-100 text-slate-800'
+                selectedRole === 'citizen' ? 'bg-blue-900 text-white' : 'bg-slate-100 text-foreground'
               }`}>
                 <User className="w-5 h-5" />
               </div>
-              <div className="font-extrabold text-sm text-slate-900">Гражданин</div>
-              <div className="text-xs font-semibold text-slate-700 mt-0.5">Жители г. Семей</div>
+              <div className="font-extrabold text-sm text-foreground">Гражданин</div>
+              <div className="text-xs font-semibold text-muted-foreground mt-0.5">Жители г. Семей</div>
             </button>
 
             {/* Role: Housing (ЖКХ) */}
@@ -213,17 +213,17 @@ export default function AuthModal() {
               }}
               className={`p-3.5 rounded-lg border-2 text-left transition-all cursor-pointer flex flex-col justify-between ${
                 selectedRole === 'employee'
-                  ? 'border-indigo-700 bg-indigo-50/70 ring-2 ring-indigo-700/20 shadow-xs'
-                  : 'border-slate-200 bg-white hover:border-slate-300'
+                  ? 'border-indigo-700 bg-info-soft/70 ring-2 ring-indigo-700/20 shadow-xs'
+                  : 'border-border bg-card hover:border-border'
               }`}
             >
               <div className={`w-9 h-9 rounded-lg flex items-center justify-center mb-2 ${
-                selectedRole === 'employee' ? 'bg-indigo-900 text-white' : 'bg-slate-100 text-slate-800'
+                selectedRole === 'employee' ? 'bg-indigo-900 text-white' : 'bg-slate-100 text-foreground'
               }`}>
                 <Building className="w-5 h-5" />
               </div>
-              <div className="font-extrabold text-sm text-slate-900">Служба ЖКХ</div>
-              <div className="text-xs font-semibold text-slate-700 mt-0.5">Контакт-центр 109</div>
+              <div className="font-extrabold text-sm text-foreground">Служба ЖКХ</div>
+              <div className="text-xs font-semibold text-muted-foreground mt-0.5">Контакт-центр 109</div>
             </button>
 
             {/* Role: Administration */}
@@ -236,17 +236,17 @@ export default function AuthModal() {
               }}
               className={`p-3.5 rounded-lg border-2 text-left transition-all cursor-pointer flex flex-col justify-between ${
                 selectedRole === 'admin'
-                  ? 'border-emerald-700 bg-emerald-50/70 ring-2 ring-emerald-700/20 shadow-xs'
-                  : 'border-slate-200 bg-white hover:border-slate-300'
+                  ? 'border-emerald-700 bg-success-soft/70 ring-2 ring-emerald-700/20 shadow-xs'
+                  : 'border-border bg-card hover:border-border'
               }`}
             >
               <div className={`w-9 h-9 rounded-lg flex items-center justify-center mb-2 ${
-                selectedRole === 'admin' ? 'bg-emerald-900 text-white' : 'bg-slate-100 text-slate-800'
+                selectedRole === 'admin' ? 'bg-emerald-900 text-white' : 'bg-slate-100 text-foreground'
               }`}>
                 <ShieldCheck className="w-5 h-5" />
               </div>
-              <div className="font-extrabold text-sm text-slate-900">Акимат</div>
-              <div className="text-xs font-semibold text-slate-700 mt-0.5">Администрация</div>
+              <div className="font-extrabold text-sm text-foreground">Акимат</div>
+              <div className="text-xs font-semibold text-muted-foreground mt-0.5">Администрация</div>
             </button>
 
           </div>
@@ -254,13 +254,13 @@ export default function AuthModal() {
 
         {/* Error notification if any */}
         {errorMsg && (
-          <div className="mt-4 p-3 bg-red-50 border-2 border-red-300 text-red-950 rounded-lg text-xs font-bold">
+          <div className="mt-4 p-3 bg-danger-soft border-2 border-danger-soft text-danger-soft-foreground rounded-lg text-xs font-bold">
             {errorMsg}
           </div>
         )}
 
         {/* STEP 2: FORMS BY ROLE */}
-        <div className="mt-6 pt-5 border-t-2 border-slate-200">
+        <div className="mt-6 pt-5 border-t-2 border-border">
           
           {/* ========================================================
               ROLE A: CITIZEN (Житель) — Войти / Регистрация / Гость
@@ -268,7 +268,7 @@ export default function AuthModal() {
           {selectedRole === 'citizen' && (
             <div>
               {/* Tabs: Login vs Register */}
-              <div className="flex border-b-2 border-slate-200 mb-5">
+              <div className="flex border-b-2 border-border mb-5">
                 <button
                   type="button"
                   onClick={() => {
@@ -277,8 +277,8 @@ export default function AuthModal() {
                   }}
                   className={`flex-1 py-2.5 text-sm font-bold text-center border-b-2 transition-colors cursor-pointer ${
                     citizenTab === 'login'
-                      ? 'border-slate-900 text-slate-900 font-extrabold'
-                      : 'border-transparent text-slate-700 hover:text-black'
+                      ? 'border-slate-900 text-foreground font-extrabold'
+                      : 'border-transparent text-muted-foreground hover:text-black'
                   }`}
                 >
                   Вход для жителей
@@ -291,8 +291,8 @@ export default function AuthModal() {
                   }}
                   className={`flex-1 py-2.5 text-sm font-bold text-center border-b-2 transition-colors cursor-pointer ${
                     citizenTab === 'register'
-                      ? 'border-slate-900 text-slate-900 font-extrabold'
-                      : 'border-transparent text-slate-700 hover:text-black'
+                      ? 'border-slate-900 text-foreground font-extrabold'
+                      : 'border-transparent text-muted-foreground hover:text-black'
                   }`}
                 >
                   Создать профиль (Регистрация)
@@ -303,40 +303,40 @@ export default function AuthModal() {
               {citizenTab === 'login' && (
                 <form onSubmit={handleCitizenLoginSubmit} className="space-y-4">
                   <div>
-                    <label className="block text-xs font-bold text-slate-900 uppercase tracking-wide mb-1">
+                    <label className="block text-xs font-bold text-foreground uppercase tracking-wide mb-1">
                       Номер телефона или Email
                     </label>
                     <div className="relative">
-                      <Phone className="w-4 h-4 text-slate-700 absolute left-3 top-3.5" />
+                      <Phone className="w-4 h-4 text-muted-foreground absolute left-3 top-3.5" />
                       <input
                         type="text"
                         required
                         value={citizenLoginInput}
                         onChange={(e) => setCitizenLoginInput(e.target.value)}
                         placeholder="+7 (705) 412-88-99 или email"
-                        className="w-full pl-9 pr-3 py-2.5 text-sm rounded-lg border-2 border-slate-300 font-medium text-slate-900 focus:outline-none focus:border-slate-900"
+                        className="w-full pl-9 pr-3 py-2.5 text-sm rounded-lg border-2 border-border font-medium text-foreground focus:outline-none focus:border-slate-900"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-slate-900 uppercase tracking-wide mb-1">
+                    <label className="block text-xs font-bold text-foreground uppercase tracking-wide mb-1">
                       Пароль
                     </label>
                     <div className="relative">
-                      <Lock className="w-4 h-4 text-slate-700 absolute left-3 top-3.5" />
+                      <Lock className="w-4 h-4 text-muted-foreground absolute left-3 top-3.5" />
                       <input
                         type={showPassword ? 'text' : 'password'}
                         required
                         value={citizenPassword}
                         onChange={(e) => setCitizenPassword(e.target.value)}
                         placeholder="••••••••"
-                        className="w-full pl-9 pr-10 py-2.5 text-sm rounded-lg border-2 border-slate-300 font-medium text-slate-900 focus:outline-none focus:border-slate-900"
+                        className="w-full pl-9 pr-10 py-2.5 text-sm rounded-lg border-2 border-border font-medium text-foreground focus:outline-none focus:border-slate-900"
                       />
                       <button
                         type="button"
                         onClick={() => setShowPassword(!showPassword)}
-                        className="absolute right-3 top-3 text-slate-700 hover:text-black"
+                        className="absolute right-3 top-3 text-muted-foreground hover:text-black"
                       >
                         {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                       </button>
@@ -345,7 +345,7 @@ export default function AuthModal() {
 
                   <button
                     type="submit"
-                    className="w-full py-3.5 px-4 rounded-lg bg-slate-900 text-white font-bold text-sm hover:bg-slate-800 transition-colors shadow-sm flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full py-3.5 px-4 rounded-lg bg-primary text-primary-foreground font-bold text-sm hover:bg-primary/90 transition-colors shadow-sm flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <span>Войти в личный кабинет</span>
                     <ArrowRight className="w-4 h-4 text-white" />
@@ -363,7 +363,7 @@ export default function AuthModal() {
                         email: 'azamat.s@mail.kz'
                       });
                     }}
-                    className="w-full py-2.5 px-3 text-xs font-bold text-blue-950 bg-blue-50 border border-blue-300 rounded-lg hover:bg-blue-100 transition-colors cursor-pointer"
+                    className="w-full py-2.5 px-3 text-xs font-bold text-info-soft-foreground bg-info-soft border border-info-soft rounded-lg hover:bg-blue-100 transition-colors cursor-pointer"
                   >
                     ⚡ Быстрый вход жителя (Азамат Султанов)
                   </button>
@@ -371,22 +371,22 @@ export default function AuthModal() {
                   {/* OR GUEST LOGIN */}
                   <div className="relative pt-3">
                     <div className="absolute inset-0 flex items-center">
-                      <div className="w-full border-t border-slate-200"></div>
+                      <div className="w-full border-t border-border"></div>
                     </div>
                     <div className="relative flex justify-center text-xs uppercase">
-                      <span className="bg-white px-2 text-slate-700 font-bold">или без авторизации</span>
+                      <span className="bg-card px-2 text-muted-foreground font-bold">или без авторизации</span>
                     </div>
                   </div>
 
                   <button
                     type="button"
                     onClick={loginAsGuest}
-                    className="w-full py-3 px-4 rounded-lg bg-white text-slate-900 font-extrabold text-sm border-2 border-slate-300 hover:bg-slate-100 transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-2xs"
+                    className="w-full py-3 px-4 rounded-lg bg-card text-foreground font-extrabold text-sm border-2 border-border hover:bg-slate-100 transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-2xs"
                   >
-                    <Compass className="w-4 h-4 text-slate-800" />
+                    <Compass className="w-4 h-4 text-foreground" />
                     <span>Войти как гость (Только просмотр)</span>
                   </button>
-                  <p className="text-[11px] text-center text-slate-700 font-medium">
+                  <p className="text-[11px] text-center text-muted-foreground font-medium">
                     В режиме гостя доступен просмотр карты и витрины. Для подачи заявки потребуется регистрация.
                   </p>
                 </form>
@@ -396,7 +396,7 @@ export default function AuthModal() {
               {citizenTab === 'register' && (
                 <form onSubmit={handleCitizenRegisterSubmit} className="space-y-3.5">
                   <div>
-                    <label className="block text-xs font-bold text-slate-900 uppercase tracking-wide mb-1">
+                    <label className="block text-xs font-bold text-foreground uppercase tracking-wide mb-1">
                       ФИО жителя <span className="text-red-600">*</span>
                     </label>
                     <input
@@ -405,13 +405,13 @@ export default function AuthModal() {
                       value={regName}
                       onChange={(e) => setRegName(e.target.value)}
                       placeholder="Например: Арман Серикович Жолдасов"
-                      className="w-full p-2.5 text-sm rounded-lg border-2 border-slate-300 font-medium text-slate-900 focus:outline-none focus:border-slate-900"
+                      className="w-full p-2.5 text-sm rounded-lg border-2 border-border font-medium text-foreground focus:outline-none focus:border-slate-900"
                     />
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
-                      <label className="block text-xs font-bold text-slate-900 uppercase tracking-wide mb-1">
+                      <label className="block text-xs font-bold text-foreground uppercase tracking-wide mb-1">
                         Номер телефона <span className="text-red-600">*</span>
                       </label>
                       <input
@@ -420,18 +420,18 @@ export default function AuthModal() {
                         value={regPhone}
                         onChange={(e) => setRegPhone(e.target.value)}
                         placeholder="+7 (777) 123-45-67"
-                        className="w-full p-2.5 text-sm rounded-lg border-2 border-slate-300 font-medium text-slate-900 focus:outline-none focus:border-slate-900"
+                        className="w-full p-2.5 text-sm rounded-lg border-2 border-border font-medium text-foreground focus:outline-none focus:border-slate-900"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-xs font-bold text-slate-900 uppercase tracking-wide mb-1">
+                      <label className="block text-xs font-bold text-foreground uppercase tracking-wide mb-1">
                         Район проживания
                       </label>
                       <select
                         value={regDistrict}
                         onChange={(e) => setRegDistrict(e.target.value as District)}
-                        className="w-full p-2.5 text-sm rounded-lg border-2 border-slate-300 font-bold text-slate-900 bg-white"
+                        className="w-full p-2.5 text-sm rounded-lg border-2 border-border font-bold text-foreground bg-card"
                       >
                         <option value="Центральный">Центральный</option>
                         <option value="Левобережный">Левобережный</option>
@@ -443,7 +443,7 @@ export default function AuthModal() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-slate-900 uppercase tracking-wide mb-1">
+                    <label className="block text-xs font-bold text-foreground uppercase tracking-wide mb-1">
                       Email (для уведомлений)
                     </label>
                     <input
@@ -451,12 +451,12 @@ export default function AuthModal() {
                       value={regEmail}
                       onChange={(e) => setRegEmail(e.target.value)}
                       placeholder="arman@mail.kz"
-                      className="w-full p-2.5 text-sm rounded-lg border-2 border-slate-300 font-medium text-slate-900 focus:outline-none focus:border-slate-900"
+                      className="w-full p-2.5 text-sm rounded-lg border-2 border-border font-medium text-foreground focus:outline-none focus:border-slate-900"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-slate-900 uppercase tracking-wide mb-1">
+                    <label className="block text-xs font-bold text-foreground uppercase tracking-wide mb-1">
                       Придумайте пароль
                     </label>
                     <input
@@ -464,13 +464,13 @@ export default function AuthModal() {
                       value={regPassword}
                       onChange={(e) => setRegPassword(e.target.value)}
                       placeholder="Минимум 6 символов"
-                      className="w-full p-2.5 text-sm rounded-lg border-2 border-slate-300 font-medium text-slate-900 focus:outline-none focus:border-slate-900"
+                      className="w-full p-2.5 text-sm rounded-lg border-2 border-border font-medium text-foreground focus:outline-none focus:border-slate-900"
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full py-3.5 px-4 rounded-lg bg-slate-900 text-white font-bold text-sm hover:bg-slate-800 transition-colors shadow-sm flex items-center justify-center gap-2 cursor-pointer mt-2"
+                    className="w-full py-3.5 px-4 rounded-lg bg-primary text-primary-foreground font-bold text-sm hover:bg-primary/90 transition-colors shadow-sm flex items-center justify-center gap-2 cursor-pointer mt-2"
                   >
                     <span>Зарегистрироваться и войти</span>
                     <ArrowRight className="w-4 h-4 text-white" />
@@ -480,7 +480,7 @@ export default function AuthModal() {
                     <button
                       type="button"
                       onClick={loginAsGuest}
-                      className="text-xs font-bold text-slate-800 hover:text-black hover:underline cursor-pointer"
+                      className="text-xs font-bold text-foreground hover:text-black hover:underline cursor-pointer"
                     >
                       Или продолжить просмотр как гость
                     </button>
@@ -495,45 +495,45 @@ export default function AuthModal() {
               ======================================================== */}
           {selectedRole === 'employee' && (
             <form onSubmit={handleStaffLoginSubmit} className="space-y-4">
-              <div className="p-3 bg-indigo-50 border border-indigo-200 rounded-lg text-xs text-indigo-950 font-semibold leading-relaxed">
+              <div className="p-3 bg-info-soft border border-info-soft rounded-lg text-xs text-info-soft-foreground font-semibold leading-relaxed">
                 🔒 Доступ к служебному досье заявителей, нарядам выездных бригад «Горсвет»/«Водоканал» и публикации фотоотчетов «ПОСЛЕ».
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-slate-900 uppercase tracking-wide mb-1">
+                <label className="block text-xs font-bold text-foreground uppercase tracking-wide mb-1">
                   Служебный Email / Логин диспетчера
                 </label>
                 <div className="relative">
-                  <Mail className="w-4 h-4 text-slate-700 absolute left-3 top-3.5" />
+                  <Mail className="w-4 h-4 text-muted-foreground absolute left-3 top-3.5" />
                   <input
                     type="text"
                     required
                     value={staffLogin}
                     onChange={(e) => setStaffLogin(e.target.value)}
                     placeholder="k.serikov@semey-gov.kz или 109"
-                    className="w-full pl-9 pr-3 py-2.5 text-sm rounded-lg border-2 border-slate-300 font-medium text-slate-900 focus:outline-none focus:border-indigo-700"
+                    className="w-full pl-9 pr-3 py-2.5 text-sm rounded-lg border-2 border-border font-medium text-foreground focus:outline-none focus:border-indigo-700"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-slate-900 uppercase tracking-wide mb-1">
+                <label className="block text-xs font-bold text-foreground uppercase tracking-wide mb-1">
                   Пароль служебной учетной записи
                 </label>
                 <div className="relative">
-                  <Lock className="w-4 h-4 text-slate-700 absolute left-3 top-3.5" />
+                  <Lock className="w-4 h-4 text-muted-foreground absolute left-3 top-3.5" />
                   <input
                     type={showPassword ? 'text' : 'password'}
                     required
                     value={staffPassword}
                     onChange={(e) => setStaffPassword(e.target.value)}
                     placeholder="••••••••"
-                    className="w-full pl-9 pr-10 py-2.5 text-sm rounded-lg border-2 border-slate-300 font-medium text-slate-900 focus:outline-none focus:border-indigo-700"
+                    className="w-full pl-9 pr-10 py-2.5 text-sm rounded-lg border-2 border-border font-medium text-foreground focus:outline-none focus:border-indigo-700"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-3 text-slate-700 hover:text-black"
+                    className="absolute right-3 top-3 text-muted-foreground hover:text-black"
                   >
                     {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                   </button>
@@ -555,7 +555,7 @@ export default function AuthModal() {
                   login('employee');
                   router.push('/admin');
                 }}
-                className="w-full py-2.5 px-3 text-xs font-bold text-indigo-950 bg-indigo-50 border border-indigo-300 rounded-lg hover:bg-indigo-100 transition-colors cursor-pointer"
+                className="w-full py-2.5 px-3 text-xs font-bold text-info-soft-foreground bg-info-soft border border-info-soft rounded-lg hover:bg-indigo-100 transition-colors cursor-pointer"
               >
                 ⚡ Мгновенный демо-вход диспетчера (Канат Сериков • 109)
               </button>
@@ -567,45 +567,45 @@ export default function AuthModal() {
               ======================================================== */}
           {selectedRole === 'admin' && (
             <form onSubmit={handleStaffLoginSubmit} className="space-y-4">
-              <div className="p-3 bg-emerald-50 border border-emerald-300 rounded-lg text-xs text-emerald-950 font-semibold leading-relaxed">
+              <div className="p-3 bg-success-soft border border-success-soft rounded-lg text-xs text-success-soft-foreground font-semibold leading-relaxed">
                 🏛️ Доступ аппарата Акима г. Семей: цензурный контроль, аудит просрочек ЖКХ и прямая линия с разработчиками (dev@smartqala.kz).
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-slate-900 uppercase tracking-wide mb-1">
+                <label className="block text-xs font-bold text-foreground uppercase tracking-wide mb-1">
                   Логин администратора / ИИН
                 </label>
                 <div className="relative">
-                  <Mail className="w-4 h-4 text-slate-700 absolute left-3 top-3.5" />
+                  <Mail className="w-4 h-4 text-muted-foreground absolute left-3 top-3.5" />
                   <input
                     type="text"
                     required
                     value={staffLogin}
                     onChange={(e) => setStaffLogin(e.target.value)}
                     placeholder="d.baizhanov@abai.gov.kz или akimat"
-                    className="w-full pl-9 pr-3 py-2.5 text-sm rounded-lg border-2 border-slate-300 font-medium text-slate-900 focus:outline-none focus:border-emerald-700"
+                    className="w-full pl-9 pr-3 py-2.5 text-sm rounded-lg border-2 border-border font-medium text-foreground focus:outline-none focus:border-emerald-700"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-slate-900 uppercase tracking-wide mb-1">
+                <label className="block text-xs font-bold text-foreground uppercase tracking-wide mb-1">
                   Пароль администратора
                 </label>
                 <div className="relative">
-                  <Lock className="w-4 h-4 text-slate-700 absolute left-3 top-3.5" />
+                  <Lock className="w-4 h-4 text-muted-foreground absolute left-3 top-3.5" />
                   <input
                     type={showPassword ? 'text' : 'password'}
                     required
                     value={staffPassword}
                     onChange={(e) => setStaffPassword(e.target.value)}
                     placeholder="••••••••"
-                    className="w-full pl-9 pr-10 py-2.5 text-sm rounded-lg border-2 border-slate-300 font-medium text-slate-900 focus:outline-none focus:border-emerald-700"
+                    className="w-full pl-9 pr-10 py-2.5 text-sm rounded-lg border-2 border-border font-medium text-foreground focus:outline-none focus:border-emerald-700"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-3 text-slate-700 hover:text-black"
+                    className="absolute right-3 top-3 text-muted-foreground hover:text-black"
                   >
                     {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                   </button>
@@ -627,7 +627,7 @@ export default function AuthModal() {
                   login('admin');
                   router.push('/admin');
                 }}
-                className="w-full py-2.5 px-3 text-xs font-bold text-emerald-950 bg-emerald-50 border border-emerald-300 rounded-lg hover:bg-emerald-100 transition-colors cursor-pointer"
+                className="w-full py-2.5 px-3 text-xs font-bold text-success-soft-foreground bg-success-soft border border-success-soft rounded-lg hover:bg-emerald-100 transition-colors cursor-pointer"
               >
                 ⚡ Мгновенный демо-вход Акимата (Даурен Байжанов)
               </button>
@@ -637,14 +637,14 @@ export default function AuthModal() {
         </div>
 
         {/* Footer info & Guest bypass */}
-        <div className="mt-5 pt-3 border-t border-slate-200 flex flex-wrap items-center justify-between gap-2 text-xs text-slate-700 font-medium">
+        <div className="mt-5 pt-3 border-t border-border flex flex-wrap items-center justify-between gap-2 text-xs text-muted-foreground font-medium">
           <span>Безопасное соединение SSL • Защита ПДн</span>
           <button
             type="button"
             onClick={loginAsGuest}
-            className="font-bold text-slate-900 hover:underline flex items-center gap-1 cursor-pointer"
+            className="font-bold text-foreground hover:underline flex items-center gap-1 cursor-pointer"
           >
-            <Compass className="w-3.5 h-3.5 text-slate-700" />
+            <Compass className="w-3.5 h-3.5 text-muted-foreground" />
             <span>Продолжить просмотр как гость</span>
           </button>
         </div>

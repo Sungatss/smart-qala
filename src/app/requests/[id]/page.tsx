@@ -22,7 +22,7 @@ export default async function RequestDetailPage({ params, searchParams }: PagePr
   }
 
   return (
-    <div className="flex flex-col min-h-screen bg-gray-50 text-gray-900">
+    <div className="flex flex-col min-h-screen bg-muted text-gray-900">
       <Navbar />
 
       <main className="flex-1 py-8 sm:py-12">
