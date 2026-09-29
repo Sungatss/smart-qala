@@ -222,7 +222,7 @@ export default function AuthForm({
                         value={residentLoginInput}
                         onChange={(e) => setResidentLoginInput(e.target.value)}
                         placeholder="+7 (705) 000-00-00"
-                        className="h-11 rounded-xl bg-muted pl-10 text-sm border-border focus-visible:ring-1"
+                        className="h-11 rounded-xl bg-muted pl-10 text-sm border-border placeholder:text-muted-foreground focus-visible:ring-1"
                       />
                     </div>
                   </div>
@@ -238,7 +238,7 @@ export default function AuthForm({
                         value={residentPassword}
                         onChange={(e) => setResidentPassword(e.target.value)}
                         placeholder="••••••••"
-                        className="h-11 rounded-xl bg-muted pl-10 pr-10 text-sm border-border focus-visible:ring-1"
+                        className="h-11 rounded-xl bg-muted pl-10 pr-10 text-sm border-border placeholder:text-muted-foreground focus-visible:ring-1"
                       />
                       <button
                         type="button"
@@ -280,7 +280,7 @@ export default function AuthForm({
                         value={regName}
                         onChange={(e) => setRegName(e.target.value)}
                         placeholder="Алихан Бокейханов"
-                        className="h-11 rounded-xl bg-muted pl-10 text-sm border-border focus-visible:ring-1"
+                        className="h-11 rounded-xl bg-muted pl-10 text-sm border-border placeholder:text-muted-foreground focus-visible:ring-1"
                         required
                       />
                     </div>
@@ -297,7 +297,7 @@ export default function AuthForm({
                         value={regPhone}
                         onChange={(e) => setRegPhone(e.target.value)}
                         placeholder="+7 (777) 123-45-67"
-                        className="h-11 rounded-xl bg-muted pl-10 text-sm border-border focus-visible:ring-1"
+                        className="h-11 rounded-xl bg-muted pl-10 text-sm border-border placeholder:text-muted-foreground focus-visible:ring-1"
                         required
                       />
                     </div>
@@ -335,7 +335,7 @@ export default function AuthForm({
                         value={regEmail}
                         onChange={(e) => setRegEmail(e.target.value)}
                         placeholder="resident@semey.kz"
-                        className="h-11 rounded-xl bg-muted pl-10 text-sm border-border focus-visible:ring-1"
+                        className="h-11 rounded-xl bg-muted pl-10 text-sm border-border placeholder:text-muted-foreground focus-visible:ring-1"
                       />
                     </div>
                   </div>
@@ -351,7 +351,7 @@ export default function AuthForm({
                         value={regPassword}
                         onChange={(e) => setRegPassword(e.target.value)}
                         placeholder="••••••••"
-                        className="h-11 rounded-xl bg-muted pl-10 pr-10 text-sm border-border focus-visible:ring-1"
+                        className="h-11 rounded-xl bg-muted pl-10 pr-10 text-sm border-border placeholder:text-muted-foreground focus-visible:ring-1"
                       />
                       <button
                         type="button"
@@ -470,7 +470,7 @@ export default function AuthForm({
                     value={staffLogin}
                     onChange={(e) => setStaffLogin(e.target.value)}
                     placeholder="official@semey-gov.kz"
-                    className="h-11 rounded-xl bg-muted pl-10 text-sm border-border focus-visible:ring-1"
+                    className="h-11 rounded-xl bg-muted pl-10 text-sm border-border placeholder:text-muted-foreground focus-visible:ring-1"
                     required
                   />
                 </div>
@@ -487,7 +487,7 @@ export default function AuthForm({
                     value={staffPassword}
                     onChange={(e) => setStaffPassword(e.target.value)}
                     placeholder="••••••••"
-                    className="h-11 rounded-xl bg-muted pl-10 pr-10 text-sm border-border focus-visible:ring-1"
+                    className="h-11 rounded-xl bg-muted pl-10 pr-10 text-sm border-border placeholder:text-muted-foreground focus-visible:ring-1"
                     required
                   />
                   <button
