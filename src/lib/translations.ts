@@ -266,7 +266,7 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     authErrorFillFields: 'Пожалуйста, заполните обязательные поля',
     authErrorInvalidCredentials: 'Пожалуйста, введите корректные данные',
 
-    heroPilotBadge: 'Официальный проект цифровизации • г. Семей',
+    heroPilotBadge: 'Концептуальный проект цифровизации • г. Семей',
     heroTitle: 'Прямой диалог жителей и служб города Семей',
     heroSubtitle: 'Сообщайте о ямах, неосвещенных улицах, мусоре и авариях простым языком. Искусственный интеллект автоматически структурирует обращение и направляет в профильное ведомство.',
     heroSubmitBtn: 'Подать обращение',
@@ -427,7 +427,7 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     authErrorFillFields: 'Міндетті өрістерді толтырыңыз',
     authErrorInvalidCredentials: 'Дұрыс мәліметтерді енгізіңіз',
 
-    heroPilotBadge: 'Ресми цифрландыру жобасы • Семей қ.',
+    heroPilotBadge: 'Цифрландыру тұжырымдамалық жобасы • Семей қ.',
     heroTitle: 'Семей қаласы тұрғындары мен қызметтерінің тікелей диалогы',
     heroSubtitle: 'Жол шұңқырлары, жарықсыз көшелер, қоқыс пен апаттар туралы қарапайым тілмен хабарлаңыз. Жасанды интеллект өтінішті құрылымдап, жауапты мекемеге жолдайды.',
     heroSubmitBtn: 'Өтініш жіберу',
@@ -588,7 +588,7 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     authErrorFillFields: 'Please fill in required fields',
     authErrorInvalidCredentials: 'Please enter valid credentials',
 
-    heroPilotBadge: 'Official Smart City Pilot • Semey',
+    heroPilotBadge: 'Smart City Concept Project • Semey',
     heroTitle: 'Direct Bridge Between Residents and Municipal Services',
     heroSubtitle: 'Report potholes, broken streetlights, waste, and hazards in plain everyday language. AI automatically structures the request and routes it to the right department.',
     heroSubmitBtn: 'Submit Request',
