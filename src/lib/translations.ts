@@ -17,6 +17,39 @@ export interface Translations {
   navLargeFontOn: string;
   themeLight: string;
   themeDark: string;
+  navDisplaySettings: string;
+  navTheme: string;
+  navContrastAndFont: string;
+  navAccessibilityMode: string;
+  navNotifications: string;
+  navNoNotifications: string;
+  navNewCount: string;
+  navProfile: string;
+  navRoleCitizen: string;
+  navRoleGuest: string;
+  navRoleJkh: string;
+  navRoleAdmin: string;
+  navMenu: string;
+  langKz: string;
+  langRu: string;
+  langEn: string;
+  demoNoticeBadge: string;
+  demoNoticeText: string;
+  demoNoticeDismiss: string;
+  footerConceptTitle: string;
+  footerConceptSubtitle: string;
+  footerConceptNotice: string;
+  footerCopyright: string;
+  footerStandards: string;
+  mapHeaderTitle: string;
+  mapHeaderSubtitle: string;
+  mapGeotag: string;
+  ideasHeaderTitle: string;
+  ideasHeaderSubtitle: string;
+  analyticsHeaderTitle: string;
+  analyticsHeaderSubtitle: string;
+  profileHeaderTitle: string;
+  profileHeaderSubtitle: string;
 
   // Auth Gate
   authTitle: string;
@@ -131,6 +164,39 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     navLargeFontOn: 'Крупный шрифт: ВКЛ',
     themeLight: 'Светлая тема',
     themeDark: 'Темная тема',
+    navDisplaySettings: 'Настройки отображения',
+    navTheme: 'Тема оформления',
+    navContrastAndFont: 'Шрифт и контраст',
+    navAccessibilityMode: 'Режим доступности (крупный шрифт)',
+    navNotifications: 'Уведомления',
+    navNoNotifications: 'Нет новых уведомлений',
+    navNewCount: 'новых',
+    navProfile: 'Личный кабинет',
+    navRoleCitizen: 'Гражданин',
+    navRoleGuest: 'Гость',
+    navRoleJkh: 'Служба ЖКХ / 109',
+    navRoleAdmin: 'Акимат',
+    navMenu: 'Меню',
+    langKz: 'Қазақша',
+    langRu: 'Русский',
+    langEn: 'English',
+    demoNoticeBadge: 'ДЕМОНСТРАЦИОННЫЕ ДАННЫЕ / СЕМЕЙ',
+    demoNoticeText: 'Концепт городской платформы Smart Qala для города Семей.',
+    demoNoticeDismiss: 'Скрыть',
+    footerConceptTitle: 'Концептуальный проект платформы Smart Qala • Семей',
+    footerConceptSubtitle: 'Прототип системы взаимодействия жителей и коммунальных служб города',
+    footerConceptNotice: 'Демонстрационный концепт. Не является официальным сайтом акимата.',
+    footerCopyright: '© 2026 Концепт Smart Qala. Разработано для открытого города.',
+    footerStandards: 'Проект в рамках открытых стандартов Smart City',
+    mapHeaderTitle: 'Интерактивная карта городской среды • Семей',
+    mapHeaderSubtitle: 'Мониторинг инцидентов, тепловая карта скопления проблем и городские идеи жителей в реальном времени.',
+    mapGeotag: 'Геопривязка: г. Семей, область Абай',
+    ideasHeaderTitle: 'Банк городских идей • Семей',
+    ideasHeaderSubtitle: 'Инициативы жителей по развитию инфраструктуры, благоустройству и экологии города.',
+    analyticsHeaderTitle: 'Городская статистика и аналитика инцидентов',
+    analyticsHeaderSubtitle: 'Публичный мониторинг динамики решения проблем, распределения по районам и оперативности служб.',
+    profileHeaderTitle: 'Личный кабинет жителя',
+    profileHeaderSubtitle: 'История поданных обращений, статус их рассмотрения и городские инициативы.',
 
     authTitle: 'Smart Qala • Семей',
     authSubtitle: 'Единая городская система взаимодействия жителей и служб города',
@@ -238,6 +304,39 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     navLargeFontOn: 'Үлкен қаріп: ҚОСУЛЫ',
     themeLight: 'Ашық тақырып',
     themeDark: 'Күңгірт тақырып',
+    navDisplaySettings: 'Көрсету баптаулары',
+    navTheme: 'Безендіру тақырыбы',
+    navContrastAndFont: 'Қаріп пен контраст',
+    navAccessibilityMode: 'Қолжетімділік режимі (үлкен қаріп)',
+    navNotifications: 'Хабарламалар',
+    navNoNotifications: 'Жаңа хабарлама жоқ',
+    navNewCount: 'жаңа',
+    navProfile: 'Жеке кабинет',
+    navRoleCitizen: 'Тұрғын',
+    navRoleGuest: 'Қонақ',
+    navRoleJkh: 'ТКШ / 109 қызметі',
+    navRoleAdmin: 'Әкімдік',
+    navMenu: 'Мәзір',
+    langKz: 'Қазақша',
+    langRu: 'Русский',
+    langEn: 'English',
+    demoNoticeBadge: 'ДЕМОНСТРАЦИЯЛЫҚ ДЕРЕКТЕР / СЕМЕЙ',
+    demoNoticeText: 'Семей қаласына арналған Smart Qala қалалық платформасы тұжырымдамасы.',
+    demoNoticeDismiss: 'Жабу',
+    footerConceptTitle: 'Smart Qala • Семей тұжырымдамалық жобасы',
+    footerConceptSubtitle: 'Қала тұрғындары мен коммуналдық қызметтерінің өзара іс-қимыл жүйесінің прототипі',
+    footerConceptNotice: 'Демонстрациялық концепт. Әкімдіктің ресми сайты емес.',
+    footerCopyright: '© 2026 Smart Qala тұжырымдамасы. Ашық қала үшін әзірленген.',
+    footerStandards: 'Smart City ашық стандарттары аясындағы жоба',
+    mapHeaderTitle: 'Семей қалалық ортасының интерактивті картасы',
+    mapHeaderSubtitle: 'Оқиғаларды нақты уақытта бақылау, мәселелердің жылу картасы және тұрғындардың қалалық идеялары.',
+    mapGeotag: 'Геобайланыс: Семей қаласы, Абай облысы',
+    ideasHeaderTitle: 'Қалалық идеялар банкі • Семей',
+    ideasHeaderSubtitle: 'Инфрақұрылымды дамыту, абаттандыру және қала экологиясы бойынша тұрғындардың бастамалары.',
+    analyticsHeaderTitle: 'Қалалық статистика және оқиғалар талдауы',
+    analyticsHeaderSubtitle: 'Мәселелерді шешу қарқынын, аудандар бойынша бөлінісін және қызметтердің жеделдігін ашық бақылау.',
+    profileHeaderTitle: 'Тұрғынның жеке кабинеті',
+    profileHeaderSubtitle: 'Берілген өтініштер тарихы, олардың қаралу барысы және қалалық бастамалар.',
 
     authTitle: 'Smart Qala • Семей',
     authSubtitle: 'Семей қаласы тұрғындары мен қалалық қызметтердің бірыңғай жүйесі',
@@ -345,6 +444,39 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     navLargeFontOn: 'Large Font: ON',
     themeLight: 'Light Theme',
     themeDark: 'Dark Theme',
+    navDisplaySettings: 'Display Settings',
+    navTheme: 'Theme Mode',
+    navContrastAndFont: 'Font & Contrast',
+    navAccessibilityMode: 'Accessibility Mode (Large Font)',
+    navNotifications: 'Notifications',
+    navNoNotifications: 'No new notifications',
+    navNewCount: 'new',
+    navProfile: 'Account Profile',
+    navRoleCitizen: 'Citizen',
+    navRoleGuest: 'Guest',
+    navRoleJkh: 'Utilities / 109',
+    navRoleAdmin: 'Akimat',
+    navMenu: 'Menu',
+    langKz: 'Қазақша',
+    langRu: 'Русский',
+    langEn: 'English',
+    demoNoticeBadge: 'DEMO DATA / SEMEY',
+    demoNoticeText: 'Smart Qala civic platform prototype concept for Semey.',
+    demoNoticeDismiss: 'Dismiss',
+    footerConceptTitle: 'Smart Qala • Semey Concept Project',
+    footerConceptSubtitle: 'Prototype system for interaction between residents and city utilities',
+    footerConceptNotice: 'Demonstration concept. Not an official Akimat website.',
+    footerCopyright: '© 2026 Smart Qala Concept. Built for an open city.',
+    footerStandards: 'Project developed under Smart City open standards',
+    mapHeaderTitle: 'Interactive Urban Environment Map • Semey',
+    mapHeaderSubtitle: 'Real-time incident monitoring, problem hotspot heatmaps, and resident urban initiatives.',
+    mapGeotag: 'Geo-reference: Semey, Abai Region',
+    ideasHeaderTitle: 'Urban Ideas Bank • Semey',
+    ideasHeaderSubtitle: 'Citizen initiatives for infrastructure development, public spaces, and urban ecology.',
+    analyticsHeaderTitle: 'Urban Statistics & Incident Analytics',
+    analyticsHeaderSubtitle: 'Public dashboard tracking resolution rates, district breakdowns, and response velocity.',
+    profileHeaderTitle: 'Resident Account',
+    profileHeaderSubtitle: 'History of submitted requests, review statuses, and tracked municipal responses.',
 
     authTitle: 'Smart Qala • Semey',
     authSubtitle: 'Integrated municipal system connecting citizens with urban utility departments',

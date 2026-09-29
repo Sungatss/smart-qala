@@ -9,9 +9,13 @@ fs.mkdirSync(outDir, { recursive: true });
 const pages = [
   { name: 'home', path: '/' },
   { name: 'map', path: '/map' },
-  { name: 'analytics', path: '/analytics' }
+  { name: 'ideas', path: '/ideas' },
+  { name: 'analytics', path: '/analytics' },
+  { name: 'profile', path: '/profile' },
+  { name: 'create', path: '/create' },
 ];
 
+const languages = ['ru', 'kz', 'en'];
 const modes = ['light', 'dark', 'easy-mode'];
 
 const viewports = [
@@ -27,52 +31,62 @@ async function main() {
   });
 
   const page = await browser.newPage();
+  console.log(`Taking full matrix screenshots for: ${label}`);
 
-  console.log(`Taking screenshots for: ${label}`);
+  let count = 0;
 
   for (const p of pages) {
     for (const v of viewports) {
       await page.setViewport({ width: v.width, height: v.height });
 
-      for (const m of modes) {
-        const url = `http://localhost:3000${p.path}`;
-        
-        // Setup initial storage before navigation
-        await page.evaluateOnNewDocument((mode) => {
-          localStorage.setItem('smart_qala_entered', 'true');
-          localStorage.setItem('smart_qala_theme', mode === 'dark' ? 'dark' : 'light');
-          localStorage.setItem('smart_qala_easy_mode', mode === 'easy-mode' ? 'true' : 'false');
-        }, m);
+      for (const lang of languages) {
+        for (const m of modes) {
+          const url = `http://localhost:3000${p.path}`;
 
-        try {
-          await page.goto(url, { waitUntil: 'networkidle0', timeout: 15000 });
-        } catch (e) {
-          // If timeout on network idle (e.g. leaflet tiles or polling), still proceed
-        }
+          await page.evaluateOnNewDocument((langVal, modeVal) => {
+            localStorage.setItem('smart_qala_entered', 'true');
+            localStorage.setItem('smart_qala_lang', langVal);
+            localStorage.setItem('smart_qala_theme', modeVal === 'dark' ? 'dark' : 'light');
+            localStorage.setItem('smart_qala_easy_mode', modeVal === 'easy-mode' ? 'true' : 'false');
+          }, lang, m);
 
-        // Ensure classes are applied directly
-        await page.evaluate((mode) => {
-          document.documentElement.classList.remove('dark', 'easy-mode');
-          if (mode === 'dark') {
-            document.documentElement.classList.add('dark');
-          } else if (mode === 'easy-mode') {
-            document.documentElement.classList.add('easy-mode');
+          try {
+            await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 10000 });
+          } catch (e) {
+            // Ignore timeout
           }
-        }, m);
 
-        // Wait a small moment for CSS transitions and canvas/map tiles
-        await new Promise((r) => setTimeout(r, 600));
+          await page.evaluate((langVal, modeVal) => {
+            localStorage.setItem('smart_qala_entered', 'true');
+            localStorage.setItem('smart_qala_lang', langVal);
+            localStorage.setItem('smart_qala_theme', modeVal === 'dark' ? 'dark' : 'light');
+            localStorage.setItem('smart_qala_easy_mode', modeVal === 'easy-mode' ? 'true' : 'false');
 
-        const fileName = `${p.name}_${m}_${v.label}.png`;
-        const filePath = path.join(outDir, fileName);
-        await page.screenshot({ path: filePath, fullPage: false });
-        console.log(`✓ Saved: ${filePath}`);
+            document.documentElement.classList.remove('dark', 'easy-mode');
+            if (modeVal === 'dark') {
+              document.documentElement.classList.add('dark');
+            } else if (modeVal === 'easy-mode') {
+              document.documentElement.classList.add('easy-mode');
+            }
+          }, lang, m);
+
+          // Small pause for layout/Leaflet
+          await new Promise((r) => setTimeout(r, 250));
+
+          const fileName = `${p.name}_${lang}_${m}_${v.label}.png`;
+          const filePath = path.join(outDir, fileName);
+          await page.screenshot({ path: filePath, fullPage: false });
+          count++;
+          if (count % 18 === 0 || count === 108) {
+            console.log(`✓ Progress: ${count}/108 screenshots captured (latest: ${fileName})`);
+          }
+        }
       }
     }
   }
 
   await browser.close();
-  console.log(`All 18 screenshots successfully captured in: ${outDir}`);
+  console.log(`Successfully completed: ${count} screenshots captured in: ${outDir}`);
 }
 
 main().catch((err) => {
