@@ -1,0 +1,316 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f9fafb;
+  --foreground: #0f172a;
+  --border: #e2e8f0;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Ensure no pill shapes anywhere, max radius 8px (rounded-md = 8px) */
+* {
+  border-color: var(--border);
+}
+
+/* ==========================================================================
+   🌙 DARK THEME COMPLETE SYSTEM
+   ========================================================================== */
+html.dark {
+  --background: #080c14;
+  --foreground: #f8fafc;
+  --border: #1e293b;
+  color-scheme: dark;
+}
+
+html.dark body {
+  background-color: #080c14 !important;
+  color: #f8fafc !important;
+}
+
+/* Background surfaces */
+html.dark .bg-white {
+  background-color: #0f172a !important;
+  color: #f8fafc !important;
+}
+
+html.dark .bg-white\/90,
+html.dark .bg-white\/95,
+html.dark .bg-white\/80 {
+  background-color: rgba(15, 23, 42, 0.95) !important;
+  color: #f8fafc !important;
+}
+
+html.dark .bg-gray-50,
+html.dark .bg-slate-50 {
+  background-color: #080c14 !important;
+}
+
+html.dark .bg-slate-100,
+html.dark .bg-gray-100,
+html.dark .bg-slate-100\/90 {
+  background-color: #162032 !important;
+  color: #f1f5f9 !important;
+  border-color: #263346 !important;
+}
+
+html.dark .bg-slate-200,
+html.dark .bg-gray-200 {
+  background-color: #263346 !important;
+}
+
+/* Headers, Navbars, Footers */
+html.dark header,
+html.dark footer,
+html.dark header.bg-white,
+html.dark footer.bg-white {
+  background-color: #0b1120 !important;
+  border-color: #1e293b !important;
+}
+
+/* Borders */
+html.dark .border-slate-100,
+html.dark .border-slate-200,
+html.dark .border-slate-300,
+html.dark .border-gray-100,
+html.dark .border-gray-200,
+html.dark .border-gray-300 {
+  border-color: #263346 !important;
+}
+
+html.dark .border-slate-400,
+html.dark .border-gray-400 {
+  border-color: #475569 !important;
+}
+
+/* Text Colors */
+html.dark .text-slate-900,
+html.dark .text-slate-950,
+html.dark .text-slate-800,
+html.dark .text-gray-900,
+html.dark .text-gray-950,
+html.dark .text-gray-800,
+html.dark .text-black {
+  color: #f8fafc !important;
+}
+
+html.dark .text-slate-700,
+html.dark .text-slate-600,
+html.dark .text-gray-700,
+html.dark .text-gray-600 {
+  color: #cbd5e1 !important;
+}
+
+html.dark .text-slate-500,
+html.dark .text-slate-400,
+html.dark .text-gray-500,
+html.dark .text-gray-400 {
+  color: #94a3b8 !important;
+}
+
+/* Form inputs & controls */
+html.dark input,
+html.dark textarea,
+html.dark select {
+  background-color: #0b1120 !important;
+  color: #f8fafc !important;
+  border-color: #334155 !important;
+}
+
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+  color: #64748b !important;
+}
+
+html.dark input:focus,
+html.dark textarea:focus,
+html.dark select:focus {
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.25) !important;
+}
+
+html.dark select option {
+  background-color: #0f172a !important;
+  color: #f8fafc !important;
+}
+
+/* Buttons in Dark Mode */
+html.dark button.bg-slate-900,
+html.dark a.bg-slate-900,
+html.dark .btn-primary {
+  background-color: #2563eb !important;
+  color: #ffffff !important;
+  border-color: #3b82f6 !important;
+}
+
+html.dark button.bg-slate-900:hover,
+html.dark a.bg-slate-900:hover {
+  background-color: #1d4ed8 !important;
+}
+
+html.dark button.bg-white,
+html.dark a.bg-white {
+  background-color: #162032 !important;
+  color: #f8fafc !important;
+  border-color: #334155 !important;
+}
+
+html.dark button.bg-white:hover,
+html.dark a.bg-white:hover {
+  background-color: #263346 !important;
+}
+
+/* Tables */
+html.dark thead th {
+  background-color: #162032 !important;
+  color: #f8fafc !important;
+  border-color: #263346 !important;
+}
+
+html.dark tbody tr {
+  border-color: #263346 !important;
+}
+
+html.dark tbody tr:hover {
+  background-color: rgba(22, 32, 50, 0.6) !important;
+}
+
+/* Badges with light pastel tints in dark mode */
+html.dark .bg-indigo-50 {
+  background-color: rgba(99, 102, 241, 0.18) !important;
+  border-color: rgba(99, 102, 241, 0.45) !important;
+}
+html.dark .text-indigo-900,
+html.dark .text-indigo-950,
+html.dark .text-indigo-800 {
+  color: #a5b4fc !important;
+}
+
+html.dark .bg-red-50 {
+  background-color: rgba(239, 68, 68, 0.18) !important;
+  border-color: rgba(239, 68, 68, 0.45) !important;
+}
+html.dark .text-red-900,
+html.dark .text-red-950,
+html.dark .text-red-800 {
+  color: #fca5a5 !important;
+}
+
+html.dark .bg-emerald-50,
+html.dark .bg-green-50 {
+  background-color: rgba(16, 185, 129, 0.18) !important;
+  border-color: rgba(16, 185, 129, 0.45) !important;
+}
+html.dark .text-emerald-900,
+html.dark .text-emerald-950,
+html.dark .text-emerald-800 {
+  color: #6ee7b7 !important;
+}
+
+html.dark .bg-amber-50,
+html.dark .bg-yellow-50 {
+  background-color: rgba(245, 158, 11, 0.18) !important;
+  border-color: rgba(245, 158, 11, 0.45) !important;
+}
+html.dark .text-amber-900,
+html.dark .text-amber-950,
+html.dark .text-amber-800 {
+  color: #fcd34d !important;
+}
+
+html.dark .bg-blue-50 {
+  background-color: rgba(59, 130, 246, 0.18) !important;
+  border-color: rgba(59, 130, 246, 0.45) !important;
+}
+html.dark .text-blue-900,
+html.dark .text-blue-950,
+html.dark .text-blue-800 {
+  color: #93c5fd !important;
+}
+
+/* Modals & Dialogs */
+html.dark .fixed .bg-white {
+  background-color: #0f172a !important;
+  border-color: #334155 !important;
+}
+
+/* Hover effects */
+html.dark .hover\:bg-slate-50:hover,
+html.dark .hover\:bg-gray-50:hover,
+html.dark .hover\:bg-slate-100:hover,
+html.dark .hover\:bg-gray-100:hover {
+  background-color: #1e293b !important;
+}
+
+/* Shadows in dark mode */
+html.dark .shadow-xs,
+html.dark .shadow-sm,
+html.dark .shadow-md,
+html.dark .shadow-lg,
+html.dark .shadow-xl {
+  box-shadow: 0 4px 16px -2px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* HIGH CONTRAST & INTERNATIONAL UI/UX SIZING STANDARDS */
+/* Prevent low contrast gray-on-white text in light mode */
+html:not(.dark) .text-slate-400,
+html:not(.dark) .text-gray-400 {
+  color: #475569; /* High-contrast readable slate-600 */
+}
+
+html:not(.dark) .text-slate-500,
+html:not(.dark) .text-gray-500 {
+  color: #334155; /* High-contrast readable slate-700 */
+}
+
+/* Standard touch targets for interactive elements: minimum 44px height */
+button,
+a.btn-standard,
+input,
+select,
+textarea {
+  min-height: 44px;
+}
+
+/* Badges and tiny pills remain compact */
+span.inline-flex,
+.badge-compact {
+  min-height: auto;
+}
+
+/* 👴 EASY MODE (ACCESSIBILITY FOR ELDERLY / LOW-VISION RESIDENTS) */
+html.easy-mode {
+  font-size: 19px !important;
+}
+
+html.easy-mode body {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  line-height: 1.6 !important;
+}
+
+html.easy-mode button, 
+html.easy-mode input, 
+html.easy-mode textarea, 
+html.easy-mode select {
+  font-size: 1.05rem !important;
+  min-height: 52px !important;
+  border-width: 2px !important;
+  border-color: #000000 !important;
+}
+
+html.easy-mode .easy-mode-badge {
+  font-size: 15px !important;
+  padding: 6px 10px !important;
+}
