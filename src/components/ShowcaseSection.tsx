@@ -49,15 +49,15 @@ export default function ShowcaseSection({ resolvedRequests }: ShowcaseProps) {
         </div>
 
         {/* Category Filter Buttons */}
-        <div className="flex flex-wrap gap-2 p-1.5 bg-slate-100 rounded-lg border-2 border-border">
+        <div className="flex flex-wrap gap-1.5 p-1 bg-muted rounded-xl border border-border">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
-              className={`px-4 py-2 text-xs font-bold rounded-md transition-colors cursor-pointer ${
+              className={`px-3.5 py-1.5 text-xs font-semibold rounded-lg transition-colors cursor-pointer ${
                 selectedCategory === cat
                   ? 'bg-primary text-primary-foreground shadow-xs'
-                  : 'text-foreground hover:text-black hover:bg-slate-200'
+                  : 'text-muted-foreground hover:text-foreground hover:bg-card/70'
               }`}
             >
               {cat}
@@ -115,12 +115,12 @@ export default function ShowcaseSection({ resolvedRequests }: ShowcaseProps) {
                   <div className="px-4 sm:px-5">
                     {/* View mode toggle */}
                     <div className="flex items-center justify-between pb-2 mb-2 border-b border-border text-xs">
-                      <span className="font-bold text-foreground">Фотофиксация:</span>
-                      <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-lg border border-border">
+                      <span className="font-semibold text-foreground">Фотофиксация:</span>
+                      <div className="flex items-center gap-1 bg-muted p-1 rounded-lg border border-border">
                         <button
                           onClick={() => setTab(req.id, 'both')}
                           className={`px-3 py-1 text-xs rounded transition-colors cursor-pointer ${
-                            currentTab === 'both' ? 'bg-primary text-primary-foreground font-bold text-white shadow-2xs' : 'text-foreground font-semibold'
+                            currentTab === 'both' ? 'bg-primary text-primary-foreground font-semibold shadow-2xs' : 'text-muted-foreground hover:text-foreground'
                           }`}
                         >
                           Сравнение (До и После)
@@ -128,7 +128,7 @@ export default function ShowcaseSection({ resolvedRequests }: ShowcaseProps) {
                         <button
                           onClick={() => setTab(req.id, 'before')}
                           className={`px-3 py-1 text-xs rounded transition-colors cursor-pointer ${
-                            currentTab === 'before' ? 'bg-primary text-primary-foreground font-bold text-white shadow-2xs' : 'text-foreground font-semibold'
+                            currentTab === 'before' ? 'bg-primary text-primary-foreground font-semibold shadow-2xs' : 'text-muted-foreground hover:text-foreground'
                           }`}
                         >
                           Было
@@ -136,7 +136,7 @@ export default function ShowcaseSection({ resolvedRequests }: ShowcaseProps) {
                         <button
                           onClick={() => setTab(req.id, 'after')}
                           className={`px-3 py-1 text-xs rounded transition-colors cursor-pointer ${
-                            currentTab === 'after' ? 'bg-primary text-primary-foreground font-bold text-white shadow-2xs' : 'text-foreground font-semibold'
+                            currentTab === 'after' ? 'bg-primary text-primary-foreground font-semibold shadow-2xs' : 'text-muted-foreground hover:text-foreground'
                           }`}
                         >
                           Стало
@@ -148,7 +148,7 @@ export default function ShowcaseSection({ resolvedRequests }: ShowcaseProps) {
                     {currentTab === 'both' ? (
                       <div className="grid grid-cols-2 gap-3">
                         {/* Before */}
-                        <div className="relative rounded-lg overflow-hidden border-2 border-border aspect-4/3 bg-slate-100">
+                        <div className="relative rounded-lg overflow-hidden border-2 border-border aspect-4/3 bg-muted">
                           <img
                             src={req.photo_before_url || '/images/issues/trash_overflow.jpg'}
                             alt="Состояние до устранения"
@@ -160,19 +160,19 @@ export default function ShowcaseSection({ resolvedRequests }: ShowcaseProps) {
                         </div>
 
                         {/* After */}
-                        <div className="relative rounded-lg overflow-hidden border-2 border-emerald-400 aspect-4/3 bg-slate-100">
+                        <div className="relative rounded-lg overflow-hidden border-2 border-emerald-500 aspect-4/3 bg-muted">
                           <img
                             src={req.photo_after_url || '/images/issues/trash_cleaned.jpg'}
                             alt="Состояние после устранения"
                             className="w-full h-full object-cover"
                           />
-                          <span className="absolute top-2 left-2 px-2 py-0.5 text-xs font-extrabold rounded bg-emerald-700 text-white tracking-wide shadow-xs">
+                          <span className="absolute top-2 left-2 px-2 py-0.5 text-xs font-extrabold rounded bg-emerald-600 text-white tracking-wide shadow-xs">
                             ПОСЛЕ
                           </span>
                         </div>
                       </div>
                     ) : currentTab === 'before' ? (
-                      <div className="relative rounded-lg overflow-hidden border-2 border-border aspect-16/9 bg-slate-100">
+                      <div className="relative rounded-lg overflow-hidden border-2 border-border aspect-16/9 bg-muted">
                         <img
                           src={req.photo_before_url || '/images/issues/trash_overflow.jpg'}
                           alt="Состояние до устранения"
@@ -183,13 +183,13 @@ export default function ShowcaseSection({ resolvedRequests }: ShowcaseProps) {
                         </span>
                       </div>
                     ) : (
-                      <div className="relative rounded-lg overflow-hidden border-2 border-emerald-400 aspect-16/9 bg-slate-100">
+                      <div className="relative rounded-lg overflow-hidden border-2 border-emerald-500 aspect-16/9 bg-muted">
                         <img
                           src={req.photo_after_url || '/images/issues/trash_cleaned.jpg'}
                           alt="Состояние после устранения"
                           className="w-full h-full object-cover"
                         />
-                        <span className="absolute top-2 left-2 px-2.5 py-1 text-xs font-extrabold rounded bg-emerald-700 text-white tracking-wide shadow-xs">
+                        <span className="absolute top-2 left-2 px-2.5 py-1 text-xs font-extrabold rounded bg-emerald-600 text-white tracking-wide shadow-xs">
                           РЕЗУЛЬТАТ: РАБОТЫ ВЫПОЛНЕНЫ
                         </span>
                       </div>
@@ -217,7 +217,7 @@ export default function ShowcaseSection({ resolvedRequests }: ShowcaseProps) {
                   </span>
                   <Link
                     href={`/requests/${req.id}`}
-                    className="inline-flex items-center gap-1.5 font-bold text-foreground hover:text-black hover:underline"
+                    className="inline-flex items-center gap-1.5 font-bold text-foreground hover:text-foreground/80 hover:underline"
                   >
                     <span>Подробнее</span>
                     <ArrowRight className="w-4 h-4" />

@@ -29,22 +29,22 @@ export function StatusBadge({ status }: { status: RequestStatus }) {
       );
     case 'assigned':
       return (
-        <Badge variant="secondary" className="gap-1.5 py-1 font-medium bg-purple-50 text-purple-800 border border-purple-200">
-          <Building className="w-3.5 h-3.5 text-purple-600" />
+        <Badge variant="info" className="gap-1.5 py-1 font-medium">
+          <Building className="w-3.5 h-3.5" />
           Назначено
         </Badge>
       );
     case 'in_progress':
       return (
         <Badge variant="info" className="gap-1.5 py-1 font-medium">
-          <ArrowUpRight className="w-3.5 h-3.5 text-indigo-600" />
+          <ArrowUpRight className="w-3.5 h-3.5" />
           В работе
         </Badge>
       );
     case 'resolved':
       return (
         <Badge variant="success" className="gap-1.5 py-1 font-medium">
-          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+          <CheckCircle2 className="w-3.5 h-3.5" />
           Решено
         </Badge>
       );
@@ -93,7 +93,7 @@ export function ModerationBadge({ status }: { status?: 'approved' | 'rejected' |
   if (!status || status === 'approved') {
     return (
       <Badge variant="success" className="gap-1.5 py-1 font-semibold">
-        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-700" />
+        <CheckCircle2 className="w-3.5 h-3.5 text-success" />
         Одобрено
       </Badge>
     );
@@ -108,7 +108,7 @@ export function ModerationBadge({ status }: { status?: 'approved' | 'rejected' |
   }
   return (
     <Badge variant="danger" className="gap-1.5 py-1 font-semibold">
-      <ShieldAlert className="w-3.5 h-3.5 text-red-700" />
+      <ShieldAlert className="w-3.5 h-3.5 text-danger" />
       Отклонено
     </Badge>
   );

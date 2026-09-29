@@ -177,17 +177,17 @@ export default function CityMap({ initialRequests }: CityMapProps) {
     <div className="flex flex-col lg:flex-row gap-4 h-[calc(100vh-140px)] min-h-[580px]">
       
       {/* Sidebar Controls & Legend */}
-      <div className="w-full lg:w-80 bg-card rounded-md border border-gray-200 shadow-2xs p-4 flex flex-col justify-between overflow-y-auto shrink-0">
+      <div className="w-full lg:w-80 bg-card rounded-md border border-border shadow-2xs p-4 flex flex-col justify-between overflow-y-auto shrink-0">
         <div className="space-y-4">
           
-          <div className="pb-3 border-b border-gray-100 flex items-center justify-between">
+          <div className="pb-3 border-b border-border flex items-center justify-between">
             <div className="flex items-center gap-2">
               <MapPin className="w-4 h-4 text-muted-foreground" />
               <span className="text-xs font-bold text-foreground uppercase tracking-wider">
                 Карта инцидентов Семея
               </span>
             </div>
-            <span className="text-[10px] font-mono bg-slate-100 text-muted-foreground px-1.5 py-0.5 rounded">
+            <span className="text-[10px] font-mono bg-muted text-muted-foreground px-1.5 py-0.5 rounded border border-border">
               {filteredRequests.length} точек
             </span>
           </div>
@@ -197,7 +197,7 @@ export default function CityMap({ initialRequests }: CityMapProps) {
             <label className="block text-[11px] font-semibold text-muted-foreground uppercase tracking-wider mb-1.5">
               Режим отображения
             </label>
-            <div className="grid grid-cols-2 gap-1.5 p-1 bg-gray-100 rounded-md border border-gray-200 text-xs">
+            <div className="grid grid-cols-2 gap-1.5 p-1 bg-muted rounded-md border border-border text-xs">
               <button
                 type="button"
                 onClick={() => setViewMode('markers')}
@@ -227,7 +227,7 @@ export default function CityMap({ initialRequests }: CityMapProps) {
           </div>
 
           {/* Filters */}
-          <div className="space-y-3 pt-2 border-t border-gray-100">
+          <div className="space-y-3 pt-2 border-t border-border">
             {/* Type Filter */}
             <div>
               <label className="block text-xs font-semibold text-foreground mb-1">
@@ -236,7 +236,7 @@ export default function CityMap({ initialRequests }: CityMapProps) {
               <select
                 value={selectedType}
                 onChange={(e) => setSelectedType(e.target.value)}
-                className="w-full p-2 text-xs rounded-md border border-gray-300 bg-card"
+                className="w-full p-2 text-xs rounded-md border border-border bg-card"
               >
                 <option value="all">Все (Проблемы и идеи)</option>
                 <option value="problem">🔴 Только проблемы</option>
@@ -252,7 +252,7 @@ export default function CityMap({ initialRequests }: CityMapProps) {
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className="w-full p-2 text-xs rounded-md border border-gray-300 bg-card"
+                className="w-full p-2 text-xs rounded-md border border-border bg-card"
               >
                 <option value="Все">Все категории</option>
                 <option value="Дороги">Дороги</option>
@@ -274,7 +274,7 @@ export default function CityMap({ initialRequests }: CityMapProps) {
               <select
                 value={selectedStatus}
                 onChange={(e) => setSelectedStatus(e.target.value)}
-                className="w-full p-2 text-xs rounded-md border border-gray-300 bg-card"
+                className="w-full p-2 text-xs rounded-md border border-border bg-card"
               >
                 <option value="Все">Все статусы</option>
                 <option value="new">Новое</option>
@@ -292,7 +292,7 @@ export default function CityMap({ initialRequests }: CityMapProps) {
               <select
                 value={selectedPriority}
                 onChange={(e) => setSelectedPriority(e.target.value)}
-                className="w-full p-2 text-xs rounded-md border border-gray-300 bg-card"
+                className="w-full p-2 text-xs rounded-md border border-border bg-card"
               >
                 <option value="Все">Все приоритеты</option>
                 <option value="high">Высокий (Срочно)</option>
@@ -303,7 +303,7 @@ export default function CityMap({ initialRequests }: CityMapProps) {
           </div>
 
           {/* Color Legend */}
-          <div className="pt-3 border-t border-gray-100 text-xs space-y-1.5">
+          <div className="pt-3 border-t border-border text-xs space-y-1.5">
             <span className="font-semibold text-muted-foreground block text-[11px] uppercase tracking-wider">
               Обозначения на карте:
             </span>
@@ -327,21 +327,21 @@ export default function CityMap({ initialRequests }: CityMapProps) {
 
         </div>
 
-        <div className="pt-3 border-t border-gray-100 text-[11px] font-mono text-muted-foreground text-center">
+        <div className="pt-3 border-t border-border text-[11px] font-mono text-muted-foreground text-center">
           ДЕМОНСТРАЦИОННЫЕ ДАННЫЕ / СЕМЕЙ
         </div>
       </div>
 
       {/* Map Canvas and Card Overlay */}
-      <div className="flex-1 relative rounded-md border border-gray-200 overflow-hidden shadow-2xs">
+      <div className="flex-1 relative rounded-md border border-border overflow-hidden shadow-2xs">
         <div ref={mapContainerRef} className="w-full h-full z-0" />
 
         {/* Selected Request Bottom Slide Card */}
         {selectedRequest && (
-          <div className="absolute bottom-4 left-4 right-4 sm:left-auto sm:right-4 sm:w-96 bg-card rounded-md border border-gray-300 shadow-xl p-4 z-20 animate-in fade-in slide-in-from-bottom duration-200">
-            <div className="flex items-start justify-between pb-2 border-b border-gray-100">
+          <div className="absolute bottom-4 left-4 right-4 sm:left-auto sm:right-4 sm:w-96 bg-card rounded-md border border-border shadow-xl p-4 z-20 animate-in fade-in slide-in-from-bottom duration-200">
+            <div className="flex items-start justify-between pb-2 border-b border-border">
               <div className="flex items-center gap-2">
-                <span className="font-mono text-xs font-bold text-foreground bg-slate-100 px-2 py-0.5 rounded">
+                <span className="font-mono text-xs font-bold text-foreground bg-muted border border-border px-2 py-0.5 rounded">
                   {selectedRequest.id}
                 </span>
                 <span className="text-[11px] font-medium text-muted-foreground">
@@ -351,7 +351,7 @@ export default function CityMap({ initialRequests }: CityMapProps) {
               <button
                 type="button"
                 onClick={() => setSelectedRequest(null)}
-                className="text-muted-foreground hover:text-muted-foreground text-sm font-bold"
+                className="text-muted-foreground hover:text-foreground text-sm font-bold"
               >
                 ✕
               </button>
@@ -371,21 +371,21 @@ export default function CityMap({ initialRequests }: CityMapProps) {
             </div>
 
             {/* Actions: Upvote & View details */}
-            <div className="mt-3 pt-2.5 border-t border-gray-100 flex items-center justify-between gap-2">
+            <div className="mt-3 pt-2.5 border-t border-border flex items-center justify-between gap-2">
               <button
                 type="button"
                 onClick={() => handleUpvoteClick(selectedRequest.id)}
                 className={`inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-md border transition-colors ${
                   upvotedIds.has(selectedRequest.id)
                     ? 'bg-info-soft border-info-soft text-blue-700'
-                    : 'bg-card border-gray-300 text-muted-foreground hover:bg-muted'
+                    : 'bg-card border-border text-muted-foreground hover:bg-muted'
                 }`}
               >
                 <ThumbsUp className={`w-3.5 h-3.5 ${upvotedIds.has(selectedRequest.id) ? 'fill-blue-600 text-blue-600' : ''}`} />
                 <span>
                   {upvotedIds.has(selectedRequest.id) ? 'Подтверждено' : 'У меня так же'}
                 </span>
-                <span className="font-mono font-bold bg-slate-100 px-1 rounded text-[10px]">
+                <span className="font-mono font-bold bg-muted border border-border px-1 rounded text-[10px]">
                   {selectedRequest.upvotes || 0}
                 </span>
               </button>

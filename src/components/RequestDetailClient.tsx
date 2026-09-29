@@ -129,21 +129,21 @@ export default function RequestDetailClient({ initialRequest, isCreatedJustNow }
       
       {/* Breadcrumbs */}
       <div className="flex items-center gap-2 text-xs font-bold text-foreground">
-        <Link href="/" className="hover:text-slate-950 hover:underline">Главная</Link>
+        <Link href="/" className="hover:text-foreground/80 hover:underline">Главная</Link>
         <ChevronRight className="w-3.5 h-3.5 text-muted-foreground" />
-        <Link href="/map" className="hover:text-slate-950 hover:underline">Карта проблем</Link>
+        <Link href="/map" className="hover:text-foreground/80 hover:underline">Карта проблем</Link>
         <ChevronRight className="w-3.5 h-3.5 text-muted-foreground" />
-        <span className="font-mono text-foreground bg-slate-200 px-2 py-0.5 rounded font-extrabold">{request.id}</span>
+        <span className="text-foreground bg-muted px-2 py-0.5 rounded font-extrabold border border-border">{request.id}</span>
       </div>
 
       {/* Success Notification if redirected from create wizard */}
       {isCreatedJustNow && (
         <div className="p-4 bg-success-soft border-2 border-success-soft rounded-lg text-success-soft-foreground flex items-start gap-3 shadow-xs">
-          <CheckCircle2 className="w-6 h-6 text-emerald-700 shrink-0 mt-0.5" />
+          <CheckCircle2 className="w-6 h-6 text-success shrink-0 mt-0.5" />
           <div>
             <h4 className="text-base font-extrabold">Обращение успешно зарегистрировано в системе г. Семей!</h4>
             <p className="text-sm font-medium text-success-soft-foreground mt-1">
-              Присвоен официальный номер <span className="font-mono font-bold">{request.id}</span>. 
+              Присвоен официальный номер <span className="font-bold">{request.id}</span>. 
               Заявка автоматически направлена в ведомство {request.department}. Вы можете сохранить ссылку для контроля статуса.
             </p>
           </div>
@@ -157,7 +157,7 @@ export default function RequestDetailClient({ initialRequest, isCreatedJustNow }
         <div className="p-6 border-b-2 border-border bg-muted flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-2 mb-2 flex-wrap">
-              <span className="font-mono text-sm font-extrabold text-foreground bg-card border-2 border-border px-2.5 py-1 rounded">
+              <span className="text-sm font-extrabold text-foreground bg-card border-2 border-border px-2.5 py-1 rounded">
                 {request.id}
               </span>
               <StatusBadge status={request.status} />
@@ -178,13 +178,13 @@ export default function RequestDetailClient({ initialRequest, isCreatedJustNow }
               onClick={handleUpvote}
               className={`inline-flex items-center gap-2 px-4 py-2.5 text-sm font-bold rounded-lg border-2 transition-colors cursor-pointer ${
                 isUpvoted
-                  ? 'bg-info-soft border-blue-400 text-info-soft-foreground'
-                  : 'bg-card border-border text-foreground hover:bg-slate-100'
+                  ? 'bg-info-soft border-info-soft text-info-soft-foreground'
+                  : 'bg-card border-border text-foreground hover:bg-muted'
               }`}
             >
-              <ThumbsUp className={`w-4 h-4 ${isUpvoted ? 'fill-blue-700 text-blue-700' : 'text-foreground'}`} />
+              <ThumbsUp className={`w-4 h-4 ${isUpvoted ? 'fill-info text-info' : 'text-foreground'}`} />
               <span>{isUpvoted ? 'Подтверждено' : 'У меня такая же проблема'}</span>
-              <span className="font-mono font-extrabold bg-slate-200 text-foreground px-1.5 py-0.5 rounded ml-0.5 text-xs">
+              <span className="font-extrabold bg-muted text-foreground px-1.5 py-0.5 rounded ml-0.5 text-xs border border-border">
                 {request.upvotes || 1}
               </span>
             </button>
@@ -193,7 +193,7 @@ export default function RequestDetailClient({ initialRequest, isCreatedJustNow }
             <button
               type="button"
               onClick={() => setIsAppealOpen(true)}
-              className="inline-flex items-center gap-1.5 px-4 py-2.5 text-sm font-bold rounded-lg border-2 border-border bg-card text-foreground hover:bg-slate-100 transition-colors cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-4 py-2.5 text-sm font-bold rounded-lg border-2 border-border bg-card text-foreground hover:bg-muted transition-colors cursor-pointer"
               title="Обжаловать некачественное выполнение или несогласие с решением"
             >
               <Scale className="w-4 h-4 text-foreground" />
@@ -203,7 +203,7 @@ export default function RequestDetailClient({ initialRequest, isCreatedJustNow }
             <button
               type="button"
               onClick={handleShare}
-              className="p-2.5 text-foreground bg-card border-2 border-border rounded-lg hover:bg-slate-100 transition-colors cursor-pointer"
+              className="p-2.5 text-foreground bg-card border-2 border-border rounded-lg hover:bg-muted transition-colors cursor-pointer"
               title="Скопировать ссылку"
             >
               <Share2 className="w-4 h-4" />
@@ -274,7 +274,7 @@ export default function RequestDetailClient({ initialRequest, isCreatedJustNow }
                 <MapPin className="w-4 h-4 text-muted-foreground" />
                 <span>Адрес инцидента:</span>
               </span>
-              <p className="text-slate-950 font-bold text-base">{request.location_address}</p>
+              <p className="text-foreground font-bold text-base">{request.location_address}</p>
             </div>
 
             <div className="p-4 bg-muted rounded-lg border-2 border-border text-sm">
@@ -282,17 +282,17 @@ export default function RequestDetailClient({ initialRequest, isCreatedJustNow }
                 <ShieldCheck className="w-4 h-4 text-muted-foreground" />
                 <span>Обоснование критичности (ИИ):</span>
               </span>
-              <p className="text-slate-950 font-medium">{request.priority_reason}</p>
+              <p className="text-foreground font-medium">{request.priority_reason}</p>
             </div>
           </div>
 
           {/* Texts */}
           <div className="space-y-4">
-            <div className="p-5 bg-slate-100 rounded-lg border-2 border-border">
+            <div className="p-5 bg-muted rounded-lg border-2 border-border">
               <div className="font-bold text-foreground text-xs uppercase tracking-wider mb-1.5">
                 Структурированное описание (Протокол ИИ Smart Qala):
               </div>
-              <p className="text-slate-950 leading-relaxed text-base font-medium">
+              <p className="text-foreground leading-relaxed text-base font-medium">
                 {request.cleaned_text}
               </p>
             </div>
@@ -311,7 +311,7 @@ export default function RequestDetailClient({ initialRequest, isCreatedJustNow }
           {request.official_feedback && request.official_feedback.length > 0 && (
             <div className="p-5 rounded-lg bg-info-soft/60 border-2 border-info-soft space-y-3">
               <h3 className="text-sm font-extrabold uppercase tracking-wider text-info-soft-foreground flex items-center gap-2">
-                <MessageSquare className="w-4 h-4 text-indigo-700" />
+                <MessageSquare className="w-4 h-4 text-info-soft-foreground" />
                 <span>Официальные ответы ведомств заявителю</span>
               </h3>
 
@@ -320,7 +320,7 @@ export default function RequestDetailClient({ initialRequest, isCreatedJustNow }
                   <div key={fb.id} className="p-3.5 rounded-lg bg-card border border-info-soft text-sm shadow-2xs">
                     <div className="flex items-center justify-between font-bold text-foreground mb-1">
                       <span className="text-info-soft-foreground">{fb.author}</span>
-                      <span className="font-mono text-xs text-muted-foreground">
+                      <span className="text-xs text-muted-foreground">
                         {new Date(fb.created_at).toLocaleString('ru-RU')}
                       </span>
                     </div>
@@ -343,7 +343,7 @@ export default function RequestDetailClient({ initialRequest, isCreatedJustNow }
                   key={idx}
                   className={`p-3.5 rounded-lg border-2 text-sm flex flex-col justify-between ${
                     stage.done 
-                      ? 'bg-primary text-primary-foreground border-slate-900' 
+                      ? 'bg-primary text-primary-foreground border-border' 
                       : 'bg-muted text-muted-foreground border-border'
                   }`}
                 >
@@ -352,11 +352,11 @@ export default function RequestDetailClient({ initialRequest, isCreatedJustNow }
                       <span className="font-extrabold">{stage.title}</span>
                       {stage.done && <span>✓</span>}
                     </div>
-                    <p className={`text-xs mt-1 font-medium ${stage.done ? 'text-slate-200' : 'text-muted-foreground'}`}>
+                    <p className={`text-xs mt-1 font-medium ${stage.done ? 'text-primary-foreground/90' : 'text-muted-foreground'}`}>
                       {stage.desc}
                     </p>
                   </div>
-                  <div className={`mt-3 pt-1 border-t text-xs font-mono font-bold ${stage.done ? 'border-slate-700 text-slate-300' : 'border-border text-muted-foreground'}`}>
+                  <div className={`mt-3 pt-1 border-t text-xs font-bold ${stage.done ? 'border-primary-foreground/20 text-primary-foreground/80' : 'border-border text-muted-foreground'}`}>
                     {stage.date}
                   </div>
                 </div>
@@ -376,7 +376,7 @@ export default function RequestDetailClient({ initialRequest, isCreatedJustNow }
                 <div className="text-sm font-bold text-foreground mb-1.5">
                   Фотография до выполнения работ:
                 </div>
-                <div className="relative rounded-lg overflow-hidden border-2 border-border aspect-4/3 bg-slate-100">
+                <div className="relative rounded-lg overflow-hidden border-2 border-border aspect-4/3 bg-muted">
                   {request.photo_before_url ? (
                     <img
                       src={request.photo_before_url}
@@ -399,7 +399,7 @@ export default function RequestDetailClient({ initialRequest, isCreatedJustNow }
                 <div className="text-sm font-bold text-success-soft-foreground mb-1.5">
                   Фотоотчет о выполнении (Службы города):
                 </div>
-                <div className="relative rounded-lg overflow-hidden border-2 border-emerald-400 aspect-4/3 bg-slate-100">
+                <div className="relative rounded-lg overflow-hidden border-2 border-success aspect-4/3 bg-muted">
                   {request.photo_after_url ? (
                     <img
                       src={request.photo_after_url}
@@ -412,7 +412,7 @@ export default function RequestDetailClient({ initialRequest, isCreatedJustNow }
                     </div>
                   )}
                   {request.photo_after_url && (
-                    <span className="absolute top-2 left-2 px-2.5 py-1 text-xs font-extrabold rounded bg-emerald-700 text-white shadow-sm">
+                    <span className="absolute top-2 left-2 px-2.5 py-1 text-xs font-extrabold rounded bg-success text-success-foreground shadow-sm">
                       ПОСЛЕ
                     </span>
                   )}
@@ -424,7 +424,7 @@ export default function RequestDetailClient({ initialRequest, isCreatedJustNow }
             {isResolved && request.resolution_report && (
               <div className="mt-4 p-5 bg-success-soft rounded-lg border-2 border-success-soft text-sm">
                 <div className="font-extrabold text-success-soft-foreground flex items-center gap-2 mb-1.5 text-base">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-700" />
+                  <CheckCircle2 className="w-5 h-5 text-success" />
                   <span>Официальный акт устранения проблемы:</span>
                 </div>
                 <p className="text-success-soft-foreground leading-relaxed font-medium">
@@ -437,16 +437,16 @@ export default function RequestDetailClient({ initialRequest, isCreatedJustNow }
         </div>
 
         {/* Footer */}
-        <div className="p-5 bg-slate-100 border-t-2 border-border flex items-center justify-between text-sm">
+        <div className="p-5 bg-muted border-t-2 border-border flex items-center justify-between text-sm">
           <Link
             href="/"
-            className="inline-flex items-center gap-1.5 text-foreground hover:text-black font-bold"
+            className="inline-flex items-center gap-1.5 text-foreground hover:text-foreground/80 font-bold"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>На главную страницу</span>
           </Link>
 
-          <span className="text-xs font-mono font-bold text-muted-foreground">
+          <span className="text-xs font-bold text-muted-foreground">
             ДЕМОНСТРАЦИОННЫЕ ДАННЫЕ / СЕМЕЙ
           </span>
         </div>
@@ -457,18 +457,18 @@ export default function RequestDetailClient({ initialRequest, isCreatedJustNow }
           CITIZEN APPEAL MODAL (ОБЖАЛОВАНИЕ РЕШЕНИЯ)
           ======================================================== */}
       {isAppealOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/70 p-4 backdrop-blur-xs">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-xs">
           <div className="w-full max-w-lg bg-card rounded-lg border-2 border-border shadow-2xl p-6">
             <div className="flex items-center justify-between pb-4 border-b border-border">
               <div className="flex items-center gap-2">
-                <Scale className="w-5 h-5 text-red-700" />
+                <Scale className="w-5 h-5 text-danger" />
                 <h3 className="text-lg font-extrabold text-foreground">
                   Обжаловать решение по обращению
                 </h3>
               </div>
               <button
                 onClick={() => setIsAppealOpen(false)}
-                className="p-1.5 text-muted-foreground hover:text-slate-950 rounded-lg cursor-pointer"
+                className="p-1.5 text-muted-foreground hover:text-foreground rounded-lg cursor-pointer"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -476,7 +476,7 @@ export default function RequestDetailClient({ initialRequest, isCreatedJustNow }
 
             {appealSuccessMsg ? (
               <div className="py-6 text-center space-y-3">
-                <CheckCircle2 className="w-12 h-12 text-emerald-600 mx-auto" />
+                <CheckCircle2 className="w-12 h-12 text-success mx-auto" />
                 <h4 className="text-base font-extrabold text-foreground">Жалоба принята в работу</h4>
                 <p className="text-sm font-medium text-foreground">{appealSuccessMsg}</p>
               </div>
@@ -496,7 +496,7 @@ export default function RequestDetailClient({ initialRequest, isCreatedJustNow }
                     value={appealReason}
                     onChange={(e) => setAppealReason(e.target.value)}
                     placeholder="Например: Работы выполнены не полностью, мусор остался на прилегающей территории / яму засыпали гравием вместо асфальта..."
-                    className="w-full p-3 text-sm rounded-lg border-2 border-border font-medium text-foreground focus:outline-none focus:border-slate-900"
+                    className="w-full p-3 text-sm rounded-lg border-2 border-border font-medium text-foreground focus:outline-none focus:border-ring"
                   />
                 </div>
 
@@ -508,7 +508,7 @@ export default function RequestDetailClient({ initialRequest, isCreatedJustNow }
                   <button
                     type="button"
                     onClick={() => setIsAppealOpen(false)}
-                    className="px-4 py-2.5 text-sm font-bold text-foreground rounded-lg hover:bg-slate-100"
+                    className="px-4 py-2.5 text-sm font-bold text-foreground rounded-lg hover:bg-muted"
                   >
                     Отмена
                   </button>

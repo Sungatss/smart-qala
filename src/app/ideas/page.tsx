@@ -11,7 +11,7 @@ export default function IdeasPage() {
   const ideas = requests.filter((r) => r.type === 'idea');
 
   return (
-    <div className="flex flex-col min-h-screen bg-muted text-gray-900">
+    <div className="flex flex-col min-h-screen bg-background text-foreground">
       <Navbar />
 
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 md:px-6 py-8 md:py-12">

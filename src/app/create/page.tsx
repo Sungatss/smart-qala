@@ -314,8 +314,8 @@ function CreateRequestContent() {
                 onClick={handleToggleVoice}
                 className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-bold transition-colors cursor-pointer ${
                   isRecording
-                    ? 'bg-red-600 text-white animate-pulse'
-                    : 'bg-slate-100 text-foreground hover:bg-slate-200 border border-border'
+                    ? 'bg-danger text-danger-foreground animate-pulse'
+                    : 'bg-muted text-foreground hover:bg-muted/80 border border-border'
                 }`}
                 title="Голосовой ввод сообщения"
               >
@@ -325,7 +325,7 @@ function CreateRequestContent() {
             </div>
 
             {voiceNotice && (
-              <div className="mb-2 text-xs font-bold text-blue-700 bg-info-soft px-3 py-1.5 rounded border border-info-soft">
+              <div className="mb-2 text-xs font-bold text-info-soft-foreground bg-info-soft px-3 py-1.5 rounded border border-info-soft">
                 {voiceNotice}
               </div>
             )}
@@ -336,16 +336,16 @@ function CreateRequestContent() {
                 value={originalText}
                 onChange={(e) => setOriginalText(e.target.value)}
                 placeholder={t.createTextPlaceholder}
-                className={`w-full p-4 rounded-lg border-2 text-base text-foreground placeholder-slate-400 focus:outline-none transition-colors ${
-                  isWordCountExceeded ? 'border-red-500 bg-danger-soft/20' : 'border-border focus:border-slate-900 bg-card'
+                className={`w-full p-4 rounded-lg border-2 text-base text-foreground placeholder:text-muted-foreground focus:outline-none transition-colors ${
+                  isWordCountExceeded ? 'border-danger bg-danger-soft/20' : 'border-border focus:border-ring bg-card'
                 }`}
               />
 
-              <div className="flex items-center justify-between mt-1 text-xs font-mono">
+              <div className="flex items-center justify-between mt-1 text-xs">
                 <span className="text-muted-foreground font-sans">
                   ИИ автоматически сформулирует официальный запрос
                 </span>
-                <span className={`font-bold ${isWordCountExceeded ? 'text-red-600' : 'text-muted-foreground'}`}>
+                <span className={`font-bold ${isWordCountExceeded ? 'text-danger' : 'text-muted-foreground'}`}>
                   {wordCount} / 200 слов
                 </span>
               </div>
@@ -376,7 +376,7 @@ function CreateRequestContent() {
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
                 placeholder={t.createAddressPlaceholder}
-                className="w-full pl-11 pr-4 py-3 rounded-lg border-2 border-border text-base text-foreground placeholder-slate-400 focus:outline-none focus:border-slate-900 font-medium"
+                className="w-full pl-11 pr-4 py-3 rounded-lg border-2 border-border text-base text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-ring font-medium"
               />
             </div>
           </div>
@@ -399,7 +399,7 @@ function CreateRequestContent() {
                   <button
                     type="button"
                     onClick={() => setPhotoUrl('')}
-                    className="text-xs text-red-600 hover:underline font-bold mt-1.5 cursor-pointer block"
+                    className="text-xs text-danger hover:underline font-bold mt-1.5 cursor-pointer block"
                   >
                     Удалить фото
                   </button>
@@ -410,7 +410,7 @@ function CreateRequestContent() {
                 <button
                   type="button"
                   onClick={() => setPhotoUrl('https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?auto=format&fit=crop&w=800&q=80')}
-                  className="p-3 border-2 border-dashed border-border hover:border-slate-800 rounded-lg text-left flex items-center gap-3 transition-colors cursor-pointer"
+                  className="p-3 border-2 border-dashed border-border hover:border-foreground/40 rounded-lg text-left flex items-center gap-3 transition-colors cursor-pointer"
                 >
                   <Camera className="w-5 h-5 text-muted-foreground shrink-0" />
                   <div>
@@ -422,7 +422,7 @@ function CreateRequestContent() {
                 <button
                   type="button"
                   onClick={() => setPhotoUrl('https://images.unsplash.com/photo-1509114397022-ed747cca3f65?auto=format&fit=crop&w=800&q=80')}
-                  className="p-3 border-2 border-dashed border-border hover:border-slate-800 rounded-lg text-left flex items-center gap-3 transition-colors cursor-pointer"
+                  className="p-3 border-2 border-dashed border-border hover:border-foreground/40 rounded-lg text-left flex items-center gap-3 transition-colors cursor-pointer"
                 >
                   <Upload className="w-5 h-5 text-muted-foreground shrink-0" />
                   <div>
@@ -457,7 +457,7 @@ function CreateRequestContent() {
                     value={guestName}
                     onChange={(e) => setGuestName(e.target.value)}
                     placeholder="Айгүл Ахметова"
-                    className="w-full px-3 py-2 bg-card border border-border rounded text-sm text-foreground focus:outline-none focus:border-blue-600"
+                    className="w-full px-3 py-2 bg-card border border-border rounded text-sm text-foreground focus:outline-none focus:border-ring"
                   />
                 </div>
 
@@ -470,7 +470,7 @@ function CreateRequestContent() {
                     value={guestPhone}
                     onChange={(e) => setGuestPhone(e.target.value)}
                     placeholder="+7 (705) 000-00-00"
-                    className="w-full px-3 py-2 bg-card border border-border rounded text-sm text-foreground focus:outline-none focus:border-blue-600"
+                    className="w-full px-3 py-2 bg-card border border-border rounded text-sm text-foreground focus:outline-none focus:border-ring"
                   />
                 </div>
               </div>
@@ -484,7 +484,7 @@ function CreateRequestContent() {
               id="anonymous"
               checked={isAnonymous}
               onChange={(e) => setIsAnonymous(e.target.checked)}
-              className="mt-1 w-4 h-4 rounded text-foreground border-border focus:ring-slate-900 cursor-pointer"
+              className="mt-1 w-4 h-4 rounded text-foreground border-border focus:ring-ring cursor-pointer"
             />
             <label htmlFor="anonymous" className="text-xs text-foreground font-medium cursor-pointer">
               <span className="font-bold">{t.createAnonymousLabel}</span> — {t.createAnonymousHint}
@@ -496,21 +496,21 @@ function CreateRequestContent() {
             <button
               type="submit"
               disabled={isSubmitting || isWordCountExceeded}
-              className={`w-full py-4 px-6 rounded-lg font-bold text-base text-white flex items-center justify-center gap-3 transition-all shadow-md cursor-pointer ${
+              className={`w-full py-4 px-6 rounded-lg font-bold text-base flex items-center justify-center gap-3 transition-all shadow-md cursor-pointer ${
                 isSubmitting 
-                  ? 'bg-slate-700 cursor-not-allowed' 
+                  ? 'bg-muted text-muted-foreground cursor-not-allowed' 
                   : 'bg-primary text-primary-foreground hover:bg-primary/90'
               }`}
             >
               {isSubmitting ? (
                 <>
-                  <Loader2 className="w-5 h-5 text-white animate-spin" />
+                  <Loader2 className="w-5 h-5 text-primary-foreground animate-spin" />
                   <span>{t.createSubmitting}</span>
                 </>
               ) : (
                 <>
                   <span>{t.createSubmitBtn}</span>
-                  <ArrowRight className="w-5 h-5 text-white" />
+                  <ArrowRight className="w-5 h-5 text-primary-foreground" />
                 </>
               )}
             </button>

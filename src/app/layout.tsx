@@ -23,7 +23,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ru" className={inter.variable}>
-      <body className={`${inter.className} min-h-screen bg-muted text-gray-900 flex flex-col`}>
+      <body className={`${inter.className} min-h-screen bg-background text-foreground flex flex-col`}>
         <AppProvider>
           <AuthModal />
           <AppShell>

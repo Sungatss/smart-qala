@@ -464,11 +464,11 @@ export default function AdminPage() {
 
               <div className="flex items-center gap-3 pt-2 text-xs font-bold text-muted-foreground">
                 <span>Или перейти:</span>
-                <Link href="/" className="hover:text-black hover:underline">На главную</Link>
+                <Link href="/" className="hover:text-foreground hover:underline">На главную</Link>
                 <span>•</span>
-                <Link href="/create" className="hover:text-black hover:underline">Подать обращение</Link>
+                <Link href="/create" className="hover:text-foreground hover:underline">Подать обращение</Link>
                 <span>•</span>
-                <Link href="/ideas" className="hover:text-black hover:underline">Банк идей</Link>
+                <Link href="/ideas" className="hover:text-foreground hover:underline">Банк идей</Link>
               </div>
             </div>
 
@@ -502,7 +502,7 @@ export default function AdminPage() {
               <span className="text-xs font-bold uppercase tracking-wider text-foreground">
                 {isAdmin ? 'Ситуационный центр • Акимат г. Семей' : 'Единый контакт-центр 109 • Отдел ЖКХ г. Семей'}
               </span>
-              <span className="text-xs font-mono font-bold px-2 py-0.5 bg-slate-200 text-foreground rounded border border-border">
+              <span className="text-xs font-bold px-2 py-0.5 bg-muted text-foreground rounded border border-border">
                 {isAdmin ? 'ПРАВА: АДМИНИСТРАЦИЯ' : 'ПРАВА: ОПЕРАТОР ЖКХ'}
               </span>
             </div>
@@ -537,7 +537,7 @@ export default function AdminPage() {
               className={`px-4 py-2 text-sm font-bold rounded-lg transition-colors cursor-pointer ${
                 adminTab === 'registry'
                   ? 'bg-primary text-primary-foreground'
-                  : 'bg-card text-foreground border border-border hover:bg-slate-100'
+                  : 'bg-card text-foreground border border-border hover:bg-muted'
               }`}
             >
               Реестр обращений и модерация
@@ -547,13 +547,13 @@ export default function AdminPage() {
               className={`px-4 py-2 text-sm font-bold rounded-lg transition-colors cursor-pointer flex items-center gap-1.5 ${
                 adminTab === 'audit'
                   ? 'bg-primary text-primary-foreground'
-                  : 'bg-card text-foreground border border-border hover:bg-slate-100'
+                  : 'bg-card text-foreground border border-border hover:bg-muted'
               }`}
             >
-              <ShieldAlert className="w-4 h-4 text-red-600" />
+              <ShieldAlert className="w-4 h-4 text-danger" />
               <span>Аудит и контроль ЖКХ</span>
               {overdueRequests.length > 0 && (
-                <span className="ml-1 px-1.5 py-0.5 rounded text-xs bg-red-600 text-white font-mono font-bold">
+                <span className="ml-1 px-1.5 py-0.5 rounded text-xs bg-danger text-danger-foreground font-bold">
                   {overdueRequests.length}
                 </span>
               )}
@@ -563,7 +563,7 @@ export default function AdminPage() {
               className={`px-4 py-2 text-sm font-bold rounded-lg transition-colors cursor-pointer flex items-center gap-1.5 ${
                 adminTab === 'developers'
                   ? 'bg-primary text-primary-foreground'
-                  : 'bg-card text-foreground border border-border hover:bg-slate-100'
+                  : 'bg-card text-foreground border border-border hover:bg-muted'
               }`}
             >
               <Code className="w-4 h-4 text-muted-foreground" />
@@ -715,7 +715,7 @@ export default function AdminPage() {
                   <span>Отображено записей: {filteredRequests.length} из {requests.length}</span>
                   
                   {/* View Mode Switcher */}
-                  <div className="flex items-center bg-slate-100 p-0.5 rounded-lg border border-border">
+                  <div className="flex items-center bg-muted p-0.5 rounded-lg border border-border">
                     <button
                       type="button"
                       onClick={() => setViewMode('table')}
@@ -762,15 +762,15 @@ export default function AdminPage() {
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 mt-4 items-start">
                 
                 {/* COLUMN 1: Новые и на рассмотрении */}
-                <div className="bg-slate-100/90 rounded-xl border-2 border-border p-4 flex flex-col space-y-3">
+                <div className="bg-muted rounded-xl border-2 border-border p-4 flex flex-col space-y-3">
                   <div className="flex items-center justify-between pb-2 border-b-2 border-border">
                     <div className="flex items-center gap-2">
-                      <span className="w-3 h-3 rounded-full bg-blue-600"></span>
+                      <span className="w-3 h-3 rounded-full bg-info"></span>
                       <h3 className="font-extrabold text-sm text-foreground uppercase tracking-wide">
                         Новые и на рассмотрении
                       </h3>
                     </div>
-                    <span className="px-2 py-0.5 text-xs font-mono font-bold bg-card text-foreground rounded-full border border-border shadow-2xs">
+                    <span className="px-2 py-0.5 text-xs font-bold bg-card text-foreground rounded-full border border-border shadow-2xs">
                       {filteredRequests.filter((r) => r.status === 'new' || r.status === 'under_review').length}
                     </span>
                   </div>
@@ -787,10 +787,10 @@ export default function AdminPage() {
                           <div
                             key={req.id}
                             onClick={() => openDrawer(req)}
-                            className="bg-card p-4 rounded-xl border-2 border-border hover:border-blue-600 shadow-xs hover:shadow-md transition-all cursor-pointer space-y-2.5"
+                            className="bg-card p-4 rounded-xl border-2 border-border hover:border-info shadow-xs hover:shadow-md transition-all cursor-pointer space-y-2.5"
                           >
                             <div className="flex items-center justify-between gap-1.5">
-                              <span className="font-mono text-xs font-extrabold text-foreground bg-slate-100 px-2 py-0.5 rounded border border-border">
+                              <span className="text-xs font-bold text-foreground bg-muted px-2 py-0.5 rounded border border-border">
                                 {req.id}
                               </span>
                               <PriorityBadge priority={req.priority} />
@@ -817,14 +817,14 @@ export default function AdminPage() {
                               )}
                             </div>
 
-                            <div className="pt-2 border-t border-slate-100 flex items-center justify-between gap-2">
+                            <div className="pt-2 border-t border-border flex items-center justify-between gap-2">
                               <span className="text-[11px] font-bold text-muted-foreground truncate">
                                 {req.department}
                               </span>
                               <button
                                 type="button"
                                 onClick={(e) => handleQuickStatusChange(req.id, 'in_progress', e)}
-                                className="px-2.5 py-1 rounded bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs flex items-center gap-1 transition-colors cursor-pointer shrink-0"
+                                className="px-2.5 py-1 rounded bg-info hover:bg-info/90 text-info-foreground font-bold text-xs flex items-center gap-1 transition-colors cursor-pointer shrink-0"
                               >
                                 <span>В работу</span>
                                 <ArrowRight className="w-3 h-3" />
@@ -837,15 +837,15 @@ export default function AdminPage() {
                 </div>
 
                 {/* COLUMN 2: В работе у служб */}
-                <div className="bg-slate-100/90 rounded-xl border-2 border-info-soft p-4 flex flex-col space-y-3">
-                  <div className="flex items-center justify-between pb-2 border-b-2 border-info-soft">
+                <div className="bg-muted rounded-xl border-2 border-border p-4 flex flex-col space-y-3">
+                  <div className="flex items-center justify-between pb-2 border-b-2 border-border">
                     <div className="flex items-center gap-2">
-                      <span className="w-3 h-3 rounded-full bg-indigo-600"></span>
-                      <h3 className="font-extrabold text-sm text-info-soft-foreground uppercase tracking-wide">
+                      <span className="w-3 h-3 rounded-full bg-info"></span>
+                      <h3 className="font-extrabold text-sm text-foreground uppercase tracking-wide">
                         В работе у служб
                       </h3>
                     </div>
-                    <span className="px-2 py-0.5 text-xs font-mono font-bold bg-card text-info-soft-foreground rounded-full border border-info-soft shadow-2xs">
+                    <span className="px-2 py-0.5 text-xs font-bold bg-card text-foreground rounded-full border border-border shadow-2xs">
                       {filteredRequests.filter((r) => r.status === 'assigned' || r.status === 'in_progress').length}
                     </span>
                   </div>
@@ -862,13 +862,13 @@ export default function AdminPage() {
                           <div
                             key={req.id}
                             onClick={() => openDrawer(req)}
-                            className="bg-card p-4 rounded-xl border-2 border-info-soft hover:border-indigo-600 shadow-xs hover:shadow-md transition-all cursor-pointer space-y-2.5"
+                            className="bg-card p-4 rounded-xl border-2 border-border hover:border-info shadow-xs hover:shadow-md transition-all cursor-pointer space-y-2.5"
                           >
                             <div className="flex items-center justify-between gap-1.5">
-                              <span className="font-mono text-xs font-extrabold text-foreground bg-slate-100 px-2 py-0.5 rounded border border-border">
+                              <span className="text-xs font-bold text-foreground bg-muted px-2 py-0.5 rounded border border-border">
                                 {req.id}
                               </span>
-                              <span className="px-2 py-0.5 text-xs font-bold bg-indigo-100 text-info-soft-foreground rounded border border-info-soft">
+                              <span className="px-2 py-0.5 text-xs font-bold bg-info-soft text-info-soft-foreground rounded border border-info-soft">
                                 {req.department}
                               </span>
                             </div>
@@ -889,7 +889,7 @@ export default function AdminPage() {
                               />
                             )}
 
-                            <div className="pt-2 border-t border-slate-100 flex items-center justify-between gap-2">
+                            <div className="pt-2 border-t border-border flex items-center justify-between gap-2">
                               <span className="text-[11px] text-muted-foreground font-medium">
                                 Норматив: 24ч
                               </span>
@@ -899,7 +899,7 @@ export default function AdminPage() {
                                   e.stopPropagation();
                                   openDrawer(req);
                                 }}
-                                className="px-2.5 py-1 rounded bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center gap-1 transition-colors cursor-pointer shrink-0"
+                                className="px-2.5 py-1 rounded bg-success hover:bg-success/90 text-success-foreground font-bold text-xs flex items-center gap-1 transition-colors cursor-pointer shrink-0"
                               >
                                 <CheckCircle2 className="w-3 h-3" />
                                 <span>Отчет «ПОСЛЕ»</span>
@@ -912,15 +912,15 @@ export default function AdminPage() {
                 </div>
 
                 {/* COLUMN 3: Устранено / Решено */}
-                <div className="bg-slate-100/90 rounded-xl border-2 border-success-soft p-4 flex flex-col space-y-3">
-                  <div className="flex items-center justify-between pb-2 border-b-2 border-success-soft">
+                <div className="bg-muted rounded-xl border-2 border-border p-4 flex flex-col space-y-3">
+                  <div className="flex items-center justify-between pb-2 border-b-2 border-border">
                     <div className="flex items-center gap-2">
-                      <span className="w-3 h-3 rounded-full bg-emerald-600"></span>
-                      <h3 className="font-extrabold text-sm text-success-soft-foreground uppercase tracking-wide">
+                      <span className="w-3 h-3 rounded-full bg-success"></span>
+                      <h3 className="font-extrabold text-sm text-foreground uppercase tracking-wide">
                         Устранено / Решено
                       </h3>
                     </div>
-                    <span className="px-2 py-0.5 text-xs font-mono font-bold bg-card text-success-soft-foreground rounded-full border border-success-soft shadow-2xs">
+                    <span className="px-2 py-0.5 text-xs font-bold bg-card text-foreground rounded-full border border-border shadow-2xs">
                       {filteredRequests.filter((r) => r.status === 'resolved').length}
                     </span>
                   </div>
@@ -937,10 +937,10 @@ export default function AdminPage() {
                           <div
                             key={req.id}
                             onClick={() => openDrawer(req)}
-                            className="bg-card p-4 rounded-xl border-2 border-success-soft hover:border-emerald-600 shadow-xs hover:shadow-md transition-all cursor-pointer space-y-2.5"
+                            className="bg-card p-4 rounded-xl border-2 border-border hover:border-success shadow-xs hover:shadow-md transition-all cursor-pointer space-y-2.5"
                           >
                             <div className="flex items-center justify-between gap-1.5">
-                              <span className="font-mono text-xs font-extrabold text-foreground bg-slate-100 px-2 py-0.5 rounded border border-border">
+                              <span className="text-xs font-bold text-foreground bg-muted px-2 py-0.5 rounded border border-border">
                                 {req.id}
                               </span>
                               <StatusBadge status="resolved" />
@@ -958,10 +958,10 @@ export default function AdminPage() {
                             {req.photo_after_url && (
                               <div className="relative">
                                 <div 
-                                  className="h-24 w-full rounded-lg bg-cover bg-center border border-success-soft"
+                                  className="h-24 w-full rounded-lg bg-cover bg-center border border-border"
                                   style={{ backgroundImage: `url('${req.photo_after_url}')` }}
                                 />
-                                <span className="absolute bottom-1 right-1 px-1.5 py-0.5 bg-emerald-900/90 text-white text-[10px] font-bold rounded">
+                                <span className="absolute bottom-1 right-1 px-1.5 py-0.5 bg-primary text-primary-foreground text-[10px] font-bold rounded">
                                   Фото ПОСЛЕ
                                 </span>
                               </div>
@@ -973,9 +973,9 @@ export default function AdminPage() {
                               </p>
                             )}
 
-                            <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-success-soft-foreground">
+                            <div className="pt-2 border-t border-border flex items-center justify-between text-xs font-bold text-success-soft-foreground">
                               <span className="flex items-center gap-1 text-[11px]">
-                                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                                <CheckCircle2 className="w-3.5 h-3.5 text-success" />
                                 <span>На витрине города</span>
                               </span>
                               <span className="text-[11px] text-muted-foreground font-mono">
@@ -994,7 +994,7 @@ export default function AdminPage() {
               <div className="bg-card rounded-lg border-2 border-border shadow-xs mt-4 overflow-hidden">
                 <div className="overflow-x-auto">
                   <table className="w-full text-left text-sm">
-                    <thead className="bg-slate-100 border-b-2 border-border text-foreground uppercase font-bold text-xs">
+                    <thead className="bg-muted border-b-2 border-border text-foreground uppercase font-bold text-xs">
                       <tr>
                         <th className="px-4 py-3.5">ID</th>
                         <th className="px-4 py-3.5">Заявитель (Конфиденциально)</th>
@@ -1006,7 +1006,7 @@ export default function AdminPage() {
                         <th className="px-4 py-3.5 text-right">Действие</th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-slate-200">
+                    <tbody className="divide-y divide-border">
                       {filteredRequests.map((req) => (
                         <tr
                           key={req.id}
@@ -1015,14 +1015,14 @@ export default function AdminPage() {
                           }`}
                           onClick={() => openDrawer(req)}
                         >
-                          <td className="px-4 py-3.5 font-mono font-bold text-foreground whitespace-nowrap">
+                          <td className="px-4 py-3.5 font-bold text-foreground whitespace-nowrap">
                             {req.id}
                           </td>
 
                           {/* Confidential applicant info */}
                           <td className="px-4 py-3.5 whitespace-nowrap">
                             {req.is_anonymous ? (
-                              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-bold bg-slate-200 text-foreground">
+                              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-bold bg-muted text-foreground border border-border">
                                 Анонимный житель
                               </span>
                             ) : (
@@ -1201,7 +1201,7 @@ export default function AdminPage() {
                     value={devTopic}
                     onChange={(e) => setDevTopic(e.target.value)}
                     placeholder="Например: Экспорт сводных отчетов в Excel для акима"
-                    className="w-full p-2.5 text-sm rounded-lg border-2 border-border font-medium text-foreground focus:outline-none focus:border-slate-900"
+                    className="w-full p-2.5 text-sm rounded-lg border-2 border-border font-medium text-foreground focus:outline-none focus:border-ring"
                   />
                 </div>
 
@@ -1215,11 +1215,11 @@ export default function AdminPage() {
                     value={devMessage}
                     onChange={(e) => setDevMessage(e.target.value)}
                     placeholder="Опишите требования, выявленные ошибки или пожелания по интерфейсу..."
-                    className="w-full p-2.5 text-sm rounded-lg border-2 border-border font-medium text-foreground focus:outline-none focus:border-slate-900"
+                    className="w-full p-2.5 text-sm rounded-lg border-2 border-border font-medium text-foreground focus:outline-none focus:border-ring"
                   />
                 </div>
 
-                <div className="p-3 bg-slate-100 rounded-lg border border-border text-xs text-foreground flex items-center justify-between">
+                <div className="p-3 bg-muted rounded-lg border border-border text-xs text-foreground flex items-center justify-between">
                   <span>Отправитель: <strong>{user.name}</strong> ({user.roleTitle})</span>
                   <span className="font-mono text-muted-foreground">{user.email}</span>
                 </div>
@@ -1229,7 +1229,7 @@ export default function AdminPage() {
                   disabled={isDevSending}
                   className="w-full py-3 px-4 rounded-lg bg-primary text-primary-foreground font-bold text-sm hover:bg-primary/90 disabled:opacity-50 transition-colors shadow-sm flex items-center justify-center gap-2 cursor-pointer"
                 >
-                  <Send className="w-4 h-4 text-white" />
+                  <Send className="w-4 h-4 text-primary-foreground" />
                   <span>{isDevSending ? 'Отправка разработчикам...' : 'Отправить запрос разработчикам'}</span>
                 </button>
               </form>
@@ -1237,11 +1237,11 @@ export default function AdminPage() {
 
             {/* Official Developer Contacts & History */}
             <div className="lg:col-span-6 space-y-6">
-              <div className="bg-primary text-primary-foreground p-6 rounded-lg shadow-sm border border-slate-800">
+              <div className="bg-primary text-primary-foreground p-6 rounded-lg shadow-sm border border-border">
                 <h3 className="text-base font-extrabold tracking-tight">
                   Официальные контакты команды разработки
                 </h3>
-                <p className="text-xs text-slate-300 mt-1">
+                <p className="text-xs text-primary-foreground/80 mt-1">
                   Поддержка платформы Smart Qala в рамках программы цифровизации Абайской области:
                 </p>
 
@@ -1280,7 +1280,7 @@ export default function AdminPage() {
                       <p className="text-foreground mt-1 leading-relaxed font-medium">{df.message}</p>
                       <div className="mt-2 pt-1 border-t border-border text-muted-foreground font-semibold flex items-center justify-between">
                         <span>От: {df.sender_name}</span>
-                        <span className="text-emerald-700 font-bold">✓ Принято в бэклог</span>
+                        <span className="text-success font-bold">✓ Принято в бэклог</span>
                       </div>
                     </div>
                   ))}
@@ -1297,14 +1297,14 @@ export default function AdminPage() {
           SLIDE-OVER DRAWER MODAL (ЖКХ & АДМИНИСТРАЦИЯ)
           ======================================================== */}
       {isDrawerOpen && activeRequest && (
-        <div className="fixed inset-0 z-50 overflow-hidden bg-slate-950/60 backdrop-blur-xs flex justify-end">
+        <div className="fixed inset-0 z-50 overflow-hidden bg-black/60 backdrop-blur-xs flex justify-end">
           <div className="w-full max-w-2xl bg-card h-full shadow-2xl flex flex-col justify-between overflow-y-auto">
             
             {/* Drawer Header */}
             <div>
-              <div className="p-5 border-b-2 border-border flex items-center justify-between bg-slate-100">
+              <div className="p-5 border-b-2 border-border flex items-center justify-between bg-muted">
                 <div className="flex items-center gap-2.5 flex-wrap">
-                  <span className="font-mono text-sm font-extrabold text-foreground bg-card border border-border px-2.5 py-1 rounded">
+                  <span className="text-sm font-extrabold text-foreground bg-card border border-border px-2.5 py-1 rounded">
                     {activeRequest.id}
                   </span>
                   <StatusBadge status={activeRequest.status} />
@@ -1314,7 +1314,7 @@ export default function AdminPage() {
                 
                 <button
                   onClick={closeDrawer}
-                  className="p-2 rounded-lg text-muted-foreground hover:text-slate-950 hover:bg-slate-200 cursor-pointer"
+                  className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted cursor-pointer"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -1325,7 +1325,7 @@ export default function AdminPage() {
                 
                 {saveSuccessMsg && (
                   <div className="p-3.5 bg-success-soft border-2 border-success-soft text-success-soft-foreground rounded-lg text-sm font-bold flex items-center gap-2">
-                    <CheckCircle2 className="w-5 h-5 text-emerald-700 shrink-0" />
+                    <CheckCircle2 className="w-5 h-5 text-success shrink-0" />
                     <span>{saveSuccessMsg}</span>
                   </div>
                 )}
@@ -1334,10 +1334,10 @@ export default function AdminPage() {
                 <div className="p-4 rounded-lg bg-info-soft/70 border-2 border-info-soft">
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-xs font-extrabold uppercase tracking-wider text-info-soft-foreground flex items-center gap-1.5">
-                      <Lock className="w-4 h-4 text-blue-700" />
+                      <Lock className="w-4 h-4 text-info" />
                       <span>Конфиденциальное досье заявителя (Служебный доступ)</span>
                     </span>
-                    <span className="text-[11px] font-mono font-bold text-info-soft-foreground bg-blue-100 px-2 py-0.5 rounded">
+                    <span className="text-[11px] font-bold text-info-soft-foreground bg-info-soft px-2 py-0.5 rounded border border-info-soft">
                       ЖКХ / 109
                     </span>
                   </div>
@@ -1375,7 +1375,7 @@ export default function AdminPage() {
                   <div>
                     <div className="flex items-center gap-2 mb-1">
                       <span className={`text-xs font-bold uppercase px-2 py-0.5 rounded ${
-                        activeRequest.type === 'idea' ? 'bg-amber-100 text-warning-soft-foreground' : 'bg-slate-200 text-foreground'
+                        activeRequest.type === 'idea' ? 'bg-warning-soft text-warning-soft-foreground border border-warning-soft' : 'bg-muted text-foreground border border-border'
                       }`}>
                         {activeRequest.type === 'idea' ? '💡 Городская идея' : '🔴 Проблема города'}
                       </span>
@@ -1391,11 +1391,11 @@ export default function AdminPage() {
                   </div>
 
                   {/* Cleaned text protocol */}
-                  <div className="p-4 bg-slate-100 rounded-lg border border-border text-sm">
+                  <div className="p-4 bg-muted rounded-lg border border-border text-sm">
                     <div className="font-bold text-foreground mb-1">
                       Протокол инцидента (структурировано ИИ):
                     </div>
-                    <p className="text-slate-950 leading-relaxed font-medium">
+                    <p className="text-foreground leading-relaxed font-medium">
                       {activeRequest.cleaned_text}
                     </p>
                   </div>
@@ -1550,7 +1550,7 @@ export default function AdminPage() {
                     {/* Before Photo */}
                     <div>
                       <div className="text-xs font-bold text-foreground mb-1">Фото ДО (от жителя):</div>
-                      <div className="relative rounded-lg overflow-hidden border-2 border-border aspect-4/3 bg-slate-100">
+                      <div className="relative rounded-lg overflow-hidden border-2 border-border aspect-4/3 bg-muted">
                         {activeRequest.photo_before_url ? (
                           <img src={activeRequest.photo_before_url} alt="До" className="w-full h-full object-cover" />
                         ) : (
@@ -1562,7 +1562,7 @@ export default function AdminPage() {
                     {/* After Photo Preview */}
                     <div>
                       <div className="text-xs font-bold text-success-soft-foreground mb-1">Фото ПОСЛЕ (акт устранения):</div>
-                      <div className="relative rounded-lg overflow-hidden border-2 border-emerald-400 aspect-4/3 bg-slate-100">
+                      <div className="relative rounded-lg overflow-hidden border-2 border-success aspect-4/3 bg-muted">
                         {draftPhotoAfter ? (
                           <img src={draftPhotoAfter} alt="После" className="w-full h-full object-cover" />
                         ) : (
@@ -1645,7 +1645,7 @@ export default function AdminPage() {
                       value={draftReport}
                       onChange={(e) => setDraftReport(e.target.value)}
                       placeholder="Опишите фактически проведенные работы. Например: Бригадой МП «Благоустройство» выполнен ремонт асфальтового полотна..."
-                      className="w-full p-2.5 text-xs rounded-lg border-2 border-border font-medium text-foreground focus:outline-none focus:border-slate-900"
+                      className="w-full p-2.5 text-xs rounded-lg border-2 border-border font-medium text-foreground focus:outline-none focus:border-ring"
                     />
                   </div>
 
@@ -1662,28 +1662,28 @@ export default function AdminPage() {
                       <button
                         type="button"
                         onClick={() => setDraftPhotoAfter(DEMO_PHOTOS.trash_after)}
-                        className="px-2.5 py-1 text-xs font-bold bg-slate-100 hover:bg-slate-200 rounded border border-border text-foreground cursor-pointer"
+                        className="px-2.5 py-1 text-xs font-bold bg-muted hover:bg-muted/80 rounded border border-border text-foreground cursor-pointer"
                       >
                         Мусор убран
                       </button>
                       <button
                         type="button"
                         onClick={() => setDraftPhotoAfter(DEMO_PHOTOS.pothole_after)}
-                        className="px-2.5 py-1 text-xs font-bold bg-slate-100 hover:bg-slate-200 rounded border border-border text-foreground cursor-pointer"
+                        className="px-2.5 py-1 text-xs font-bold bg-muted hover:bg-muted/80 rounded border border-border text-foreground cursor-pointer"
                       >
                         Яма заделана
                       </button>
                       <button
                         type="button"
                         onClick={() => setDraftPhotoAfter(DEMO_PHOTOS.streetlight_after)}
-                        className="px-2.5 py-1 text-xs font-bold bg-slate-100 hover:bg-slate-200 rounded border border-border text-foreground cursor-pointer"
+                        className="px-2.5 py-1 text-xs font-bold bg-muted hover:bg-muted/80 rounded border border-border text-foreground cursor-pointer"
                       >
                         Фонарь горит
                       </button>
                       <button
                         type="button"
                         onClick={() => setDraftPhotoAfter(DEMO_PHOTOS.bench_after)}
-                        className="px-2.5 py-1 text-xs font-bold bg-slate-100 hover:bg-slate-200 rounded border border-border text-foreground cursor-pointer"
+                        className="px-2.5 py-1 text-xs font-bold bg-muted hover:bg-muted/80 rounded border border-border text-foreground cursor-pointer"
                       >
                         Скамья починена
                       </button>
@@ -1704,8 +1704,8 @@ export default function AdminPage() {
             </div>
 
             {/* Drawer Footer Actions */}
-            <div className="p-4 border-t-2 border-border bg-slate-100 flex items-center justify-between">
-              <span className="text-xs font-mono font-bold text-muted-foreground">
+            <div className="p-4 border-t-2 border-border bg-muted flex items-center justify-between">
+              <span className="text-xs font-bold text-muted-foreground">
                 ДЕМОНСТРАЦИОННЫЕ ДАННЫЕ / СЕМЕЙ
               </span>
 
@@ -1724,7 +1724,7 @@ export default function AdminPage() {
                   disabled={isSaving}
                   className="inline-flex items-center gap-1.5 px-5 py-2.5 text-xs font-bold rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 disabled:opacity-50 transition-colors shadow-sm cursor-pointer"
                 >
-                  <Save className="w-4 h-4 text-white" />
+                  <Save className="w-4 h-4 text-primary-foreground" />
                   <span>{isSaving ? 'Сохранение...' : 'Сохранить изменения'}</span>
                 </button>
               </div>

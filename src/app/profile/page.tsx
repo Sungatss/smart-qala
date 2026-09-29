@@ -59,7 +59,7 @@ export default function ProfilePage() {
         />
 
         {/* Profile Card Header */}
-        <div className="bg-card rounded-md border border-gray-200 p-6 shadow-2xs">
+        <div className="bg-card rounded-md border border-border p-6 shadow-2xs">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div className="flex items-start gap-4">
               <div className="w-16 h-16 rounded-md bg-primary text-primary-foreground flex items-center justify-center font-bold text-2xl shrink-0">
@@ -70,7 +70,7 @@ export default function ProfilePage() {
                   <h1 className="text-xl sm:text-2xl font-extrabold text-foreground">
                     {user.name}
                   </h1>
-                  <span className="px-2 py-0.5 text-xs font-semibold rounded bg-slate-100 text-foreground border border-border">
+                  <span className="px-2 py-0.5 text-xs font-semibold rounded bg-muted text-foreground border border-border">
                     {user.roleTitle}
                   </span>
                 </div>
@@ -101,24 +101,24 @@ export default function ProfilePage() {
           </div>
 
           {/* Quick Stats Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6 pt-6 border-t border-gray-100">
-            <div className="p-3 bg-muted rounded-md border border-gray-200">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6 pt-6 border-t border-border">
+            <div className="p-3 bg-muted rounded-md border border-border">
               <div className="text-[11px] font-semibold text-muted-foreground uppercase">Подано обращений</div>
               <div className="text-xl font-bold text-foreground mt-0.5">{userRequests.length}</div>
             </div>
-            <div className="p-3 bg-muted rounded-md border border-gray-200">
-              <div className="text-[11px] font-semibold text-indigo-700 uppercase">В работе</div>
-              <div className="text-xl font-bold text-indigo-700 mt-0.5">
+            <div className="p-3 bg-muted rounded-md border border-border">
+              <div className="text-[11px] font-semibold text-info-soft-foreground uppercase">В работе</div>
+              <div className="text-xl font-bold text-info-soft-foreground mt-0.5">
                 {userRequests.filter((r) => r.status === 'in_progress' || r.status === 'assigned').length}
               </div>
             </div>
-            <div className="p-3 bg-muted rounded-md border border-gray-200">
-              <div className="text-[11px] font-semibold text-emerald-700 uppercase">Успешно решено</div>
-              <div className="text-xl font-bold text-emerald-700 mt-0.5">
+            <div className="p-3 bg-muted rounded-md border border-border">
+              <div className="text-[11px] font-semibold text-success-soft-foreground uppercase">Успешно решено</div>
+              <div className="text-xl font-bold text-success-soft-foreground mt-0.5">
                 {userRequests.filter((r) => r.status === 'resolved').length}
               </div>
             </div>
-            <div className="p-3 bg-muted rounded-md border border-gray-200">
+            <div className="p-3 bg-muted rounded-md border border-border">
               <div className="text-[11px] font-semibold text-muted-foreground uppercase">Поддержано чужих тем</div>
               <div className="text-xl font-bold text-foreground mt-0.5">{upvotedIds.size}</div>
             </div>
@@ -126,8 +126,8 @@ export default function ProfilePage() {
         </div>
 
         {/* My Requests Section */}
-        <div className="bg-card rounded-md border border-gray-200 p-6 shadow-2xs space-y-4">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-gray-200 gap-3">
+        <div className="bg-card rounded-md border border-border p-6 shadow-2xs space-y-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-border gap-3">
             <div>
               <h2 className="text-lg font-bold text-foreground">
                 Мои зарегистрированные обращения и идеи
@@ -138,7 +138,7 @@ export default function ProfilePage() {
             </div>
 
             {/* Filter Tabs */}
-            <div className="flex items-center gap-1 bg-gray-100 p-1 rounded-md text-xs">
+            <div className="flex items-center gap-1 bg-muted p-1 rounded-md text-xs">
               <button
                 type="button"
                 onClick={() => setFilterTab('all')}
@@ -182,7 +182,7 @@ export default function ProfilePage() {
           {loading ? (
             <div className="py-12 text-center text-xs text-muted-foreground">Загрузка обращений...</div>
           ) : filtered.length === 0 ? (
-            <div className="py-12 text-center text-muted-foreground bg-muted rounded-md border border-dashed border-gray-300">
+            <div className="py-12 text-center text-muted-foreground bg-muted rounded-md border border-dashed border-border">
               <CheckCircle2 className="w-8 h-8 text-muted-foreground mx-auto mb-2" />
               <p className="text-xs font-medium">Нет обращений в данной вкладке.</p>
             </div>
@@ -191,11 +191,11 @@ export default function ProfilePage() {
               {filtered.map((req) => (
                 <div
                   key={req.id}
-                  className="bg-card p-4 sm:p-5 rounded-md border border-gray-200 hover:border-border transition-colors space-y-4"
+                  className="bg-card p-4 sm:p-5 rounded-md border border-border hover:border-border/80 transition-colors space-y-4"
                 >
                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-2">
                     <div className="flex items-center gap-2 flex-wrap">
-                      <span className="font-mono text-xs font-bold text-foreground bg-slate-100 px-2 py-0.5 rounded">
+                      <span className="font-mono text-xs font-bold text-foreground bg-muted px-2 py-0.5 rounded border border-border">
                         {req.id}
                       </span>
                       <StatusBadge status={req.status} />
@@ -223,7 +223,7 @@ export default function ProfilePage() {
                   </div>
 
                   {/* Lifecycle Stepper */}
-                  <div className="pt-3 border-t border-gray-100">
+                  <div className="pt-3 border-t border-border">
                     <div className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wider mb-2">
                       Этап исполнения:
                     </div>
@@ -232,17 +232,17 @@ export default function ProfilePage() {
                         1. Зарегистрировано
                       </div>
                       <div className={`p-2 rounded text-center font-medium ${
-                        req.status !== 'new' ? 'bg-primary text-primary-foreground' : 'bg-gray-100 text-muted-foreground'
+                        req.status !== 'new' ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground'
                       }`}>
                         2. Назначено в отдел
                       </div>
                       <div className={`p-2 rounded text-center font-medium ${
-                        req.status === 'in_progress' || req.status === 'resolved' ? 'bg-primary text-primary-foreground' : 'bg-gray-100 text-muted-foreground'
+                        req.status === 'in_progress' || req.status === 'resolved' ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground'
                       }`}>
                         3. Бригада на выезде
                       </div>
                       <div className={`p-2 rounded text-center font-medium ${
-                        req.status === 'resolved' ? 'bg-emerald-700 text-white' : 'bg-gray-100 text-muted-foreground'
+                        req.status === 'resolved' ? 'bg-emerald-600 text-white' : 'bg-muted text-muted-foreground'
                       }`}>
                         4. Устранено с фото
                       </div>

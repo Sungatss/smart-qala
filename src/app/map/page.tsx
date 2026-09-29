@@ -13,7 +13,7 @@ export default function MapPage() {
   const requests = getRequests();
 
   return (
-    <div className="flex flex-col min-h-screen bg-muted text-foreground">
+    <div className="flex flex-col min-h-screen bg-background text-foreground">
       <Navbar />
 
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 md:px-6 py-8 md:py-12 space-y-6">

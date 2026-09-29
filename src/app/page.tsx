@@ -74,7 +74,7 @@ export default function HomePage() {
               
               {/* Left Column: Hero Text & Actions */}
               <div className="lg:col-span-7">
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-extrabold rounded-md bg-slate-100 text-foreground border-2 border-border mb-5">
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-extrabold rounded-md bg-muted text-foreground border-2 border-border mb-5">
                   <span className="w-2.5 h-2.5 rounded-full bg-emerald-600 animate-pulse"></span>
                   <span>{t.heroPilotBadge}</span>
                 </div>
@@ -157,17 +157,17 @@ export default function HomePage() {
                     <div className="pt-2 flex items-center gap-3">
                       <Link
                         href="/map"
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-card text-slate-950 font-bold text-xs hover:bg-slate-100 transition-colors shadow-sm"
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-card text-foreground font-semibold text-xs hover:bg-muted transition-colors shadow-sm"
                       >
-                        <Map className="w-3.5 h-3.5 text-foreground" />
+                        <Map className="w-3.5 h-3.5 text-muted-foreground" />
                         <span>{t.navMap}</span>
                       </Link>
 
                       <Link
                         href="/ideas"
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary/90/90 text-white font-bold text-xs hover:bg-slate-700 transition-colors border border-slate-600"
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-card/80 text-foreground font-semibold text-xs hover:bg-muted transition-colors border border-border"
                       >
-                        <Lightbulb className="w-3.5 h-3.5 text-amber-400" />
+                        <Lightbulb className="w-3.5 h-3.5 text-warning" />
                         <span>{t.navIdeas}</span>
                       </Link>
                     </div>
@@ -292,7 +292,7 @@ export default function HomePage() {
 
               <Link
                 href="/map"
-                className="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-bold rounded-lg bg-card border-2 border-border text-foreground hover:bg-slate-100 transition-colors shadow-2xs"
+                className="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-bold rounded-lg bg-card border-2 border-border text-foreground hover:bg-muted transition-colors shadow-2xs"
               >
                 <Map className="w-4 h-4 text-muted-foreground" />
                 <span>{t.navMap}</span>
@@ -304,11 +304,11 @@ export default function HomePage() {
               {recentRequests.map((req) => (
                 <div
                   key={req.id}
-                  className="bg-card p-4 sm:p-5 rounded-lg border-2 border-border flex flex-col md:flex-row md:items-center justify-between gap-4 hover:border-slate-400 transition-colors shadow-xs"
+                  className="bg-card p-4 sm:p-5 rounded-lg border-2 border-border flex flex-col md:flex-row md:items-center justify-between gap-4 hover:border-border transition-colors shadow-xs"
                 >
                   <div className="space-y-1.5 flex-1 min-w-0">
                     <div className="flex flex-wrap items-center gap-2">
-                      <span className="font-mono text-xs font-extrabold text-foreground bg-slate-100 border border-border px-2 py-0.5 rounded">
+                      <span className="font-mono text-xs font-extrabold text-foreground bg-muted border border-border px-2 py-0.5 rounded">
                         {req.id}
                       </span>
                       <StatusBadge status={req.status} />

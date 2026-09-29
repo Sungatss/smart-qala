@@ -53,8 +53,8 @@ export default function AuthGate() {
             }}
           />
 
-          {/* Navy gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/65 to-transparent" />
+          {/* Neutral dark gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent" />
 
           {/* Content at bottom */}
           <div className="relative z-10 space-y-4">
@@ -67,7 +67,7 @@ export default function AuthGate() {
               {t.authHeroHeadline}
             </h1>
 
-            <p className="text-sm xl:text-base text-slate-200 font-normal leading-relaxed max-w-lg">
+            <p className="text-sm xl:text-base text-white/80 font-normal leading-relaxed max-w-lg">
               {t.authHeroSubtext}
             </p>
           </div>

@@ -90,7 +90,7 @@ export default function Navbar() {
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 md:px-6">
         
         {/* Brand Logo */}
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-3 xl:gap-6">
           <Link href="/" className="flex items-center gap-2.5 shrink-0 group">
             <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary text-primary-foreground shadow-xs">
               <Building2 className="h-5 w-5 text-primary-foreground" />
@@ -106,7 +106,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Nav Items (4 items) */}
-          <nav className="hidden lg:flex items-center gap-1 text-sm font-medium">
+          <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1 text-xs xl:text-sm font-medium">
             {navLinks.map((item) => {
               const Icon = item.icon;
               const isActive = pathname === item.href;
@@ -114,7 +114,7 @@ export default function Navbar() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`flex items-center gap-1.5 rounded-md px-3 py-2 text-sm whitespace-nowrap transition-colors ${
+                  className={`flex items-center gap-1.5 rounded-md px-2 xl:px-3 py-1.5 xl:py-2 whitespace-nowrap transition-colors ${
                     isActive
                       ? 'bg-muted text-foreground font-semibold'
                       : 'text-muted-foreground hover:bg-muted hover:text-foreground'
@@ -130,7 +130,7 @@ export default function Navbar() {
             {(role === 'employee' || role === 'admin') && (
               <Link
                 href="/admin"
-                className={`flex items-center gap-1.5 rounded-md px-3 py-2 text-sm whitespace-nowrap transition-colors ${
+                className={`flex items-center gap-1.5 rounded-md px-2 xl:px-3 py-1.5 xl:py-2 whitespace-nowrap transition-colors ${
                   pathname.startsWith('/admin')
                     ? 'bg-primary text-primary-foreground font-semibold'
                     : 'text-muted-foreground hover:bg-muted hover:text-foreground'
@@ -144,7 +144,7 @@ export default function Navbar() {
         </div>
 
         {/* Right Desktop Actions */}
-        <div className="hidden lg:flex items-center gap-2">
+        <div className="hidden lg:flex items-center gap-1.5 xl:gap-2 shrink-0">
           
           {/* Language Dropdown */}
           <DropdownMenu>

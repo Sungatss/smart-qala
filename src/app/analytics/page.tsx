@@ -39,7 +39,7 @@ export default function AnalyticsPage() {
 
         {/* Top KPI Cards */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-          <div className="bg-card p-5 rounded-md border border-gray-200 shadow-2xs">
+          <div className="bg-card p-5 rounded-md border border-border shadow-2xs">
             <div className="flex items-center justify-between text-muted-foreground text-xs font-semibold uppercase">
               <span>Всего обращений</span>
               <Layers className="w-4 h-4 text-muted-foreground" />
@@ -48,7 +48,7 @@ export default function AnalyticsPage() {
             <div className="text-[11px] text-muted-foreground mt-0.5">За весь период пилота</div>
           </div>
 
-          <div className="bg-card p-5 rounded-md border border-gray-200 shadow-2xs">
+          <div className="bg-card p-5 rounded-md border border-border shadow-2xs">
             <div className="flex items-center justify-between text-emerald-700 text-xs font-semibold uppercase">
               <span>Процент решения</span>
               <CheckCircle2 className="w-4 h-4 text-emerald-500" />
@@ -57,7 +57,7 @@ export default function AnalyticsPage() {
             <div className="text-[11px] text-muted-foreground mt-0.5">{stats.resolved} заявок с фотоотчетом</div>
           </div>
 
-          <div className="bg-card p-5 rounded-md border border-gray-200 shadow-2xs">
+          <div className="bg-card p-5 rounded-md border border-border shadow-2xs">
             <div className="flex items-center justify-between text-blue-700 text-xs font-semibold uppercase">
               <span>Среднее время ответа</span>
               <Clock className="w-4 h-4 text-blue-500" />
@@ -66,7 +66,7 @@ export default function AnalyticsPage() {
             <div className="text-[11px] text-muted-foreground mt-0.5">Норматив регламента: 3 дня</div>
           </div>
 
-          <div className="bg-card p-5 rounded-md border border-gray-200 shadow-2xs">
+          <div className="bg-card p-5 rounded-md border border-border shadow-2xs">
             <div className="flex items-center justify-between text-indigo-700 text-xs font-semibold uppercase">
               <span>Инициатив жителей</span>
               <Lightbulb className="w-4 h-4 text-indigo-500" />
@@ -80,8 +80,8 @@ export default function AnalyticsPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           
           {/* By Category */}
-          <div className="bg-card p-6 rounded-md border border-gray-200 shadow-2xs space-y-4">
-            <div className="flex items-center justify-between pb-3 border-b border-gray-100">
+          <div className="bg-card p-6 rounded-md border border-border shadow-2xs space-y-4">
+            <div className="flex items-center justify-between pb-3 border-b border-border">
               <h3 className="text-sm font-bold text-foreground uppercase tracking-wider">
                 Распределение по категориям проблем
               </h3>
@@ -97,7 +97,7 @@ export default function AnalyticsPage() {
                       <span className="text-foreground">{cat}</span>
                       <span className="text-muted-foreground font-mono font-bold">{count} ({pct}%)</span>
                     </div>
-                    <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden border border-gray-200">
+                    <div className="w-full h-2 bg-muted rounded-full overflow-hidden border border-border">
                       <div
                         className="h-full bg-primary text-primary-foreground rounded-full"
                         style={{ width: `${pct}%` }}
@@ -110,8 +110,8 @@ export default function AnalyticsPage() {
           </div>
 
           {/* By District */}
-          <div className="bg-card p-6 rounded-md border border-gray-200 shadow-2xs space-y-4">
-            <div className="flex items-center justify-between pb-3 border-b border-gray-100">
+          <div className="bg-card p-6 rounded-md border border-border shadow-2xs space-y-4">
+            <div className="flex items-center justify-between pb-3 border-b border-border">
               <h3 className="text-sm font-bold text-foreground uppercase tracking-wider">
                 Активность по районам города Семей
               </h3>
@@ -130,7 +130,7 @@ export default function AnalyticsPage() {
                       </span>
                       <span className="text-muted-foreground font-mono font-bold">{count} заявок</span>
                     </div>
-                    <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden border border-gray-200">
+                    <div className="w-full h-2 bg-muted rounded-full overflow-hidden border border-border">
                       <div
                         className="h-full bg-indigo-700 rounded-full"
                         style={{ width: `${pct}%` }}
@@ -145,8 +145,8 @@ export default function AnalyticsPage() {
         </div>
 
         {/* Department Response Ranking */}
-        <div className="bg-card p-6 rounded-md border border-gray-200 shadow-2xs space-y-4">
-          <div className="flex items-center justify-between pb-3 border-b border-gray-100">
+        <div className="bg-card p-6 rounded-md border border-border shadow-2xs space-y-4">
+          <div className="flex items-center justify-between pb-3 border-b border-border">
             <div>
               <h3 className="text-sm font-bold text-foreground uppercase tracking-wider">
                 Рейтинг оперативности городских служб Семея
@@ -161,7 +161,7 @@ export default function AnalyticsPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
-            <div className="p-4 bg-muted rounded-md border border-gray-200">
+            <div className="p-4 bg-muted rounded-md border border-border">
               <div className="text-xs font-bold text-foreground">МП «Семей Водоканал» / ЖКХ</div>
               <div className="text-xs text-muted-foreground mt-1">Срочные аварии на трубопроводах</div>
               <div className="mt-3 flex items-center justify-between text-xs">
@@ -170,7 +170,7 @@ export default function AnalyticsPage() {
               </div>
             </div>
 
-            <div className="p-4 bg-muted rounded-md border border-gray-200">
+            <div className="p-4 bg-muted rounded-md border border-border">
               <div className="text-xs font-bold text-foreground">МП «Благоустройство и Горсвет»</div>
               <div className="text-xs text-muted-foreground mt-1">Освещение, скверы, малые формы</div>
               <div className="mt-3 flex items-center justify-between text-xs">
@@ -179,7 +179,7 @@ export default function AnalyticsPage() {
               </div>
             </div>
 
-            <div className="p-4 bg-muted rounded-md border border-gray-200">
+            <div className="p-4 bg-muted rounded-md border border-border">
               <div className="text-xs font-bold text-foreground">Отдел пассажирского транспорта</div>
               <div className="text-xs text-muted-foreground mt-1">Маршруты, расписания, остановочные пункты</div>
               <div className="mt-3 flex items-center justify-between text-xs">

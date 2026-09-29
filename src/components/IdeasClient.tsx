@@ -67,7 +67,7 @@ export default function IdeasClient({ initialIdeas }: IdeasClientProps) {
       />
 
       {/* Filter and Sort Bar */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-card p-3.5 rounded-md border border-gray-200 text-xs">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-card p-3.5 rounded-md border border-border text-xs">
         <div className="flex items-center gap-1.5 flex-wrap">
           <span className="font-semibold text-muted-foreground mr-1 flex items-center gap-1">
             <Filter className="w-3.5 h-3.5 text-muted-foreground" />
@@ -80,7 +80,7 @@ export default function IdeasClient({ initialIdeas }: IdeasClientProps) {
               className={`px-3 py-1 rounded-md transition-colors ${
                 selectedCategory === cat
                   ? 'bg-primary text-primary-foreground font-semibold'
-                  : 'bg-gray-100 text-muted-foreground hover:bg-gray-200'
+                  : 'bg-muted text-muted-foreground hover:bg-muted/80'
               }`}
             >
               {cat}
@@ -93,7 +93,7 @@ export default function IdeasClient({ initialIdeas }: IdeasClientProps) {
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value as 'votes' | 'recent')}
-            className="p-1.5 rounded-md border border-gray-300 bg-card text-foreground focus:outline-none"
+            className="p-1.5 rounded-md border border-border bg-card text-foreground focus:outline-none"
           >
             <option value="votes">По популярности (голосам)</option>
             <option value="recent">По дате публикации</option>
@@ -112,19 +112,19 @@ export default function IdeasClient({ initialIdeas }: IdeasClientProps) {
           return (
             <div
               key={idea.id}
-              className="bg-card rounded-md border border-gray-200 shadow-2xs overflow-hidden flex flex-col justify-between"
+              className="bg-card rounded-md border border-border shadow-2xs overflow-hidden flex flex-col justify-between"
             >
               <div>
                 {/* Photo if available */}
                 {idea.photo_before_url && (
-                  <div className="relative aspect-16/9 bg-gray-100 overflow-hidden border-b border-gray-200">
+                  <div className="relative aspect-16/9 bg-muted overflow-hidden border-b border-border">
                     <img
                       src={idea.photo_before_url}
                       alt={idea.title}
                       className="w-full h-full object-cover"
                     />
-                    <span className="absolute top-2 left-2 px-2 py-0.5 text-[10px] font-bold rounded bg-indigo-900/90 text-white tracking-wide flex items-center gap-1">
-                      <Lightbulb className="w-3 h-3 text-amber-300" />
+                    <span className="absolute top-2 left-2 px-2 py-0.5 text-[10px] font-bold rounded bg-primary text-primary-foreground tracking-wide flex items-center gap-1 shadow-xs">
+                      <Lightbulb className="w-3 h-3 text-warning" />
                       ГОРОДСКАЯ ИДЕЯ
                     </span>
                   </div>
@@ -132,7 +132,7 @@ export default function IdeasClient({ initialIdeas }: IdeasClientProps) {
 
                 <div className="p-5 space-y-3">
                   <div className="flex items-center justify-between gap-2">
-                    <span className="font-mono text-xs font-bold text-foreground bg-slate-100 px-2 py-0.5 rounded">
+                    <span className="text-xs font-bold text-foreground bg-muted px-2 py-0.5 rounded border border-border">
                       {idea.id}
                     </span>
                     <DepartmentBadge department={idea.department} />
@@ -155,18 +155,18 @@ export default function IdeasClient({ initialIdeas }: IdeasClientProps) {
                   <div className="pt-2">
                     <div className="flex items-center justify-between text-[11px] mb-1">
                       <span className="text-muted-foreground">Поддержка жителей:</span>
-                      <span className="font-mono font-bold text-foreground">
+                      <span className="font-bold text-foreground">
                         {currentVotes} / {threshold} голосов
                       </span>
                     </div>
-                    <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden border border-gray-200">
+                    <div className="w-full h-2 bg-muted rounded-full overflow-hidden border border-border">
                       <div
-                        className="h-full bg-indigo-600 transition-all duration-300"
+                        className="h-full bg-primary transition-all duration-300"
                         style={{ width: `${progressPercent}%` }}
                       />
                     </div>
                     {progressPercent >= 50 && (
-                      <span className="text-[10px] text-emerald-700 font-semibold mt-1 inline-block">
+                      <span className="text-[10px] text-success font-semibold mt-1 inline-block">
                         ✓ Набрано достаточно голосов для передачи в акимат
                       </span>
                     )}
@@ -175,19 +175,19 @@ export default function IdeasClient({ initialIdeas }: IdeasClientProps) {
               </div>
 
               {/* Action Footer */}
-              <div className="p-4 bg-muted border-t border-gray-100 flex items-center justify-between gap-2">
+              <div className="p-4 bg-muted border-t border-border flex items-center justify-between gap-2">
                 <button
                   type="button"
                   onClick={() => handleSupportClick(idea.id)}
                   className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold rounded-md border transition-colors ${
                     isUpvoted
-                      ? 'bg-info-soft border-info-soft text-indigo-700'
-                      : 'bg-card border-gray-300 text-foreground hover:bg-slate-100'
+                      ? 'bg-info-soft border-info-soft text-info-soft-foreground'
+                      : 'bg-card border-border text-foreground hover:bg-muted'
                   }`}
                 >
-                  <ThumbsUp className={`w-3.5 h-3.5 ${isUpvoted ? 'fill-indigo-600 text-indigo-600' : ''}`} />
+                  <ThumbsUp className={`w-3.5 h-3.5 ${isUpvoted ? 'fill-info text-info' : ''}`} />
                   <span>{isUpvoted ? 'Вы поддержали' : 'Поддержать идею'}</span>
-                  <span className="font-mono font-bold ml-0.5">({currentVotes})</span>
+                  <span className="font-bold ml-0.5">({currentVotes})</span>
                 </button>
 
                 <Link

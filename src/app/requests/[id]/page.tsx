@@ -22,7 +22,7 @@ export default async function RequestDetailPage({ params, searchParams }: PagePr
   }
 
   return (
-    <div className="flex flex-col min-h-screen bg-muted text-foreground">
+    <div className="flex flex-col min-h-screen bg-background text-foreground">
       <Navbar />
 
       <main className="flex-1">
