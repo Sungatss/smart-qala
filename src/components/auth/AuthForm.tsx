@@ -553,6 +553,115 @@ export default function AuthForm({
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Collapsible Demo Accounts (Only if NEXT_PUBLIC_DEMO_MODE === 'true') */}
+      {isDemoEnabled && (
+        <Collapsible
+          open={isDemoOpen}
+          onOpenChange={setIsDemoOpen}
+          className="mt-6 pt-4 border-t border-border"
+        >
+          <CollapsibleTrigger asChild>
+            <button
+              type="button"
+              className="flex w-full items-center justify-between py-1 text-xs font-medium text-muted-foreground hover:text-foreground transition-colors group cursor-pointer"
+            >
+              <span className="flex items-center gap-2">
+                <Sparkles className="h-3.5 w-3.5 text-primary" />
+                <span>{t.authDemoAccountsTitle}</span>
+              </span>
+              <ChevronDown
+                className={cn(
+                  'h-3.5 w-3.5 transition-transform duration-200 text-muted-foreground',
+                  isDemoOpen && 'rotate-180'
+                )}
+              />
+            </button>
+          </CollapsibleTrigger>
+          <CollapsibleContent className="mt-3 space-y-2">
+            {/* Demo Resident */}
+            <div className="flex items-center justify-between rounded-xl border border-border bg-muted/60 p-2.5 transition-colors hover:bg-muted">
+              <div className="flex items-center gap-2.5 min-w-0 pr-2">
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-card border border-border text-foreground">
+                  <User className="h-4 w-4" />
+                </div>
+                <div className="min-w-0">
+                  <p className="text-xs font-medium text-foreground truncate">
+                    {t.authDemoResident}
+                  </p>
+                  <p className="text-[11px] text-muted-foreground truncate">
+                    +7 (705) 412-88-99
+                  </p>
+                </div>
+              </div>
+              <Button
+                type="button"
+                variant="outline"
+                size="sm"
+                onClick={() => handleQuickDemo('citizen')}
+                className="h-8 shrink-0 rounded-lg px-2.5 text-xs font-medium gap-1"
+              >
+                <span>{t.authQuickLoginAction}</span>
+                <ArrowRight className="h-3 w-3" />
+              </Button>
+            </div>
+
+            {/* Demo Dispatcher 109 */}
+            <div className="flex items-center justify-between rounded-xl border border-border bg-muted/60 p-2.5 transition-colors hover:bg-muted">
+              <div className="flex items-center gap-2.5 min-w-0 pr-2">
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-card border border-border text-foreground">
+                  <Building className="h-4 w-4" />
+                </div>
+                <div className="min-w-0">
+                  <p className="text-xs font-medium text-foreground truncate">
+                    {t.authDemoDispatcher}
+                  </p>
+                  <p className="text-[11px] text-muted-foreground truncate">
+                    k.serikov@semey-gov.kz
+                  </p>
+                </div>
+              </div>
+              <Button
+                type="button"
+                variant="outline"
+                size="sm"
+                onClick={() => handleQuickDemo('employee')}
+                className="h-8 shrink-0 rounded-lg px-2.5 text-xs font-medium gap-1"
+              >
+                <span>{t.authQuickLoginAction}</span>
+                <ArrowRight className="h-3 w-3" />
+              </Button>
+            </div>
+
+            {/* Demo Akimat */}
+            <div className="flex items-center justify-between rounded-xl border border-border bg-muted/60 p-2.5 transition-colors hover:bg-muted">
+              <div className="flex items-center gap-2.5 min-w-0 pr-2">
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-card border border-border text-foreground">
+                  <ShieldCheck className="h-4 w-4" />
+                </div>
+                <div className="min-w-0">
+                  <p className="text-xs font-medium text-foreground truncate">
+                    {t.authDemoAkimat}
+                  </p>
+                  <p className="text-[11px] text-muted-foreground truncate">
+                    d.baizhanov@abai.gov.kz
+                  </p>
+                </div>
+              </div>
+              <Button
+                type="button"
+                variant="outline"
+                size="sm"
+                onClick={() => handleQuickDemo('admin')}
+                className="h-8 shrink-0 rounded-lg px-2.5 text-xs font-medium gap-1"
+              >
+                <span>{t.authQuickLoginAction}</span>
+                <ArrowRight className="h-3 w-3" />
+              </Button>
+            </div>
+          </CollapsibleContent>
+        </Collapsible>
+      )}
     </div>
   );
 }
