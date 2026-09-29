@@ -43,6 +43,12 @@ import {
 import { Badge } from '@/components/ui/badge';
 import DemoNotice from '@/components/DemoNotice';
 
+const LANG_CODES: Record<Language, string> = {
+  kz: 'KAZ',
+  ru: 'RUS',
+  en: 'ENG',
+};
+
 export default function Navbar() {
   const pathname = usePathname();
   const { 
@@ -145,7 +151,7 @@ export default function Navbar() {
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" size="sm" className="h-9 gap-1.5 px-2.5 text-xs font-medium">
                 <Globe className="h-4 w-4 text-muted-foreground" />
-                <span className="uppercase">{lang === 'kz' ? 'KAZ' : lang === 'ru' ? 'RUS' : 'ENG'}</span>
+                <span className="uppercase">{LANG_CODES[lang]}</span>
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-36">
@@ -415,7 +421,7 @@ export default function Navbar() {
                         onClick={() => setLang(l)}
                         className="h-8 text-xs font-semibold uppercase"
                       >
-                        {l === 'kz' ? 'KAZ' : l === 'ru' ? 'RUS' : 'ENG'}
+                        {LANG_CODES[l]}
                       </Button>
                     ))}
                   </div>
