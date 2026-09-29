@@ -1,5 +1,6 @@
 import React from 'react';
 import { PriorityLevel, RequestStatus, Department } from '@/types';
+import { Badge } from '@/components/ui/badge';
 import { 
   AlertCircle, 
   CheckCircle2, 
@@ -14,38 +15,38 @@ export function StatusBadge({ status }: { status: RequestStatus }) {
   switch (status) {
     case 'new':
       return (
-        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium rounded-md bg-info-soft text-info-soft-foreground border border-info-soft">
+        <Badge variant="info" className="gap-1.5 py-1 font-medium">
           <Clock className="w-3.5 h-3.5 text-blue-600" />
           Новое
-        </span>
+        </Badge>
       );
     case 'under_review':
       return (
-        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium rounded-md bg-warning-soft text-warning-soft-foreground border border-warning-soft">
+        <Badge variant="warning" className="gap-1.5 py-1 font-medium">
           <HelpCircle className="w-3.5 h-3.5 text-amber-600" />
           На рассмотрении
-        </span>
+        </Badge>
       );
     case 'assigned':
       return (
-        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium rounded-md bg-purple-50 text-purple-800 border border-purple-200">
+        <Badge variant="secondary" className="gap-1.5 py-1 font-medium bg-purple-50 text-purple-800 border border-purple-200">
           <Building className="w-3.5 h-3.5 text-purple-600" />
           Назначено
-        </span>
+        </Badge>
       );
     case 'in_progress':
       return (
-        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium rounded-md bg-info-soft text-info-soft-foreground border border-info-soft">
+        <Badge variant="info" className="gap-1.5 py-1 font-medium">
           <ArrowUpRight className="w-3.5 h-3.5 text-indigo-600" />
           В работе
-        </span>
+        </Badge>
       );
     case 'resolved':
       return (
-        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium rounded-md bg-success-soft text-success-soft-foreground border border-success-soft">
+        <Badge variant="success" className="gap-1.5 py-1 font-medium">
           <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
           Решено
-        </span>
+        </Badge>
       );
     default:
       return null;
@@ -56,23 +57,23 @@ export function PriorityBadge({ priority }: { priority: PriorityLevel }) {
   switch (priority) {
     case 'high':
       return (
-        <span className="inline-flex items-center gap-1 px-2 py-0.5 text-xs font-semibold rounded-md bg-danger-soft text-red-700 border border-danger-soft">
+        <Badge variant="danger" className="gap-1 font-semibold">
           <ShieldAlert className="w-3 h-3 text-red-600" />
           Высокий
-        </span>
+        </Badge>
       );
     case 'medium':
       return (
-        <span className="inline-flex items-center gap-1 px-2 py-0.5 text-xs font-semibold rounded-md bg-warning-soft text-amber-700 border border-warning-soft">
+        <Badge variant="warning" className="gap-1 font-semibold">
           <AlertCircle className="w-3 h-3 text-amber-600" />
           Средний
-        </span>
+        </Badge>
       );
     case 'low':
       return (
-        <span className="inline-flex items-center gap-1 px-2 py-0.5 text-xs font-semibold rounded-md bg-muted text-muted-foreground border border-border">
+        <Badge variant="outline" className="gap-1 font-semibold bg-muted text-muted-foreground border-border">
           Низкий
-        </span>
+        </Badge>
       );
     default:
       return null;
@@ -81,50 +82,49 @@ export function PriorityBadge({ priority }: { priority: PriorityLevel }) {
 
 export function DepartmentBadge({ department }: { department: Department }) {
   return (
-    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold rounded-md bg-slate-100 text-foreground border border-border">
+    <Badge variant="outline" className="gap-1.5 py-1 font-semibold bg-muted text-foreground border-border">
       <Building className="w-3.5 h-3.5 text-muted-foreground" />
       {department}
-    </span>
+    </Badge>
   );
 }
 
 export function ModerationBadge({ status }: { status?: 'approved' | 'rejected' | 'flagged_inappropriate' }) {
   if (!status || status === 'approved') {
     return (
-      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold rounded-md bg-success-soft text-success-soft-foreground border border-success-soft">
+      <Badge variant="success" className="gap-1.5 py-1 font-semibold">
         <CheckCircle2 className="w-3.5 h-3.5 text-emerald-700" />
         Одобрено
-      </span>
+      </Badge>
     );
   }
   if (status === 'flagged_inappropriate') {
     return (
-      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold rounded-md bg-amber-100 text-warning-soft-foreground border border-amber-400">
+      <Badge variant="warning" className="gap-1.5 py-1 font-semibold">
         <AlertCircle className="w-3.5 h-3.5 text-warning-soft-foreground" />
         Требует модерации
-      </span>
+      </Badge>
     );
   }
   return (
-    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold rounded-md bg-red-100 text-danger-soft-foreground border border-danger-soft">
+    <Badge variant="danger" className="gap-1.5 py-1 font-semibold">
       <ShieldAlert className="w-3.5 h-3.5 text-red-700" />
       Отклонено
-    </span>
+    </Badge>
   );
 }
 
 export function AnonymousBadge({ isAnonymous }: { isAnonymous?: boolean }) {
   if (isAnonymous) {
     return (
-      <span className="inline-flex items-center gap-1 px-2 py-0.5 text-xs font-semibold rounded-md bg-slate-200 text-foreground border border-slate-400">
+      <Badge variant="outline" className="gap-1 font-semibold bg-muted text-foreground border-border">
         Анонимно
-      </span>
+      </Badge>
     );
   }
   return (
-    <span className="inline-flex items-center gap-1 px-2 py-0.5 text-xs font-semibold rounded-md bg-info-soft text-info-soft-foreground border border-info-soft">
+    <Badge variant="info" className="gap-1 font-semibold">
       Верифицирован
-    </span>
+    </Badge>
   );
 }
-
