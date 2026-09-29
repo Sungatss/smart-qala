@@ -77,6 +77,27 @@ export interface Translations {
   authRegisterBtn: string;
   authOfficialLogin: string;
   authBackToSite: string;
+  authResidentTabSignIn: string;
+  authResidentTabSignUp: string;
+  authStaffTitle: string;
+  authStaffSubtitle: string;
+  authStaffRoleSelect: string;
+  authStaffDispatcher: string;
+  authStaffAkimat: string;
+  authLinkToStaff: string;
+  authLinkToResident: string;
+  authOrDivider: string;
+  authContinueAsGuest: string;
+  authDemoAccountsTitle: string;
+  authDemoResident: string;
+  authDemoDispatcher: string;
+  authDemoAkimat: string;
+  authQuickLoginAction: string;
+  authHeroHeadline: string;
+  authHeroSubtext: string;
+  authFooterConcept: string;
+  authErrorFillFields: string;
+  authErrorInvalidCredentials: string;
 
   // Home Page
   heroPilotBadge: string;
@@ -223,6 +244,27 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     authRegisterBtn: 'Зарегистрироваться и войти',
     authOfficialLogin: 'Служебный логин (Email)',
     authBackToSite: 'Вернуться на сайт',
+    authResidentTabSignIn: 'Вход',
+    authResidentTabSignUp: 'Регистрация',
+    authStaffTitle: 'Служебный вход',
+    authStaffSubtitle: 'Для сотрудников контакт-центра 109 и акимата',
+    authStaffRoleSelect: 'Выберите категорию службы',
+    authStaffDispatcher: 'Контакт-центр 109 / Служба ЖКХ',
+    authStaffAkimat: 'Акимат города Семей',
+    authLinkToStaff: 'Вход для сотрудников служб',
+    authLinkToResident: 'Вход для жителей города',
+    authOrDivider: 'или',
+    authContinueAsGuest: 'Продолжить как гость (просмотр)',
+    authDemoAccountsTitle: 'Демо-аккаунты для тестирования',
+    authDemoResident: 'Житель (Айгүл Ахметова)',
+    authDemoDispatcher: 'Диспетчер ЖКХ (Канат Сериков • 109)',
+    authDemoAkimat: 'Акимат города (Даурен Байжанов)',
+    authQuickLoginAction: 'Войти',
+    authHeroHeadline: 'Умный и открытый город для каждого жителя',
+    authHeroSubtext: 'Открытый контроль городских инцидентов, благоустройство и прямой диалог со службами Семея.',
+    authFooterConcept: 'Концептуальный проект платформы Smart Qala • Семей. Не является официальным сайтом акимата.',
+    authErrorFillFields: 'Пожалуйста, заполните обязательные поля',
+    authErrorInvalidCredentials: 'Пожалуйста, введите корректные данные',
 
     heroPilotBadge: 'Официальный проект цифровизации • г. Семей',
     heroTitle: 'Прямой диалог жителей и служб города Семей',
@@ -363,6 +405,27 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     authRegisterBtn: 'Тіркелу және кіру',
     authOfficialLogin: 'Қызметтік логин (Email)',
     authBackToSite: 'Сайтқа қайту',
+    authResidentTabSignIn: 'Кіру',
+    authResidentTabSignUp: 'Тіркелу',
+    authStaffTitle: 'Қызметтік кіру',
+    authStaffSubtitle: '109 байланыс орталығы мен әкімдік қызметкерлеріне арналған',
+    authStaffRoleSelect: 'Қызмет санатын таңдаңыз',
+    authStaffDispatcher: '109 байланыс орталығы / ТКШ қызметі',
+    authStaffAkimat: 'Семей қаласының әкімдігі',
+    authLinkToStaff: 'Қызметкерлер үшін кіру',
+    authLinkToResident: 'Қала тұрғындары үшін кіру',
+    authOrDivider: 'немесе',
+    authContinueAsGuest: 'Қонақ ретінде жалғастыру (тек көру)',
+    authDemoAccountsTitle: 'Тестілеуге арналған демо-есептік жазбалар',
+    authDemoResident: 'Тұрғын (Айгүл Ахметова)',
+    authDemoDispatcher: 'ТКШ диспетчері (Қанат Серіков • 109)',
+    authDemoAkimat: 'Қала әкімдігі (Дәурен Байжанов)',
+    authQuickLoginAction: 'Кіру',
+    authHeroHeadline: 'Әрбір тұрғын үшін ақылды және ашық қала',
+    authHeroSubtext: 'Қалалық мәселелерді ашық бақылау, абаттандыру және Семей қызметтерімен тікелей диалог.',
+    authFooterConcept: 'Smart Qala • Семей тұжырымдамалық жобасы. Әкімдіктің ресми сайты емес.',
+    authErrorFillFields: 'Міндетті өрістерді толтырыңыз',
+    authErrorInvalidCredentials: 'Дұрыс мәліметтерді енгізіңіз',
 
     heroPilotBadge: 'Ресми цифрландыру жобасы • Семей қ.',
     heroTitle: 'Семей қаласы тұрғындары мен қызметтерінің тікелей диалогы',
@@ -503,6 +566,27 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     authRegisterBtn: 'Register & Continue',
     authOfficialLogin: 'Official Login (Email)',
     authBackToSite: 'Back to site',
+    authResidentTabSignIn: 'Sign in',
+    authResidentTabSignUp: 'Create account',
+    authStaffTitle: 'Staff sign in',
+    authStaffSubtitle: 'For 109 contact center and municipal staff',
+    authStaffRoleSelect: 'Select municipal role',
+    authStaffDispatcher: '109 Contact center / Utilities',
+    authStaffAkimat: 'Semey City Hall (Akimat)',
+    authLinkToStaff: 'Sign in as municipal staff',
+    authLinkToResident: 'Sign in as city resident',
+    authOrDivider: 'or',
+    authContinueAsGuest: 'Continue as guest (view only)',
+    authDemoAccountsTitle: 'Demo accounts for testing',
+    authDemoResident: 'Resident (Aigul Akhmetova)',
+    authDemoDispatcher: 'Utilities Dispatcher (Kanat Serikov • 109)',
+    authDemoAkimat: 'City Akimat (Dauren Baizhanov)',
+    authQuickLoginAction: 'Log in',
+    authHeroHeadline: 'Smart and open city for every resident',
+    authHeroSubtext: 'Transparent civic tracking, public improvements, and direct response from Semey municipal services.',
+    authFooterConcept: 'Smart Qala • Semey Concept Project. Not an official Akimat portal.',
+    authErrorFillFields: 'Please fill in required fields',
+    authErrorInvalidCredentials: 'Please enter valid credentials',
 
     heroPilotBadge: 'Official Smart City Pilot • Semey',
     heroTitle: 'Direct Bridge Between Residents and Municipal Services',
