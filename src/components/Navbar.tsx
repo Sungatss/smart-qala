@@ -41,6 +41,7 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet';
 import { Badge } from '@/components/ui/badge';
+import DemoNotice from '@/components/DemoNotice';
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -78,7 +79,8 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-border bg-card">
+    <>
+      <header className="sticky top-0 z-40 w-full border-b border-border bg-card">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 md:px-6">
         
         {/* Brand Logo */}
@@ -446,8 +448,9 @@ export default function Navbar() {
             </SheetContent>
           </Sheet>
         </div>
-
       </div>
     </header>
+    <DemoNotice />
+  </>
   );
 }
