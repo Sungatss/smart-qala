@@ -11,6 +11,7 @@ import {
   ExternalLink 
 } from 'lucide-react';
 import Link from 'next/link';
+import { MAP_COLORS } from '@/lib/design-tokens';
 
 interface CityMapProps {
   initialRequests: CityRequest[];
@@ -33,11 +34,11 @@ export default function CityMap({ initialRequests }: CityMapProps) {
   const [selectedRequest, setSelectedRequest] = useState<CityRequest | null>(null);
 
   const getMarkerColor = (req: CityRequest): string => {
-    if (req.status === 'resolved') return '#059669'; // Emerald
-    if (req.type === 'idea') return '#4f46e5'; // Indigo
-    if (req.priority === 'high') return '#dc2626'; // Red
-    if (req.priority === 'medium') return '#d97706'; // Amber
-    return '#475569'; // Slate
+    if (req.status === 'resolved') return MAP_COLORS.resolved;
+    if (req.type === 'idea') return MAP_COLORS.idea;
+    if (req.priority === 'high') return MAP_COLORS.priorityHigh;
+    if (req.priority === 'medium') return MAP_COLORS.priorityMedium;
+    return MAP_COLORS.defaultMarker;
   };
 
   const filteredRequests = requests.filter((r) => {
@@ -62,7 +63,7 @@ export default function CityMap({ initialRequests }: CityMapProps) {
         const circle = L.circleMarker([req.latitude, req.longitude], {
           radius: req.priority === 'high' ? 9 : 7,
           fillColor: color,
-          color: '#ffffff',
+          color: MAP_COLORS.markerStroke,
           weight: 2,
           opacity: 1,
           fillOpacity: 0.9
@@ -83,7 +84,7 @@ export default function CityMap({ initialRequests }: CityMapProps) {
       // Heatmap concentration simulation circles
       filteredRequests.forEach((req) => {
         const radius = req.priority === 'high' ? 450 : req.priority === 'medium' ? 300 : 200;
-        const color = req.priority === 'high' ? '#dc2626' : req.priority === 'medium' ? '#ea580c' : '#ca8a04';
+        const color = req.priority === 'high' ? MAP_COLORS.heatHigh : req.priority === 'medium' ? MAP_COLORS.heatMedium : MAP_COLORS.heatLow;
 
         L.circle([req.latitude, req.longitude], {
           radius,
@@ -95,8 +96,8 @@ export default function CityMap({ initialRequests }: CityMapProps) {
         // Core hotspot
         L.circleMarker([req.latitude, req.longitude], {
           radius: 4,
-          fillColor: '#991b1b',
-          color: '#ffffff',
+          fillColor: MAP_COLORS.hotspotFill,
+          color: MAP_COLORS.hotspotStroke,
           weight: 1,
           fillOpacity: 1
         }).addTo(heatLayerRef.current!);
