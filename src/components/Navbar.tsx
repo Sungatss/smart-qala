@@ -83,7 +83,7 @@ export default function Navbar() {
     { href: '/map', label: t.navMap, icon: Map },
     { href: '/ideas', label: t.navIdeas, icon: Lightbulb },
     ...(isStaff ? [{ href: '/analytics', label: t.navAnalytics, icon: BarChart3 }] : []),
-    { href: '/profile', label: t.navMyRequests, icon: User },
+    ...(!isStaff ? [{ href: '/profile', label: t.navMyRequests, icon: User }] : []),
   ];
 
   return (
@@ -284,13 +284,15 @@ export default function Navbar() {
                 </div>
               </div>
               <DropdownMenuSeparator />
-              <DropdownMenuItem asChild className="cursor-pointer">
-                <Link href="/profile" className="flex items-center gap-2">
-                  <User className="h-4 w-4 text-muted-foreground" />
-                  <span>{t.navMyRequests}</span>
-                </Link>
-              </DropdownMenuItem>
-              {(role === 'employee' || role === 'admin') && (
+              {!isStaff && (
+                <DropdownMenuItem asChild className="cursor-pointer">
+                  <Link href="/profile" className="flex items-center gap-2">
+                    <User className="h-4 w-4 text-muted-foreground" />
+                    <span>{t.navMyRequests}</span>
+                  </Link>
+                </DropdownMenuItem>
+              )}
+              {isStaff && (
                 <DropdownMenuItem asChild className="cursor-pointer">
                   <Link href="/admin" className="flex items-center gap-2">
                     <Layers className="h-4 w-4 text-muted-foreground" />

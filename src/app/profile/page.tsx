@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { useApp } from '@/context/AppContext';
@@ -18,12 +19,18 @@ import {
 } from 'lucide-react';
 
 export default function ProfilePage() {
-  const { user, upvotedIds, t } = useApp();
+  const router = useRouter();
+  const { user, role, upvotedIds, t } = useApp();
   const [userRequests, setUserRequests] = useState<CityRequest[]>([]);
   const [loading, setLoading] = useState(true);
   const [filterTab, setFilterTab] = useState<'all' | 'in_progress' | 'resolved' | 'ideas'>('all');
 
   useEffect(() => {
+    if (role === 'employee' || role === 'admin') {
+      router.replace('/admin');
+      return;
+    }
+
     fetch('/api/requests')
       .then((res) => res.json())
       .then((json) => {
