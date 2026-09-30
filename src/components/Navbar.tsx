@@ -90,8 +90,8 @@ export default function Navbar() {
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 md:px-6">
         
         {/* Brand Logo */}
-        <div className="flex items-center gap-3 xl:gap-6">
-          <Link href="/" className="flex items-center gap-2.5 shrink-0 group">
+        <div className="flex items-center gap-2 xl:gap-3.5 min-w-0">
+          <Link href="/" className="flex items-center gap-2 xl:gap-2.5 shrink-0 group">
             <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary text-primary-foreground shadow-xs">
               <Building2 className="h-5 w-5 text-primary-foreground" />
             </div>
@@ -99,14 +99,14 @@ export default function Navbar() {
               <span className="text-base font-semibold tracking-tight text-foreground">
                 {t.brandName}
               </span>
-              <Badge variant="outline" className="px-1.5 py-0 text-[11px] font-medium">
+              <Badge variant="outline" className="hidden xl:inline-flex px-1.5 py-0 text-[11px] font-medium">
                 {t.brandCity}
               </Badge>
             </div>
           </Link>
 
-          {/* Desktop Nav Items (4 items) */}
-          <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1 text-xs xl:text-sm font-medium">
+          {/* Desktop Nav Items (4 items + staff panel) */}
+          <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1 text-xs xl:text-[13px] font-medium">
             {navLinks.map((item) => {
               const Icon = item.icon;
               const isActive = pathname === item.href;
@@ -114,13 +114,13 @@ export default function Navbar() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`flex items-center gap-1.5 rounded-md px-2 xl:px-3 py-1.5 xl:py-2 whitespace-nowrap transition-colors ${
+                  className={`flex items-center gap-1 xl:gap-1.5 rounded-md px-1.5 xl:px-2 py-1.5 whitespace-nowrap transition-colors ${
                     isActive
                       ? 'bg-muted text-foreground font-semibold'
                       : 'text-muted-foreground hover:bg-muted hover:text-foreground'
                   }`}
                 >
-                  <Icon className="h-4 w-4 shrink-0" />
+                  <Icon className="hidden xl:block h-4 w-4 shrink-0" />
                   <span>{item.label}</span>
                 </Link>
               );
@@ -130,7 +130,7 @@ export default function Navbar() {
             {(role === 'employee' || role === 'admin') && (
               <Link
                 href="/admin"
-                className={`flex items-center gap-1.5 rounded-md px-2 xl:px-3 py-1.5 xl:py-2 whitespace-nowrap transition-colors ${
+                className={`flex items-center gap-1 xl:gap-1.5 rounded-md px-1.5 xl:px-2 py-1.5 whitespace-nowrap transition-colors ${
                   pathname.startsWith('/admin')
                     ? 'bg-primary text-primary-foreground font-semibold'
                     : 'text-muted-foreground hover:bg-muted hover:text-foreground'
@@ -144,12 +144,12 @@ export default function Navbar() {
         </div>
 
         {/* Right Desktop Actions */}
-        <div className="hidden lg:flex items-center gap-1.5 xl:gap-2 shrink-0">
+        <div className="hidden lg:flex items-center gap-1 xl:gap-1.5 shrink-0">
           
           {/* Language Dropdown */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="sm" className="h-9 gap-1.5 px-2.5 text-xs font-medium">
+              <Button variant="ghost" size="sm" className="h-9 gap-1 xl:gap-1.5 px-2 xl:px-2.5 text-xs font-medium">
                 <Globe className="h-4 w-4 text-muted-foreground" />
                 <span className="uppercase">{LANG_CODES[lang]}</span>
               </Button>
@@ -267,7 +267,7 @@ export default function Navbar() {
           {/* Account Dropdown */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="outline" size="sm" className="h-9 gap-2 px-3 text-xs font-medium max-w-[170px]">
+              <Button variant="outline" size="sm" className="h-9 gap-1.5 xl:gap-2 px-2.5 xl:px-3 text-xs font-medium max-w-[120px] xl:max-w-[170px] shrink-0">
                 <User className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
                 <span className="truncate">{user?.name ? user.name.split(' ')[0] : t.navProfile}</span>
               </Button>
@@ -308,10 +308,11 @@ export default function Navbar() {
           </DropdownMenu>
 
           {/* Report CTA */}
-          <Button asChild size="sm" className="h-9 gap-1.5 px-3.5 text-xs font-medium">
+          <Button asChild size="sm" className="h-9 gap-1.5 px-2.5 xl:px-3.5 text-xs font-medium shrink-0">
             <Link href="/create">
-              <PlusCircle className="h-4 w-4" />
-              <span>{t.navCreate}</span>
+              <PlusCircle className="h-4 w-4 shrink-0" />
+              <span className="hidden xl:inline">{t.navCreate}</span>
+              <span className="xl:hidden">Подать</span>
             </Link>
           </Button>
 
