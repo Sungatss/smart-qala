@@ -269,12 +269,21 @@ export default function RequestDetailClient({ initialRequest, isCreatedJustNow }
           
           {/* Location & Priority */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 bg-muted rounded-lg border-2 border-border text-sm">
-              <span className="font-bold text-foreground flex items-center gap-1.5 mb-1">
-                <MapPin className="w-4 h-4 text-muted-foreground" />
-                <span>Адрес инцидента:</span>
-              </span>
-              <p className="text-foreground font-bold text-base">{request.location_address}</p>
+            <div className="p-4 bg-muted rounded-lg border-2 border-border text-sm flex items-start justify-between gap-3">
+              <div>
+                <span className="font-bold text-foreground flex items-center gap-1.5 mb-1">
+                  <MapPin className="w-4 h-4 text-muted-foreground" />
+                  <span>Адрес инцидента:</span>
+                </span>
+                <p className="text-foreground font-bold text-base">{request.location_address}</p>
+              </div>
+              <Link
+                href={`/map?id=${request.id}`}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-primary bg-card border border-border rounded-lg hover:bg-muted transition-colors shrink-0 shadow-2xs"
+              >
+                <MapPin className="w-3.5 h-3.5 text-primary" />
+                <span>На карте</span>
+              </Link>
             </div>
 
             <div className="p-4 bg-muted rounded-lg border-2 border-border text-sm">
