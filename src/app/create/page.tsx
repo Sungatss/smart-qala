@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, Suspense } from 'react';
+import React, { useState, useRef, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -22,7 +22,10 @@ import {
   UserCheck,
   ShieldCheck,
   Phone,
-  User
+  User,
+  Image as ImageIcon,
+  Trash2,
+  RefreshCw
 } from 'lucide-react';
 
 function CreateRequestContent() {
@@ -40,8 +43,14 @@ function CreateRequestContent() {
   const [address, setAddress] = useState('г. Семей, пр. Шакарима, 45');
   const [latitude, setLatitude] = useState(50.4082);
   const [longitude, setLongitude] = useState(80.2589);
-  const [photoUrl, setPhotoUrl] = useState<string>('https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?auto=format&fit=crop&w=800&q=80');
+  const [photoUrl, setPhotoUrl] = useState<string>('');
+  const [photoFileName, setPhotoFileName] = useState('');
+  const [photoFileSize, setPhotoFileSize] = useState('');
   const [isAnonymous, setIsAnonymous] = useState(false);
+
+  // File Upload Refs
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const cameraInputRef = useRef<HTMLInputElement>(null);
 
   // Guest Registration inline state (if user is in guest mode)
   const [guestName, setGuestName] = useState('');
@@ -59,6 +68,34 @@ function CreateRequestContent() {
   // Word count (limit 200 words)
   const wordCount = originalText.trim() ? originalText.trim().split(/\s+/).length : 0;
   const isWordCountExceeded = wordCount > 200;
+
+  // Real Device Image Upload
+  const handleImageFile = (file: File) => {
+    if (!file.type.startsWith('image/')) {
+      setErrorMessage(lang === 'kz' ? 'Сурет файлын таңдаңыз (JPG, PNG, WebP)' : 'Пожалуйста, выберите файл изображения (JPG, PNG, WebP).');
+      return;
+    }
+    if (file.size > 15 * 1024 * 1024) {
+      setErrorMessage(lang === 'kz' ? 'Файл көлемі 15 МБ аспауы керек' : 'Размер файла превышает 15 МБ. Выберите файл меньшего размера.');
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const dataUrl = e.target?.result as string;
+      setPhotoUrl(dataUrl);
+      setPhotoFileName(file.name);
+      setPhotoFileSize((file.size / (1024 * 1024)).toFixed(1) + ' МБ');
+      setErrorMessage('');
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const handleFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      handleImageFile(file);
+    }
+  };
 
   // Simulate GPS location detection in Semey
   const handleSimulateGPS = () => {
@@ -206,9 +243,10 @@ function CreateRequestContent() {
         department: aiResult?.department || 'ЖКХ',
         priority: aiResult?.priority || 'medium',
         location_address: address,
-        location_lat: latitude,
-        location_lng: longitude,
-        photo_url: photoUrl,
+        latitude,
+        longitude,
+        photo_before_url: photoUrl || undefined,
+        photo_url: photoUrl || undefined,
         author_name: isAnonymous ? (lang === 'kz' ? 'Анонимді тұрғын' : 'Анонимный житель') : (guestName || user?.name || 'Житель г. Семей'),
         author_phone: guestPhone || user?.phone || '+7 (705) 412-88-99',
         author_email: user?.email || 'resident@semey.kz',
@@ -383,53 +421,118 @@ function CreateRequestContent() {
 
           {/* 4. Photo Attachment */}
           <div>
-            <label className="block text-xs font-extrabold uppercase tracking-wider text-foreground mb-2">
-              {t.createPhotoLabel}
-            </label>
+            <div className="flex items-center justify-between mb-2">
+              <label className="text-xs font-extrabold uppercase tracking-wider text-foreground">
+                {t.createPhotoLabel}
+              </label>
+              <span className="text-[11px] text-muted-foreground font-medium">
+                {photoUrl ? t.createPhotoAttached : t.createPhotoHint}
+              </span>
+            </div>
+
+            {/* Hidden device and camera file inputs */}
+            <input
+              ref={fileInputRef}
+              type="file"
+              accept="image/*"
+              onChange={handleFileInputChange}
+              className="hidden"
+            />
+            <input
+              ref={cameraInputRef}
+              type="file"
+              accept="image/*"
+              capture="environment"
+              onChange={handleFileInputChange}
+              className="hidden"
+            />
 
             {photoUrl ? (
-              <div className="flex items-center gap-4 p-3 bg-muted border-2 border-border rounded-lg">
+              <div className="p-4 bg-muted/60 border-2 border-border rounded-xl flex flex-col sm:flex-row items-center gap-4">
                 <div 
-                  className="w-20 h-20 rounded-md bg-cover bg-center shrink-0 border border-border"
+                  className="w-24 h-24 rounded-lg bg-cover bg-center shrink-0 border-2 border-border/80 shadow-xs relative overflow-hidden"
                   style={{ backgroundImage: `url('${photoUrl}')` }}
                 />
-                <div className="flex-1 min-w-0">
-                  <div className="text-xs font-bold text-foreground truncate">Фото инцидента прикреплено</div>
-                  <div className="text-[11px] text-muted-foreground mt-0.5">Будет передано инспектору ЖКХ</div>
-                  <button
-                    type="button"
-                    onClick={() => setPhotoUrl('')}
-                    className="text-xs text-danger hover:underline font-bold mt-1.5 cursor-pointer block"
-                  >
-                    Удалить фото
-                  </button>
+                <div className="flex-1 min-w-0 text-center sm:text-left">
+                  <div className="text-sm font-bold text-foreground truncate">
+                    {photoFileName || t.createPhotoAttached}
+                  </div>
+                  <div className="text-xs text-muted-foreground mt-0.5 flex items-center justify-center sm:justify-start gap-2">
+                    {photoFileSize && <span>{photoFileSize}</span>}
+                    <span className="inline-flex items-center gap-1 text-emerald-600 dark:text-emerald-400 font-semibold">
+                      <CheckCircle2 className="w-3.5 h-3.5" />
+                      {lang === 'kz' ? 'Жүктелді' : lang === 'en' ? 'Uploaded' : 'Загружено'}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-center sm:justify-start gap-2 mt-3">
+                    <button
+                      type="button"
+                      onClick={() => fileInputRef.current?.click()}
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border bg-card hover:bg-muted text-xs font-bold text-foreground transition-colors cursor-pointer"
+                    >
+                      <RefreshCw className="w-3.5 h-3.5 text-muted-foreground" />
+                      <span>{t.createPhotoReplace}</span>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setPhotoUrl('');
+                        setPhotoFileName('');
+                        setPhotoFileSize('');
+                        if (fileInputRef.current) fileInputRef.current.value = '';
+                        if (cameraInputRef.current) cameraInputRef.current.value = '';
+                      }}
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-red-200 dark:border-red-900/50 bg-red-50/50 dark:bg-red-950/20 hover:bg-red-100 dark:hover:bg-red-900/40 text-xs font-bold text-danger transition-colors cursor-pointer"
+                    >
+                      <Trash2 className="w-3.5 h-3.5" />
+                      <span>{t.createPhotoDelete}</span>
+                    </button>
+                  </div>
                 </div>
               </div>
             ) : (
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <button
-                  type="button"
-                  onClick={() => setPhotoUrl('https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?auto=format&fit=crop&w=800&q=80')}
-                  className="p-3 border-2 border-dashed border-border hover:border-foreground/40 rounded-lg text-left flex items-center gap-3 transition-colors cursor-pointer"
-                >
-                  <Camera className="w-5 h-5 text-muted-foreground shrink-0" />
-                  <div>
-                    <div className="text-xs font-bold text-foreground">Выбрать фото с камеры</div>
-                    <div className="text-[11px] text-muted-foreground">Нажмите для образца</div>
-                  </div>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => setPhotoUrl('https://images.unsplash.com/photo-1509114397022-ed747cca3f65?auto=format&fit=crop&w=800&q=80')}
-                  className="p-3 border-2 border-dashed border-border hover:border-foreground/40 rounded-lg text-left flex items-center gap-3 transition-colors cursor-pointer"
-                >
-                  <Upload className="w-5 h-5 text-muted-foreground shrink-0" />
-                  <div>
-                    <div className="text-xs font-bold text-foreground">Загрузить файл</div>
-                    <div className="text-[11px] text-muted-foreground">JPG, PNG до 15 МБ</div>
-                  </div>
-                </button>
+              <div 
+                onDragOver={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                }}
+                onDrop={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  const file = e.dataTransfer.files?.[0];
+                  if (file) handleImageFile(file);
+                }}
+                className="p-6 border-2 border-dashed border-border hover:border-foreground/30 rounded-xl text-center bg-card/40 transition-colors flex flex-col items-center justify-center gap-3"
+              >
+                <div className="w-12 h-12 rounded-xl bg-muted/80 flex items-center justify-center text-muted-foreground">
+                  <ImageIcon className="w-6 h-6" />
+                </div>
+                <div>
+                  <p className="text-sm font-bold text-foreground">
+                    {t.createPhotoDropzone}
+                  </p>
+                  <p className="text-xs text-muted-foreground mt-0.5">
+                    {t.createPhotoHint}
+                  </p>
+                </div>
+                <div className="flex flex-wrap items-center justify-center gap-2.5 mt-1">
+                  <button
+                    type="button"
+                    onClick={() => cameraInputRef.current?.click()}
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-card border-2 border-border hover:border-foreground/40 text-xs font-bold text-foreground transition-all shadow-xs cursor-pointer"
+                  >
+                    <Camera className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+                    <span>{t.createPhotoCamera}</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => fileInputRef.current?.click()}
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-primary-foreground hover:opacity-95 text-xs font-bold transition-all shadow-xs cursor-pointer"
+                  >
+                    <Upload className="w-4 h-4" />
+                    <span>{t.createPhotoDevice}</span>
+                  </button>
+                </div>
               </div>
             )}
           </div>

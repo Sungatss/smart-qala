@@ -398,15 +398,15 @@ export default function AdminPage() {
             </h1>
 
             <p className="mt-3 text-base text-foreground leading-relaxed font-medium">
-              Данный раздел предназначен исключительно для сотрудников коммунальных служб (ЖКХ / 109) 
-              и Администрации города (Акимата). Он содержит персональные и конфиденциальные данные заявителей 
-              (номера телефонов, адреса проживания, внутренние наряды диспетчеров).
+              Данный раздел предназначен исключительно для сотрудников государственных служб 
+              и Администрации города. Он содержит персональные и конфиденциальные данные заявителей 
+              (номера телефонов, адреса проживания, внутренние наряды исполнителей).
             </p>
 
             {/* Allowed Citizen Capabilities */}
             <div className="mt-6 p-5 bg-muted rounded-lg border border-border">
               <h3 className="text-sm font-bold text-foreground uppercase tracking-wide mb-3">
-                Как гражданин г. Семей, вы имеете полный доступ к публичным возможностям:
+                Как житель г. Семей, вы имеете полный доступ к публичным возможностям:
               </h3>
               <ul className="space-y-2 text-sm text-foreground">
                 <li className="flex items-start gap-2">
@@ -441,7 +441,7 @@ export default function AdminPage() {
                   className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-indigo-900 text-white font-bold text-sm hover:bg-indigo-800 transition-colors shadow-sm cursor-pointer"
                 >
                   <Building className="w-4 h-4 text-white" />
-                  <span>⚡ Войти как диспетчер ЖКХ (109)</span>
+                  <span>⚡ Войти как Государственные службы</span>
                 </button>
 
                 <button
@@ -450,7 +450,7 @@ export default function AdminPage() {
                   className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-emerald-900 text-white font-bold text-sm hover:bg-emerald-800 transition-colors shadow-sm cursor-pointer"
                 >
                   <ShieldCheck className="w-4 h-4 text-white" />
-                  <span>⚡ Войти как Акимат города</span>
+                  <span>⚡ Войти как Администрация города</span>
                 </button>
 
                 <button
@@ -500,20 +500,20 @@ export default function AdminPage() {
             <div className="flex items-center gap-2">
               <span className={`w-2.5 h-2.5 rounded-full ${isAdmin ? 'bg-emerald-600' : 'bg-blue-600'}`}></span>
               <span className="text-xs font-bold uppercase tracking-wider text-foreground">
-                {isAdmin ? 'Ситуационный центр • Акимат г. Семей' : 'Единый контакт-центр 109 • Отдел ЖКХ г. Семей'}
+                {isAdmin ? 'Ситуационный центр • Администрация г. Семей' : 'Оперативный центр • Государственные службы г. Семей'}
               </span>
               <span className="text-xs font-bold px-2 py-0.5 bg-muted text-foreground rounded border border-border">
-                {isAdmin ? 'ПРАВА: АДМИНИСТРАЦИЯ' : 'ПРАВА: ОПЕРАТОР ЖКХ'}
+                {isAdmin ? 'ПРАВА: АДМИНИСТРАЦИЯ' : 'ПРАВА: ГОССЛУЖБЫ'}
               </span>
             </div>
             
             <h1 className="mt-1 text-2xl sm:text-3xl font-extrabold text-foreground tracking-tight">
-              {isAdmin ? 'Панель Администрации города' : 'Панель диспетчера и служб ЖКХ'}
+              {isAdmin ? 'Панель Администрации города' : 'Панель Государственных служб'}
             </h1>
             
             <p className="mt-1 text-sm font-semibold text-muted-foreground">
               {isAdmin
-                ? 'Модерация некомпетентных обращений, аудит работы ЖКХ, контроль сроков и связь с разработчиками платформы.'
+                ? 'Модерация некомпетентных обращений, аудит работы служб, контроль сроков и связь с разработчиками платформы.'
                 : 'Контроль входящих инцидентов, доступ к контактам заявителей, устранение дефектов и официальные ответы.'}
             </p>
           </div>
@@ -1446,7 +1446,7 @@ export default function AdminPage() {
                     <div className="flex items-center justify-between">
                       <span className="text-xs font-extrabold uppercase tracking-wider text-warning-soft-foreground flex items-center gap-1.5">
                         <ShieldCheck className="w-4 h-4 text-warning-soft-foreground" />
-                        <span>Модерация и цензурный контроль (Акимат)</span>
+                        <span>Модерация и цензурный контроль (Администрация)</span>
                       </span>
                       <ModerationBadge status={activeRequest.moderation_status} />
                     </div>

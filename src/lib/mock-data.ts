@@ -36,7 +36,7 @@ export const MOCK_USERS: Record<string, UserProfile> = {
     id: 'user-employee-1',
     name: 'Канат Сериков',
     role: 'employee',
-    roleTitle: 'Диспетчер единого контакт-центра ЖКХ',
+    roleTitle: 'Государственные службы г. Семей',
     email: 'k.serikov@semey-gov.kz',
     phone: '+7 (7222) 52-20-10',
     district: 'Центральный'
@@ -45,7 +45,7 @@ export const MOCK_USERS: Record<string, UserProfile> = {
     id: 'user-admin-1',
     name: 'Даурен Байжанов',
     role: 'admin',
-    roleTitle: 'Администратор ситуационного центра акимата',
+    roleTitle: 'Администрация города Семей',
     email: 'd.baizhanov@abai.gov.kz',
     phone: '+7 (7222) 56-00-01',
     district: 'Центральный'
@@ -357,7 +357,7 @@ const SEED_REQUESTS: CityRequest[] = [
     author_email: 'zhanar.o@mail.kz',
     is_anonymous: false,
     moderation_status: 'flagged_inappropriate',
-    moderation_reason: 'Флаг автоматической модерации: текст содержит упоминание ненормативной лексики. Требуется подтверждение модератора Акимата.'
+    moderation_reason: 'Флаг автоматической модерации: текст содержит упоминание ненормативной лексики. Требуется подтверждение модератора Администрации.'
   },
   {
     id: 'SQ-00137',
@@ -599,7 +599,7 @@ export function createRequest(input: CreateRequestInput): CityRequest {
     latitude: input.latitude || 50.4111,
     longitude: input.longitude || 80.2458,
     district: input.district || 'Центральный',
-    photo_before_url: input.photo_before_url,
+    photo_before_url: input.photo_before_url || (input as any).photo_url,
     video_url: input.video_url,
     created_at: new Date().toISOString(),
     upvotes: 1,

@@ -151,7 +151,7 @@ export default function HomePage() {
                     </h3>
 
                     <p className="text-xs sm:text-sm text-slate-200 leading-relaxed font-medium">
-                      Заявки классифицируются автоматически и направляются в профильные отделы акимата и службы 109 без бюрократических задержек.
+                      Заявки классифицируются автоматически и направляются в профильные отделы администрации и государственные службы без бюрократических задержек.
                     </p>
 
                     <div className="pt-2 flex items-center gap-3">
@@ -208,10 +208,10 @@ export default function HomePage() {
                 </div>
                 <p className="text-sm text-foreground leading-relaxed font-medium">
                   {lang === 'kz' 
-                    ? 'Тұрғын мәселені қарапайым сөзбен сипаттайды. Акиматтың күрделі регламенттерін білу қажет емес.'
+                    ? 'Тұрғын мәселені қарапайым сөзбен сипаттайды. Әкімшіліктің күрделі регламенттерін білу қажет емес.'
                     : lang === 'en'
-                    ? 'Citizens describe problems in plain words. No need to understand bureaucratic municipal codes.'
-                    : 'Житель описывает проблему своими словами в свободной форме. Нет необходимости разбираться в юридических регламентах и структурах акимата.'}
+                    ? 'Residents describe problems in plain words. No need to understand bureaucratic municipal codes.'
+                    : 'Житель описывает проблему своими словами в свободной форме. Нет необходимости разбираться в юридических регламентах и структурах администрации.'}
                 </p>
                 <div className="mt-4 pt-3 border-t border-border text-xs font-mono font-bold text-muted-foreground">
                   {lang === 'kz' ? 'Формат: Мәтін + Фото + Мекенжай' : lang === 'en' ? 'Format: Text + Photo + Address' : 'Формат: Текст + Фото + Адрес'}

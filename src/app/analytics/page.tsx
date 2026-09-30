@@ -6,17 +6,52 @@ import Footer from '@/components/Footer';
 import PageHeader from '@/components/PageHeader';
 import { useApp } from '@/context/AppContext';
 import { getRequestStats } from '@/lib/mock-data';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
 import { 
   BarChart3, 
   CheckCircle2, 
   Clock, 
   MapPin, 
   Lightbulb, 
-  Layers
+  Layers,
+  ShieldAlert
 } from 'lucide-react';
 
 export default function AnalyticsPage() {
-  const { t } = useApp();
+  const { t, role } = useApp();
+  const isStaff = role === 'employee' || role === 'admin';
+
+  if (!isStaff) {
+    return (
+      <div className="flex flex-col min-h-screen bg-muted text-foreground">
+        <Navbar />
+        <main className="flex-1 max-w-7xl w-full mx-auto px-4 md:px-6 py-12 flex items-center justify-center">
+          <div className="max-w-md w-full p-8 bg-card border border-border rounded-xl text-center space-y-4 shadow-sm">
+            <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center mx-auto text-muted-foreground border border-border">
+              <ShieldAlert className="w-6 h-6 text-warning" />
+            </div>
+            <h2 className="text-lg font-bold text-foreground">
+              Служебная аналитика
+            </h2>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Детальная статистика и отчетность по городским инцидентам доступны исключительно для специалистов государственных служб и администрации города Семей.
+            </p>
+            <div className="pt-3 flex flex-col sm:flex-row gap-2">
+              <Button asChild className="flex-1" variant="default">
+                <Link href="/">На главную</Link>
+              </Button>
+              <Button asChild className="flex-1" variant="outline">
+                <Link href="/map">Карта проблем</Link>
+              </Button>
+            </div>
+          </div>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
+
   const stats = getRequestStats();
 
   const total = stats.total || 1;

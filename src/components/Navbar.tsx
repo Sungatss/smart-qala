@@ -77,10 +77,12 @@ export default function Navbar() {
     return t.navRoleCitizen;
   };
 
+  const isStaff = role === 'employee' || role === 'admin';
+
   const navLinks = [
     { href: '/map', label: t.navMap, icon: Map },
     { href: '/ideas', label: t.navIdeas, icon: Lightbulb },
-    { href: '/analytics', label: t.navAnalytics, icon: BarChart3 },
+    ...(isStaff ? [{ href: '/analytics', label: t.navAnalytics, icon: BarChart3 }] : []),
     { href: '/profile', label: t.navMyRequests, icon: User },
   ];
 
