@@ -86,7 +86,7 @@ export default function RequestDetailClient({ initialRequest, isCreatedJustNow }
       const json = await res.json();
       if (json.success) {
         setRequest(json.data);
-        setAppealSuccessMsg('Ваше обжалование официально зарегистрировано и передано в Ситуационный центр Администрации г. Семей на повторный аудит.');
+        setAppealSuccessMsg('Ваше обжалование официально зарегистрировано и передано в Ситуационный центр Администрации сайта на повторный аудит.');
         setAppealReason('');
         setTimeout(() => setIsAppealOpen(false), 3000);
       }
@@ -226,7 +226,7 @@ export default function RequestDetailClient({ initialRequest, isCreatedJustNow }
               <div className="flex items-center justify-between mb-2">
                 <span className="text-xs font-extrabold uppercase tracking-wider text-info-soft-foreground flex items-center gap-1.5">
                   <Lock className="w-4 h-4 text-blue-700" />
-                  <span>Служебное досье заявителя (Доступно госслужбам и Администрации)</span>
+                  <span>Служебное досье заявителя (Доступно госслужбам и Администрации сайта)</span>
                 </span>
                 <span className="text-xs font-mono font-bold text-info-soft-foreground bg-blue-100 px-2 py-0.5 rounded">
                   Конфиденциально

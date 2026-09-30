@@ -167,7 +167,7 @@ export default function IdeasClient({ initialIdeas }: IdeasClientProps) {
                     </div>
                     {progressPercent >= 50 && (
                       <span className="text-[10px] text-success font-semibold mt-1 inline-block">
-                        ✓ Набрано достаточно голосов для передачи в администрацию
+                        ✓ Набрано достаточно голосов для передачи в администрацию сайта
                       </span>
                     )}
                   </div>

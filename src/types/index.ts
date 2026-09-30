@@ -67,7 +67,7 @@ export interface CityRequest {
   upvotes: number;
   similar_to_id?: string;
   
-  // Confidential information (visible only to ЖКХ & Администрация)
+  // Confidential information (visible only to Госслужбы & Администрация сайта)
   author_id?: string;
   author_name?: string;
   author_phone?: string;

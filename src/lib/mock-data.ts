@@ -45,7 +45,7 @@ export const MOCK_USERS: Record<string, UserProfile> = {
     id: 'user-admin-1',
     name: 'Даурен Байжанов',
     role: 'admin',
-    roleTitle: 'Администрация города Семей',
+    roleTitle: 'Администрация сайта',
     email: 'd.baizhanov@abai.gov.kz',
     phone: '+7 (7222) 56-00-01',
     district: 'Центральный'
@@ -357,7 +357,7 @@ const SEED_REQUESTS: CityRequest[] = [
     author_email: 'zhanar.o@mail.kz',
     is_anonymous: false,
     moderation_status: 'flagged_inappropriate',
-    moderation_reason: 'Флаг автоматической модерации: текст содержит упоминание ненормативной лексики. Требуется подтверждение модератора Администрации.'
+    moderation_reason: 'Флаг автоматической модерации: текст содержит упоминание ненормативной лексики. Требуется подтверждение модератора Администрации сайта.'
   },
   {
     id: 'SQ-00137',

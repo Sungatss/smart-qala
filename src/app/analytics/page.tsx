@@ -35,7 +35,7 @@ export default function AnalyticsPage() {
               Служебная аналитика
             </h2>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Детальная статистика и отчетность по городским инцидентам доступны исключительно для специалистов государственных служб и администрации города Семей.
+              Детальная статистика и отчетность по городским инцидентам доступны исключительно для специалистов государственных служб и администрации сайта.
             </p>
             <div className="pt-3 flex flex-col sm:flex-row gap-2">
               <Button asChild className="flex-1" variant="default">

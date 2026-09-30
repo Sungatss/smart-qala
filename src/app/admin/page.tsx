@@ -221,7 +221,7 @@ export default function AdminPage() {
     try {
       const payload = {
         add_feedback: {
-          author: role === 'admin' ? 'Администрация г. Семей' : `${user.name} (Служба 109)`,
+          author: role === 'admin' ? 'Администрация сайта' : `${user.name} (Служба 109)`,
           department: activeRequest.department,
           text: officialFeedbackInput.trim()
         }
@@ -399,7 +399,7 @@ export default function AdminPage() {
 
             <p className="mt-3 text-base text-foreground leading-relaxed font-medium">
               Данный раздел предназначен исключительно для сотрудников государственных служб 
-              и Администрации города. Он содержит персональные и конфиденциальные данные заявителей 
+              и Администрации сайта. Он содержит персональные и конфиденциальные данные заявителей 
               (номера телефонов, адреса проживания, внутренние наряды исполнителей).
             </p>
 
@@ -450,7 +450,7 @@ export default function AdminPage() {
                   className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-emerald-900 text-white font-bold text-sm hover:bg-emerald-800 transition-colors shadow-sm cursor-pointer"
                 >
                   <ShieldCheck className="w-4 h-4 text-white" />
-                  <span>⚡ Войти как Администрация города</span>
+                  <span>⚡ Войти как Администрация сайта</span>
                 </button>
 
                 <button
@@ -500,15 +500,15 @@ export default function AdminPage() {
             <div className="flex items-center gap-2">
               <span className={`w-2.5 h-2.5 rounded-full ${isAdmin ? 'bg-emerald-600' : 'bg-blue-600'}`}></span>
               <span className="text-xs font-bold uppercase tracking-wider text-foreground">
-                {isAdmin ? 'Ситуационный центр • Администрация г. Семей' : 'Оперативный центр • Государственные службы г. Семей'}
+                {isAdmin ? 'Ситуационный центр • Администрация сайта' : 'Оперативный центр • Государственные службы г. Семей'}
               </span>
               <span className="text-xs font-bold px-2 py-0.5 bg-muted text-foreground rounded border border-border">
-                {isAdmin ? 'ПРАВА: АДМИНИСТРАЦИЯ' : 'ПРАВА: ГОССЛУЖБЫ'}
+                {isAdmin ? 'ПРАВА: АДМИНИСТРАЦИЯ САЙТА' : 'ПРАВА: ГОССЛУЖБЫ'}
               </span>
             </div>
             
             <h1 className="mt-1 text-2xl sm:text-3xl font-extrabold text-foreground tracking-tight">
-              {isAdmin ? 'Панель Администрации города' : 'Панель Государственных служб'}
+              {isAdmin ? 'Панель Администрации сайта' : 'Панель Государственных служб'}
             </h1>
             
             <p className="mt-1 text-sm font-semibold text-muted-foreground">
@@ -1179,8 +1179,8 @@ export default function AdminPage() {
                 </h2>
               </div>
               <p className="text-sm font-medium text-muted-foreground mb-4">
-                Официальный интерфейс Администрации г. Семей для запросов на доработку, 
-                технических отчетов и предложений по обеспечению бесперебойной работы сайта.
+                Официальный интерфейс Администрации сайта для запросов на доработку, 
+                технических отчетов и предложений по обеспечению бесперебойной работы платформы.
               </p>
 
               {devSuccessMsg && (
@@ -1446,7 +1446,7 @@ export default function AdminPage() {
                     <div className="flex items-center justify-between">
                       <span className="text-xs font-extrabold uppercase tracking-wider text-warning-soft-foreground flex items-center gap-1.5">
                         <ShieldCheck className="w-4 h-4 text-warning-soft-foreground" />
-                        <span>Модерация и цензурный контроль (Администрация)</span>
+                        <span>Модерация и цензурный контроль (Администрация сайта)</span>
                       </span>
                       <ModerationBadge status={activeRequest.moderation_status} />
                     </div>
