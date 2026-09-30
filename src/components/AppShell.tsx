@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useApp } from '@/context/AppContext';
 import AuthGate from '@/components/AuthGate';
+import SemeyBridgeLogo from '@/components/SemeyBridgeLogo';
 
 export default function AppShell({ children }: { children: React.ReactNode }) {
   const { hasEnteredSite } = useApp();
@@ -17,10 +18,10 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center text-muted-foreground">
         <div className="animate-pulse flex items-center space-x-3">
-          <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center font-black text-primary-foreground text-lg">
-            SQ
+          <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-primary-foreground shadow-xs">
+            <SemeyBridgeLogo size={24} className="text-primary-foreground" />
           </div>
-          <span className="font-bold text-lg text-foreground">Smart Qala • Семей</span>
+          <span className="font-bold text-lg text-foreground">VoiceOfSemey • Семей</span>
         </div>
       </div>
     );

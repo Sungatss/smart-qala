@@ -1,7 +1,8 @@
 'use client';
 
 import React from 'react';
-import { Building2, ShieldCheck } from 'lucide-react';
+import { ShieldCheck } from 'lucide-react';
+import SemeyBridgeLogo from '@/components/SemeyBridgeLogo';
 import { useApp } from '@/context/AppContext';
 
 export default function Footer() {
@@ -13,7 +14,7 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 rounded-md bg-primary text-primary-foreground flex items-center justify-center shrink-0">
-              <Building2 className="w-4 h-4 text-primary-foreground" />
+              <SemeyBridgeLogo size={18} className="text-primary-foreground" />
             </div>
             <div>
               <p className="text-sm font-semibold text-foreground">

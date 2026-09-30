@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useApp } from '@/context/AppContext';
 import { Language } from '@/lib/translations';
+import SemeyBridgeLogo from '@/components/SemeyBridgeLogo';
 import { 
   Building2, 
   PlusCircle, 
@@ -95,7 +96,7 @@ export default function Navbar() {
         <div className="flex items-center gap-2 xl:gap-3.5 min-w-0">
           <Link href="/" className="flex items-center gap-2 xl:gap-2.5 shrink-0 group">
             <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary text-primary-foreground shadow-xs">
-              <Building2 className="h-5 w-5 text-primary-foreground" />
+              <SemeyBridgeLogo size={22} className="text-primary-foreground" />
             </div>
             <div className="flex items-center gap-1.5">
               <span className="text-base font-semibold tracking-tight text-foreground">
@@ -341,7 +342,7 @@ export default function Navbar() {
               <SheetHeader className="text-left pb-4 border-b border-border">
                 <SheetTitle className="flex items-center gap-2">
                   <div className="flex h-8 w-8 items-center justify-center rounded-md bg-primary text-primary-foreground">
-                    <Building2 className="h-4 w-4 text-primary-foreground" />
+                    <SemeyBridgeLogo size={18} className="text-primary-foreground" />
                   </div>
                   <div>
                     <span className="text-base font-bold">{t.brandName}</span>

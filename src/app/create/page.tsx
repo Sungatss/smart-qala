@@ -285,7 +285,7 @@ function CreateRequestContent() {
         badge={
           <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 text-xs font-medium rounded-md bg-muted text-muted-foreground border border-border">
             <Sparkles className="w-3.5 h-3.5 text-info" />
-            <span>Smart Qala • {t.brandCity}</span>
+            <span>{t.brandName} • {t.brandCity}</span>
           </div>
         }
         title={requestType === 'idea' ? t.createTitleIdea : t.createTitleProblem}

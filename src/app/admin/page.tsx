@@ -332,7 +332,7 @@ export default function AdminPage() {
 
       const json = await res.json();
       if (json.success) {
-        setDevSuccessMsg('Сообщение успешно отправлено команде разработчиков Smart Qala (dev@smartqala.kz).');
+        setDevSuccessMsg('Сообщение успешно отправлено команде разработчиков VoiceOfSemey (dev@voiceofsemey.kz).');
         setDevTopic('');
         setDevMessage('');
         await loadDevFeedbacks();
@@ -1175,7 +1175,7 @@ export default function AdminPage() {
               <div className="flex items-center gap-2 mb-2">
                 <Code className="w-5 h-5 text-foreground" />
                 <h2 className="text-lg font-extrabold text-foreground">
-                  Прямой канал связи с разработчиками Smart Qala
+                  Прямой канал связи с разработчиками VoiceOfSemey
                 </h2>
               </div>
               <p className="text-sm font-medium text-muted-foreground mb-4">
@@ -1242,13 +1242,13 @@ export default function AdminPage() {
                   Официальные контакты команды разработки
                 </h3>
                 <p className="text-xs text-primary-foreground/80 mt-1">
-                  Поддержка платформы Smart Qala в рамках программы цифровизации Абайской области:
+                  Поддержка платформы VoiceOfSemey в рамках программы цифровизации Абайской области:
                 </p>
 
                 <div className="mt-4 space-y-2.5 text-sm">
                   <div className="flex items-center gap-2">
                     <Mail className="w-4 h-4 text-emerald-400" />
-                    <span>Email команды: <strong className="font-mono text-emerald-300">dev@smartqala.kz</strong></span>
+                    <span>Email команды: <strong className="font-mono text-emerald-300">dev@voiceofsemey.kz</strong></span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Phone className="w-4 h-4 text-emerald-400" />

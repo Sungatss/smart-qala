@@ -177,7 +177,7 @@ export interface Translations {
 
 export const TRANSLATIONS: Record<Language, Translations> = {
   ru: {
-    brandName: 'Smart Qala',
+    brandName: 'VoiceOfSemey',
     brandCity: 'Семей',
     brandTagline: 'Платформа прямого городского диалога',
     navShowcase: 'Что изменилось',
@@ -209,12 +209,12 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     langRu: 'Русский',
     langEn: 'English',
     demoNoticeBadge: 'ДЕМОНСТРАЦИОННЫЕ ДАННЫЕ / СЕМЕЙ',
-    demoNoticeText: 'Концепт городской платформы Smart Qala для города Семей.',
+    demoNoticeText: 'Концепт городской платформы VoiceOfSemey для города Семей.',
     demoNoticeDismiss: 'Скрыть',
-    footerConceptTitle: 'Концептуальный проект платформы Smart Qala • Семей',
+    footerConceptTitle: 'Концептуальный проект платформы VoiceOfSemey • Семей',
     footerConceptSubtitle: 'Прототип системы взаимодействия жителей и государственных служб города',
     footerConceptNotice: 'Демонстрационный концепт. Не является официальным сайтом администрации.',
-    footerCopyright: '© 2026 Концепт Smart Qala. Разработано для открытого города.',
+    footerCopyright: '© 2026 VoiceOfSemey. Разработано для открытого города.',
     footerStandards: 'Проект в рамках открытых стандартов Smart City',
     mapHeaderTitle: 'Интерактивная карта городской среды • Семей',
     mapHeaderSubtitle: 'Мониторинг инцидентов, тепловая карта скопления проблем и городские идеи жителей в реальном времени.',
@@ -226,7 +226,7 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     profileHeaderTitle: 'Личный кабинет жителя',
     profileHeaderSubtitle: 'История поданных обращений, статус их рассмотрения и городские инициативы.',
 
-    authTitle: 'Smart Qala • Семей',
+    authTitle: 'VoiceOfSemey • Семей',
     authSubtitle: 'Единая городская система взаимодействия жителей и государственных служб города',
     authChooseRole: 'Выберите категорию входа:',
     authRoleCitizen: 'Житель',
@@ -269,7 +269,7 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     authQuickLoginAction: 'Войти',
     authHeroHeadline: 'Умный и открытый город для каждого жителя',
     authHeroSubtext: 'Открытый контроль городских инцидентов, благоустройство и прямой диалог со службами Семея.',
-    authFooterConcept: 'Концептуальный проект платформы Smart Qala • Семей. Не является официальным сайтом администрации.',
+    authFooterConcept: 'Концептуальный проект платформы VoiceOfSemey • Семей. Не является официальным сайтом администрации.',
     authErrorFillFields: 'Пожалуйста, заполните обязательные поля',
     authErrorInvalidCredentials: 'Пожалуйста, введите корректные данные',
 
@@ -345,7 +345,7 @@ export const TRANSLATIONS: Record<Language, Translations> = {
   },
 
   kz: {
-    brandName: 'Smart Qala',
+    brandName: 'VoiceOfSemey',
     brandCity: 'Семей',
     brandTagline: 'Қала мен тұрғындардың тікелей байланыс алаңы',
     navShowcase: 'Қалада не өзгерді',
@@ -377,12 +377,12 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     langRu: 'Русский',
     langEn: 'English',
     demoNoticeBadge: 'ДЕМОНСТРАЦИЯЛЫҚ ДЕРЕКТЕР / СЕМЕЙ',
-    demoNoticeText: 'Семей қаласына арналған Smart Qala қалалық платформасы тұжырымдамасы.',
+    demoNoticeText: 'Семей қаласына арналған VoiceOfSemey қалалық платформасы тұжырымдамасы.',
     demoNoticeDismiss: 'Жабу',
-    footerConceptTitle: 'Smart Qala • Семей тұжырымдамалық жобасы',
+    footerConceptTitle: 'VoiceOfSemey • Семей тұжырымдамалық жобасы',
     footerConceptSubtitle: 'Қала тұрғындары мен мемлекеттік қызметтерінің өзара іс-қимыл жүйесінің прототипі',
     footerConceptNotice: 'Демонстрациялық тұжырымдама. Әкімшіліктің ресми сайты болып табылмайды.',
-    footerCopyright: '© 2026 Smart Qala тұжырымдамасы. Ашық қала үшін әзірленген.',
+    footerCopyright: '© 2026 VoiceOfSemey тұжырымдамасы. Ашық қала үшін әзірленген.',
     footerStandards: 'Smart City ашық стандарттары аясындағы жоба',
     mapHeaderTitle: 'Семей қалалық ортасының интерактивті картасы',
     mapHeaderSubtitle: 'Оқиғаларды нақты уақытта бақылау, мәселелердің жылу картасы және тұрғындардың қалалық идеялары.',
@@ -394,7 +394,7 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     profileHeaderTitle: 'Тұрғынның жеке кабинеті',
     profileHeaderSubtitle: 'Берілген өтініштер тарихы, олардың қаралу барысы және қалалық бастамалар.',
 
-    authTitle: 'Smart Qala • Семей',
+    authTitle: 'VoiceOfSemey • Семей',
     authSubtitle: 'Семей қаласы тұрғындары мен қалалық қызметтердің бірыңғай жүйесі',
     authChooseRole: 'Кіру санатын таңдаңыз:',
     authRoleCitizen: 'Тұрғын',
@@ -437,7 +437,7 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     authQuickLoginAction: 'Кіру',
     authHeroHeadline: 'Әрбір тұрғын үшін ақылды және ашық қала',
     authHeroSubtext: 'Қалалық мәселелерді ашық бақылау, абаттандыру және Семей қызметтерімен тікелей диалог.',
-    authFooterConcept: 'Smart Qala • Семей тұжырымдамалық жобасы. Әкімшіліктің ресми сайты емес.',
+    authFooterConcept: 'VoiceOfSemey • Семей тұжырымдамалық жобасы. Әкімшіліктің ресми сайты емес.',
     authErrorFillFields: 'Міндетті өрістерді толтырыңыз',
     authErrorInvalidCredentials: 'Дұрыс мәліметтерді енгізіңіз',
 
@@ -513,7 +513,7 @@ export const TRANSLATIONS: Record<Language, Translations> = {
   },
 
   en: {
-    brandName: 'Smart Qala',
+    brandName: 'VoiceOfSemey',
     brandCity: 'Semey',
     brandTagline: 'Civic interaction & urban response platform',
     navShowcase: 'City Results',
@@ -545,12 +545,12 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     langRu: 'Русский',
     langEn: 'English',
     demoNoticeBadge: 'DEMO DATA / SEMEY',
-    demoNoticeText: 'Smart Qala civic platform prototype concept for Semey.',
+    demoNoticeText: 'VoiceOfSemey civic platform prototype concept for Semey.',
     demoNoticeDismiss: 'Dismiss',
-    footerConceptTitle: 'Smart Qala • Semey Concept Project',
+    footerConceptTitle: 'VoiceOfSemey • Semey Concept Project',
     footerConceptSubtitle: 'Prototype system for interaction between residents and public services',
     footerConceptNotice: 'Demonstration concept. Not an official administration website.',
-    footerCopyright: '© 2026 Smart Qala Concept. Built for an open city.',
+    footerCopyright: '© 2026 VoiceOfSemey Concept. Built for an open city.',
     footerStandards: 'Project developed under Smart City open standards',
     mapHeaderTitle: 'Interactive Urban Environment Map • Semey',
     mapHeaderSubtitle: 'Real-time incident monitoring, problem hotspot heatmaps, and resident urban initiatives.',
@@ -562,7 +562,7 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     profileHeaderTitle: 'Resident Account',
     profileHeaderSubtitle: 'History of submitted requests, review statuses, and tracked municipal responses.',
 
-    authTitle: 'Smart Qala • Semey',
+    authTitle: 'VoiceOfSemey • Semey',
     authSubtitle: 'Integrated municipal system connecting residents with city public services',
     authChooseRole: 'Select access category:',
     authRoleCitizen: 'Resident',
@@ -605,7 +605,7 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     authQuickLoginAction: 'Log in',
     authHeroHeadline: 'Smart and open city for every resident',
     authHeroSubtext: 'Transparent civic tracking, public improvements, and direct response from Semey public services.',
-    authFooterConcept: 'Smart Qala • Semey Concept Project. Not an official administration portal.',
+    authFooterConcept: 'VoiceOfSemey • Semey Concept Project. Not an official administration portal.',
     authErrorFillFields: 'Please fill in required fields',
     authErrorInvalidCredentials: 'Please enter valid credentials',
 

@@ -111,10 +111,14 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
       try {
         const urlParams = new URLSearchParams(window.location.search);
         if (urlParams.get('entered') === 'true') {
+          localStorage.setItem('voiceofsemey_entered', 'true');
           localStorage.setItem('smart_qala_entered', 'true');
           return true;
         }
-        return localStorage.getItem('smart_qala_entered') === 'true';
+        return (
+          localStorage.getItem('voiceofsemey_entered') === 'true' ||
+          localStorage.getItem('smart_qala_entered') === 'true'
+        );
       } catch {}
     }
     return false;

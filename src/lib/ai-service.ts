@@ -227,7 +227,7 @@ export async function analyzeRequest(text: string, location?: string): Promise<A
   try {
     const ai = new GoogleGenAI({ apiKey });
 
-    const systemInstruction = `Ты — беспристрастный ИИ-диспетчер цифрового сервиса городского мониторинга «Smart Qala» (г. Семей, Казахстан).
+    const systemInstruction = `Ты — беспристрастный ИИ-диспетчер цифрового сервиса городского мониторинга «VoiceOfSemey» (г. Семей, Казахстан).
 Твоя задача — преобразовать эмоциональное или неструктурированное сообщение жителя в официальный, четкий протокол городского инцидента.
 
 СТРОГИЕ ПРАВИЛА:

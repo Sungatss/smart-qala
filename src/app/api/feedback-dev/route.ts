@@ -31,7 +31,7 @@ export async function POST(request: NextRequest) {
 
     const created = addDeveloperFeedback({
       sender_name: sender_name || 'Сотрудник Администрации сайта',
-      sender_email: sender_email || 'dev@smartqala.kz',
+      sender_email: sender_email || 'dev@voiceofsemey.kz',
       sender_role: sender_role || 'admin',
       topic: String(topic).trim(),
       message: String(message).trim()

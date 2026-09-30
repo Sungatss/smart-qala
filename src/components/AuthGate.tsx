@@ -3,8 +3,8 @@
 import React from 'react';
 import { useApp } from '@/context/AppContext';
 import { Language } from '@/lib/translations';
+import SemeyBridgeLogo from '@/components/SemeyBridgeLogo';
 import {
-  Building2,
   SlidersHorizontal,
   Sun,
   Moon,
@@ -60,7 +60,7 @@ export default function AuthGate() {
           <div className="relative z-10 space-y-4">
             <div className="inline-flex items-center gap-2 px-3 py-1 text-xs font-semibold rounded-full bg-white/10 backdrop-blur-md text-white border border-white/15">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span>Smart Qala • {t.brandCity}</span>
+              <span>{t.brandName} • {t.brandCity}</span>
             </div>
 
             <h1 className="text-3xl xl:text-4xl font-extrabold text-white tracking-tight leading-tight">
@@ -81,7 +81,7 @@ export default function AuthGate() {
           {/* Logo top-left */}
           <div className="flex items-center gap-2.5">
             <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary text-primary-foreground shadow-xs">
-              <Building2 className="h-5 w-5 text-primary-foreground" />
+              <SemeyBridgeLogo size={22} className="text-primary-foreground" />
             </div>
             <div className="flex items-center gap-1.5">
               <span className="text-base font-semibold tracking-tight text-foreground">

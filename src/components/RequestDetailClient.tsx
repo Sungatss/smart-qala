@@ -100,7 +100,7 @@ export default function RequestDetailClient({ initialRequest, isCreatedJustNow }
   const lifecycleStages = [
     {
       title: 'Отправлено',
-      desc: 'Зарегистрировано в Smart Qala',
+      desc: 'Зарегистрировано в VoiceOfSemey',
       date: new Date(request.created_at).toLocaleDateString('ru-RU', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }),
       done: true
     },
@@ -299,7 +299,7 @@ export default function RequestDetailClient({ initialRequest, isCreatedJustNow }
           <div className="space-y-4">
             <div className="p-5 bg-muted rounded-lg border-2 border-border">
               <div className="font-bold text-foreground text-xs uppercase tracking-wider mb-1.5">
-                Структурированное описание (Протокол ИИ Smart Qala):
+                Структурированное описание (Протокол ИИ VoiceOfSemey):
               </div>
               <p className="text-foreground leading-relaxed text-base font-medium">
                 {request.cleaned_text}

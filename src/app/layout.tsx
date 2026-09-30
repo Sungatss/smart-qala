@@ -12,8 +12,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'Smart Qala - Городской сервис Семей',
-  description: 'Прием и открытый контроль решения городских проблем Семея',
+  title: 'VoiceOfSemey — Городская платформа Семей',
+  description: 'Прием и открытый контроль решения городских проблем, банк идей жителей и открытый диалог со службами Семея',
 };
 
 export default function RootLayout({

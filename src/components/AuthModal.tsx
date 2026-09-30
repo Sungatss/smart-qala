@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect } from 'react';
 import { useApp } from '@/context/AppContext';
-import { Building2, X } from 'lucide-react';
+import { X } from 'lucide-react';
+import SemeyBridgeLogo from '@/components/SemeyBridgeLogo';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import AuthForm from '@/components/auth/AuthForm';
@@ -56,7 +57,7 @@ export default function AuthModal() {
         {/* Modal Header */}
         <div className="text-center pb-5 mb-5 border-b border-border">
           <div className="mx-auto mb-3 flex h-11 w-11 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-xs">
-            <Building2 className="h-5 w-5 text-primary-foreground" />
+            <SemeyBridgeLogo size={24} className="text-primary-foreground" />
           </div>
           <div className="flex items-center justify-center gap-1.5">
             <h2 className="text-xl font-bold tracking-tight text-foreground">
