@@ -6,35 +6,24 @@ import { MOCK_USERS } from '@/lib/mock-data';
 import { Language, Translations, TRANSLATIONS } from '@/lib/translations';
 
 interface AppContextType {
-  // Language
   lang: Language;
   setLang: (lang: Language) => void;
   t: Translations;
-
-  // Active Role & User
   role: UserRole;
   setRole: (role: UserRole) => void;
   user: UserProfile;
-
-  // Theme
   theme: 'light' | 'dark';
   setTheme: (theme: 'light' | 'dark') => void;
   toggleTheme: () => void;
-
-  // Accessibility (WCAG AAA High Contrast & Large Font)
   easyMode: boolean;
   toggleEasyMode: () => void;
-
-  // Notifications
   notifications: NotificationItem[];
   unreadCount: number;
   markNotificationRead: (id: string) => Promise<void>;
-
-  // Upvotes
   upvotedIds: Set<string>;
   upvote: (requestId: string) => Promise<number | null>;
 
-  // Authentication & Gate State
+  // Authentication gate & modal state
   hasEnteredSite: boolean;
   isAuthenticated: boolean;
   isGuest: boolean;
@@ -52,29 +41,22 @@ interface AppContextType {
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
 export function AppProvider({ children }: { children: React.ReactNode }) {
-  // Language state
   const [lang, setLangState] = useState<Language>(() => {
     if (typeof window !== 'undefined') {
       try {
-        const savedLang = localStorage.getItem('smart_qala_lang') as Language;
-        if (savedLang && ['ru', 'kz', 'en'].includes(savedLang)) {
-          return savedLang;
-        }
+        const saved = localStorage.getItem('smart_qala_lang') as Language;
+        if (saved && ['ru', 'kz', 'en'].includes(saved)) return saved;
       } catch {}
     }
     return 'ru';
   });
 
-  const setLang = (newLang: Language) => {
-    setLangState(newLang);
-    try {
-      localStorage.setItem('smart_qala_lang', newLang);
-    } catch {}
+  const setLang = (next: Language) => {
+    setLangState(next);
+    try { localStorage.setItem('smart_qala_lang', next); } catch {}
   };
-
   const t = TRANSLATIONS[lang] || TRANSLATIONS.ru;
 
-  // Role state
   const [role, setRoleState] = useState<UserRole>(() => {
     if (typeof window !== 'undefined') {
       try {
@@ -89,36 +71,21 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
 
   const [isGuest, setIsGuest] = useState<boolean>(() => {
     if (typeof window !== 'undefined') {
-      try {
-        return localStorage.getItem('smart_qala_is_guest') === 'true';
-      } catch {}
+      try { return localStorage.getItem('smart_qala_is_guest') === 'true'; } catch {}
     }
     return false;
   });
 
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => {
-    if (typeof window !== 'undefined') {
-      try {
-        return localStorage.getItem('smart_qala_authenticated') === 'true';
-      } catch {}
-    }
-    return false;
-  });
-
-  // Has entered site gate (if false, user sees full-page AuthGate)
   const [hasEnteredSite, setHasEnteredSite] = useState<boolean>(() => {
     if (typeof window !== 'undefined') {
       try {
-        const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.get('entered') === 'true') {
-          localStorage.setItem('voiceofsemey_entered', 'true');
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('entered') === 'true') {
           localStorage.setItem('smart_qala_entered', 'true');
           return true;
         }
-        return (
-          localStorage.getItem('voiceofsemey_entered') === 'true' ||
-          localStorage.getItem('smart_qala_entered') === 'true'
-        );
+        return localStorage.getItem('smart_qala_entered') === 'true' ||
+          localStorage.getItem('voiceofsemey_entered') === 'true';
       } catch {}
     }
     return false;
@@ -128,65 +95,54 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     if (typeof window !== 'undefined') {
       try {
         const saved = localStorage.getItem('smart_qala_custom_user');
-        if (saved) return JSON.parse(saved);
+        if (saved) return JSON.parse(saved) as UserProfile;
       } catch {}
     }
     return null;
   });
 
-  // Modal State
-  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => {
+    if (typeof window !== 'undefined') {
+      try {
+        return localStorage.getItem('smart_qala_authenticated') === 'true';
+      } catch {}
+    }
+    return false; // Opens AuthModal first as requested!
+  });
+
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState<boolean>(() => {
+    if (typeof window !== 'undefined') {
+      try {
+        const isAuth = localStorage.getItem('smart_qala_authenticated') === 'true';
+        return !isAuth; // Open modal if not authenticated
+      } catch {}
+    }
+    return true;
+  });
+
   const [modalInitialRole, setModalInitialRole] = useState<UserRole | undefined>('citizen');
   const [modalInitialTab, setModalInitialTab] = useState<'login' | 'register' | undefined>('login');
 
-  const openAuthModal = (initialRole?: UserRole, initialTab?: 'login' | 'register') => {
-    setModalInitialRole(initialRole || 'citizen');
-    setModalInitialTab(initialTab || 'login');
-    setIsAuthModalOpen(true);
-  };
-
-  const closeAuthModal = () => {
-    setIsAuthModalOpen(false);
-  };
-
-  // Theme State ('light' by default)
   const [theme, setThemeState] = useState<'light' | 'dark'>('light');
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      try {
-        const savedTheme = localStorage.getItem('smart_qala_theme') as 'light' | 'dark';
-        if (savedTheme === 'dark' || savedTheme === 'light') {
-          setThemeState(savedTheme);
-          if (savedTheme === 'dark') {
-            document.documentElement.classList.add('dark');
-          } else {
-            document.documentElement.classList.remove('dark');
-          }
-        }
-      } catch {}
-    }
-  }, []);
-
-  const setTheme = (newTheme: 'light' | 'dark') => {
-    setThemeState(newTheme);
     try {
-      localStorage.setItem('smart_qala_theme', newTheme);
-      if (newTheme === 'dark') {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
+      const saved = localStorage.getItem('smart_qala_theme');
+      if (saved === 'light' || saved === 'dark') {
+        setThemeState(saved);
+        document.documentElement.classList.toggle('dark', saved === 'dark');
       }
     } catch {}
+  }, []);
+
+  const setTheme = (next: 'light' | 'dark') => {
+    setThemeState(next);
+    document.documentElement.classList.toggle('dark', next === 'dark');
+    try { localStorage.setItem('smart_qala_theme', next); } catch {}
   };
 
-  const toggleTheme = () => {
-    setTheme(theme === 'light' ? 'dark' : 'light');
-  };
+  const toggleTheme = () => setTheme(theme === 'light' ? 'dark' : 'light');
 
-
-
-  // Easy mode / Large font
   const [easyMode, setEasyModeState] = useState<boolean>(() => {
     if (typeof window !== 'undefined') {
       try {
@@ -235,30 +191,21 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     setIsGuest(false);
     setIsAuthenticated(true);
     setHasEnteredSite(true);
-
+    setIsAuthModalOpen(false);
     const baseUser = MOCK_USERS[newRole] || MOCK_USERS.citizen;
-    const finalUser: UserProfile = customData
-      ? { ...baseUser, ...customData, role: newRole, isGuest: false }
-      : { ...baseUser, isGuest: false };
-
-    setCurrentUser(finalUser);
-
+    const nextUser: UserProfile = { ...baseUser, ...customData, role: newRole, isGuest: false };
+    setCurrentUser(nextUser);
     try {
       localStorage.setItem('smart_qala_role', newRole);
       localStorage.setItem('smart_qala_authenticated', 'true');
       localStorage.setItem('smart_qala_is_guest', 'false');
       localStorage.setItem('smart_qala_entered', 'true');
-      localStorage.setItem('smart_qala_custom_user', JSON.stringify(finalUser));
+      localStorage.setItem('smart_qala_custom_user', JSON.stringify(nextUser));
     } catch {}
   };
 
   const loginAsGuest = () => {
-    setRoleState('citizen');
-    setIsGuest(true);
-    setIsAuthenticated(true);
-    setHasEnteredSite(true);
-
-    const guestProfile: UserProfile = {
+    const guest: UserProfile = {
       id: 'user-guest-1',
       name: 'Гость г. Семей',
       role: 'citizen',
@@ -268,43 +215,30 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
       district: 'Центральный',
       isGuest: true
     };
-
-    setCurrentUser(guestProfile);
-
+    setRoleState('citizen');
+    setIsGuest(true);
+    setIsAuthenticated(true);
+    setHasEnteredSite(true);
+    setIsAuthModalOpen(false);
+    setCurrentUser(guest);
     try {
       localStorage.setItem('smart_qala_role', 'citizen');
       localStorage.setItem('smart_qala_authenticated', 'true');
       localStorage.setItem('smart_qala_is_guest', 'true');
       localStorage.setItem('smart_qala_entered', 'true');
-      localStorage.setItem('smart_qala_custom_user', JSON.stringify(guestProfile));
+      localStorage.setItem('smart_qala_custom_user', JSON.stringify(guest));
     } catch {}
   };
 
   const registerCitizen = (data: { name: string; phone: string; email: string; district?: District }) => {
-    const newProfile: UserProfile = {
+    login('citizen', {
       id: `citizen-${Date.now()}`,
       name: data.name.trim() || 'Новый житель',
-      role: 'citizen',
       roleTitle: 'Зарегистрированный житель г. Семей',
-      email: data.email.trim() || 'resident@semey.kz',
-      phone: data.phone.trim() || '+7 (705) 000-00-00',
-      district: data.district || 'Центральный',
-      isGuest: false
-    };
-
-    setRoleState('citizen');
-    setIsGuest(false);
-    setIsAuthenticated(true);
-    setHasEnteredSite(true);
-    setCurrentUser(newProfile);
-
-    try {
-      localStorage.setItem('smart_qala_role', 'citizen');
-      localStorage.setItem('smart_qala_authenticated', 'true');
-      localStorage.setItem('smart_qala_is_guest', 'false');
-      localStorage.setItem('smart_qala_entered', 'true');
-      localStorage.setItem('smart_qala_custom_user', JSON.stringify(newProfile));
-    } catch {}
+      phone: data.phone.trim(),
+      email: data.email.trim(),
+      district: data.district || 'Центральный'
+    });
   };
 
   const logout = () => {
@@ -312,6 +246,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     setIsGuest(false);
     setHasEnteredSite(false);
     setCurrentUser(null);
+    setIsAuthModalOpen(true);
     try {
       localStorage.removeItem('smart_qala_authenticated');
       localStorage.removeItem('smart_qala_is_guest');
@@ -320,15 +255,25 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     } catch {}
   };
 
+  const openAuthModal = (initialRole?: UserRole, initialTab?: 'login' | 'register') => {
+    setModalInitialRole(initialRole || 'citizen');
+    setModalInitialTab(initialTab || 'login');
+    setIsAuthModalOpen(true);
+  };
+
+  const closeAuthModal = () => {
+    setIsAuthModalOpen(false);
+  };
+
   const setRole = (newRole: UserRole) => {
     setRoleState(newRole);
     setIsGuest(false);
-    const newUser = MOCK_USERS[newRole] || MOCK_USERS.citizen;
-    setCurrentUser(newUser);
+    const nextUser = MOCK_USERS[newRole] || MOCK_USERS.citizen;
+    setCurrentUser(nextUser);
     try {
       localStorage.setItem('smart_qala_role', newRole);
       localStorage.setItem('smart_qala_is_guest', 'false');
-      localStorage.setItem('smart_qala_custom_user', JSON.stringify(newUser));
+      localStorage.setItem('smart_qala_custom_user', JSON.stringify(nextUser));
     } catch {}
   };
 
@@ -347,47 +292,46 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     });
   };
 
+  const markNotificationRead = async (id: string) => {
+    setNotifications((prev) =>
+      prev.map((n) => (n.id === id ? { ...n, read: true } : n))
+    );
+    try {
+      await fetch('/api/notifications', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id })
+      });
+    } catch {}
+  };
+
   const upvote = async (requestId: string): Promise<number | null> => {
+    if (upvotedIds.has(requestId)) {
+      return null;
+    }
+
     try {
       const res = await fetch(`/api/requests/${requestId}/upvote`, {
         method: 'POST'
       });
       const data = await res.json();
-      if (data.success) {
-        setUpvotedIds((prev) => {
-          const next = new Set(prev);
-          next.add(requestId);
-          try {
-            localStorage.setItem('smart_qala_upvotes', JSON.stringify(Array.from(next)));
-          } catch {}
-          return next;
-        });
-        return data.upvotes;
+      if (data.success && data.data) {
+        const nextSet = new Set(upvotedIds);
+        nextSet.add(requestId);
+        setUpvotedIds(nextSet);
+        try {
+          localStorage.setItem('smart_qala_upvotes', JSON.stringify([...nextSet]));
+        } catch {}
+        return data.data.upvotes;
       }
-      return null;
-    } catch {
-      return null;
+    } catch (err) {
+      console.error('Error upvoting:', err);
     }
-  };
-
-  const markNotificationRead = async (id: string) => {
-    setNotifications((prev) =>
-      prev.map((n) => (n.id === id ? { ...n, read: true } : n))
-    );
+    return null;
   };
 
   const unreadCount = notifications.filter((n) => !n.read).length;
-
-  const activeUser: UserProfile = currentUser || (isGuest ? {
-    id: 'user-guest-1',
-    name: 'Гость г. Семей',
-    role: 'citizen',
-    roleTitle: 'Гость (Режим просмотра)',
-    email: '',
-    phone: '',
-    district: 'Центральный',
-    isGuest: true
-  } : MOCK_USERS[role] || MOCK_USERS.citizen);
+  const activeUser = currentUser || MOCK_USERS[role] || MOCK_USERS.citizen;
 
   return (
     <AppContext.Provider
@@ -428,9 +372,9 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
 }
 
 export function useApp() {
-  const context = useContext(AppContext);
-  if (!context) {
+  const ctx = useContext(AppContext);
+  if (!ctx) {
     throw new Error('useApp must be used within an AppProvider');
   }
-  return context;
+  return ctx;
 }
