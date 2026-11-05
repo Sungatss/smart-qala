@@ -11,6 +11,7 @@ import {
   PlusCircle, 
   Map, 
   Lightbulb, 
+  CalendarDays,
   BarChart3, 
   Bell, 
   User, 
@@ -83,6 +84,7 @@ export default function Navbar() {
   const navLinks = [
     { href: '/map', label: t.navMap, icon: Map },
     { href: '/ideas', label: t.navIdeas, icon: Lightbulb },
+    { href: '/calendar', label: t.navCalendar, icon: CalendarDays },
     ...(isStaff ? [{ href: '/analytics', label: t.navAnalytics, icon: BarChart3 }] : []),
     ...(!isStaff ? [{ href: '/profile', label: t.navMyRequests, icon: User }] : []),
   ];
@@ -109,7 +111,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Nav Items (4 items + staff panel) */}
-          <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1 text-xs xl:text-[13px] font-medium">
+          <nav className="hidden xl:flex items-center gap-0.5 xl:gap-1 text-xs xl:text-[13px] font-medium">
             {navLinks.map((item) => {
               const Icon = item.icon;
               const isActive = pathname === item.href;
@@ -147,7 +149,7 @@ export default function Navbar() {
         </div>
 
         {/* Right Desktop Actions */}
-        <div className="hidden lg:flex items-center gap-1 xl:gap-1.5 shrink-0">
+        <div className="hidden xl:flex items-center gap-1 xl:gap-1.5 shrink-0">
           
           {/* Language Dropdown */}
           <DropdownMenu>
@@ -324,7 +326,7 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Hamburger Trigger & Quick Report CTA */}
-        <div className="flex items-center gap-2 lg:hidden">
+        <div className="flex items-center gap-2 xl:hidden">
           <Button asChild size="sm" className="h-8 gap-1 px-2.5 text-xs">
             <Link href="/create">
               <PlusCircle className="h-3.5 w-3.5" />

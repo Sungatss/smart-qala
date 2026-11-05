@@ -8,6 +8,40 @@ export interface Translations {
   navShowcase: string;
   navMap: string;
   navIdeas: string;
+  navCalendar: string;
+  calendar: {
+    title: string;
+    description: string;
+    addCard: string;
+    backToCalendar: string;
+    creationHint: string;
+    today: string;
+    previousMonth: string;
+    nextMonth: string;
+    month: string;
+    selectedDay: string;
+    allTypes: string;
+    problems: string;
+    ideas: string;
+    typeFilter: string;
+    statusFilter: string;
+    allStatuses: string;
+    underReview: string;
+    assigned: string;
+    search: string;
+    searchPlaceholder: string;
+    cards: string;
+    more: string;
+    emptyDay: string;
+    emptyMonth: string;
+    latestCard: string;
+    refresh: string;
+    refreshError: string;
+    retry: string;
+    created: string;
+    openCard: string;
+    clearFilters: string;
+  };
   navAnalytics: string;
   navMyRequests: string;
   navCreate: string;
@@ -183,6 +217,40 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     navShowcase: 'Что изменилось',
     navMap: 'Карта проблем',
     navIdeas: 'Банк идей',
+    navCalendar: 'Календарь',
+    calendar: {
+      title: 'Календарь обращений',
+      description: 'Все обращения и идеи по дате подачи. Время города Семей.',
+      addCard: 'Добавить карточку',
+      backToCalendar: 'Вернуться в календарь',
+      creationHint: 'Новая карточка появится в календаре в день её подачи.',
+      today: 'Сегодня',
+      previousMonth: 'Предыдущий месяц',
+      nextMonth: 'Следующий месяц',
+      month: 'Месяц',
+      selectedDay: 'Выбранный день',
+      allTypes: 'Все карточки',
+      problems: 'Проблемы',
+      ideas: 'Идеи',
+      typeFilter: 'Тип карточки',
+      statusFilter: 'Статус',
+      allStatuses: 'Все статусы',
+      underReview: 'На рассмотрении',
+      assigned: 'Назначено',
+      search: 'Поиск карточек',
+      searchPlaceholder: 'Название, номер или адрес',
+      cards: 'Карточки',
+      more: 'Ещё',
+      emptyDay: 'Нет карточек за этот день с выбранными фильтрами.',
+      emptyMonth: 'В этом месяце нет карточек с выбранными фильтрами.',
+      latestCard: 'К последней карточке',
+      refresh: 'Обновить',
+      refreshError: 'Не удалось обновить календарь. Показаны последние загруженные карточки.',
+      retry: 'Повторить',
+      created: 'Карточка добавлена в календарь.',
+      openCard: 'Открыть карточку',
+      clearFilters: 'Сбросить фильтры',
+    },
     navAnalytics: 'Статистика',
     navMyRequests: 'Мои обращения',
     navCreate: 'Подать заявку',
@@ -351,6 +419,40 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     navShowcase: 'Қалада не өзгерді',
     navMap: 'Мәселелер картасы',
     navIdeas: 'Идеялар банкі',
+    navCalendar: 'Күнтізбе',
+    calendar: {
+      title: 'Өтініштер күнтізбесі',
+      description: 'Барлық өтініштер мен идеялар берілген күні бойынша. Семей қаласының уақыты.',
+      addCard: 'Карточка қосу',
+      backToCalendar: 'Күнтізбеге оралу',
+      creationHint: 'Жаңа карточка күнтізбеде берілген күні көрсетіледі.',
+      today: 'Бүгін',
+      previousMonth: 'Алдыңғы ай',
+      nextMonth: 'Келесі ай',
+      month: 'Ай',
+      selectedDay: 'Таңдалған күн',
+      allTypes: 'Барлық карточкалар',
+      problems: 'Мәселелер',
+      ideas: 'Идеялар',
+      typeFilter: 'Карточка түрі',
+      statusFilter: 'Мәртебе',
+      allStatuses: 'Барлық мәртебелер',
+      underReview: 'Қаралуда',
+      assigned: 'Тағайындалды',
+      search: 'Карточкаларды іздеу',
+      searchPlaceholder: 'Атауы, нөмірі немесе мекенжайы',
+      cards: 'Карточкалар',
+      more: 'Тағы',
+      emptyDay: 'Таңдалған сүзгілер бойынша бұл күнге карточкалар жоқ.',
+      emptyMonth: 'Таңдалған сүзгілер бойынша бұл айда карточкалар жоқ.',
+      latestCard: 'Соңғы карточкаға өту',
+      refresh: 'Жаңарту',
+      refreshError: 'Күнтізбені жаңарту мүмкін болмады. Соңғы жүктелген карточкалар көрсетілген.',
+      retry: 'Қайталау',
+      created: 'Карточка күнтізбеге қосылды.',
+      openCard: 'Карточканы ашу',
+      clearFilters: 'Сүзгілерді тазарту',
+    },
     navAnalytics: 'Статистика',
     navMyRequests: 'Менің өтініштерім',
     navCreate: 'Өтініш беру',
@@ -519,6 +621,40 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     navShowcase: 'City Results',
     navMap: 'Issues Map',
     navIdeas: 'Ideas Bank',
+    navCalendar: 'Calendar',
+    calendar: {
+      title: 'Requests calendar',
+      description: 'All requests and ideas by submission date, in Semey time.',
+      addCard: 'Add card',
+      backToCalendar: 'Back to calendar',
+      creationHint: 'New cards appear on the day they are submitted.',
+      today: 'Today',
+      previousMonth: 'Previous month',
+      nextMonth: 'Next month',
+      month: 'Month',
+      selectedDay: 'Selected day',
+      allTypes: 'All cards',
+      problems: 'Problems',
+      ideas: 'Ideas',
+      typeFilter: 'Card type',
+      statusFilter: 'Status',
+      allStatuses: 'All statuses',
+      underReview: 'Under review',
+      assigned: 'Assigned',
+      search: 'Search cards',
+      searchPlaceholder: 'Title, ID or address',
+      cards: 'Cards',
+      more: 'More',
+      emptyDay: 'No cards match this day and the selected filters.',
+      emptyMonth: 'No cards match this month and the selected filters.',
+      latestCard: 'Go to latest card',
+      refresh: 'Refresh',
+      refreshError: 'Could not refresh the calendar. Showing the last loaded cards.',
+      retry: 'Retry',
+      created: 'Card added to the calendar.',
+      openCard: 'Open card',
+      clearFilters: 'Clear filters',
+    },
     navAnalytics: 'Analytics',
     navMyRequests: 'My Requests',
     navCreate: 'Report Issue',

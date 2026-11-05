@@ -2,11 +2,13 @@
 
 import React, { useState, useRef, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
+import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import PageHeader from '@/components/PageHeader';
 import { RequestType, District } from '@/types';
 import { useApp } from '@/context/AppContext';
+import { getSubmissionDate } from '@/lib/calendar';
 import { 
   MapPin, 
   Camera, 
@@ -32,6 +34,7 @@ function CreateRequestContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { user, isGuest, registerCitizen, t, lang } = useApp();
+  const fromCalendar = searchParams.get('from') === 'calendar';
 
   // Mode: problem vs idea
   const [requestType, setRequestType] = useState<RequestType>(
@@ -263,8 +266,12 @@ function CreateRequestContent() {
       const createData = await createResponse.json();
 
       if (createData.success && createData.data?.id) {
-        // Redirect directly to the created request page
-        router.push(`/requests/${createData.data.id}?created=true`);
+        if (fromCalendar) {
+          const date = getSubmissionDate(createData.data.created_at);
+          router.push(`/calendar?date=${date}&created=${encodeURIComponent(createData.data.id)}`);
+        } else {
+          router.push(`/requests/${createData.data.id}?created=true`);
+        }
       } else {
         throw new Error(createData.error || 'Ошибка при сохранении заявки');
       }
@@ -278,6 +285,12 @@ function CreateRequestContent() {
   return (
     <div className="max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-12">
       <div className="max-w-3xl mx-auto space-y-8">
+      {fromCalendar && (
+        <div className="space-y-2 text-sm">
+          <Link href="/calendar" className="font-medium underline underline-offset-4">{t.calendar.backToCalendar}</Link>
+          <p className="text-muted-foreground">{t.calendar.creationHint}</p>
+        </div>
+      )}
       
       {/* Page Header */}
       <PageHeader
